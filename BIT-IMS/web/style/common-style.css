@@ -2,9 +2,10 @@ Body{
     margin: 0;
     padding: 0;
 }
+
 /*Headder Styles*/
 header {
-    background-color: #0ddaff;
+    background-color: #3b89f5;
     height: 50px;
     position: fixed;
     width: 100%;
@@ -14,12 +15,13 @@ header {
     float: left;
     height: 50px;
     margin-left: 40px;
+    margin-right: 10px;
     overflow: hidden;
     max-width: 150px;
 }
 
 #logo a img {
-    height: 100%;
+    height: 50px;
     max-width: 150px;
 }
 
@@ -28,11 +30,12 @@ ul.navi-items{
     margin: 0;
     padding: 0;
     overflow: hidden;
-    background-color: #0ddaff;    
+    background-color: #3b89f5;    
 }
 
 ul.navi-items li{
     float: right;
+    height: 50px;
 }
 
 ul.navi-items li a{
@@ -46,20 +49,33 @@ ul.navi-items li a{
 }
 
 ul.navi-items li a:hover{
-    background-color: #0DC8F0;
+    background-color: #008db5;
 }
 
 ul.navi-items li:last-child a:hover{
-    background-color: #0ddaff;
+    background-color: #008db5;
 } 
 
 ul.navi-items li:last-child{
     display: none;
 }
 
+ul.navi-items li:first-child{
+    display: none;
+}
+
 /*Media Queries*/
 /*screen width < 768 px*/
 @media screen and (max-width:768px) {
+    ul.navi-items li:first-child a {
+        height: 50px;
+        padding-bottom: 0;
+        padding-left: 40px;
+        padding-top: 0;
+    }
+    ul.navi-items li:first-child a img{
+        height: 50px; 
+    }
     ul.navi-items li{
         display: none;
     }
@@ -69,6 +85,10 @@ ul.navi-items li:last-child{
     }
     ul.navi-items.responsive {
         position: relative;
+    }
+    
+    .res-btn{
+        display: none;
     }
     ul.navi-items.responsive li:last-child{
         position: absolute;
@@ -81,6 +101,9 @@ ul.navi-items li:last-child{
     }
     ul.navi-items.responsive li a {
         display: block;
+    }
+    ul.navi-items.responsive li:first-child a {
+        left: 20px;
         text-align: left;
     }
 }
