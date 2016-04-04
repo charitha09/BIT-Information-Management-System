@@ -154,3 +154,8 @@ select option {
     width: 530px;
 }
 
+.text-area{
+    overflow-y: auto;
+    resize: none;
+}
+

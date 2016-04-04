@@ -170,11 +170,31 @@
                             </select> 
                             <label for="payment-amou" class="labels">Amount Paid</label>
                             <input type="text" name="payment-amou" placeholder="Amount You Paid" required class="inputs"/>
+                            <label for="payment-bank" class="labels">Name of Payee Bank</label>
+                            <input type="text" name="payment-bank" placeholder="Bank You Paid" required class="inputs"/>
+                            <label for="payment-date" class="labels">Date Paid</label>
+                            <input type="text" name="payment-date" placeholder="Date You Paid" required class="inputs"/>
+                        </div>
+                        <div class="borders lv3dev">
+                            <label for="emp-dtl"  class="labels">Are you currently employed?</label>
+                            <input type="radio" name="emp-dtl" value="yes" checked="checked" class="radio"/>
+                            <label for="emp-dtl" class="labels-radio radio">Yes<br></label>                    
+                            <input type="radio" name="emp-dtl" value="no" class="radio"/>
+                            <label for="emp-dtl" class="labels-radio radio">No<br></label>
+                            <label for="emp-disc" class="labels">If employed: Designation</label>
+                            <textarea name="emp-disc" class="inputs text-area" placeholder="Your Designation"></textarea>
+                            <label for="emp-field" class="labels">Working on computer field?</label>
+                            <input type="radio" name="emp-field" value="yes" checked="checked" class="radio"/>
+                            <label for="emp-field" class="labels-radio radio">Yes<br></label>                    
+                            <input type="radio" name="emp-field" value="no" class="radio"/>
+                            <label for="emp-field" class="labels-radio radio">No<br></label>
+                            <label for="emp-sal"  class="labels">Monthly Salary</label>
+                            <input type="text" name="emp-sal" placeholder="Your Monthly Salary" class="inputs"/>
                         </div>
                     </div>
                 </form>                
-            </div>
-                            
+            </div>                            
         </div>
+        <jsp:include page="../WEB-INF/includes/footer.jsp"/>
     </body>
 </html>
