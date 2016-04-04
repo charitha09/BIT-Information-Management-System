@@ -66,23 +66,29 @@
                         <label for="age" class="labels">Age as at DD/MM/YYYY</label>
                         <select name="days" required class="inputs age">
                             <option value="" disabled selected hidden class="place-holder">- - Days - -</option>
-                            <option value="0">00</option>
-                            <option value="1">01</option>
-                            <option value="2">02</option>
+                            <% 
+                                for (int i = 0; i < 32; i++){
+                                    out.write("<option value=' " + i + "'>" + i + "</option>");
+                                }
+                            %>
                         </select>
                         <label for="months" class="labels age-lbl">Days</label>
                         <select name="title" required class="inputs age">
                             <option value="" disabled selected hidden class="place-holder">- - Months - -</option>
-                            <option value="0">00</option>
-                            <option value="1">01</option>
-                            <option value="2">02</option>
+                            <% 
+                                for (int i = 0; i < 13; i++){
+                                    out.write("<option value=' " + i + "'>" + i + "</option>");
+                                }
+                            %>
                         </select>
                         <label for="age" class="labels age-lbl">Months</label>
                         <select name="years" required class="inputs age">
                             <option value="" disabled selected hidden class="place-holder">- - Years - -</option>
-                            <option value="0">00</option>
-                            <option value="1">01</option>
-                            <option value="2">02</option>
+                            <% 
+                                for (int i = 16; i < 101; i++){
+                                    out.write("<option value=' " + i + "'>" + i + "</option>");
+                                }
+                            %>
                         </select>
                         <label for="age" class="labels age-lbl">Years</label>
                         <div class="borders lv3dev">
@@ -98,7 +104,72 @@
                             <input type="email" name="email" placeholder="Your E-mail Address" class="inputs"/>
                         </div>
                         <div class="borders lv3dev">
-                            <input type="checkbox" name="vehicle" value="Car"/>
+                            <input type="checkbox" name="vehicle" value="Car" class="check-box"/>
+                            <label for="agree-box" class="labels check-lbl">
+                                I have the Foundation in Information Technology ( FIT conducted by UCSC, With 'C' passes for O/L Mathematics and O/L English )
+                            </label>
+                            <label for="al-result" class="labels">A/L Results</label>
+                            <% String[] grades = {"A", "B", "C", "S", "F", "AB"}; %>
+                            <input type="text" name="sub-1" placeholder="Subject 01" class="inputs rsults"/>
+                            <select name="sub-1-res" required class="inputs rsults res-select">
+                                <option value="" disabled selected hidden class="place-holder">- - Select Result - -</option>
+                                <%                                     
+                                    for (int i = 0; i < grades.length; i++){
+                                        out.write("<option value=' " + i + "'>" + grades[i] + "</option>");
+                                    }
+                                %>
+                            </select> 
+                            <input type="text" name="sub-2" placeholder="Subject 02" class="inputs rsults"/>
+                            <select name="sub-2-res" required class="inputs rsults res-select">
+                                <option value="" disabled selected hidden class="place-holder">- - Select Result - -</option>
+                                <% 
+                                    for (int i = 0; i < grades.length; i++){
+                                        out.write("<option value=' " + i + "'>" + grades[i] + "</option>");
+                                    }
+                                %>
+                            </select> 
+                            <input type="text" name="sub-3" placeholder="Subject 03" class="inputs rsults"/>
+                            <select name="sub-3-res" required class="inputs rsults res-select">
+                                <option value="" disabled selected hidden class="place-holder">- - Select Result - -</option>
+                                <% 
+                                    for (int i = 0; i < grades.length; i++){
+                                        out.write("<option value=' " + i + "'>" + grades[i] + "</option>");
+                                    }
+                                %>
+                            </select>  
+                            <label for="ol-result" class="labels">O/L Results</label>
+                            <label for="al-Maths" class="labels ol-labels">Results For Mathematics</label>
+                            <select name="sub-mat-res" required class="inputs rsults res-select">
+                                <option value="" disabled selected hidden class="place-holder">- - Select Result - -</option>
+                                <% 
+                                    for (int i = 0; i < grades.length; i++){
+                                        out.write("<option value=' " + i + "'>" + grades[i] + "</option>");
+                                    }
+                                %>
+                            </select> 
+                            <label for="al-English" class="labels ol-labels">Results For English</label>
+                            <select name="sub-eng-res" required class="inputs rsults res-select">
+                                <option value="" disabled selected hidden class="place-holder">- - Select Result - -</option>
+                                <% 
+                                    for (int i = 0; i < grades.length; i++){
+                                        out.write("<option value=' " + i + "'>" + grades[i] + "</option>");
+                                    }
+                                %>
+                            </select> 
+                        </div>
+                        <div class="borders lv3dev">
+                            <label for="centers" class="labels">Registration Center</label>
+                            <select name="sub-eng-res" required class="inputs select">
+                                <option value="" disabled selected hidden class="place-holder">- - Select Your Nearest Registration Center - -</option>
+                                <% 
+                                    String[] centers = {"Galle", "Colombo", "Kandy"};
+                                    for (int i = 0; i < centers.length; i++){
+                                    out.write("<option value=' " + i + "'>" + centers[i] + "</option>");
+                                    }
+                                %>
+                            </select> 
+                            <label for="payment-amou" class="labels">Amount Paid</label>
+                            <input type="text" name="payment-amou" placeholder="Amount You Paid" required class="inputs"/>
                         </div>
                     </div>
                 </form>                

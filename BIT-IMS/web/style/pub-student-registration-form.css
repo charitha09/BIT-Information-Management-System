@@ -124,3 +124,33 @@ select option {
     width: 520px;
 }
 
+.lv3dev .check-box{
+    margin-left: 40px;
+}
+
+.lv3dev .check-lbl{
+    bottom: 31px;
+    left: 28px;
+    margin-right: 50px;
+    position: relative;
+}
+
+.lv3dev .rsults{
+    width: 200px;
+}
+
+.lv3dev .res-select{
+    bottom: 70px;
+    left: 540px;    
+}
+
+.lv3dev .ol-labels{
+    bottom: 35px;
+    margin-left: 250px;
+    position: relative;    
+}
+
+.lv3dev .select{
+    width: 530px;
+}
+
