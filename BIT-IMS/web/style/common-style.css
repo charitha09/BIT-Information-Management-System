@@ -1,13 +1,13 @@
 Body{
     margin: 0;
     padding: 0;
+    background-color: #FFFFeb;
 }
 
 /*Headder Styles*/
 header {
     background-color: #3b89f5;
     height: 50px;
-    position: fixed;
     width: 100%;
 }
 
@@ -107,3 +107,28 @@ ul.navi-items li:first-child{
         text-align: left;
     }
 }
+/*Body Styles*/
+#main-bucket{
+    margin: 0 auto;
+    width: 980px;
+}
+
+/*colours for place holer text in SELECT*/
+select{
+    color: #ccc;
+    text-align: center;
+}
+select option { 
+    color: black; 
+}
+select option:first-child{
+    color: #ccc;
+}
+
+/*Footer Styles*/
+footer{
+    background-color: #3b89f5;
+    height: 50px;
+    margin-top: 5px;
+    width: 100%;
+}    

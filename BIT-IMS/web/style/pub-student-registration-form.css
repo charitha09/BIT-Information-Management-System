@@ -1,0 +1,161 @@
+#main-bucket {
+    background-color: #f0f0f0;
+    border-top: none;
+    border-bottom: none;
+    box-shadow: 10px 10px 5px #888888;
+}
+
+h1,h2{
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+#main-bucket h1:first-child img{
+    height: 80px;
+    width: 80px;
+}
+
+#main-bucket h1:nth-child(2){
+    font-size: 2em;
+}
+
+#main-bucket h1:nth-child(3){
+    font-size: 1.7em;
+    margin-bottom: 15px;
+}
+
+form{
+    margin-top: 20px;
+}
+
+.borders{
+    margin: 0 auto 40px;
+    border: 1px solid #e0e0d1; 
+}
+
+.lv1dev{
+    border-bottom: none;
+    border-left: none;
+    border-right: none;
+
+    width: 980px;    
+}
+
+select{
+    height: 30px
+}
+
+select option { 
+    height: 20px;
+    padding-top: 3px;
+    padding-left: 10px;
+        
+}
+
+.labels{
+    display: block;
+    font-size: 1em;
+    margin: 5px 0 5px 40px;
+    padding: 5px 0;   
+}
+
+.inputs{
+    border: 1px solid #e0e0d1;
+    box-shadow: 5px 5px 5px #888888;
+    bottom: 35px;
+    display: block;
+    margin: 5px 0;
+    padding: 5px 0 5px 10px;
+    position: relative;    
+}
+
+.lv1dev .inputs {
+    left: 250px;
+    width: 690px;
+}
+
+.lv2dev{
+    width: 900px;    
+}
+
+.lv2dev .inputs{
+    left: 250px;
+    width: 610px;     
+}
+
+.lv2dev .select{
+    width: 625px;
+}
+
+.radio {
+    bottom: 31px;
+    display: inline-block;
+    left: 250px;
+    position: relative;
+}
+
+.labels-radio{
+    margin-right: 60px;
+}
+
+.lv2dev .age {
+    display: inline;
+    margin-right: 25px;
+    padding: 0;
+    width: 140px;
+}
+
+.lv2dev .age-lbl {
+    bottom: 35px;
+    display: inline;
+    left: 235px;
+    margin: 0;
+    padding: 0;
+    position: relative;
+}
+
+.lv3dev{
+    width: 820px;      
+}
+
+.lv3dev .inputs{
+    left: 250px;
+    width: 520px;
+}
+
+.lv3dev .check-box{
+    margin-left: 40px;
+}
+
+.lv3dev .check-lbl{
+    bottom: 31px;
+    left: 28px;
+    margin-right: 50px;
+    position: relative;
+}
+
+.lv3dev .rsults{
+    width: 200px;
+}
+
+.lv3dev .res-select{
+    bottom: 70px;
+    left: 540px;    
+}
+
+.lv3dev .ol-labels{
+    bottom: 35px;
+    margin-left: 250px;
+    position: relative;    
+}
+
+.lv3dev .select{
+    width: 530px;
+}
+
+.text-area{
+    overflow-y: auto;
+    resize: none;
+}
+
