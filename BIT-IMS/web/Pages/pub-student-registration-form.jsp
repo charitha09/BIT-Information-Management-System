@@ -192,6 +192,8 @@
                             <input type="text" name="emp-sal" placeholder="Your Monthly Salary" class="inputs"/>
                         </div>
                     </div>
+                            <button type="reset" value="Reset" class="buttons">RESET</button>
+                        <button type="submit" value="Submit" class="buttons">SEND</button>                         
                 </form>                
             </div>                            
         </div>
