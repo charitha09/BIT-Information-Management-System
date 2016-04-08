@@ -159,3 +159,9 @@ select option {
     resize: none;
 }
 
+.buttons{
+    margin-bottom: 20px;
+    margin-left: 215px;
+    width: 150px;    
+}
+
