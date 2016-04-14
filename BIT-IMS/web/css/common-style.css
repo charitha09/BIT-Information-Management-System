@@ -6,3 +6,24 @@
     height: 50px;
     width: 50px;
 }
+
+.navbar {
+    border-radius: 0px;;
+}
+
+#user-login .modal-footer button{
+    margin-right: 62px;
+    width: 100px;
+}
+
+@media screen and (max-width:768px) {
+    #user-login .modal-footer button{
+        margin-right: 0px;
+        margin-bottom: 5px;
+        width: 100%;
+    }
+    
+    #user-login .modal-footer button:first-child{
+        margin-left: 5px;
+    }
+}
