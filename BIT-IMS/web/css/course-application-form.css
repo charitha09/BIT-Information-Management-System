@@ -1,0 +1,90 @@
+/*Form Headder Styles*/
+#form-headder{
+    border-bottom: 1px solid #ccc;
+    margin-bottom: 12px;
+}
+
+#form-headder h1{
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
+
+#form-headder h1:first-child img{
+    height: 80px;
+    width: 80px;
+}
+
+#form-headder h1:nth-child(2){
+    font-size: 2em;
+}
+
+#form-headder h1:nth-child(3){
+    font-size: 1.7em;
+    margin-bottom: 12px;
+}
+
+@media screen and (max-width:768px) {
+    #form-headder{
+        margin-bottom: 4px;
+    }
+
+    #form-headder h1:first-child img{
+        height: 40px;
+        width: 40px;
+    }
+
+    #form-headder h1:nth-child(2){
+        font-size: 1em;
+    }
+
+    #form-headder h1:nth-child(3){
+        font-size: 0.8em;
+        margin-bottom: 7px;
+    }
+}
+
+/*Form Styles*/
+#app-for{
+    border-bottom: 1px solid #ccc;
+    margin-bottom: 12px;
+}
+
+#app-navi .col-sm-3 h2{
+    text-align: center;
+    font-size: 1.5em;
+    margin: 0 0 12px;
+    padding: 0;
+}
+
+form .radio label{
+    margin-right: 20px; 
+}
+
+#app-details-1{
+    margin-bottom: 20px;
+}
+
+#app-details-1 button{
+    float: right;
+    margin-right: 16px;
+    width: 150px;
+}
+
+/*colours for place holer text in SELECT*/
+select{
+    color: #ccc;
+    text-align: center;
+}
+select option { 
+    color: black; 
+}
+select option:first-child{
+    color: #ccc;
+}
+
+@media screen and (max-width:768px) {
+    #app-for{
+        margin-bottom: 4px;
+    }    
+}

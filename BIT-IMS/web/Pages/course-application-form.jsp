@@ -6,6 +6,7 @@
         <title>Degree Registration</title>
         <link rel="stylesheet" href="../css/bootstrap.css">
         <link rel="stylesheet" href="../css/common-style.css">
+        <link rel="stylesheet" href="../css/course-application-form.css">
     </head>
     <body>
         <script src="../js/jquery-1.12.2.min.js"></script>
@@ -63,8 +64,101 @@
         </section>
         <!--Student Application Form-->
         <div class="container">
+            <div  id="form-headder" class="col-sm-12">
+                <h1><img src="../images/logo.png" alt="UCSC"></h1>
+                <h1>University Of Colombo School Of Computing</h1>
+                <h1>Student Application Form</h1>
+            </div>
             <form name="user-apply" action="index.jsp" method="POST">
-                
+                <div id="app-for" class="col-sm-12">
+                    <div class="form-group col-sm-4">
+                        <label for="course">Application For</label>
+                    </div>
+                    <div class="form-group col-sm-8">
+                        <select class="form-control" id="course">
+                            <option value="" disabled selected hidden>- - Select Course - -</option>
+                            <option value="0">Bachelor of Information Technology ( BIT )</option>
+                            <option value="1">Foundation in Information Technology ( FIT )</option>
+                            <option value="2">Other</option>
+                        </select>
+                    </div>
+                </div>
+                <div id="app-navi" class="col-sm-12">
+                    <div class="col-sm-3">
+                        <h2>Personal Details</h2>
+                    </div>
+                    <div class="col-sm-3">
+                        <h2>Contact Details</h2>
+                    </div>
+                    <div class="col-sm-3">
+                        <h2>Results</h2>
+                    </div>
+                    <div class="col-sm-3">
+                        <h2>Payment Details</h2>
+                    </div>
+                </div>
+                <div id="app-details-1" class="col-sm-12">
+                    <div class="form-group col-sm-4">
+                        <label for="ful-name">Full Name</label>
+                    </div>  
+                    <div class="form-group col-sm-8">    
+                         <input type="text" id="ful-name" placeholder="Your Full Name" required class="form-control"/>
+                    </div>
+                    <div class="form-group col-sm-4">
+                        <label for="ini-name">Initials</label>
+                    </div>
+                    <div class="form-group col-sm-8">
+                        <input type="text" id="ini-name" placeholder="Initials Of Your Name" required class="form-control"/>
+                    </div>
+                    <div class="form-group col-sm-4">
+                        <label for="lst-name">Last Name</label>
+                    </div>
+                    <div class="form-group col-sm-8">
+                        <input type="text" id="lst-name" placeholder="Your Last Name" required class="form-control"/>
+                    </div>
+                    <div class="form-group col-sm-4">
+                        <label for="title">Title</label>
+                    </div>
+                    <div class="form-group col-sm-8">
+                        <select class="form-control" id="course">
+                            <option value="" disabled selected hidden>- - Select Title - -</option>
+                            <option value="0">Mr</option>
+                            <option value="1">Miss</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-sm-4">
+                        <label for="gender">Gender</label>
+                    </div>
+                    <div class="radio col-sm-8">
+                        <label><input type="radio" id="gender" value="Male">Male</label>                    
+                        <label><input type="radio" id="gender" value="Female">Female</label>
+                    </div>
+                    <div class="form-group col-sm-4">
+                        <label for="citi-ship">Citizenship</label>
+                    </div>
+                    <div class="form-group col-sm-8">
+                        <input type="text" id="citi-ship" placeholder="Your Citizenship" required class="form-control"/>
+                    </div>
+                    <div class="form-group col-sm-4">
+                        <label for="nation">Nationality</label>
+                    </div>
+                    <div class="form-group col-sm-8">
+                        <input type="text" id="nation" placeholder="Your Nationality" required class="form-control"/>
+                    </div>
+                    <div class="form-group col-sm-4">
+                        <label for="nati-id">National ID</label>
+                    </div>
+                    <div class="form-group col-sm-8">
+                        <input type="text" id="nati-id" placeholder="Your National ID card Number" required class="form-control"/>
+                    </div>
+                    <div class="form-group col-sm-4">
+                        <label for="dob">Date Of Birth</label>
+                    </div>
+                    <div class="form-group col-sm-8">
+                        <input type="date" id="dob" placeholder="DD/MM/YYYY" required class="form-control"/>
+                    </div>
+                    <button class="btn btn-success">Next</button>                    
+                </div>
             </form>
         </div>
     </body>
