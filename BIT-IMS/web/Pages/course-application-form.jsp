@@ -158,16 +158,31 @@
                     <div class="form-group col-sm-8">
                         <input type="date" id="dob" placeholder="DD/MM/YYYY" required class="form-control"/>
                     </div>
-                    <button class="btn btn-success" onclick="NextFromPersonal()">Next</button>                    
+                    <button type="button" class="btn btn-success" onclick="clickContact()">Next</button>                    
                 </div>
                 <div id="app-details-2" class="col-sm-12">
-                    2
+                    <div class="form-group col-sm-4">
+                        <label for="address">Permanent Address</label>
+                    </div>  
+                    <div class="form-group col-sm-8">    
+                         <input type="text" id="address" placeholder="Your Permanent Address" required class="form-control"/>
+                    </div>
+                    <div class="form-group col-sm-4">
+                        <label for="country">Country</label>
+                    </div>  
+                    <div class="form-group col-sm-8">    
+                         <input type="text" id="country" placeholder="Your Country" required class="form-control"/>
+                    </div>
+                    <button type="button" class="btn btn-success" onclick="clickEducation()">Next</button>
+                    <button type="button" class="btn btn-default" onclick="clickPersonal()">Back</button>
                 </div> 
                 <div id="app-details-3" class="col-sm-12">
-                    3
+                    <button type="button" class="btn btn-success" onclick="clickPayment()">Next</button>
+                    <button type="button" class="btn btn-default" onclick="clickContact()">Back</button>
                 </div> 
                 <div id="app-details-4" class="col-sm-12">
-                    4
+                    <button type="submit" class="btn btn-success">Submit</button>
+                    <button type="button" class="btn btn-default" onclick="clickEducation()">Back</button>
                 </div> 
             </form>
         </div>
