@@ -47,14 +47,37 @@
 /*Form Styles*/
 #app-for{
     border-bottom: 1px solid #ccc;
+}
+
+#app-nav div button{
+    background-color: #fff;
+    border-color: #ccc;
+    border-top: none;    
+    color: #333;
+    border-radius: 0px;
     margin-bottom: 12px;
 }
 
-#app-navi .col-sm-3 h2{
-    text-align: center;
-    font-size: 1.5em;
-    margin: 0 0 12px;
-    padding: 0;
+#app-nav .app-nav-active{
+    background-color: #5cb85c;
+    border-color: #4cae4c;
+    color: #fff;
+}
+
+#app-nav div:first-child button{
+    border-left: none;
+}
+
+#app-nav div:last-child button{
+    border-right: none;
+}
+
+#app-details-1{
+    display: block;
+}
+
+#app-details-2, #app-details-3, #app-details-4{
+    display: none;
 }
 
 form .radio label{
@@ -84,7 +107,7 @@ select option:first-child{
 }
 
 @media screen and (max-width:768px) {
-    #app-for{
+    #app-nav div button{
         margin-bottom: 4px;
-    }    
+    }  
 }

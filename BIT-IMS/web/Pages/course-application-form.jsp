@@ -11,6 +11,7 @@
     <body>
         <script src="../js/jquery-1.12.2.min.js"></script>
         <script src="../js/bootstrap.js"></script> 
+        <script src="../js/course-application-form.js"></script>
         <header>
             <nav class="navbar navbar-inverse">
             <div class="container-fluid">
@@ -83,18 +84,18 @@
                         </select>
                     </div>
                 </div>
-                <div id="app-navi" class="col-sm-12">
-                    <div class="col-sm-3">
-                        <h2>Personal Details</h2>
+                <div id="app-nav" class="btn-group btn-group-justified">
+                    <div class="btn-group">
+                        <button id="PersonalDetails" type="button" class="btn btn-primary app-nav-active" onclick="clickPersonal()">Personal Details</button>
                     </div>
-                    <div class="col-sm-3">
-                        <h2>Contact Details</h2>
+                    <div class="btn-group">
+                        <button id="ContactDetails" type="button" class="btn btn-primary" onclick="clickContact()">Contact Details</button>
                     </div>
-                    <div class="col-sm-3">
-                        <h2>Results</h2>
+                    <div class="btn-group">
+                        <button id="EducationDetails" type="button" class="btn btn-primary" onclick="clickEducation()">Carrier Details</button>
                     </div>
-                    <div class="col-sm-3">
-                        <h2>Payment Details</h2>
+                    <div class="btn-group">
+                        <button id="PaymentDetails" type="button" class="btn btn-primary" onclick="clickPayment()">Payment Details</button>
                     </div>
                 </div>
                 <div id="app-details-1" class="col-sm-12">
@@ -157,8 +158,17 @@
                     <div class="form-group col-sm-8">
                         <input type="date" id="dob" placeholder="DD/MM/YYYY" required class="form-control"/>
                     </div>
-                    <button class="btn btn-success">Next</button>                    
+                    <button class="btn btn-success" onclick="NextFromPersonal()">Next</button>                    
                 </div>
+                <div id="app-details-2" class="col-sm-12">
+                    2
+                </div> 
+                <div id="app-details-3" class="col-sm-12">
+                    3
+                </div> 
+                <div id="app-details-4" class="col-sm-12">
+                    4
+                </div> 
             </form>
         </div>
     </body>
