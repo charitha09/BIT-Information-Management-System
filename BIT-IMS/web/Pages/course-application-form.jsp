@@ -158,6 +158,8 @@
                     <div class="form-group col-sm-8">
                         <input type="date" id="dob" placeholder="DD/MM/YYYY" required class="form-control"/>
                     </div>
+                    <div class="form-group col-sm-12 bottem-border">
+                    </div>
                     <button type="button" class="btn btn-success" onclick="clickContact()">Next</button>                    
                 </div>
                 <div id="app-details-2" class="col-sm-12">
@@ -173,14 +175,176 @@
                     <div class="form-group col-sm-8">    
                          <input type="text" id="country" placeholder="Your Country" required class="form-control"/>
                     </div>
+                    <div class="form-group col-sm-4">
+                        <label for="tel-fix">Telephone Number (FIX)</label>
+                    </div>  
+                    <div class="form-group col-sm-8">    
+                         <input type="text" id="tel-fix" placeholder="Your Fixed Telephone Number" required class="form-control"/>
+                    </div>
+                    <div class="form-group col-sm-4">
+                        <label for="tel-mob">Telephone Number (Mobile)</label>
+                    </div>  
+                    <div class="form-group col-sm-8">    
+                         <input type="text" id="tel-mob" placeholder="Your Mobile Number" required class="form-control"/>
+                    </div>
+                    <div class="form-group col-sm-4">
+                        <label for="email">E-mail</label>
+                    </div>  
+                    <div class="form-group col-sm-8">    
+                         <input type="email" id="email" placeholder="E-mail Address" required class="form-control"/>
+                    </div>
+                    <div class="form-group col-sm-12 bottem-border">
+                    </div>
                     <button type="button" class="btn btn-success" onclick="clickEducation()">Next</button>
                     <button type="button" class="btn btn-default" onclick="clickPersonal()">Back</button>
                 </div> 
                 <div id="app-details-3" class="col-sm-12">
+                    <% String[] grades = {"A", "B", "C", "S", "F", "Not Participated"}; %>
+                    <div class="form-group col-sm-4">
+                        <label for="fit-res">Foundation in Information Technology Result</label>
+                    </div>
+                    <div class="form-group col-sm-8">
+                        <select class="form-control" id="fit-res">
+                            <option value="" disabled selected hidden>- - Select Result for FIT - -</option>
+                            <%                                     
+                                for (int i = 0; i < grades.length; i++){
+                                    out.write("<option value=' " + i + "'>" + grades[i] + "</option>");
+                                }
+                            %>
+                        </select>
+                    </div>
+                    <div class="form-group col-sm-12 bottem-border">
+                    </div>
+                    <div class="form-group col-sm-4">
+                        <label for="al-res">A/L Results</label>
+                    </div>
+                    <div class="form-group col-sm-4">
+                        <input type="text" id="al-res-sub1" placeholder="Enter A/L Subject Name 01" required class="form-control"/>
+                    </div> 
+                    <div class="form-group col-sm-4">                    
+                        <select class="form-control" id="al-res-sub1">
+                            <option value="" disabled selected hidden>- - Select Result - -</option>
+                            <%                                     
+                                for (int i = 0; i < grades.length; i++){
+                                    out.write("<option value=' " + i + "'>" + grades[i] + "</option>");
+                                }
+                            %>
+                        </select>
+                    </div>
+                    <div class="form-group col-sm-4">
+                        <!--Pseudo div-->
+                    </div>
+                    <div class="form-group col-sm-4">
+                        <input type="text" id="al-res-sub2" placeholder="Enter A/L Subject Name 02" required class="form-control"/>
+                    </div> 
+                    <div class="form-group col-sm-4">                    
+                        <select class="form-control" id="al-res-sub2">
+                            <option value="" disabled selected hidden>- - Select Result - -</option>
+                            <%                                     
+                                for (int i = 0; i < grades.length; i++){
+                                    out.write("<option value=' " + i + "'>" + grades[i] + "</option>");
+                                }
+                            %>
+                        </select>
+                    </div>
+                    <div class="form-group col-sm-4">
+                        <!--Pseudo div-->
+                    </div>
+                    <div class="form-group col-sm-4">
+                        <input type="text" id="al-res-sub3" placeholder="Enter A/L Subject Name 03" required class="form-control"/>
+                    </div> 
+                    <div class="form-group col-sm-4">                    
+                        <select class="form-control" id="al-res-sub3">
+                            <option value="" disabled selected hidden>- - Select Result - -</option>
+                            <%                                     
+                                for (int i = 0; i < grades.length; i++){
+                                    out.write("<option value=' " + i + "'>" + grades[i] + "</option>");
+                                }
+                            %>
+                        </select>
+                    </div>
+                    <div class="form-group col-sm-12 bottem-border">
+                    </div>
+                    <div class="form-group col-sm-4">
+                        <label for="ol-res">O/L Results</label>
+                    </div>
+                    <div class="form-group col-sm-4">
+                        <label for="ol-res-sub1">Results For Mathematics</label>
+                    </div> 
+                    <div class="form-group col-sm-4">                    
+                        <select class="form-control" id="ol-res-sub1">
+                            <option value="" disabled selected hidden>- - Select Result - -</option>
+                            <%                                     
+                                for (int i = 0; i < grades.length; i++){
+                                    out.write("<option value=' " + i + "'>" + grades[i] + "</option>");
+                                }
+                            %>
+                        </select>
+                    </div>
+                    <div class="form-group col-sm-4">
+                        <!--Pseudo div-->
+                    </div>
+                    <div class="form-group col-sm-4">
+                        <label for="ol-res-sub2">Results For English</label>
+                    </div> 
+                    <div class="form-group col-sm-4">                    
+                        <select class="form-control" id="ol-res-sub2">
+                            <option value="" disabled selected hidden>- - Select Result - -</option>
+                            <%                                     
+                                for (int i = 0; i < grades.length; i++){
+                                    out.write("<option value=' " + i + "'>" + grades[i] + "</option>");
+                                }
+                            %>
+                        </select>
+                    </div>
+                    <div class="form-group col-sm-12 bottem-border">
+                    </div>
+                    <div class="form-group col-sm-4">
+                        <label for="emp-dtl">Employment Details</label>
+                    </div> 
+                    <div class="form-group col-sm-4">
+                        <label for="emp-dtl-current">Are you currently employed?</label>
+                    </div>
+                    <div class="radio col-sm-4">
+                        <label><input type="radio" id="emp-dtl-current" value="Y">Yes</label>                    
+                        <label><input type="radio" id="emp-dtl-current" value="N">No</label>
+                    </div>
+                    <div class="form-group col-sm-4">
+                        <!--Pseudo div-->
+                    </div>
+                    <div class="form-group col-sm-4">
+                        <label for="emp-dtl-discript">If employed: Designation</label>
+                    </div>
+                    <div class="form-group col-sm-4">
+                        <textarea class="form-control" rows="4" id="emp-dtl-discript" placeholder="Your Designation Here"></textarea>
+                    </div>
+                    <div class="form-group col-sm-4">
+                        <!--Pseudo div-->
+                    </div>
+                    <div class="form-group col-sm-4">
+                        <label for="emp-dtl-field">Are you working on computer field?</label>
+                    </div>
+                    <div class="radio col-sm-4">
+                        <label><input type="radio" id="emp-dtl-field" value="Y">Yes</label>                    
+                        <label><input type="radio" id="emp-dtl-field" value="N">No</label>
+                    </div>
+                    <div class="form-group col-sm-4">
+                        <!--Pseudo div-->
+                    </div>
+                    <div class="form-group col-sm-4">
+                        <label for="emp-dtl-salary">Monthly Salary</label>
+                    </div>
+                    <div class="radio col-sm-4">
+                        <input type="text" id="emp-dtl-salary" placeholder="Your Monthly Salary" required class="form-control"/>
+                    </div>
+                    <div class="form-group col-sm-12 bottem-border">
+                    </div>
                     <button type="button" class="btn btn-success" onclick="clickPayment()">Next</button>
                     <button type="button" class="btn btn-default" onclick="clickContact()">Back</button>
                 </div> 
                 <div id="app-details-4" class="col-sm-12">
+                    <div class="form-group col-sm-12 bottem-border">
+                    </div>
                     <button type="submit" class="btn btn-success">Submit</button>
                     <button type="button" class="btn btn-default" onclick="clickEducation()">Back</button>
                 </div> 

@@ -88,6 +88,15 @@ form .radio label{
     margin-bottom: 20px;
 }
 
+.bottem-border{
+    border-bottom: 1px solid #ccc;
+}
+
+.form-group textarea{
+    overflow-y: auto;
+    resize: none;
+}
+
 #app-details-1 button, #app-details-2 button, #app-details-3 button, #app-details-4 button{
     float: right;
     margin-right: 16px;
