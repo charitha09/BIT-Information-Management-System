@@ -70,6 +70,7 @@
                 <h1>Student Application Form</h1>
             </div>
             <form name="user-apply" action="index.jsp" method="POST">
+                <!--Course Selection-->
                 <div id="app-for" class="col-sm-12">
                     <div class="form-group col-sm-4">
                         <label for="course">Application For</label>
@@ -83,6 +84,7 @@
                         </select>
                     </div>
                 </div>
+                <!--Form Navigation Bar-->
                 <div id="app-nav" class="btn-group btn-group-justified">
                     <div class="btn-group">
                         <button id="PersonalDetails" type="button" class="btn btn-primary app-nav-active" onclick="clickPersonal()">Personal Details</button>
@@ -97,70 +99,74 @@
                         <button id="PaymentDetails" type="button" class="btn btn-primary" onclick="clickPayment()">Payment Details</button>
                     </div>
                 </div>
+                <!--Personal Details Tab-->
                 <div id="app-details-1" class="col-sm-12">
                     <div class="form-group col-sm-4">
-                        <label for="ful-name">Full Name</label>
+                        <label for="perdtl-ful-name">Full Name</label>
                     </div>  
                     <div class="form-group col-sm-8">    
-                         <input type="text" id="ful-name" placeholder="Your Full Name" required class="form-control"/>
+                         <input type="text" id="perdtl-ful-name" placeholder="Your Full Name" required class="form-control"/>
                     </div>
                     <div class="form-group col-sm-4">
-                        <label for="ini-name">Initials</label>
+                        <label for="perdtl-ini-name">Initials</label>
                     </div>
                     <div class="form-group col-sm-8">
-                        <input type="text" id="ini-name" placeholder="Initials Of Your Name" required class="form-control"/>
+                        <input type="text" id="perdtl-ini-name" placeholder="Initials Of Your Name" required class="form-control"/>
                     </div>
                     <div class="form-group col-sm-4">
-                        <label for="lst-name">Last Name</label>
+                        <label for="perdtl-lst-name">Last Name</label>
                     </div>
                     <div class="form-group col-sm-8">
-                        <input type="text" id="lst-name" placeholder="Your Last Name" required class="form-control"/>
+                        <input type="text" id="perdtl-lst-name" placeholder="Your Last Name" required class="form-control"/>
                     </div>
                     <div class="form-group col-sm-4">
-                        <label for="title">Title</label>
+                        <label for="perdtl-title">Title</label>
                     </div>
                     <div class="form-group col-sm-8">
-                        <select class="form-control" id="course">
+                        <select class="form-control" id="perdtl-title" required>
                             <option value="" disabled selected hidden>- - Select Title - -</option>
                             <option value="0">Mr</option>
                             <option value="1">Miss</option>
                         </select>
                     </div>
                     <div class="form-group col-sm-4">
-                        <label for="gender">Gender</label>
+                        <label for="perdtl-gender">Gender</label>
                     </div>
                     <div class="radio col-sm-8">
-                        <label><input type="radio" id="gender" value="Male">Male</label>                    
-                        <label><input type="radio" id="gender" value="Female">Female</label>
+                        <label><input type="radio" id="perdtl-gender" value="M">Male</label>                    
+                        <label><input type="radio" id="perdtl-gender" value="F">Female</label>
                     </div>
                     <div class="form-group col-sm-4">
-                        <label for="citi-ship">Citizenship</label>
+                        <label for="perdtl-citizen">Citizenship</label>
                     </div>
                     <div class="form-group col-sm-8">
-                        <input type="text" id="citi-ship" placeholder="Your Citizenship" required class="form-control"/>
+                        <input type="text" id="perdtl-citizen" placeholder="Your Citizenship" required class="form-control"/>
                     </div>
                     <div class="form-group col-sm-4">
-                        <label for="nation">Nationality</label>
+                        <label for="perdtl-nation">Nationality</label>
                     </div>
                     <div class="form-group col-sm-8">
-                        <input type="text" id="nation" placeholder="Your Nationality" required class="form-control"/>
+                        <input type="text" id="perdtl-nation" placeholder="Your Nationality" required class="form-control"/>
                     </div>
                     <div class="form-group col-sm-4">
-                        <label for="nati-id">National ID</label>
+                        <label for="perdtl-nic">National ID</label>
                     </div>
                     <div class="form-group col-sm-8">
-                        <input type="text" id="nati-id" placeholder="Your National ID card Number" required class="form-control"/>
+                        <input type="text" id="perdtl-nic" placeholder="Your National ID card Number" required maxlength="10" minlength="10" class="form-control"/>
                     </div>
                     <div class="form-group col-sm-4">
-                        <label for="dob">Date Of Birth</label>
+                        <label for="perdtl-dob">Date Of Birth</label>
                     </div>
                     <div class="form-group col-sm-8">
-                        <input type="date" id="dob" required class="form-control"/>
+                        <input type="date" id="perdtl-dob" required class="form-control"/>
                     </div>
                     <div class="form-group col-sm-12 bottem-border">
                     </div>
-                    <button type="button" class="btn btn-success" onclick="clickContact()">Next</button>                    
+                    <div class="btn-box">
+                        <button type="button" class="btn btn-success" onclick="clickContact()">Next</button> 
+                    </div>
                 </div>
+                <!--Contact Details Tab-->
                 <div id="app-details-2" class="col-sm-12">
                     <div class="form-group col-sm-4">
                         <label for="address">Permanent Address</label>
@@ -194,9 +200,12 @@
                     </div>
                     <div class="form-group col-sm-12 bottem-border">
                     </div>
-                    <button type="button" class="btn btn-success" onclick="clickEducation()">Next</button>
-                    <button type="button" class="btn btn-default" onclick="clickPersonal()">Back</button>
+                    <div class="btn-box">
+                        <button type="button" class="btn btn-success" onclick="clickEducation()">Next</button>
+                        <button type="button" class="btn btn-default" onclick="clickPersonal()">Back</button>
+                    </div>
                 </div> 
+                <!--Carrier Details Tab-->
                 <div id="app-details-3" class="col-sm-12">
                     <% String[] grades = {"A", "B", "C", "S", "F", "Not Participated"}; %>
                     <div class="form-group col-sm-4">
@@ -338,9 +347,12 @@
                     </div>
                     <div class="form-group col-sm-12 bottem-border">
                     </div>
-                    <button type="button" class="btn btn-success" onclick="clickPayment()">Next</button>
-                    <button type="button" class="btn btn-default" onclick="clickContact()">Back</button>
+                    <div class="btn-box">
+                        <button type="button" class="btn btn-success" onclick="clickPayment()">Next</button>
+                        <button type="button" class="btn btn-default" onclick="clickContact()">Back</button>
+                    </div>
                 </div> 
+                <!--Payment Details Tab-->
                 <div id="app-details-4" class="col-sm-12">
                     <% String[] centers = {"Colombo", "Galle", "Kandy"}; %>
                     <div class="form-group col-sm-8">
@@ -386,17 +398,29 @@
                     <div class="form-group col-sm-12 bottem-border">
                     </div>
                     <div class="col-sm-12 warning-apply-anc">
-                        <div class="col-sm-12">
-                            <h5 class="warning-apply">Warning : After you submit it will automatically download the copy for you to send via mail to UCSC. After submitting you are no longer able to edit or re submit a form with same national card number. So we suggest you that to double check the details before submit. If you find any mistake after submitting please contact and request UCSC to correct mistake</h5>
+                        <div class="col-sm-2">
+                            <h5 class="warning-apply">Warning : </h5>
                         </div>
-                        <div class="col-sm-12">
-                            <a href="#">How To Contact UCSC</a>
+                        <div class="col-sm-10">
+                            <h5>After you submit it will automatically download the copy for you to send via mail to UCSC. After submitting you are no longer able to edit or re submit a form with same national card number you used here. So we suggest you that to double check the details before submit. If you find any mistake after submitting please contact and request UCSC to correct mistake</h5>
+                        </div>
+                        <div class="col-sm-2">
+                            <h5>How To Contact UCSC?</h5>
+                        </div>
+                        <div class="col-sm-10">
+                            <a href="#">Contact Us</a>
                         </div>
                     </div>
                     <div class="form-group col-sm-12 bottem-border">
                     </div>
-                    <button type="submit" class="btn btn-success">Submit</button>
-                    <button type="button" class="btn btn-default" onclick="clickEducation()">Back</button>
+                    <div class="btn-box">
+                        <button type="button" class="btn btn-success" onclick="viewFullForm()">Finish</button>
+                        <button type="button" class="btn btn-default" onclick="clickEducation()">Back</button>
+                    </div>
+                    <div id="Submit-btn-box">
+                        <button type="submit" class="btn btn-success">Submit</button>
+                        <button type="button" class="btn btn-default" onclick="backToNaviForm()">Edit</button>
+                    </div>
                 </div> 
             </form>
         </div>

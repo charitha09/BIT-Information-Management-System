@@ -1,3 +1,4 @@
+/*Form Navigation and Next Back Buttons*/
 function clickPersonal() {
     document.getElementById("PersonalDetails").className += " app-nav-active";
     document.getElementById("ContactDetails").className =
@@ -57,3 +58,34 @@ function clickPayment() {
     document.getElementById("app-details-3").style.display = "none";
     document.getElementById("app-details-4").style.display = "block";
 }
+
+function viewFullForm(){
+    document.getElementById("app-nav").style.display = "none";
+    document.getElementById("app-details-1").style.display = "block";
+    document.getElementById("app-details-2").style.display = "block";
+    document.getElementById("app-details-3").style.display = "block";
+    document.getElementById("app-details-4").style.display = "block";
+    /*Hiding Buttons*/
+    var btndivs =  document.getElementsByClassName("btn-box");
+    for( i = 0; i <btndivs.length; i++) {
+      btndivs[i].style.display = "none";
+    };
+    document.getElementById("Submit-btn-box").style.display = "block";
+}
+
+function backToNaviForm(){
+    document.getElementById("app-nav").style.display = "block";
+    document.getElementById("app-details-1").style.display = "none";
+    document.getElementById("app-details-2").style.display = "none";
+    document.getElementById("app-details-3").style.display = "none";
+    document.getElementById("app-details-4").style.display = "block";  
+    /*Showing Buttons*/
+    var btndivs =  document.getElementsByClassName("btn-box");
+    for( i = 0; i <btndivs.length; i++) {
+      btndivs[i].style.display = "block";
+    };
+    document.getElementById("Submit-btn-box").style.display = "none";
+}
+
+/*Form Validations*/
+

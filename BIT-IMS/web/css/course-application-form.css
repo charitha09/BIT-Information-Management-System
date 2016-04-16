@@ -45,14 +45,9 @@
 }
 
 /*Form Styles*/
-#app-for{
-    border-bottom: 1px solid #ccc;
-}
-
 #app-nav div button{
     background-color: #fff;
-    border-color: #ccc;
-    border-top: none;    
+    border-color: #ccc;   
     color: #333;
     border-radius: 0px;
     margin-bottom: 12px;
@@ -102,6 +97,11 @@ form .radio label{
     margin-right: 16px;
     width: 150px;
 }
+
+#Submit-btn-box{
+    display: none;
+}
+
 
 .warning-apply{
     color: #f00;
