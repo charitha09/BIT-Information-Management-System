@@ -103,6 +103,14 @@ form .radio label{
     width: 150px;
 }
 
+.warning-apply{
+    color: #f00;
+}
+
+.warning-apply-anc{
+    margin-bottom: 12px;
+}
+
 /*colours for place holer text in SELECT*/
 select{
     color: #ccc;

@@ -58,7 +58,6 @@
                             <button type="reset" class="btn btn-danger">Reset</button>
                             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                         </div>
-                        </div>
                     </form>
                 </div>
             </div>
@@ -156,7 +155,7 @@
                         <label for="dob">Date Of Birth</label>
                     </div>
                     <div class="form-group col-sm-8">
-                        <input type="date" id="dob" placeholder="DD/MM/YYYY" required class="form-control"/>
+                        <input type="date" id="dob" required class="form-control"/>
                     </div>
                     <div class="form-group col-sm-12 bottem-border">
                     </div>
@@ -343,6 +342,57 @@
                     <button type="button" class="btn btn-default" onclick="clickContact()">Back</button>
                 </div> 
                 <div id="app-details-4" class="col-sm-12">
+                    <% String[] centers = {"Colombo", "Galle", "Kandy"}; %>
+                    <div class="form-group col-sm-8">
+                        <label for="reg-slip">If you not paid yet please pay for the bank before filling the application form</label>                        
+                    </div>
+                    <div class="col-sm-4">
+                        <a href="#">Download The Deposit Slip</a>
+                    </div>
+                    <div class="form-group col-sm-12">
+                        <!--Pseudo div-->
+                    </div>
+                    <div class="form-group col-sm-4">
+                        <label for="reg-center">Registration Center</label>
+                    </div> 
+                    <div class="form-group col-sm-8">                    
+                        <select class="form-control" id="reg-center">
+                            <option value="" disabled selected hidden>- - Choose Registration Near To You - -</option>
+                            <%                                     
+                                for (int i = 0; i < centers.length; i++){
+                                    out.write("<option value=' " + i + "'>" + centers[i] + "</option>");
+                                }
+                            %>
+                        </select>
+                    </div>
+                    <div class="form-group col-sm-4">
+                        <label for="reg-pammount">Amount Paid (RS)</label>
+                    </div>
+                    <div class="radio col-sm-8">
+                        <input type="text" id="reg-pammount" placeholder="Amount You Paid" required class="form-control"/>
+                    </div>
+                    <div class="form-group col-sm-4">
+                        <label for="reg-bank">Name of Payee Bank</label>
+                    </div> 
+                    <div class="form-group col-sm-8">                    
+                        <input type="text" id="reg-bank" placeholder="Bank You Paid" required class="form-control"/>
+                    </div>
+                    <div class="form-group col-sm-4">
+                        <label for="reg-pdate">Date Paid</label>
+                    </div> 
+                    <div class="form-group col-sm-8">                    
+                        <input type="text" id="reg-pdate" placeholder="Date You Paid" required class="form-control"/>
+                    </div>
+                    <div class="form-group col-sm-12 bottem-border">
+                    </div>
+                    <div class="col-sm-12 warning-apply-anc">
+                        <div class="col-sm-12">
+                            <h5 class="warning-apply">Warning : After you submit it will automatically download the copy for you to send via mail to UCSC. After submitting you are no longer able to edit or re submit a form with same national card number. So we suggest you that to double check the details before submit. If you find any mistake after submitting please contact and request UCSC to correct mistake</h5>
+                        </div>
+                        <div class="col-sm-12">
+                            <a href="#">How To Contact UCSC</a>
+                        </div>
+                    </div>
                     <div class="form-group col-sm-12 bottem-border">
                     </div>
                     <button type="submit" class="btn btn-success">Submit</button>
