@@ -15,6 +15,7 @@ function clickPersonal() {
 }
 
 function clickContact() {
+    PersonalDetailsNext();
     document.getElementById("ContactDetails").className += " app-nav-active";
     document.getElementById("PersonalDetails").className =
         document.getElementById("PersonalDetails").className.replace( /(?:^|\s)app-nav-active(?!\S)/g , '' );
@@ -89,3 +90,12 @@ function backToNaviForm(){
 
 /*Form Validations*/
 
+function PersonalDetailsNext(){
+    var course = document.getElementById("course").value;
+    var fullName = document.getElementById("perdtl-ful-name").value;
+    var initials = document.getElementById("perdtl-ini-name").value;
+    alert(fullName);
+}
+function saveStudent(){
+    
+}
