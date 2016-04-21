@@ -152,7 +152,7 @@
                         <label for="perdtl-nic">National ID</label>
                     </div>
                     <div class="form-group col-sm-8">
-                        <input type="text" id="perdtl-nic" placeholder="Your National ID card Number" required maxlength="10" minlength="10" class="form-control"/>
+                        <input type="text" id="perdtl-nic" placeholder="Your National ID card Number" required maxlength="10" minlength="10" class="form-control" onblur="nicValidate()"/>
                     </div>
                     <div class="form-group col-sm-4">
                         <label for="perdtl-dob">Date Of Birth</label>
