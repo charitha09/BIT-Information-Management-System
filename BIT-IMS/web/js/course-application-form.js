@@ -93,16 +93,37 @@ function backToNaviForm() {
 function PersonalDtlValidation() {
     var perdtlfulname = document.getElementById("perdtl-ful-name").value;
     var perdtlIniname = document.getElementById("perdtl-ini-name").value;
-    var perdtlfulname = document.getElementById("course").value;
-    var perdtlfulname = document.getElementById("course").value;
-    var perdtlfulname = document.getElementById("course").value;
-    var perdtlfulname = document.getElementById("course").value;
-    var perdtlfulname = document.getElementById("course").value;
-    var perdtlfulname = document.getElementById("course").value;
-    var perdtlfulname = document.getElementById("course").value;
+    var perdtllastname = document.getElementById("perdtl-last-name").value;
+    var perdtltitle = document.getElementById("perdtl-title").value;
+    var perdtlgender = document.getElementById("perdtl-gender").value;
+    var perdtlcitizenship = document.getElementById("perdtl-citizen").value;
+    var perdtlnationality = document.getElementById("perdtl-nationality").value;
+    var perdtlNIC = document.getElementById("perdtl-nic").value;
+    var perdtlDOB = document.getElementById("perdtl-dob").value;
 }
 
+function ContactDtlValidation() {
+    var perdtladdress = document.getElementById("perdtl-address").value;
+    var perdtlcountry = document.getElementById("perdtl-country").value;
+    var perdtlTPfix = document.getElementById("perdtl-Tp-fix").value;
+    var perdtlmobile = document.getElementById("perdtl-mobile").value;
+    var perdtlemail = document.getElementById("perdtl-email").value;
+}
 
+function CarrierDtlValidation() {
+    var perdtl = document.getElementById("perdtl-").value;
+    var perdtl = document.getElementById("perdtl-").value;
+    var perdtl = document.getElementById("perdtl-").value;
+    var perdtl = document.getElementById("perdtl-").value;
+    var perdtl = document.getElementById("perdtl-").value;
+}
+
+function PaymentDtlValidation() {
+    var perdtlregCenter = document.getElementById("perdtl-reg-center").value;
+    var perdtlamount = document.getElementById("perdtl-amount").value;
+    var perdtlbank = document.getElementById("perdtl-bank").value;
+    var perdtldate = document.getElementById("perdtl-date").value;
+}
 /*
 function PersonalDetailsNext() {
     var course = document.getElementById("course").value;
