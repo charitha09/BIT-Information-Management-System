@@ -111,11 +111,21 @@ function ContactDtlValidation() {
 }
 
 function CarrierDtlValidation() {
-    var perdtl = document.getElementById("perdtl-").value;
-    var perdtl = document.getElementById("perdtl-").value;
-    var perdtl = document.getElementById("perdtl-").value;
-    var perdtl = document.getElementById("perdtl-").value;
-    var perdtl = document.getElementById("perdtl-").value;
+    var perdtlFITresult = document.getElementById("perdtl-fit-result").value;
+    var perdtlsub1 = document.getElementById("perdtl-sub-1").value;
+    var perdtlresult1 = document.getElementById("perdtl-result-1").value;
+    var perdtlsub2 = document.getElementById("perdtl-sub-2").value;
+    var perdtlresult2 = document.getElementById("perdtl-result-2").value;
+    var perdtlsub3 = document.getElementById("perdtl-sub-3").value;
+    var perdtlresult3 = document.getElementById("perdtl-result-3").value;
+    var perdtlmaths = document.getElementById("perdtl-maths").value;
+    var perdtlmathsresult = document.getElementById("perdtl-maths-result").value;
+    var perdtlenglish = document.getElementById("perdtl-english").value;
+    var perdtlenglishresult = document.getElementById("perdtl-english-result").value;
+    var perdtlemployed = document.getElementById("perdtl-employed").value;
+    var perdtldesignation = document.getElementById("perdtl-designation").value;
+    var perdtlfield = document.getElementById("perdtl-field").value;
+    var perdtlsalary = document.getElementById("perdtl-salary").value;
 }
 
 function PaymentDtlValidation() {
