@@ -133,8 +133,8 @@
                         <label for="perdtl-gender">Gender</label>
                     </div>
                     <div class="radio col-sm-8">
-                        <label><input type="radio" id="perdtl-gender" value="M">Male</label>                    
-                        <label><input type="radio" id="perdtl-gender" value="F">Female</label>
+                        <label><input type="radio" id="perdtl-gender" value="M" name="gender">Male</label>                    
+                        <label><input type="radio" id="perdtl-gender" value="F" name="gender">Female</label>
                     </div>
                     <div class="form-group col-sm-4">
                         <label for="perdtl-citizen">Citizenship</label>
@@ -314,8 +314,8 @@
                         <label for="emp-dtl-current">Are you currently employed?</label>
                     </div>
                     <div class="radio col-sm-4">
-                        <label><input type="radio" id="emp-dtl-current" value="Y">Yes</label>                    
-                        <label><input type="radio" id="emp-dtl-current" value="N">No</label>
+                        <label><input type="radio" id="emp-dtl-current" value="Y" name="emp-curr">Yes</label>                    
+                        <label><input type="radio" id="emp-dtl-current" value="N" name="emp-curr">No</label>
                     </div>
                     <div class="form-group col-sm-4">
                         <!--Pseudo div-->
@@ -333,8 +333,8 @@
                         <label for="emp-dtl-field">Are you working on computer field?</label>
                     </div>
                     <div class="radio col-sm-4">
-                        <label><input type="radio" id="emp-dtl-field" value="Y">Yes</label>                    
-                        <label><input type="radio" id="emp-dtl-field" value="N">No</label>
+                        <label><input type="radio" id="emp-dtl-field" value="Y" name="emp-field">Yes</label>                    
+                        <label><input type="radio" id="emp-dtl-field" value="N" name="emp-field">No</label>
                     </div>
                     <div class="form-group col-sm-4">
                         <!--Pseudo div-->

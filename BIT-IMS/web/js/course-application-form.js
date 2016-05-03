@@ -90,7 +90,20 @@ function backToNaviForm() {
 }
 
 /*Form Validations*/
+function PersonalDtlValidation() {
+    var perdtlfulname = document.getElementById("perdtl-ful-name").value;
+    var perdtlIniname = document.getElementById("perdtl-ini-name").value;
+    var perdtlfulname = document.getElementById("course").value;
+    var perdtlfulname = document.getElementById("course").value;
+    var perdtlfulname = document.getElementById("course").value;
+    var perdtlfulname = document.getElementById("course").value;
+    var perdtlfulname = document.getElementById("course").value;
+    var perdtlfulname = document.getElementById("course").value;
+    var perdtlfulname = document.getElementById("course").value;
+}
 
+
+/*
 function PersonalDetailsNext() {
     var course = document.getElementById("course").value;
     var fullName = document.getElementById("perdtl-ful-name").value;
@@ -215,3 +228,4 @@ function nicValidate() {
 function saveStudent() {
 
 }
+*/
