@@ -111,6 +111,11 @@ form .radio label{
     margin-bottom: 12px;
 }
 
+.carrier-set{
+    margin: 0;
+    padding: 0;
+}
+
 /*colours for place holer text in SELECT*/
 select{
     color: #ccc;

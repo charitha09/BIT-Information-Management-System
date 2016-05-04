@@ -9,8 +9,9 @@
         <link rel="stylesheet" href="../css/course-application-form.css">
     </head>
     <body>
-        <script src="../js/jquery-1.12.2.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+        <script src="../js/validator.min.js"></script>
         <script src="../js/course-application-form.js"></script>
         <header>
             <nav class="navbar navbar-inverse">
@@ -69,7 +70,7 @@
                 <h1>University Of Colombo School Of Computing</h1>
                 <h1>Student Application Form</h1>
             </div>
-            <form name="user-apply" action="index.jsp" method="POST">
+            <form name="user-apply" data-toggle="validator" action="index.jsp" method="POST">
                 <!--Course Selection-->
                 <div id="app-for" class="col-sm-12">
                     <div class="form-group col-sm-4">
@@ -105,29 +106,33 @@
                         <label for="perdtl-ful-name">Full Name</label>
                     </div>  
                     <div class="form-group col-sm-8">    
-                         <input type="text" id="perdtl-ful-name" placeholder="Your Full Name" required class="form-control"/>
+                        <input type="text" id="perdtl-ful-name" placeholder="Your Full Name" required class="form-control" data-error="Can't be empty"/>
+                        <div class="help-block with-errors"></div>
                     </div>
                     <div class="form-group col-sm-4">
                         <label for="perdtl-ini-name">Initials</label>
                     </div>
                     <div class="form-group col-sm-8">
-                        <input type="text" id="perdtl-ini-name" placeholder="Initials Of Your Name" required class="form-control"/>
+                        <input type="text" id="perdtl-ini-name" placeholder="Initials Of Your Name" required class="form-control" data-error="Can't be empty"/>
+                        <div class="help-block with-errors"></div>
                     </div>
                     <div class="form-group col-sm-4">
                         <label for="perdtl-lst-name">Last Name</label>
                     </div>
                     <div class="form-group col-sm-8">
-                        <input type="text" id="perdtl-lst-name" placeholder="Your Last Name" required class="form-control"/>
+                        <input type="text" id="perdtl-lst-name" placeholder="Your Last Name" required class="form-control" data-error="Can't be empty"/>
+                        <div class="help-block with-errors"></div>
                     </div>
                     <div class="form-group col-sm-4">
                         <label for="perdtl-title">Title</label>
                     </div>
                     <div class="form-group col-sm-8">
-                        <select class="form-control" id="perdtl-title" required>
+                        <select class="form-control" id="perdtl-title" required data-error="Must select">
                             <option value="" disabled selected hidden>- - Select Title - -</option>
                             <option value="0">Mr</option>
                             <option value="1">Miss</option>
                         </select>
+                        <div class="help-block with-errors"></div>
                     </div>
                     <div class="form-group col-sm-4">
                         <label for="perdtl-gender">Gender</label>
@@ -140,25 +145,29 @@
                         <label for="perdtl-citizen">Citizenship</label>
                     </div>
                     <div class="form-group col-sm-8">
-                        <input type="text" id="perdtl-citizen" placeholder="Your Citizenship" required class="form-control"/>
+                        <input type="text" id="perdtl-citizen" placeholder="Your Citizenship" required class="form-control" data-error="Can't be empty"/>
+                        <div class="help-block with-errors"></div>
                     </div>
                     <div class="form-group col-sm-4">
                         <label for="perdtl-nation">Nationality</label>
                     </div>
                     <div class="form-group col-sm-8">
-                        <input type="text" id="perdtl-nation" placeholder="Your Nationality" required class="form-control"/>
+                        <input type="text" id="perdtl-nation" placeholder="Your Nationality" required class="form-control" data-error="Can't be empty"/>
+                        <div class="help-block with-errors"></div>
                     </div>
                     <div class="form-group col-sm-4">
                         <label for="perdtl-nic">National ID</label>
                     </div>
                     <div class="form-group col-sm-8">
-                        <input type="text" id="perdtl-nic" placeholder="Your National ID card Number" required maxlength="10" minlength="10" class="form-control" onblur="nicValidate()"/>
+                        <input type="text" id="perdtl-nic" placeholder="Your National ID card Number" required class="form-control" pattern="\d{9}([v]|[V]|[x]|[X])" data-error="Empty or invalied NIC number"/>
+                        <div class="help-block with-errors"></div>
                     </div>
                     <div class="form-group col-sm-4">
                         <label for="perdtl-dob">Date Of Birth</label>
                     </div>
                     <div class="form-group col-sm-8">
-                        <input type="date" id="perdtl-dob" required class="form-control"/>
+                        <input type="date" id="perdtl-dob" required class="form-control" data-error="Empty or invalied Date" pattern="(?:19|20)[0-9]{2}-(?:(?:0[1-9]|1[0-2])-(?:0[1-9]|1[0-9]|2[0-9])|(?:(?!02)(?:0[1-9]|1[0-2])-(?:30))|(?:(?:0[13578]|1[02])-31))"/>
+                        <div class="help-block with-errors"></div>
                     </div>
                     <div class="form-group col-sm-12 bottem-border">
                     </div>
@@ -172,31 +181,44 @@
                         <label for="address">Permanent Address</label>
                     </div>  
                     <div class="form-group col-sm-8">    
-                         <input type="text" id="address" placeholder="Your Permanent Address" required class="form-control"/>
+                        <input type="text" id="address" placeholder="Your Permanent Address" required class="form-control" data-error="Can't be empty"/>
+                        <div class="help-block with-errors"></div>
                     </div>
                     <div class="form-group col-sm-4">
                         <label for="country">Country</label>
                     </div>  
                     <div class="form-group col-sm-8">    
-                         <input type="text" id="country" placeholder="Your Country" required class="form-control"/>
+                        <input type="text" id="country" list="Countries" placeholder="Your Country" required class="form-control" data-error="Can't be empty"/>
+                        <datalist id="Countries">
+                            <% 
+                                String[] country = {"Afghanistan","Albania","Algeria","Andorra","Angola","Antigua and Barbuda","Argentina","Armenia","Australia","Austria","Azerbaijan","Bahamas","Bahrain","Bangladesh","Barbados","Belarus","Belgium","Belize","Benin","Bhutan","Bolivia","Bosnia and Herzegovina","Botswana","Brazil","Brunei","Bulgaria","Burkina Faso","Burundi","Cambodia","Cameroon","Canada","Cape Verde","Central African Republic","Chad","Chile","China","Colombi","Comoros","Congo (Brazzaville)","Congo","Costa Rica","Cote d'Ivoire","Croatia","Cuba","Cyprus","Czech Republic","Denmark","Djibouti","Dominica","Dominican Republic","East Timor (Timor Timur)","Ecuador","Egypt","El Salvador","Equatorial Guinea","Eritrea","Estonia","Ethiopia","Fiji","Finland","France","Gabon","Gambia, The","Georgia","Germany","Ghana","Greece","Grenada","Guatemala","Guinea","Guinea-Bissau","Guyana","Haiti","Honduras","Hungary","Iceland","India","Indonesia","Iran","Iraq","Ireland","Israel","Italy","Jamaica","Japan","Jordan","Kazakhstan","Kenya","Kiribati","Korea, North","Korea, South","Kuwait","Kyrgyzstan","Laos","Latvia","Lebanon","Lesotho","Liberia","Libya","Liechtenstein","Lithuania","Luxembourg","Macedonia","Madagascar","Malawi","Malaysia","Maldives","Mali","Malta","Marshall Islands","Mauritania","Mauritius","Mexico","Micronesia","Moldova","Monaco","Mongolia","Morocco","Mozambique","Myanmar","Namibia","Nauru","Nepal","Netherlands","New Zealand","Nicaragua","Niger","Nigeria","Norway","Oman","Pakistan","Palau","Panama","Papua New Guinea","Paraguay","Peru","Philippines","Poland","Portugal","Qatar","Romania","Russia","Rwanda","Saint Kitts and Nevis","Saint Lucia","Saint Vincent","Samoa","San Marino","Sao Tome and Principe","Saudi Arabia","Senegal","Serbia and Montenegro","Seychelles","Sierra Leone","Singapore","Slovakia","Slovenia","Solomon Islands","Somalia","South Africa","Spain","Sri Lanka","Sudan","Suriname","Swaziland","Sweden","Switzerland","Syria","Taiwan","Tajikistan","Tanzania","Thailand","Togo","Tonga","Trinidad and Tobago","Tunisia","Turkey","Turkmenistan","Tuvalu","Uganda","Ukraine","United Arab Emirates","United Kingdom","United States","Uruguay","Uzbekistan","Vanuatu","Vatican City","Venezuela","Vietnam","Yemen","Zambia","Zimbabwe"}; 
+                                for (int i = 0; i < country.length; i++){
+                                    out.write("<option value='" + country[i] + "'>");
+                                }
+                            %>
+                        </datalist> 
+                        <div class="help-block with-errors"></div>
                     </div>
                     <div class="form-group col-sm-4">
                         <label for="tel-fix">Telephone Number (FIX)</label>
                     </div>  
                     <div class="form-group col-sm-8">    
-                         <input type="text" id="tel-fix" placeholder="Your Fixed Telephone Number" required class="form-control"/>
+                        <input type="text" id="tel-fix" placeholder="Your Fixed Telephone Number" required class="form-control" pattern="([\+]\d{2}|\d{1})\d{9}" data-error="Empty or invalid phone Number ex:- 011XXXXXXX or +94XXXXXXXXX"/>
+                        <div class="help-block with-errors"></div>
                     </div>
                     <div class="form-group col-sm-4">
                         <label for="tel-mob">Telephone Number (Mobile)</label>
                     </div>  
                     <div class="form-group col-sm-8">    
-                         <input type="text" id="tel-mob" placeholder="Your Mobile Number" required class="form-control"/>
+                         <input type="text" id="tel-mob" placeholder="Your Mobile Number" required class="form-control" pattern="([\+]\d{2}|\d{1})\d{9}" data-error="Empty or invalid phone Number ex:- 07XXXXXXXX or +947XXXXXXXX"/>
+                         <div class="help-block with-errors"></div>
                     </div>
                     <div class="form-group col-sm-4">
                         <label for="email">E-mail</label>
                     </div>  
                     <div class="form-group col-sm-8">    
-                         <input type="email" id="email" placeholder="E-mail Address" required class="form-control"/>
+                         <input type="email" id="email" placeholder="E-mail Address" required class="form-control" data-error="Empty or invalid email address"/>
+                         <div class="help-block with-errors"></div>
                     </div>
                     <div class="form-group col-sm-12 bottem-border">
                     </div>
@@ -212,7 +234,7 @@
                         <label for="fit-res">Foundation in Information Technology Result</label>
                     </div>
                     <div class="form-group col-sm-8">
-                        <select class="form-control" id="fit-res">
+                        <select class="form-control" id="fit-res" required data-error="Must Select">
                             <option value="" disabled selected hidden>- - Select Result for FIT - -</option>
                             <%                                     
                                 for (int i = 0; i < grades.length; i++){
@@ -220,90 +242,109 @@
                                 }
                             %>
                         </select>
+                        <div class="help-block with-errors"></div>
                     </div>
                     <div class="form-group col-sm-12 bottem-border">
                     </div>
                     <div class="form-group col-sm-4">
                         <label for="al-res">A/L Results</label>
                     </div>
-                    <div class="form-group col-sm-4">
-                        <input type="text" id="al-res-sub1" placeholder="Enter A/L Subject Name 01" required class="form-control"/>
-                    </div> 
-                    <div class="form-group col-sm-4">                    
-                        <select class="form-control" id="al-res-sub1">
-                            <option value="" disabled selected hidden>- - Select Result - -</option>
-                            <%                                     
-                                for (int i = 0; i < grades.length; i++){
-                                    out.write("<option value=' " + i + "'>" + grades[i] + "</option>");
-                                }
-                            %>
-                        </select>
+                    <div class="col-sm-8 carrier-set">
+                        <div class="form-group col-sm-6">
+                            <input type="text" id="al-res-sub1" placeholder="Enter A/L Subject Name 01" required class="form-control" data-error="Can't be empty"/>
+                            <div class="help-block with-errors"></div>
+                        </div> 
+                        <div class="form-group col-sm-6">                    
+                            <select class="form-control" id="al-res-sub1" required data-error="Must Select">
+                                <option value="" disabled selected hidden>- - Select Result - -</option>
+                                <%                                     
+                                    for (int i = 0; i < grades.length; i++){
+                                        out.write("<option value=' " + i + "'>" + grades[i] + "</option>");
+                                    }
+                                %>
+                            </select>
+                            <div class="help-block with-errors"></div>
+                        </div>
                     </div>
                     <div class="form-group col-sm-4">
                         <!--Pseudo div-->
                     </div>
-                    <div class="form-group col-sm-4">
-                        <input type="text" id="al-res-sub2" placeholder="Enter A/L Subject Name 02" required class="form-control"/>
-                    </div> 
-                    <div class="form-group col-sm-4">                    
-                        <select class="form-control" id="al-res-sub2">
-                            <option value="" disabled selected hidden>- - Select Result - -</option>
-                            <%                                     
-                                for (int i = 0; i < grades.length; i++){
-                                    out.write("<option value=' " + i + "'>" + grades[i] + "</option>");
-                                }
-                            %>
-                        </select>
+                    <div class="col-sm-8 carrier-set">
+                        <div class="form-group col-sm-6">
+                            <input type="text" id="al-res-sub2" placeholder="Enter A/L Subject Name 02" required data-error="Can't be empty" class="form-control"/>
+                            <div class="help-block with-errors"></div>
+                        </div> 
+                        <div class="form-group col-sm-6">                    
+                            <select class="form-control" id="al-res-sub2" required data-error="Must Select">
+                                <option value="" disabled selected hidden>- - Select Result - -</option>
+                                <%                                     
+                                    for (int i = 0; i < grades.length; i++){
+                                        out.write("<option value=' " + i + "'>" + grades[i] + "</option>");
+                                    }
+                                %>
+                            </select>
+                            <div class="help-block with-errors"></div>
+                        </div>
                     </div>
                     <div class="form-group col-sm-4">
                         <!--Pseudo div-->
                     </div>
-                    <div class="form-group col-sm-4">
-                        <input type="text" id="al-res-sub3" placeholder="Enter A/L Subject Name 03" required class="form-control"/>
-                    </div> 
-                    <div class="form-group col-sm-4">                    
-                        <select class="form-control" id="al-res-sub3">
-                            <option value="" disabled selected hidden>- - Select Result - -</option>
-                            <%                                     
-                                for (int i = 0; i < grades.length; i++){
-                                    out.write("<option value=' " + i + "'>" + grades[i] + "</option>");
-                                }
-                            %>
-                        </select>
+                    <div class="col-sm-8 carrier-set">
+                        <div class="form-group col-sm-6">
+                            <input type="text" id="al-res-sub3" placeholder="Enter A/L Subject Name 03" required data-error="Can't be empty" class="form-control"/>
+                            <div class="help-block with-errors"></div>
+                        </div> 
+                        <div class="form-group col-sm-6">                    
+                            <select class="form-control" id="al-res-sub3" required data-error="Must Select">
+                                <option value="" disabled selected hidden>- - Select Result - -</option>
+                                <%                                     
+                                    for (int i = 0; i < grades.length; i++){
+                                        out.write("<option value=' " + i + "'>" + grades[i] + "</option>");
+                                    }
+                                %>
+                            </select>
+                            <div class="help-block with-errors"></div>
+                        </div>
                     </div>
                     <div class="form-group col-sm-12 bottem-border">
                     </div>
                     <div class="form-group col-sm-4">
                         <label for="ol-res">O/L Results</label>
                     </div>
-                    <div class="form-group col-sm-4">
-                        <label for="ol-res-sub1">Results For Mathematics</label>
-                    </div> 
-                    <div class="form-group col-sm-4">                    
-                        <select class="form-control" id="ol-res-sub1">
-                            <option value="" disabled selected hidden>- - Select Result - -</option>
-                            <%                                     
-                                for (int i = 0; i < grades.length; i++){
-                                    out.write("<option value=' " + i + "'>" + grades[i] + "</option>");
-                                }
-                            %>
-                        </select>
+                    <div class="col-sm-8 carrier-set">
+                        <div class="form-group col-sm-4">
+                            <label for="ol-res-sub1">Results For Mathematics</label>
+                        </div> 
+                        <div class="form-group col-sm-4">                    
+                            <select class="form-control" id="ol-res-sub1" required data-error="Must Select">
+                                <option value="" disabled selected hidden>- - Select Result - -</option>
+                                <%                                     
+                                    for (int i = 0; i < grades.length; i++){
+                                        out.write("<option value=' " + i + "'>" + grades[i] + "</option>");
+                                    }
+                                %>
+                            </select>
+                            <div class="help-block with-errors"></div>
+                        </div>
                     </div>
                     <div class="form-group col-sm-4">
                         <!--Pseudo div-->
                     </div>
-                    <div class="form-group col-sm-4">
-                        <label for="ol-res-sub2">Results For English</label>
-                    </div> 
-                    <div class="form-group col-sm-4">                    
-                        <select class="form-control" id="ol-res-sub2">
-                            <option value="" disabled selected hidden>- - Select Result - -</option>
-                            <%                                     
-                                for (int i = 0; i < grades.length; i++){
-                                    out.write("<option value=' " + i + "'>" + grades[i] + "</option>");
-                                }
-                            %>
-                        </select>
+                    <div class="col-sm-8 carrier-set">
+                        <div class="form-group col-sm-4">
+                            <label for="ol-res-sub2">Results For English</label>
+                        </div> 
+                        <div class="form-group col-sm-4">                    
+                            <select class="form-control" id="ol-res-sub2" required data-error="Must Select">
+                                <option value="" disabled selected hidden>- - Select Result - -</option>
+                                <%                                     
+                                    for (int i = 0; i < grades.length; i++){
+                                        out.write("<option value=' " + i + "'>" + grades[i] + "</option>");
+                                    }
+                                %>
+                            </select>
+                            <div class="help-block with-errors"></div>
+                        </div>
                     </div>
                     <div class="form-group col-sm-12 bottem-border">
                     </div>
@@ -418,7 +459,7 @@
                         <button type="button" class="btn btn-default" onclick="clickEducation()">Back</button>
                     </div>
                     <div id="Submit-btn-box">
-                        <button type="submit" class="btn btn-success">Submit</button>
+                        <button type="submit" class="btn btn-success" onclick="applyFormValidate()">Submit</button>
                         <button type="button" class="btn btn-default" onclick="backToNaviForm()">Edit</button>
                     </div>
                 </div> 

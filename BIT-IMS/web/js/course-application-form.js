@@ -89,10 +89,19 @@ function backToNaviForm() {
     document.getElementById("Submit-btn-box").style.display = "none";
 }
 
-/*Form Validations*/
+/*Form Validations
+function applyFormValidate(){
+    PersonalDtlValidation();
+    
+}
+
 function PersonalDtlValidation() {
-    var perdtlfulname = document.getElementById("perdtl-ful-name").value;
-    var perdtlIniname = document.getElementById("perdtl-ini-name").value;
+    /*var perdtlfulname = document.forms["user-apply"]["perdtl-dob"].value;
+    alert(perdtlfulname);
+    
+    //alert(perdtlfulname);
+    /*var perdtlfulname = document.getElementById("perdtl-ful-name").value;
+    var perdtlininame = document.getElementById("perdtl-ini-name").value;
     var perdtllastname = document.getElementById("perdtl-last-name").value;
     var perdtltitle = document.getElementById("perdtl-title").value;
     var perdtlgender = document.getElementById("perdtl-gender").value;
@@ -100,6 +109,9 @@ function PersonalDtlValidation() {
     var perdtlnationality = document.getElementById("perdtl-nationality").value;
     var perdtlNIC = document.getElementById("perdtl-nic").value;
     var perdtlDOB = document.getElementById("perdtl-dob").value;
+
+       
+
 }
 
 function ContactDtlValidation() {
