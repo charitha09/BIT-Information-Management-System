@@ -8,5 +8,6 @@
     <property name="hibernate.hbm2ddl.auto">update</property>
     <property name="hibernate.show_sql">true</property>
     <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+    <mapping class="com.ims.model.Applicant"/>
   </session-factory>
 </hibernate-configuration>

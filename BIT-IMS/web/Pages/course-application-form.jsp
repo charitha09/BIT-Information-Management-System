@@ -40,7 +40,7 @@
                 <h1>University Of Colombo School Of Computing</h1>
                 <h1>Student Application Form</h1>
             </div>
-            <form name="user-apply" data-toggle="validator" action="index.jsp" method="POST">
+            <form name="user-apply" data-toggle="validator" action="../RegisterApplicant" method="POST">
                 <!--Course Selection-->
                 <div id="app-for" class="col-sm-12">
                     <div class="form-group col-sm-4">

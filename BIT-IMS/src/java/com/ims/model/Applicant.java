@@ -6,13 +6,23 @@
 package com.ims.model;
 
 import java.sql.Date;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.cfg.Configuration;
 
 /**
  *
  * @author amila
  */
+@Entity
 public class Applicant {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int applicationNum;
     private String fullName;
     private String initial;
@@ -43,9 +53,9 @@ public class Applicant {
     public Applicant() {
     }
 
-    
     /**
      * constructor without application number
+     *
      * @param fullName
      * @param initial
      * @param lastName
@@ -70,16 +80,16 @@ public class Applicant {
      * @param isEmploy
      * @param designation
      * @param isComputerField
-     * @param monthlySalary 
+     * @param monthlySalary
      */
-    public Applicant(String fullName, String initial, String lastName, String title, 
-                    String gender, String citizenship, String nationality, String nicNo, 
-                    Date birthDay, String address, String country, String telephoneNum, 
-                    String email, String alSubject01, String Subject01Result, String alSubject02, 
-                    String Subject02Result, String alSubject03, String Subject03Result, 
-                    String olMathsResult, String olEnglishResult, int isEmploy, String designation, 
-                    int isComputerField, int monthlySalary) {
-                this.fullName = fullName;
+    public Applicant(String fullName, String initial, String lastName, String title,
+            String gender, String citizenship, String nationality, String nicNo,
+            Date birthDay, String address, String country, String telephoneNum,
+            String email, String alSubject01, String Subject01Result, String alSubject02,
+            String Subject02Result, String alSubject03, String Subject03Result,
+            String olMathsResult, String olEnglishResult, int isEmploy, String designation,
+            int isComputerField, int monthlySalary) {
+        this.fullName = fullName;
         this.initial = initial;
         this.lastName = lastName;
         this.title = title;
@@ -106,9 +116,8 @@ public class Applicant {
         this.monthlySalary = monthlySalary;
     }
 
-    
     /**
-     * 
+     *
      * @param applicationNum
      * @param fullName
      * @param initial
@@ -134,16 +143,16 @@ public class Applicant {
      * @param isEmploy
      * @param designation
      * @param isComputerField
-     * @param monthlySalary 
+     * @param monthlySalary
      */
     public Applicant(int applicationNum, String fullName, String initial,
-                    String lastName, String title, String gender, String citizenship,
-                    String nationality, String nicNo, Date birthDay, String address,
-                    String country, String telephoneNum, String email, String alSubject01,
-                    String Subject01Result, String alSubject02, String Subject02Result,
-                    String alSubject03, String Subject03Result, String olMathsResult,
-                    String olEnglishResult, int isEmploy, String designation,
-                    int isComputerField, int monthlySalary) {
+            String lastName, String title, String gender, String citizenship,
+            String nationality, String nicNo, Date birthDay, String address,
+            String country, String telephoneNum, String email, String alSubject01,
+            String Subject01Result, String alSubject02, String Subject02Result,
+            String alSubject03, String Subject03Result, String olMathsResult,
+            String olEnglishResult, int isEmploy, String designation,
+            int isComputerField, int monthlySalary) {
         super();
         this.applicationNum = applicationNum;
         this.fullName = fullName;
@@ -383,22 +392,34 @@ public class Applicant {
 
     @Override
     public String toString() {
-        return "Applicant{" + "applicationNum=" + applicationNum + ", fullName=" 
-                + fullName + ", initial=" + initial + ", lastName=" + lastName 
-                + ", title=" + title + ", gender=" + gender + ", citizenship=" 
-                + citizenship + ", nationality=" + nationality + ", nicNo=" + nicNo 
-                + ", birthDay=" + birthDay + ", address=" + address + ", country=" 
-                + country + ", telephoneNum=" + telephoneNum + ", email=" + email 
-                + ", alSubject01=" + alSubject01 + ", Subject01Result=" + Subject01Result 
-                + ", alSubject02=" + alSubject02 + ", Subject02Result=" + Subject02Result 
-                + ", alSubject03=" + alSubject03 + ", Subject03Result=" + Subject03Result 
-                + ", olMathsResult=" + olMathsResult + ", olEnglishResult=" + olEnglishResult 
-                + ", isEmploy=" + isEmploy + ", designation=" + designation + ", isComputerField=" 
+        return "Applicant{" + "applicationNum=" + applicationNum + ", fullName="
+                + fullName + ", initial=" + initial + ", lastName=" + lastName
+                + ", title=" + title + ", gender=" + gender + ", citizenship="
+                + citizenship + ", nationality=" + nationality + ", nicNo=" + nicNo
+                + ", birthDay=" + birthDay + ", address=" + address + ", country="
+                + country + ", telephoneNum=" + telephoneNum + ", email=" + email
+                + ", alSubject01=" + alSubject01 + ", Subject01Result=" + Subject01Result
+                + ", alSubject02=" + alSubject02 + ", Subject02Result=" + Subject02Result
+                + ", alSubject03=" + alSubject03 + ", Subject03Result=" + Subject03Result
+                + ", olMathsResult=" + olMathsResult + ", olEnglishResult=" + olEnglishResult
+                + ", isEmploy=" + isEmploy + ", designation=" + designation + ", isComputerField="
                 + isComputerField + ", monthlySalary=" + monthlySalary + '}';
     }
-    
-    
-    
-    
 
+    ///////////////////////////////////////////////////////////////////////////////////////////////////
+    public static void main(String[] args) {
+        Applicant ap = new Applicant();
+        ap.setFullName("asdfghjkl");
+        
+        SessionFactory sf = new Configuration().configure().buildSessionFactory();
+        Session s = sf.openSession();
+        s.beginTransaction();
+        
+        s.save(ap);
+        
+        s.getTransaction().commit();
+        
+    }
+    
+    /////////////////////////////////////////////////////////////
 }

@@ -1,3 +1,4 @@
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -7,6 +8,7 @@ package com.ims.applicant;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.Date;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -37,7 +39,7 @@ public class RegisterApplicant extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet RegisterApplicant</title>");            
+            out.println("<title>Servlet RegisterApplicant</title>");
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Servlet RegisterApplicant at " + request.getContextPath() + "</h1>");
@@ -55,10 +57,37 @@ public class RegisterApplicant extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+
+        String fullName = request.getParameter("perdtl-ful-name").toString();
+        System.out.println("kkkkkkkkkkkkkkkkkkkk"+fullName);
+        String initial;
+        String lastName;
+        String title;
+        String gender;
+        String citizenship;
+        String nationality;
+        String nicNo;
+        Date birthDay;
+        String address;
+        String country;
+        String telephoneNum;
+        String email;
+        String alSubject01;
+        String Subject01Result;
+        String alSubject02;
+        String Subject02Result;
+        String alSubject03;
+        String Subject03Result;
+        String olMathsResult;
+        String olEnglishResult;
+        int isEmploy;
+        String designation;
+        int isComputerField;
+        int monthlySalary;
+
         processRequest(request, response);
     }
 
