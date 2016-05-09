@@ -12,6 +12,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.cfg.Configuration;
 
 /**
@@ -22,8 +23,10 @@ import org.hibernate.cfg.Configuration;
 public class Applicant {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private int applicationNum;
+    //@GeneratedValue(strategy = GenerationType.AUTO)
+    @GenericGenerator(name = "sequence_application_num", strategy = "com.ims.ids.ApplicationNum")
+    @GeneratedValue(generator = "sequence_application_num")
+    private String applicationNum;
     private String fullName;
     private String initial;
     private String lastName;
@@ -35,8 +38,10 @@ public class Applicant {
     private Date birthDay;
     private String address;
     private String country;
-    private String telephoneNum;
+    private String telephoneNumFix;
+    private String telephoneNumMob;
     private String email;
+    private String fitResult;
     private String alSubject01;
     private String Subject01Result;
     private String alSubject02;
@@ -52,108 +57,38 @@ public class Applicant {
 
     public Applicant() {
     }
-
-    /**
-     * constructor without application number
-     *
-     * @param fullName
-     * @param initial
-     * @param lastName
-     * @param title
-     * @param gender
-     * @param citizenship
-     * @param nationality
-     * @param nicNo
-     * @param birthDay
-     * @param address
-     * @param country
-     * @param telephoneNum
-     * @param email
-     * @param alSubject01
-     * @param Subject01Result
-     * @param alSubject02
-     * @param Subject02Result
-     * @param alSubject03
-     * @param Subject03Result
-     * @param olMathsResult
-     * @param olEnglishResult
-     * @param isEmploy
-     * @param designation
-     * @param isComputerField
-     * @param monthlySalary
-     */
-    public Applicant(String fullName, String initial, String lastName, String title,
-            String gender, String citizenship, String nationality, String nicNo,
-            Date birthDay, String address, String country, String telephoneNum,
-            String email, String alSubject01, String Subject01Result, String alSubject02,
-            String Subject02Result, String alSubject03, String Subject03Result,
-            String olMathsResult, String olEnglishResult, int isEmploy, String designation,
-            int isComputerField, int monthlySalary) {
-        this.fullName = fullName;
-        this.initial = initial;
-        this.lastName = lastName;
-        this.title = title;
-        this.gender = gender;
-        this.citizenship = citizenship;
-        this.nationality = nationality;
-        this.nicNo = nicNo;
-        this.birthDay = birthDay;
-        this.address = address;
-        this.country = country;
-        this.telephoneNum = telephoneNum;
-        this.email = email;
-        this.alSubject01 = alSubject01;
-        this.Subject01Result = Subject01Result;
-        this.alSubject02 = alSubject02;
-        this.Subject02Result = Subject02Result;
-        this.alSubject03 = alSubject03;
-        this.Subject03Result = Subject03Result;
-        this.olMathsResult = olMathsResult;
-        this.olEnglishResult = olEnglishResult;
-        this.isEmploy = isEmploy;
-        this.designation = designation;
-        this.isComputerField = isComputerField;
-        this.monthlySalary = monthlySalary;
-    }
-
-    /**
-     *
-     * @param applicationNum
-     * @param fullName
-     * @param initial
-     * @param lastName
-     * @param title
-     * @param gender
-     * @param citizenship
-     * @param nationality
-     * @param nicNo
-     * @param birthDay
-     * @param address
-     * @param country
-     * @param telephoneNum
-     * @param email
-     * @param alSubject01
-     * @param Subject01Result
-     * @param alSubject02
-     * @param Subject02Result
-     * @param alSubject03
-     * @param Subject03Result
-     * @param olMathsResult
-     * @param olEnglishResult
-     * @param isEmploy
-     * @param designation
-     * @param isComputerField
-     * @param monthlySalary
-     */
-    public Applicant(int applicationNum, String fullName, String initial,
-            String lastName, String title, String gender, String citizenship,
-            String nationality, String nicNo, Date birthDay, String address,
-            String country, String telephoneNum, String email, String alSubject01,
-            String Subject01Result, String alSubject02, String Subject02Result,
-            String alSubject03, String Subject03Result, String olMathsResult,
-            String olEnglishResult, int isEmploy, String designation,
-            int isComputerField, int monthlySalary) {
-        super();
+/**
+ * 
+ * @param applicationNum
+ * @param fullName
+ * @param initial
+ * @param lastName
+ * @param title
+ * @param gender
+ * @param citizenship
+ * @param nationality
+ * @param nicNo
+ * @param birthDay
+ * @param address
+ * @param country
+ * @param telephoneNumFix
+ * @param telephoneNumMob
+ * @param email
+ * @param fitResult
+ * @param alSubject01
+ * @param Subject01Result
+ * @param alSubject02
+ * @param Subject02Result
+ * @param alSubject03
+ * @param Subject03Result
+ * @param olMathsResult
+ * @param olEnglishResult
+ * @param isEmploy
+ * @param designation
+ * @param isComputerField
+ * @param monthlySalary 
+ */
+    public Applicant(String applicationNum, String fullName, String initial, String lastName, String title, String gender, String citizenship, String nationality, String nicNo, Date birthDay, String address, String country, String telephoneNumFix, String telephoneNumMob, String email, String fitResult, String alSubject01, String Subject01Result, String alSubject02, String Subject02Result, String alSubject03, String Subject03Result, String olMathsResult, String olEnglishResult, int isEmploy, String designation, int isComputerField, int monthlySalary) {
         this.applicationNum = applicationNum;
         this.fullName = fullName;
         this.initial = initial;
@@ -166,8 +101,10 @@ public class Applicant {
         this.birthDay = birthDay;
         this.address = address;
         this.country = country;
-        this.telephoneNum = telephoneNum;
+        this.telephoneNumFix = telephoneNumFix;
+        this.telephoneNumMob = telephoneNumMob;
         this.email = email;
+        this.fitResult = fitResult;
         this.alSubject01 = alSubject01;
         this.Subject01Result = Subject01Result;
         this.alSubject02 = alSubject02;
@@ -182,11 +119,11 @@ public class Applicant {
         this.monthlySalary = monthlySalary;
     }
 
-    public int getApplicationNum() {
+    public String getApplicationNum() {
         return applicationNum;
     }
 
-    public void setApplicationNum(int applicationNum) {
+    public void setApplicationNum(String applicationNum) {
         this.applicationNum = applicationNum;
     }
 
@@ -278,12 +215,20 @@ public class Applicant {
         this.country = country;
     }
 
-    public String getTelephoneNum() {
-        return telephoneNum;
+    public String getTelephoneNumFix() {
+        return telephoneNumFix;
     }
 
-    public void setTelephoneNum(String telephoneNum) {
-        this.telephoneNum = telephoneNum;
+    public void setTelephoneNumFix(String telephoneNumFix) {
+        this.telephoneNumFix = telephoneNumFix;
+    }
+
+    public String getTelephoneNumMob() {
+        return telephoneNumMob;
+    }
+
+    public void setTelephoneNumMob(String telephoneNumMob) {
+        this.telephoneNumMob = telephoneNumMob;
     }
 
     public String getEmail() {
@@ -292,6 +237,14 @@ public class Applicant {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getFitResult() {
+        return fitResult;
+    }
+
+    public void setFitResult(String fitResult) {
+        this.fitResult = fitResult;
     }
 
     public String getAlSubject01() {
@@ -392,19 +345,10 @@ public class Applicant {
 
     @Override
     public String toString() {
-        return "Applicant{" + "applicationNum=" + applicationNum + ", fullName="
-                + fullName + ", initial=" + initial + ", lastName=" + lastName
-                + ", title=" + title + ", gender=" + gender + ", citizenship="
-                + citizenship + ", nationality=" + nationality + ", nicNo=" + nicNo
-                + ", birthDay=" + birthDay + ", address=" + address + ", country="
-                + country + ", telephoneNum=" + telephoneNum + ", email=" + email
-                + ", alSubject01=" + alSubject01 + ", Subject01Result=" + Subject01Result
-                + ", alSubject02=" + alSubject02 + ", Subject02Result=" + Subject02Result
-                + ", alSubject03=" + alSubject03 + ", Subject03Result=" + Subject03Result
-                + ", olMathsResult=" + olMathsResult + ", olEnglishResult=" + olEnglishResult
-                + ", isEmploy=" + isEmploy + ", designation=" + designation + ", isComputerField="
-                + isComputerField + ", monthlySalary=" + monthlySalary + '}';
+        return "Applicant{" + "applicationNum=" + applicationNum + ", fullName=" + fullName + ", initial=" + initial + ", lastName=" + lastName + ", title=" + title + ", gender=" + gender + ", citizenship=" + citizenship + ", nationality=" + nationality + ", nicNo=" + nicNo + ", birthDay=" + birthDay + ", address=" + address + ", country=" + country + ", telephoneNumFix=" + telephoneNumFix + ", telephoneNumMob=" + telephoneNumMob + ", email=" + email + ", fitResult=" + fitResult + ", alSubject01=" + alSubject01 + ", Subject01Result=" + Subject01Result + ", alSubject02=" + alSubject02 + ", Subject02Result=" + Subject02Result + ", alSubject03=" + alSubject03 + ", Subject03Result=" + Subject03Result + ", olMathsResult=" + olMathsResult + ", olEnglishResult=" + olEnglishResult + ", isEmploy=" + isEmploy + ", designation=" + designation + ", isComputerField=" + isComputerField + ", monthlySalary=" + monthlySalary + '}';
     }
+
+   
 
     ///////////////////////////////////////////////////////////////////////////////////////////////////
     public static void main(String[] args) {

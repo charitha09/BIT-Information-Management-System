@@ -76,28 +76,28 @@
                         <label for="perdtl-ful-name">Full Name</label>
                     </div>  
                     <div class="form-group col-sm-8">    
-                        <input type="text" id="perdtl-ful-name" placeholder="Your Full Name" required class="form-control" data-error="Can't be empty"/>
+                        <input type="text" id="perdtl-ful-name" name="perdtl-ful-name" placeholder="Your Full Name" required class="form-control" data-error="Can't be empty"/>
                         <div class="help-block with-errors"></div>
                     </div>
                     <div class="form-group col-sm-4">
                         <label for="perdtl-ini-name">Initials</label>
                     </div>
                     <div class="form-group col-sm-8">
-                        <input type="text" id="perdtl-ini-name" placeholder="Initials Of Your Name" required class="form-control" data-error="Can't be empty"/>
+                        <input type="text" id="perdtl-ini-name" name="perdtl-ini-name" placeholder="Initials Of Your Name" required class="form-control" data-error="Can't be empty"/>
                         <div class="help-block with-errors"></div>
                     </div>
                     <div class="form-group col-sm-4">
                         <label for="perdtl-lst-name">Last Name</label>
                     </div>
                     <div class="form-group col-sm-8">
-                        <input type="text" id="perdtl-lst-name" placeholder="Your Last Name" required class="form-control" data-error="Can't be empty"/>
+                        <input type="text" id="perdtl-lst-name" name="perdtl-lst-name" placeholder="Your Last Name" required class="form-control" data-error="Can't be empty"/>
                         <div class="help-block with-errors"></div>
                     </div>
                     <div class="form-group col-sm-4">
                         <label for="perdtl-title">Title</label>
                     </div>
                     <div class="form-group col-sm-8">
-                        <select class="form-control" id="perdtl-title" required data-error="Must select">
+                        <select class="form-control" id="perdtl-title" name="perdtl-title" required data-error="Must select">
                             <option value="" disabled selected hidden>- - Select Title - -</option>
                             <option value="0">Mr</option>
                             <option value="1">Miss</option>
@@ -108,35 +108,35 @@
                         <label for="perdtl-gender">Gender</label>
                     </div>
                     <div class="radio col-sm-8">
-                        <label><input type="radio" id="perdtl-gender" value="M" name="gender">Male</label>                    
-                        <label><input type="radio" id="perdtl-gender" value="F" name="gender">Female</label>
+                        <label><input type="radio"  id="perdtl-gender" name="perdtl-gender" value="M" name="gender">Male</label>                    
+                        <label><input type="radio" id="perdtl-gender" name="perdtl-gender" value="F" name="gender">Female</label>
                     </div>
                     <div class="form-group col-sm-4">
                         <label for="perdtl-citizen">Citizenship</label>
                     </div>
                     <div class="form-group col-sm-8">
-                        <input type="text" id="perdtl-citizen" placeholder="Your Citizenship" required class="form-control" data-error="Can't be empty"/>
+                        <input type="text" id="perdtl-citizen" name="perdtl-citizen" placeholder="Your Citizenship" required class="form-control" data-error="Can't be empty"/>
                         <div class="help-block with-errors"></div>
                     </div>
                     <div class="form-group col-sm-4">
                         <label for="perdtl-nation">Nationality</label>
                     </div>
                     <div class="form-group col-sm-8">
-                        <input type="text" id="perdtl-nation" placeholder="Your Nationality" required class="form-control" data-error="Can't be empty"/>
+                        <input type="text" id="perdtl-nation" name="perdtl-nation" placeholder="Your Nationality" required class="form-control" data-error="Can't be empty"/>
                         <div class="help-block with-errors"></div>
                     </div>
                     <div class="form-group col-sm-4">
                         <label for="perdtl-nic">National ID</label>
                     </div>
                     <div class="form-group col-sm-8">
-                        <input type="text" id="perdtl-nic" placeholder="Your National ID card Number" required class="form-control" pattern="\d{9}([v]|[V]|[x]|[X])" data-error="Empty or invalied NIC number"/>
+                        <input type="text" id="perdtl-nic" name="perdtl-nic" placeholder="Your National ID card Number" required class="form-control" pattern="\d{9}([v]|[V]|[x]|[X])" data-error="Empty or invalied NIC number"/>
                         <div class="help-block with-errors"></div>
                     </div>
                     <div class="form-group col-sm-4">
                         <label for="perdtl-dob">Date Of Birth</label>
                     </div>
                     <div class="form-group col-sm-8">
-                        <input type="date" id="perdtl-dob" required class="form-control" data-error="Empty or invalied Date" pattern="(?:19|20)[0-9]{2}-(?:(?:0[1-9]|1[0-2])-(?:0[1-9]|1[0-9]|2[0-9])|(?:(?!02)(?:0[1-9]|1[0-2])-(?:30))|(?:(?:0[13578]|1[02])-31))"/>
+                        <input type="date" id="perdtl-dob" name="perdtl-dob" required class="form-control" data-error="Empty or invalied Date" pattern="(?:19|20)[0-9]{2}-(?:(?:0[1-9]|1[0-2])-(?:0[1-9]|1[0-9]|2[0-9])|(?:(?!02)(?:0[1-9]|1[0-2])-(?:30))|(?:(?:0[13578]|1[02])-31))"/>
                         <div class="help-block with-errors"></div>
                     </div>
                     <div class="form-group col-sm-12 bottem-border">
@@ -151,14 +151,14 @@
                         <label for="address">Permanent Address</label>
                     </div>  
                     <div class="form-group col-sm-8">    
-                        <input type="text" id="address" placeholder="Your Permanent Address" required class="form-control" data-error="Can't be empty"/>
+                        <input type="text" id="address" name="address" placeholder="Your Permanent Address" required class="form-control" data-error="Can't be empty"/>
                         <div class="help-block with-errors"></div>
                     </div>
                     <div class="form-group col-sm-4">
                         <label for="country">Country</label>
                     </div>  
                     <div class="form-group col-sm-8">    
-                        <input type="text" id="country" list="Countries" placeholder="Your Country" required class="form-control" data-error="Can't be empty"/>
+                        <input type="text" id="country" name="country" list="Countries" placeholder="Your Country" required class="form-control" data-error="Can't be empty"/>
                         <datalist id="Countries">
                             <% 
                                 String[] country = {"Afghanistan","Albania","Algeria","Andorra","Angola","Antigua and Barbuda","Argentina","Armenia","Australia","Austria","Azerbaijan","Bahamas","Bahrain","Bangladesh","Barbados","Belarus","Belgium","Belize","Benin","Bhutan","Bolivia","Bosnia and Herzegovina","Botswana","Brazil","Brunei","Bulgaria","Burkina Faso","Burundi","Cambodia","Cameroon","Canada","Cape Verde","Central African Republic","Chad","Chile","China","Colombi","Comoros","Congo (Brazzaville)","Congo","Costa Rica","Cote d'Ivoire","Croatia","Cuba","Cyprus","Czech Republic","Denmark","Djibouti","Dominica","Dominican Republic","East Timor (Timor Timur)","Ecuador","Egypt","El Salvador","Equatorial Guinea","Eritrea","Estonia","Ethiopia","Fiji","Finland","France","Gabon","Gambia, The","Georgia","Germany","Ghana","Greece","Grenada","Guatemala","Guinea","Guinea-Bissau","Guyana","Haiti","Honduras","Hungary","Iceland","India","Indonesia","Iran","Iraq","Ireland","Israel","Italy","Jamaica","Japan","Jordan","Kazakhstan","Kenya","Kiribati","Korea, North","Korea, South","Kuwait","Kyrgyzstan","Laos","Latvia","Lebanon","Lesotho","Liberia","Libya","Liechtenstein","Lithuania","Luxembourg","Macedonia","Madagascar","Malawi","Malaysia","Maldives","Mali","Malta","Marshall Islands","Mauritania","Mauritius","Mexico","Micronesia","Moldova","Monaco","Mongolia","Morocco","Mozambique","Myanmar","Namibia","Nauru","Nepal","Netherlands","New Zealand","Nicaragua","Niger","Nigeria","Norway","Oman","Pakistan","Palau","Panama","Papua New Guinea","Paraguay","Peru","Philippines","Poland","Portugal","Qatar","Romania","Russia","Rwanda","Saint Kitts and Nevis","Saint Lucia","Saint Vincent","Samoa","San Marino","Sao Tome and Principe","Saudi Arabia","Senegal","Serbia and Montenegro","Seychelles","Sierra Leone","Singapore","Slovakia","Slovenia","Solomon Islands","Somalia","South Africa","Spain","Sri Lanka","Sudan","Suriname","Swaziland","Sweden","Switzerland","Syria","Taiwan","Tajikistan","Tanzania","Thailand","Togo","Tonga","Trinidad and Tobago","Tunisia","Turkey","Turkmenistan","Tuvalu","Uganda","Ukraine","United Arab Emirates","United Kingdom","United States","Uruguay","Uzbekistan","Vanuatu","Vatican City","Venezuela","Vietnam","Yemen","Zambia","Zimbabwe"}; 
@@ -173,21 +173,21 @@
                         <label for="tel-fix">Telephone Number (FIX)</label>
                     </div>  
                     <div class="form-group col-sm-8">    
-                        <input type="text" id="tel-fix" placeholder="Your Fixed Telephone Number" required class="form-control" pattern="([\+]\d{2}|\d{1})\d{9}" data-error="Empty or invalid phone Number ex:- 011XXXXXXX or +94XXXXXXXXX"/>
+                        <input type="text" id="tel-fix" name="tel-fix" placeholder="Your Fixed Telephone Number" required class="form-control" pattern="([\+]\d{2}|\d{1})\d{9}" data-error="Empty or invalid phone Number ex:- 011XXXXXXX or +94XXXXXXXXX"/>
                         <div class="help-block with-errors"></div>
                     </div>
                     <div class="form-group col-sm-4">
                         <label for="tel-mob">Telephone Number (Mobile)</label>
                     </div>  
                     <div class="form-group col-sm-8">    
-                         <input type="text" id="tel-mob" placeholder="Your Mobile Number" required class="form-control" pattern="([\+]\d{2}|\d{1})\d{9}" data-error="Empty or invalid phone Number ex:- 07XXXXXXXX or +947XXXXXXXX"/>
+                        <input type="text" id="tel-mob" name="tel-mob" placeholder="Your Mobile Number" required class="form-control" pattern="([\+]\d{2}|\d{1})\d{9}" data-error="Empty or invalid phone Number ex:- 07XXXXXXXX or +947XXXXXXXX"/>
                          <div class="help-block with-errors"></div>
                     </div>
                     <div class="form-group col-sm-4">
                         <label for="email">E-mail</label>
                     </div>  
                     <div class="form-group col-sm-8">    
-                         <input type="email" id="email" placeholder="E-mail Address" required class="form-control" data-error="Empty or invalid email address"/>
+                        <input type="email" id="email" name="email" placeholder="E-mail Address" required class="form-control" data-error="Empty or invalid email address"/>
                          <div class="help-block with-errors"></div>
                     </div>
                     <div class="form-group col-sm-12 bottem-border">
@@ -204,7 +204,7 @@
                         <label for="fit-res">Foundation in Information Technology Result</label>
                     </div>
                     <div class="form-group col-sm-8">
-                        <select class="form-control" id="fit-res" required data-error="Must Select">
+                        <select class="form-control" id="fit-res" name="fit-res" required data-error="Must Select">
                             <option value="" disabled selected hidden>- - Select Result for FIT - -</option>
                             <%                                     
                                 for (int i = 0; i < grades.length; i++){
@@ -221,11 +221,11 @@
                     </div>
                     <div class="col-sm-8 carrier-set">
                         <div class="form-group col-sm-6">
-                            <input type="text" id="al-res-sub1" placeholder="Enter A/L Subject Name 01" required class="form-control" data-error="Can't be empty"/>
+                            <input type="text" id="al-sub1-name" name="al-sub1-name" placeholder="Enter A/L Subject Name 01" required class="form-control" data-error="Can't be empty"/>
                             <div class="help-block with-errors"></div>
                         </div> 
                         <div class="form-group col-sm-6">                    
-                            <select class="form-control" id="al-res-sub1" required data-error="Must Select">
+                            <select class="form-control" id="al-sub1-res" name="al-sub1-res" required data-error="Must Select">
                                 <option value="" disabled selected hidden>- - Select Result - -</option>
                                 <%                                     
                                     for (int i = 0; i < grades.length; i++){
@@ -241,11 +241,11 @@
                     </div>
                     <div class="col-sm-8 carrier-set">
                         <div class="form-group col-sm-6">
-                            <input type="text" id="al-res-sub2" placeholder="Enter A/L Subject Name 02" required data-error="Can't be empty" class="form-control"/>
+                            <input type="text" id="al-sub2-name" name="al-sub2-name" placeholder="Enter A/L Subject Name 02" required data-error="Can't be empty" class="form-control"/>
                             <div class="help-block with-errors"></div>
                         </div> 
                         <div class="form-group col-sm-6">                    
-                            <select class="form-control" id="al-res-sub2" required data-error="Must Select">
+                            <select class="form-control" id="al-sub2-res" name="al-sub2-res" required data-error="Must Select">
                                 <option value="" disabled selected hidden>- - Select Result - -</option>
                                 <%                                     
                                     for (int i = 0; i < grades.length; i++){
@@ -261,11 +261,11 @@
                     </div>
                     <div class="col-sm-8 carrier-set">
                         <div class="form-group col-sm-6">
-                            <input type="text" id="al-res-sub3" placeholder="Enter A/L Subject Name 03" required data-error="Can't be empty" class="form-control"/>
+                            <input type="text" id="al-sub3-name" name="al-sub3-name" placeholder="Enter A/L Subject Name 03" required data-error="Can't be empty" class="form-control"/>
                             <div class="help-block with-errors"></div>
                         </div> 
                         <div class="form-group col-sm-6">                    
-                            <select class="form-control" id="al-res-sub3" required data-error="Must Select">
+                            <select class="form-control" id="al-sub3-res" name="al-sub3-res" required data-error="Must Select">
                                 <option value="" disabled selected hidden>- - Select Result - -</option>
                                 <%                                     
                                     for (int i = 0; i < grades.length; i++){
@@ -286,7 +286,7 @@
                             <label for="ol-res-sub1">Results For Mathematics</label>
                         </div> 
                         <div class="form-group col-sm-4">                    
-                            <select class="form-control" id="ol-res-sub1" required data-error="Must Select">
+                            <select class="form-control" id="ol-res-maths" name="ol-res-maths" required data-error="Must Select">
                                 <option value="" disabled selected hidden>- - Select Result - -</option>
                                 <%                                     
                                     for (int i = 0; i < grades.length; i++){
@@ -305,7 +305,7 @@
                             <label for="ol-res-sub2">Results For English</label>
                         </div> 
                         <div class="form-group col-sm-4">                    
-                            <select class="form-control" id="ol-res-sub2" required data-error="Must Select">
+                            <select class="form-control" id="ol-res-eng" name="ol-res-eng" required data-error="Must Select">
                                 <option value="" disabled selected hidden>- - Select Result - -</option>
                                 <%                                     
                                     for (int i = 0; i < grades.length; i++){
@@ -325,8 +325,8 @@
                         <label for="emp-dtl-current">Are you currently employed?</label>
                     </div>
                     <div class="radio col-sm-4">
-                        <label><input type="radio" id="emp-dtl-current" value="Y" name="emp-curr">Yes</label>                    
-                        <label><input type="radio" id="emp-dtl-current" value="N" name="emp-curr">No</label>
+                        <label><input type="radio" id="emp-dtl-current" name="emp-dtl-current" value="1" name="emp-curr">Yes</label>                    
+                        <label><input type="radio" id="emp-dtl-current" name="emp-dtl-current" value="0" name="emp-curr">No</label>
                     </div>
                     <div class="form-group col-sm-4">
                         <!--Pseudo div-->
@@ -335,7 +335,7 @@
                         <label for="emp-dtl-discript">If employed: Designation</label>
                     </div>
                     <div class="form-group col-sm-4">
-                        <textarea class="form-control" rows="4" id="emp-dtl-discript" placeholder="Your Designation Here"></textarea>
+                        <textarea class="form-control" rows="4" id="emp-dtl-discript" name="emp-dtl-discript" placeholder="Your Designation Here"></textarea>
                     </div>
                     <div class="form-group col-sm-4">
                         <!--Pseudo div-->
@@ -344,8 +344,8 @@
                         <label for="emp-dtl-field">Are you working on computer field?</label>
                     </div>
                     <div class="radio col-sm-4">
-                        <label><input type="radio" id="emp-dtl-field" value="Y" name="emp-field">Yes</label>                    
-                        <label><input type="radio" id="emp-dtl-field" value="N" name="emp-field">No</label>
+                        <label><input type="radio" id="emp-dtl-field" name="emp-dtl-field" value="1" name="emp-field">Yes</label>                    
+                        <label><input type="radio" id="emp-dtl-field" name="emp-dtl-field" value="0" name="emp-field">No</label>
                     </div>
                     <div class="form-group col-sm-4">
                         <!--Pseudo div-->
@@ -354,7 +354,7 @@
                         <label for="emp-dtl-salary">Monthly Salary</label>
                     </div>
                     <div class="radio col-sm-4">
-                        <input type="text" id="emp-dtl-salary" placeholder="Your Monthly Salary" required class="form-control"/>
+                        <input type="text" id="emp-dtl-salary" name="emp-dtl-salary" placeholder="Your Monthly Salary" required class="form-control"/>
                     </div>
                     <div class="form-group col-sm-12 bottem-border">
                     </div>
