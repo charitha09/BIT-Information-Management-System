@@ -6,11 +6,15 @@
 package com.ims.model;
 
 import java.sql.Date;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.cfg.Configuration;
 
 /**
  *
  * @author amila
  */
+
 public class Student {
 
     private int studentId;
@@ -321,6 +325,20 @@ public class Student {
                 + Subject03Result + ", olMathsResult=" + olMathsResult + ", olEnglishResult="
                 + olEnglishResult + ", isEmploy=" + isEmploy + ", designation=" + designation
                 + ", isComputerField=" + isComputerField + ", monthlySalary=" + monthlySalary + '}';
+    }
+    
+    public static void main(String[] args) {
+        Student st = new Student();
+        st.setFullName("asdfghjkl");
+        
+        SessionFactory sf = new Configuration().configure().buildSessionFactory();
+        Session s = sf.openSession();
+        s.beginTransaction();
+        
+        s.save(st);
+        
+        s.getTransaction().commit();
+        
     }
 
 }
