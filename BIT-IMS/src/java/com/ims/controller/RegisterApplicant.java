@@ -136,6 +136,7 @@ public class RegisterApplicant extends HttpServlet {
             session.save(applicant);
             session.getTransaction().commit();
             response.sendRedirect("index.jsp");
+            System.out.println(applicant.getApplicationNum());
         } catch (HibernateException e) {
             System.out.println("Exception "+e);
             tx.rollback();
