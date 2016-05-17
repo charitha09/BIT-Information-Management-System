@@ -10,5 +10,16 @@
     <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
     <mapping class="com.ims.model.Applicant"/>
     <mapping class="com.ims.model.User"/>
+    <mapping class="com.ims.model.Admission"/>
+    <mapping class="com.ims.model.Exam"/>
+    <mapping class="com.ims.model.ExamApplication"/>
+    <mapping class="com.ims.model.ExamCenter"/>
+    <mapping class="com.ims.model.ExamHall"/>
+    <mapping class="com.ims.model.ExamLocation"/>
+    <mapping class="com.ims.model.Interview"/>
+    <mapping class="com.ims.model.Message"/>
+    <mapping class="com.ims.model.Notice"/>
+    <mapping class="com.ims.model.Student"/>
+    <mapping class="com.ims.model.Subject"/>
   </session-factory>
 </hibernate-configuration>
