@@ -45,18 +45,43 @@ public class Student {
     private String designation;
     private int isComputerField;
     private int monthlySalary;
+    private String password;
 
     public Student() {
     }
-
-    public Student(int studentId, String registrationNum, String indexNum,
-                    String fullName, String initial, String lastName, String title,
-                    String gender, String citizenship, String nationality, String nicNo,
-                    Date birthDay, String address, String country, String telephoneNum,
-                    String email, String alSubject01, String Subject01Result, String alSubject02,
-                    String Subject02Result, String alSubject03, String Subject03Result,
-                    String olMathsResult, String olEnglishResult, int isEmploy, String designation,
-                    int isComputerField, int monthlySalary) {
+/**
+ * 
+ * @param studentId
+ * @param registrationNum
+ * @param indexNum
+ * @param fullName
+ * @param initial
+ * @param lastName
+ * @param title
+ * @param gender
+ * @param citizenship
+ * @param nationality
+ * @param nicNo
+ * @param birthDay
+ * @param address
+ * @param country
+ * @param telephoneNum
+ * @param email
+ * @param alSubject01
+ * @param Subject01Result
+ * @param alSubject02
+ * @param Subject02Result
+ * @param alSubject03
+ * @param Subject03Result
+ * @param olMathsResult
+ * @param olEnglishResult
+ * @param isEmploy
+ * @param designation
+ * @param isComputerField
+ * @param monthlySalary
+ * @param password 
+ */
+    public Student(int studentId, String registrationNum, String indexNum, String fullName, String initial, String lastName, String title, String gender, String citizenship, String nationality, String nicNo, Date birthDay, String address, String country, String telephoneNum, String email, String alSubject01, String Subject01Result, String alSubject02, String Subject02Result, String alSubject03, String Subject03Result, String olMathsResult, String olEnglishResult, int isEmploy, String designation, int isComputerField, int monthlySalary, String password) {
         this.studentId = studentId;
         this.registrationNum = registrationNum;
         this.indexNum = indexNum;
@@ -85,7 +110,10 @@ public class Student {
         this.designation = designation;
         this.isComputerField = isComputerField;
         this.monthlySalary = monthlySalary;
+        this.password = password;
     }
+
+    
 
     public int getStudentId() {
         return studentId;
@@ -311,21 +339,22 @@ public class Student {
         this.monthlySalary = monthlySalary;
     }
 
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+    
+    
+
     @Override
     public String toString() {
-        return "Student{" + "studentId=" + studentId + ", registrationNum=" + registrationNum
-                + ", indexNum=" + indexNum + ", fullName=" + fullName + ", initial="
-                + initial + ", lastName=" + lastName + ", title=" + title + ", gender="
-                + gender + ", citizenship=" + citizenship + ", nationality=" + nationality
-                + ", nicNo=" + nicNo + ", birthDay=" + birthDay + ", address=" + address
-                + ", country=" + country + ", telephoneNum=" + telephoneNum + ", email="
-                + email + ", alSubject01=" + alSubject01 + ", Subject01Result="
-                + Subject01Result + ", alSubject02=" + alSubject02 + ", Subject02Result="
-                + Subject02Result + ", alSubject03=" + alSubject03 + ", Subject03Result="
-                + Subject03Result + ", olMathsResult=" + olMathsResult + ", olEnglishResult="
-                + olEnglishResult + ", isEmploy=" + isEmploy + ", designation=" + designation
-                + ", isComputerField=" + isComputerField + ", monthlySalary=" + monthlySalary + '}';
+        return "Student{" + "studentId=" + studentId + ", registrationNum=" + registrationNum + ", indexNum=" + indexNum + ", fullName=" + fullName + ", initial=" + initial + ", lastName=" + lastName + ", title=" + title + ", gender=" + gender + ", citizenship=" + citizenship + ", nationality=" + nationality + ", nicNo=" + nicNo + ", birthDay=" + birthDay + ", address=" + address + ", country=" + country + ", telephoneNum=" + telephoneNum + ", email=" + email + ", alSubject01=" + alSubject01 + ", Subject01Result=" + Subject01Result + ", alSubject02=" + alSubject02 + ", Subject02Result=" + Subject02Result + ", alSubject03=" + alSubject03 + ", Subject03Result=" + Subject03Result + ", olMathsResult=" + olMathsResult + ", olEnglishResult=" + olEnglishResult + ", isEmploy=" + isEmploy + ", designation=" + designation + ", isComputerField=" + isComputerField + ", monthlySalary=" + monthlySalary + ", password=" + password + '}';
     }
+
+
     
     public static void main(String[] args) {
         Student st = new Student();
