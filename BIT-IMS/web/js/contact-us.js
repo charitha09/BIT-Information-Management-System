@@ -1,3 +1,4 @@
+/*Google Map Functions*/
 function initializeBitHome() {
         var location = new google.maps.LatLng(6.883209, 79.869199); 
          

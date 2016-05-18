@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<MAINDISCRIPT>
+	<TITLE>Be a Part of the Knowledge Society with a BIT @ UCSC</TITLE>
+	<CONTENT>Taking into consideration the job opportunities that exist for ICT graduates in Sri Lanka & overseas, the UCSC (formerly Institute of Computer Technology) took the initiative to launch the External Degree (BIT) programme leading to the award of Degree of Bachelor of Information Technology (External) – BIT.
+
+The UCSC having the most advanced training resources and experience in Sri Lanka in the field of ICT training conducts the Degree of Bachelor of Information Technology (External) programme. The UCSC conducts examinations leading to the first-ever External Degree in IT in Sri Lanka. The University of Colombo will award the degree.</CONTENT>
+</MAINDISCRIPT>
+
+
+
+
+
+
+
+
+<DBCONFIG>
+	<SV_NAME>localhost</SV_NAME>
+	<US_NAME>root</US_NAME>
+	<PW_NAME></PW_NAME>
+	<DB_NAME>bit_sms</DB_NAME>
+</DBCONFIG>

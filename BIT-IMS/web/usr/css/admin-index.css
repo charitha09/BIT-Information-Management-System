@@ -1,0 +1,12 @@
+.navbar-brand{
+    padding: 0 40px;
+}
+
+.navbar-header a img{
+    height: 50px;
+    width: 50px;
+}
+
+.navbar {
+    border-radius: 0px;;
+}
