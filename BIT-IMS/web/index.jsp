@@ -24,7 +24,14 @@
                 <ul class="nav navbar-nav">
                     <li class="active"><a href="#">Home</a></li>
                     <li><a href="#">Page 1</a></li>
-                    <li><a href="Pages/course-application-form.jsp">Apply Course</a></li> 
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Apply Courses
+                        <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="Pages/course-application-form.jsp">Local Applicant</a></li>
+                            <li><a href="#">Foreign Applicant</a></li> 
+                        </ul>
+                     </li>
                     <li><a href="Pages/contact-us.jsp">Contact Us</a></li> 
                 </ul>
                 <ul class="nav navbar-nav navbar-right"  data-toggle="modal" data-target="#login-box">

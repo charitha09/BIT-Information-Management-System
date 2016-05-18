@@ -24,7 +24,13 @@
                 <ul class="nav navbar-nav">
                     <li><a href="../index.jsp">Home</a></li>
                     <li><a href="#">Page 1</a></li>
-                    <li class="active"><a href="course-application-form.jsp">Apply Course</a></li> 
+                    <li class="dropdown active">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Local Applicant
+                        <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">Foreign Applicant</a></li> 
+                        </ul>
+                     </li>
                     <li><a href="contact-us.jsp">Contact Us</a></li> 
                 </ul>
                 <ul class="nav navbar-nav navbar-right"  data-toggle="modal" data-target="#login-box">
@@ -138,7 +144,7 @@
                         <label for="perdtl-dob">Date Of Birth</label>
                     </div>
                     <div class="form-group col-sm-8">
-                        <input type="date" id="perdtl-dob" name="perdtl-dob" required class="form-control" data-error="Empty or invalied Date" pattern="(?:19|20)[0-9]{2}-(?:(?:0[1-9]|1[0-2])-(?:0[1-9]|1[0-9]|2[0-9])|(?:(?!02)(?:0[1-9]|1[0-2])-(?:30))|(?:(?:0[13578]|1[02])-31))"/>
+                        <input type="date" id="perdtl-dob" name="perdtl-dob" required class="form-control" data-error="Empty or invalied Date try YYYY-MM-DD format" pattern="(?:19|20)[0-9]{2}-(?:(?:0[1-9]|1[0-2])-(?:0[1-9]|1[0-9]|2[0-9])|(?:(?!02)(?:0[1-9]|1[0-2])-(?:30))|(?:(?:0[13578]|1[02])-31))"/>
                         <div class="help-block with-errors"></div>
                     </div>
                     <div class="form-group col-sm-12 bottem-border">
@@ -381,7 +387,7 @@
                         <label for="reg-center">Registration Center</label>
                     </div> 
                     <div class="form-group col-sm-8">                    
-                        <select class="form-control" id="reg-center">
+                        <select class="form-control" id="reg-center" required data-error="Must Select">
                             <option value="" disabled selected hidden>- - Choose Registration Near To You - -</option>
                             <%                                     
                                 for (int i = 0; i < centers.length; i++){
@@ -389,24 +395,28 @@
                                 }
                             %>
                         </select>
+                        <div class="help-block with-errors"></div>
                     </div>
                     <div class="form-group col-sm-4">
                         <label for="reg-pammount">Amount Paid (RS)</label>
                     </div>
-                    <div class="radio col-sm-8">
-                        <input type="text" id="reg-pammount" placeholder="Amount You Paid" required class="form-control"/>
+                    <div class="form-group col-sm-8">
+                        <input type="text" id="reg-pammount" placeholder="Amount You Paid" class="form-control" required data-error="Can't be empty"/>
+                        <div class="help-block with-errors"></div>
                     </div>
                     <div class="form-group col-sm-4">
                         <label for="reg-bank">Name of Payee Bank</label>
                     </div> 
                     <div class="form-group col-sm-8">                    
-                        <input type="text" id="reg-bank" placeholder="Bank You Paid" required class="form-control"/>
+                        <input type="text" id="reg-bank" placeholder="Bank You Paid" required data-error="Can't be empty" class="form-control"/>
+                        <div class="help-block with-errors"></div>
                     </div>
                     <div class="form-group col-sm-4">
                         <label for="reg-pdate">Date Paid</label>
                     </div> 
                     <div class="form-group col-sm-8">                    
-                        <input type="text" id="reg-pdate" placeholder="Date You Paid" required class="form-control"/>
+                        <input type="text" id="reg-pdate" placeholder="Date You Paid" required class="form-control" data-error="Empty or invalied Date try YYYY-MM-DD format" pattern="(?:19|20)[0-9]{2}-(?:(?:0[1-9]|1[0-2])-(?:0[1-9]|1[0-9]|2[0-9])|(?:(?!02)(?:0[1-9]|1[0-2])-(?:30))|(?:(?:0[13578]|1[02])-31))"/>
+                        <div class="help-block with-errors"></div>
                     </div>
                     <div class="form-group col-sm-12 bottem-border">
                     </div>
@@ -421,7 +431,7 @@
                             <h5>How To Contact UCSC?</h5>
                         </div>
                         <div class="col-sm-10">
-                            <a href="#">Contact Us</a>
+                            <a href="contact-us.jsp">Contact Us</a>
                         </div>
                     </div>
                     <div class="form-group col-sm-12 bottem-border">
