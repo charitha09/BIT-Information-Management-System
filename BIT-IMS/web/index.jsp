@@ -5,6 +5,8 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>UCSC SMS</title>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-social/5.0.0/bootstrap-social.min.css">
         <link rel="stylesheet" href="css/common-style.css">
         <link rel="stylesheet" href="css/index.css">
     </head>
@@ -72,9 +74,12 @@
                     </div>
                 </div>
             </div>
-            <div id="News-box" class="col-sm-4 index-box">
-                news-box
+            <div class="col-sm-4">
+                <div id="News-box" class="col-sm-12 index-box">
+                    news-box
+                </div>
             </div>
         </div>
+        <%@include file="WEB-INF/includes/footer.jsp"%>
     </body>
 </html>
