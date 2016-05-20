@@ -23,7 +23,6 @@
                 </div>
                 <ul class="nav navbar-nav">
                     <li><a href="../index.jsp">Home</a></li>
-                    <li><a href="#">Page 1</a></li>
                     <li><a href="course-application-form.jsp">Apply Course</a></li> 
                     <li class="active"><a href="contact-us.jsp">Contact Us</a></li> 
                 </ul>
@@ -34,7 +33,7 @@
             </nav>
         </header>
         <!--Login Box-->
-        <%@include file="../WEB-INF/includes/user-login.jsp" %>
+        <%@include file="../WEB-INF/includes/user-login-inside.jsp" %>
         <div class="container">
             <h2>Contact Us</h2>
             <div cla class="col-sm-6">

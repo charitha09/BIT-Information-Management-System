@@ -19,11 +19,10 @@
             <nav class="navbar navbar-inverse">
             <div class="container-fluid">
                 <div class="navbar-header">
-                    <a class="navbar-brand" href="../index.jsp"><img src="../images/logo.png" alt="UCSC"></a>
+                    <a class="navbar-brand" href="../index.jsp"><img src="../images/logo-1.png" alt="UCSC"></a>
                 </div>
                 <ul class="nav navbar-nav">
                     <li><a href="../index.jsp">Home</a></li>
-                    <li><a href="#">Page 1</a></li>
                     <li class="dropdown active">
                         <a class="dropdown-toggle" data-toggle="dropdown" href="#">Local Applicant
                         <span class="caret"></span></a>
@@ -40,11 +39,11 @@
             </nav>
         </header>
         <!--Login Box-->
-        <%@include file="../WEB-INF/includes/user-login.jsp" %>
+        <%@include file="../WEB-INF/includes/user-login-inside.jsp" %>
         <!--Student Application Form-->
         <div class="container">
             <div  id="form-headder" class="col-sm-12">
-                <h1><img src="../images/logo.png" alt="UCSC"></h1>
+                <h1><img src="../images/logo-1.png" alt="UCSC"></h1>
                 <h1>University Of Colombo School Of Computing</h1>
                 <h1>Student Application Form</h1>
             </div>

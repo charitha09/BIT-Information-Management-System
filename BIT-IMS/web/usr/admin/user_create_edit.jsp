@@ -24,13 +24,14 @@
                     <li class="active"><a href="user_create_edit.jsp">Users</a></li> 
                 </ul>
                 <ul class="nav navbar-nav navbar-right"  data-toggle="modal" data-target="#login-box">
-                    <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
+                    <li><a href="../../logout"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
                 </ul>
             </div>
             </nav>
         </header>
         <div class="container">
-            <h2>Create User</h2>
+            <h2 id="create-User">Create User</h2>
+            <div class="col-sm-12 line-seperater"></div>
             <div class="col-sm-12 shadow-box">
                 <form name="admin_user_create" data-toggle="validator" action="" method="POST">
                     <div class="form-group col-sm-4">
@@ -57,6 +58,8 @@
                             <option value="" disabled selected hidden>- - Select User Role - -</option>
                             <option value="admin">Administrator</option>
                             <option value="coord">Coordinator</option>
+                            <option value="coord">Department Head</option>
+                            <option value="coord">Operational Staff</option>
                         </select>
                         <div class="help-block with-errors"></div>
                     </div>
@@ -82,7 +85,31 @@
                         <button type="reset" class="btn btn-danger btn-size">Clear</button>
                     </div>                            
                 </form>                    
-            </div>                
+            </div>  
+            <h2>Current Users</h2>
+            <div class="col-sm-12 line-seperater"></div>            
+            <div class="col-sm-12 shadow-box">
+                <h3>Administrators</h3>
+                <div class="col-sm-12 line-seperater"></div>   
+                <div class="col-sm-12">
+                    
+                </div> 
+                <h3>Department Heads</h3>
+                <div class="col-sm-12 line-seperater"></div>   
+                <div class="col-sm-12">
+                    
+                </div> 
+                <h3>Coordinator</h3>
+                <div class="col-sm-12 line-seperater"></div>   
+                <div class="col-sm-12">
+                    
+                </div> 
+                <h3>Operational Staff</h3>
+                <div class="col-sm-12 line-seperater"></div>   
+                <div class="col-sm-12">
+                    
+                </div> 
+            </div>
         </div>
     </body>
 </html>

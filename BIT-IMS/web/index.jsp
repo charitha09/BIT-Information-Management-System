@@ -22,8 +22,7 @@
                     <a class="navbar-brand" href="index.jsp"><img src="images/logo.png" alt="UCSC"></a>
                 </div>
                 <ul class="nav navbar-nav">
-                    <li class="active"><a href="#">Home</a></li>
-                    <li><a href="#">Page 1</a></li>
+                    <li class="active"><a href="index.jsp">Home</a></li>
                     <li class="dropdown">
                         <a class="dropdown-toggle" data-toggle="dropdown" href="#">Apply Courses
                         <span class="caret"></span></a>
