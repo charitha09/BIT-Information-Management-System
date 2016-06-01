@@ -30,6 +30,12 @@
         </header>
         <div class="container">
             Not Developed Yet
+            
+            <% 
+                String fName = session.getAttribute("email").toString();
+                String userLevel = session.getAttribute("userLevel").toString();
+                out.write("<br>"+fName+"<br>"+userLevel);
+            %>
         </div>
     </body>
 </html>

@@ -110,7 +110,7 @@ public class LoginController extends HttpServlet {
                         HttpSession httpSession = request.getSession(true);
                         // set session attributes
                         httpSession.setAttribute("email", user.getEmail());
-                        httpSession.setAttribute("uname", user.getUserName());
+                        //httpSession.setAttribute("uname", user.getUserName());
                         httpSession.setAttribute("userLevel", user.getUserLevel());
                         httpSession.setAttribute("id", user.getUserId());
                     } else {

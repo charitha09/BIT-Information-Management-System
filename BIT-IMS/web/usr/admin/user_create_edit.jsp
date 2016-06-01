@@ -12,7 +12,7 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
         <script src="../../js/validator.min.js"></script>
-        <script src="js/admin-index.js"></script>   
+        <script src="../../js/admin-index.js"></script>   
         <header>
             <nav class="navbar navbar-inverse">
             <div class="container-fluid">
@@ -33,7 +33,7 @@
             <h2 id="create-User">Create User</h2>
             <div class="col-sm-12 line-seperater"></div>
             <div class="col-sm-12 shadow-box">
-                <form name="admin_user_create" data-toggle="validator" action="" method="POST">
+                <form name="admin_user_create" data-toggle="validator" action="../../AddUserController" method="POST">
                     <div class="form-group col-sm-4">
                         <label for="cr_usr_name">User Name</label>
                     </div>
@@ -46,7 +46,7 @@
                         <label for="cr_usr_email">E-mail</label>
                     </div>
                     <div class="form-group col-sm-8">
-                        <input type="email" id="cr_usr_email" name="cr_usr_email" placeholder="E-mail Address Of User" required class="form-control" data-error="Empty or Incorrect"/>
+                        <input type="email" id="cr_usr_email" name="cr_usr_email" placeholder="E-mail Address Of User" required class="form-control" data-error="Empty or Incorrect" onchange="checkEmail()"/>
                         <div class="help-block with-errors"></div>
                     </div>
                     <div class="col-sm-12"><!--Empty Div--></div>
@@ -57,20 +57,21 @@
                         <select class="form-control" id="cr_usr_role" name="cr_usr_role" required data-error="Must Select">
                             <option value="" disabled selected hidden>- - Select User Role - -</option>
                             <option value="admin">Administrator</option>
-                            <option value="coord">Coordinator</option>
-                            <option value="coord">Department Head</option>
-                            <option value="coord">Operational Staff</option>
+                            <option value="coordinator">Coordinator</option>
+                            <option value="departmentHead">Department Head</option>
+                            <option value="operationalStaff">Operational Staff</option>
                         </select>
                         <div class="help-block with-errors"></div>
                     </div>
                     <div class="col-sm-12"><!--Empty Div--></div>
-                    <div class="form-group col-sm-4">
+                 <!--   <div class="form-group col-sm-4">
                         <label for="cr_usr_loginName">Login Name</label>
                     </div>
                     <div class="form-group col-sm-8">
                         <input type="text" id="cr_usr_loginName" name="cr_usr_loginName" placeholder="Login Name for User" required class="form-control" data-error="Can't be empty"/>
                         <div class="help-block with-errors"></div>
                     </div>
+                 -->
                     <div class="col-sm-12"><!--Empty Div--></div>
                     <div class="form-group col-sm-4">
                         <label for="cr_usr_loginPasswd">Login Password</label>

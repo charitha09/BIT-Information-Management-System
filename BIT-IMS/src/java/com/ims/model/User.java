@@ -1,18 +1,12 @@
 package com.ims.model;
 
-import java.security.MessageDigest;
-import java.util.*;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
 import org.hibernate.annotations.GenericGenerator;
-import org.hibernate.cfg.Configuration;
-import sun.security.provider.MD4;
 
 /**
  *
@@ -29,7 +23,6 @@ public class User {
     private String name;
     private String email;
     private String userLevel;
-    private String userName;
     private String password;
 
     public User() {
@@ -41,15 +34,13 @@ public class User {
      * @param name
      * @param email
      * @param userLevel
-     * @param userName
      * @param password
      */
-    public User(String userId, String name, String email, String userLevel, String userName, String password) {
+    public User(String userId, String name, String email, String userLevel, String password) {
         this.userId = userId;
         this.name = name;
         this.email = email;
         this.userLevel = userLevel;
-        this.userName = userName;
         this.password = password;
     }
 
@@ -83,14 +74,6 @@ public class User {
 
     public void setUserLevel(String userLevel) {
         this.userLevel = userLevel;
-    }
-
-    public String getUserName() {
-        return userName;
-    }
-
-    public void setUserName(String userName) {
-        this.userName = userName;
     }
 
     public String getPassword() {
