@@ -1,3 +1,9 @@
+<%@page import="com.ims.model.User"%>
+<%@page import="java.util.List"%>
+<%@page import="org.hibernate.Query"%>
+<%@page import="org.hibernate.Session"%>
+<%@page import="org.hibernate.cfg.Configuration"%>
+<%@page import="org.hibernate.SessionFactory"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -15,18 +21,18 @@
         <script src="../../js/admin-index.js"></script>   
         <header>
             <nav class="navbar navbar-inverse">
-            <div class="container-fluid">
-                <div class="navbar-header">
-                    <a class="navbar-brand" href="index.jsp"><img src="../../images/logo.png" alt="UCSC"></a>
+                <div class="container-fluid">
+                    <div class="navbar-header">
+                        <a class="navbar-brand" href="index.jsp"><img src="../../images/logo.png" alt="UCSC"></a>
+                    </div>
+                    <ul class="nav navbar-nav">
+                        <li><a href="index.jsp">Home</a></li> 
+                        <li class="active"><a href="user_create_edit.jsp">Users</a></li> 
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right"  data-toggle="modal" data-target="#login-box">
+                        <li><a href="../../logout"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
+                    </ul>
                 </div>
-                <ul class="nav navbar-nav">
-                    <li><a href="index.jsp">Home</a></li> 
-                    <li class="active"><a href="user_create_edit.jsp">Users</a></li> 
-                </ul>
-                <ul class="nav navbar-nav navbar-right"  data-toggle="modal" data-target="#login-box">
-                    <li><a href="../../logout"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
-                </ul>
-            </div>
             </nav>
         </header>
         <div class="container">
@@ -64,14 +70,14 @@
                         <div class="help-block with-errors"></div>
                     </div>
                     <div class="col-sm-12"><!--Empty Div--></div>
-                 <!--   <div class="form-group col-sm-4">
-                        <label for="cr_usr_loginName">Login Name</label>
-                    </div>
-                    <div class="form-group col-sm-8">
-                        <input type="text" id="cr_usr_loginName" name="cr_usr_loginName" placeholder="Login Name for User" required class="form-control" data-error="Can't be empty"/>
-                        <div class="help-block with-errors"></div>
-                    </div>
-                 -->
+                    <!--   <div class="form-group col-sm-4">
+                           <label for="cr_usr_loginName">Login Name</label>
+                       </div>
+                       <div class="form-group col-sm-8">
+                           <input type="text" id="cr_usr_loginName" name="cr_usr_loginName" placeholder="Login Name for User" required class="form-control" data-error="Can't be empty"/>
+                           <div class="help-block with-errors"></div>
+                       </div>
+                    -->
                     <div class="col-sm-12"><!--Empty Div--></div>
                     <div class="form-group col-sm-4">
                         <label for="cr_usr_loginPasswd">Login Password</label>
@@ -86,29 +92,44 @@
                         <button type="reset" class="btn btn-danger btn-size">Clear</button>
                     </div>                            
                 </form>                    
-            </div>  
+            </div> 
+            <%
+                SessionFactory sessionFactry = new Configuration().configure().buildSessionFactory();
+                Session s = sessionFactry.openSession();
+                s.beginTransaction();
+            %>
             <h2>Current Users</h2>
             <div class="col-sm-12 line-seperater"></div>            
             <div class="col-sm-12 shadow-box">
                 <h3>Administrators</h3>
                 <div class="col-sm-12 line-seperater"></div>   
                 <div class="col-sm-12">
-                    
+                    <%
+                        Query query = s.createQuery("FROM User where userLevel='admin'");
+                        List userIDS = query.list();
+
+                        for (int i = 0; i < userIDS.size(); i++) {
+                            User u = new User();
+                            u = (User) userIDS.get(i);
+                            out.write("<br>" + u.getName() + "<br>");
+                        }
+                    %>
+
                 </div> 
                 <h3>Department Heads</h3>
                 <div class="col-sm-12 line-seperater"></div>   
                 <div class="col-sm-12">
-                    
+
                 </div> 
                 <h3>Coordinator</h3>
                 <div class="col-sm-12 line-seperater"></div>   
                 <div class="col-sm-12">
-                    
+
                 </div> 
                 <h3>Operational Staff</h3>
                 <div class="col-sm-12 line-seperater"></div>   
                 <div class="col-sm-12">
-                    
+
                 </div> 
             </div>
         </div>
