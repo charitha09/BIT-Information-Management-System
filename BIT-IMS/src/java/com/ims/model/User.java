@@ -24,6 +24,7 @@ public class User {
     private String email;
     private String userLevel;
     private String password;
+    private int state =1;
 
     public User() {
     }
@@ -83,6 +84,15 @@ public class User {
     public void setPassword(String password) {
         this.password = password;
     }
+    public int getState() {
+        return state;
+    }
+
+    public void setState(int state) {
+        this.state = state;
+    }
+    
+    
 ///////////////////////////////////////////////////////////////////////////////////////////////////
     /*
     public static void main(String[] args) {
@@ -104,4 +114,6 @@ public class User {
     }
     */
     //////////////////////////////////////////////////////////////////////////////////////////
+
+    
 }

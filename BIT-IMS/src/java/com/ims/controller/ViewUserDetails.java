@@ -14,19 +14,17 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 
 /**
  *
  * @author Hp
  */
-@WebServlet(name = "AddUserController", urlPatterns = {"/AddUserController"})
-public class AddUserController extends HttpServlet {
+@WebServlet(name = "ViewUserDetails", urlPatterns = {"/ViewUserDetails"})
+public class ViewUserDetails extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -45,10 +43,10 @@ public class AddUserController extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet AddUserController</title>");
+            out.println("<title>Servlet ViewUserDetails</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet AddUserController at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet ViewUserDetails at " + request.getContextPath() +"<br>"+ request.getParameter("userID") + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -80,52 +78,33 @@ public class AddUserController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
-        String name = request.getParameter("cr_usr_name");
-        String email = request.getParameter("cr_usr_email");
-        String userLevel = request.getParameter("cr_usr_role");
-        String password = request.getParameter("cr_usr_loginPasswd");
-
-        // error feedback message
-        String error = "";
-        if (name.equals("") || email.equals("") || userLevel.equals("") || password.equals("")) {
-            error += "Empty Fields!";
-            // fields are empty
-        } else if (!email.contains(".") || !email.contains("@")) {
-            error += "invalid email!";
-        } else if (!checkEmailInDb(email)) {
-            error += "email is exist";
-        } else {
-            User u = new User();
-            u.setName(name);
-            u.setEmail(email);
-            u.setUserLevel(userLevel);
-            u.setPassword(password);
-
-            SessionFactory sessionFactry = new Configuration().configure().buildSessionFactory();
-            Session session = sessionFactry.openSession();
-            Transaction tx = null;
-            try {
-                tx = session.beginTransaction();
-                session.save(u);
-                session.getTransaction().commit();
-                response.sendRedirect("usr/admin/user_create_edit.jsp");
-
-            } catch (HibernateException e) {
-                System.out.println("Exception " + e);
-                tx.rollback();
-                response.sendRedirect("usr/admin/user_create_edit.jsp?msg=error");
-            } finally {
-                session.close();
-            }
-
+        String userId = request.getParameter("userID");
+        SessionFactory sessionFactry = new Configuration().configure().buildSessionFactory();
+        Session s = sessionFactry.openSession();
+        Query query = s.createQuery("FROM User where userId='"+userId+"'");
+        List userList = query.list();
+        User u = new User();
+        u = (User) userList.get(0);
+        try (PrintWriter out = response.getWriter()) {
+            /* TODO output your page here. You may use following sample code. */
+            
+            out.println("<h1>"+u.getName()+ "</h1><br><br>");
+            out.println("<h1>"+u.getEmail()+ "</h1><br><br>");
+            out.println("<h1>"+u.getUserLevel()+ "</h1><br><br>");
+            
+            out.println("<form method=\"POST\" action=\"../../UpdateUser\">\n" +
+"                <input type=\"text\" id=\"uIdUpdate\" name=\"uIdUpdate\" value="+u.getUserId()+"><br><br>\n" +
+"                <input type=\"text\" id=\"uNameUpdate\" name=\"uNameUpdate\" value="+u.getName()+"><br><br>\n" +
+"                <input type=\"text\" id=\"uEmailUpdate\" name=\"uEmailUpdate\" value="+u.getEmail()+"><br><br>\n" +
+"                <input type=\"text\" id=\"uLevelUpdate\" name=\"uLevelUpdate\" value="+u.getUserLevel()+"><br><br>\n" +
+"                <input type=\"submit\" value=\"submit\">\n" +
+"                <input type=\"button\" value=\"close\"><br><br>\n" +
+"            </form>");
         }
+        //u=null;
+        s.close();
         
-        if(error !=""){
-            response.sendRedirect("usr/admin/user_create_edit.jsp?msg=" + error);
-        }
-
-        //processRequest(request, response);
+       // processRequest(request, response);
     }
 
     /**
@@ -138,23 +117,4 @@ public class AddUserController extends HttpServlet {
         return "Short description";
     }// </editor-fold>
 
-    boolean checkEmailInDb(String email) {
-        SessionFactory sessionFactry = new Configuration().configure().buildSessionFactory();
-        Session session = sessionFactry.openSession();
-        session.beginTransaction();
-        try {
-            Query query = session.createQuery("SELECT userId FROM User WHERE email= '" + email + "'");
-            List userIDS = query.list();
-            session.getTransaction().commit();
-
-            if (userIDS.size() == 0) {
-                return true;
-            }
-        } catch (Exception e) {
-            System.out.println("exeption in checkEmailInDb()");
-        } finally {
-            session.close();
-        }
-        return false;
-    }
 }
