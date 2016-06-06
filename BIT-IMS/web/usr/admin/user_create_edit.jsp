@@ -105,16 +105,15 @@
                 <div class="col-sm-12 line-seperater"></div>   
                 <div class="col-sm-12">
                     <%
-                        Query queryAdmin = s.createQuery("FROM User where userLevel='admin'");
+                        Query queryAdmin = s.createQuery("FROM User where userLevel='admin'and state=1");
                         List adminUser = queryAdmin.list();
 
                         for (int i = 0; i < adminUser.size(); i++) {
                             User u = new User();
                             u = (User) adminUser.get(i);
                             out.write("<br>" + u.getName() + "<br>");
-                            out.write("<br>" + u.getUserId() + "<br>");
                             out.write("<input type='button' value='update' onclick=viewUserDetails('" + u.getUserId() + "')>");
-                             out.write("<input type='button' value='Reset Password' onclick=resetPassword('" + u.getUserId() + "')>");
+                            out.write("<input type='button' value='Reset Password' onclick=resetPassword('" + u.getUserId() + "')>");
                             out.write("<input type='button' value='delete' onclick=suspendUser('" + u.getUserId() + "')>");
                         }
                     %>
@@ -124,7 +123,7 @@
                 <div class="col-sm-12 line-seperater"></div>   
                 <div class="col-sm-12">
                     <%
-                        Query queryDepHead = s.createQuery("FROM User where userLevel='departmentHead'");
+                        Query queryDepHead = s.createQuery("FROM User where userLevel='departmentHead'and state=1");
                         List depHeadUserIDS = queryDepHead.list();
 
                         for (int i = 0; i < depHeadUserIDS.size(); i++) {
@@ -132,6 +131,9 @@
                             u = (User) depHeadUserIDS.get(i);
                             out.write("<br>" + u.getName() + "<br>");
                             out.write("<input type='button' value='update' onclick=viewUserDetails('" + u.getUserId() + "')>");
+                            out.write("<input type='button' value='Reset Password' onclick=resetPassword('" + u.getUserId() + "')>");
+                            out.write("<input type='button' value='delete' onclick=suspendUser('" + u.getUserId() + "')>");
+                        
                         }
                     %>
 
@@ -140,7 +142,7 @@
                 <div class="col-sm-12 line-seperater"></div>   
                 <div class="col-sm-12">
                     <%
-                        Query queryCoor = s.createQuery("FROM User where userLevel='coordinator'");
+                        Query queryCoor = s.createQuery("FROM User where userLevel='coordinator' and state=1");
                         List coorUserIDS = queryCoor.list();
 
                         for (int i = 0; i < coorUserIDS.size(); i++) {
@@ -148,6 +150,9 @@
                             u = (User) coorUserIDS.get(i);
                             out.write("<br>" + u.getName() + "<br>");
                             out.write("<input type='button' value='update' onclick=viewUserDetails('" + u.getUserId() + "')>");
+                            out.write("<input type='button' value='Reset Password' onclick=resetPassword('" + u.getUserId() + "')>");
+                            out.write("<input type='button' value='delete' onclick=suspendUser('" + u.getUserId() + "')>");
+                        
                         }
                     %>
 
@@ -157,7 +162,7 @@
                 <div class="col-sm-12">
 
                     <%
-                        Query queryOpeStaff = s.createQuery("FROM User where userLevel='operationalStaff'");
+                        Query queryOpeStaff = s.createQuery("FROM User where userLevel='operationalStaff' and state=1");
                         List opeStaffUserIDS = queryOpeStaff.list();
 
                         for (int i = 0; i < opeStaffUserIDS.size(); i++) {
@@ -165,6 +170,9 @@
                             u = (User) opeStaffUserIDS.get(i);
                             out.write("<br>" + u.getName() + "<br>");
                             out.write("<input type='button' value='update' onclick=viewUserDetails('" + u.getUserId() + "')>");
+                            out.write("<input type='button' value='Reset Password' onclick=resetPassword('" + u.getUserId() + "')>");
+                            out.write("<input type='button' value='delete' onclick=suspendUser('" + u.getUserId() + "')>");
+                        
                         }
                     %>
 
@@ -172,7 +180,7 @@
             </div>
         </div>
         <div id="updateUserDetails">
-         
+
         </div>
     </body>
 </html>

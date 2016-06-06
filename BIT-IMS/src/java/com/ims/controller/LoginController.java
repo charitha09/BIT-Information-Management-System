@@ -185,12 +185,12 @@ public class LoginController extends HttpServlet {
 
         try {
             //check user table
-            Query query = session.createQuery("SELECT userId FROM User WHERE email= '" + username + "' AND password='" + password + "'");
+            Query query = session.createQuery("SELECT userId FROM User WHERE email= '" + username + "' AND password='" + password + "'AND state=1");
             List userIDS = query.list();
 
             if (userIDS.size() == 0) {
                 //check student table
-                Query query2 = session.createQuery("SELECT studentId FROM Student WHERE registrationNum= '" + username + "' AND password='" + password + "'");
+                Query query2 = session.createQuery("SELECT studentId FROM Student WHERE registrationNum= '" + username + "' AND password='" + password + "'AND state=1");
                 List studentIDS = query2.list();
                 if (studentIDS.size() == 1) {
                     userId = studentIDS.get(0).toString();
