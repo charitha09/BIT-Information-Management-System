@@ -5,6 +5,7 @@
  */
 package com.ims.controller;
 
+import com.ims.model.User;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -12,6 +13,11 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import org.hibernate.HibernateException;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
+import org.hibernate.cfg.Configuration;
 
 /**
  *
@@ -72,7 +78,37 @@ public class SuspendUser extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        String userId = request.getParameter("userID");
+         
+        SessionFactory sessionFactry = new Configuration().configure().buildSessionFactory();
+        Session session = sessionFactry.openSession();
+        Transaction tx = null;
+        try {
+            tx = session.beginTransaction();
+            User u = new User();
+            u = (User) session.get(User.class, userId);
+            u.setState(0);
+            session.update(u);
+            session.getTransaction().commit();
+            try (PrintWriter out = response.getWriter()) {
+                out.println("Susspend user successfully");
+
+            }
+
+        } catch (HibernateException e) {
+            System.out.println("Exception " + e);
+            try (PrintWriter out = response.getWriter()) {
+                out.println("Error in susspend user");
+
+            }
+
+            tx.rollback();
+        } finally {
+            session.close();
+            //response.sendRedirect("usr/admin/user_create_edit.jsp?msg=err");
+        }
+
+       // processRequest(request, response);
     }
 
     /**

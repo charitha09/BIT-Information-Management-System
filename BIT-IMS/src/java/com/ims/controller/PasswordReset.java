@@ -72,10 +72,11 @@ public class PasswordReset extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
+        String userId = request.getParameter("userID");
+        
         SessionFactory sessionFactry = new Configuration().configure().buildSessionFactory();
         Session session = sessionFactry.openSession();
         Transaction tx = null;
-        String userId = request.getParameter("userID");
         try {
             tx = session.beginTransaction();
             User u = new User();

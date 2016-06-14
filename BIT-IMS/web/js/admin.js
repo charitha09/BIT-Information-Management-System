@@ -70,17 +70,16 @@ function resetPassword(uid) {
 
 function suspendUser(uid) {
     alert("Suspend User ->" + uid);
-    alert(userID);
     var httpxml;
     httpxml = new XMLHttpRequest();
     function stateChanged() {
         if (httpxml.readyState == 4) {
-            //document.getElementById("updateUserDetails").innerHTML = httpxml.responseText;
+            var r = httpxml.responseText;
+            alert(r);
         }
     }
     var url = "../../SuspendUser";
-    //url = url + "?txt=" + userID;
-    //url=url+"&sid="+Math.random();
+    url = url + "?userID=" + uid;
     httpxml.onreadystatechange = stateChanged;
     httpxml.open("POST", url, true);
     httpxml.send(null);
