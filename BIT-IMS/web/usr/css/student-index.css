@@ -1,0 +1,12 @@
+#GPA div{
+    text-align: center;
+}
+
+#GPA div h3{
+    padding-bottom: 5px;
+    margin: 0;
+}
+
+.stat-box{
+    border-bottom: 1px solid #ccc;
+}
