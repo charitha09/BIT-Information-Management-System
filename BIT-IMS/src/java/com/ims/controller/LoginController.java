@@ -148,6 +148,8 @@ public class LoginController extends HttpServlet {
             // user is redirected to the appropriate home page
             if (userLevel.equalsIgnoreCase("admin")) {
                 response.sendRedirect("usr/admin");
+            }else if(userLevel.equalsIgnoreCase("Student")){
+                response.sendRedirect("usr/student");
             }
             /*
              else if (userLevel.equalsIgnoreCase("administrative")) {

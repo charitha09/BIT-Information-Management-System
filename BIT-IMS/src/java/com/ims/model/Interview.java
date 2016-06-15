@@ -3,36 +3,51 @@ package com.ims.model;
 
 import java.sql.Date;
 import java.sql.Time;
+import java.sql.Timestamp;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.cfg.Configuration;
 
 /**
  *
  * @author Indusaranie Tharusha
+ * Edit Amila Sankha
  */
+@Entity
 public class Interview {
-    private int interviewID;
+    @Id
+    @GenericGenerator(name = "sequence_interview_num", strategy = "com.ims.ids.InterviewNum")
+    @GeneratedValue(generator = "sequence_interview_num")
+    private String interviewID;
     private Date date;
-    private Time time;
-    
+    private Time startTime;
+    private int capacity;
+    private int timeForOne;
+    private Timestamp timeStamp;
+  
     public Interview(){
     }
-    
-    public Interview(int interviewID, Date date, Time time){
-        this.interviewID = interviewID;
+
+    public Interview(Date date, Time startTime, int capacity, int timeForOne, Timestamp timeStamp) {
         this.date = date;
-        this.time = time;
+        this.startTime = startTime;
+        this.capacity = capacity;
+        this.timeForOne = timeForOne;
+        this.timeStamp = timeStamp;
     }
-    
-    public int getInterviewID() {
+
+    public String getInterviewID() {
         return interviewID;
     }
 
-    public void setInterviewID(int interviewID) {
+    public void setInterviewID(String interviewID) {
         this.interviewID = interviewID;
     }
-    
+
     public Date getDate() {
         return date;
     }
@@ -40,25 +55,43 @@ public class Interview {
     public void setDate(Date date) {
         this.date = date;
     }
-    
-    public Time getTime() {
-        return time;
+
+    public Time getStartTime() {
+        return startTime;
     }
 
-    public void setTime(Time time) {
-        this.time = time;
+    public void setStartTime(Time startTime) {
+        this.startTime = startTime;
     }
 
-    @Override
-    public String toString(){
-        return "Interview{" + "interviewID=" + interviewID + ", date=" + date 
-                + ", time=" + time + '}';
-                
+    public int getCapacity() {
+        return capacity;
     }
+
+    public void setCapacity(int capacity) {
+        this.capacity = capacity;
+    }
+
+    public int getTimeForOne() {
+        return timeForOne;
+    }
+
+    public void setTimeForOne(int timeForOne) {
+        this.timeForOne = timeForOne;
+    }
+
+    public Timestamp getTimeStamp() {
+        return timeStamp;
+    }
+
+    public void setTimeStamp(Timestamp timeStamp) {
+        this.timeStamp = timeStamp;
+    }
+
     
     public static void main(String[] args) {
         Interview in = new Interview();
-        in.setInterviewID(7850);
+       // in.setInterviewID(7850);
         
         SessionFactory sf = new Configuration().configure().buildSessionFactory();
         Session s = sf.openSession();
@@ -67,6 +100,7 @@ public class Interview {
         s.save(in);
         
         s.getTransaction().commit();
+        s.close();
         
     }
 }
