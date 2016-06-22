@@ -54,6 +54,7 @@ public class Applicant {
     private String designation;
     private int isComputerField;
     private int monthlySalary;
+    private String interviewID;
 
     public Applicant() {
     }
@@ -86,9 +87,10 @@ public class Applicant {
  * @param isEmploy
  * @param designation
  * @param isComputerField
- * @param monthlySalary 
+ * @param monthlySalary
+ * @param interviewID 
  */
-    public Applicant(String applicationNum, String fullName, String initial, String lastName, String title, String gender, String citizenship, String nationality, String nicNo, Date birthDay, String address, String country, String telephoneNumFix, String telephoneNumMob, String email, String fitResult, String alSubject01, String Subject01Result, String alSubject02, String Subject02Result, String alSubject03, String Subject03Result, String olMathsResult, String olEnglishResult, int isEmploy, String designation, int isComputerField, int monthlySalary) {
+    public Applicant(String applicationNum, String fullName, String initial, String lastName, String title, String gender, String citizenship, String nationality, String nicNo, Date birthDay, String address, String country, String telephoneNumFix, String telephoneNumMob, String email, String fitResult, String alSubject01, String Subject01Result, String alSubject02, String Subject02Result, String alSubject03, String Subject03Result, String olMathsResult, String olEnglishResult, int isEmploy, String designation, int isComputerField, int monthlySalary, String interviewID) {
         this.applicationNum = applicationNum;
         this.fullName = fullName;
         this.initial = initial;
@@ -117,6 +119,7 @@ public class Applicant {
         this.designation = designation;
         this.isComputerField = isComputerField;
         this.monthlySalary = monthlySalary;
+        this.interviewID = interviewID;
     }
 
     public String getApplicationNum() {
@@ -343,9 +346,17 @@ public class Applicant {
         this.monthlySalary = monthlySalary;
     }
 
+    public String getInterviewID() {
+        return interviewID;
+    }
+
+    public void setInterviewID(String interviewID) {
+        this.interviewID = interviewID;
+    }
+
     @Override
     public String toString() {
-        return "Applicant{" + "applicationNum=" + applicationNum + ", fullName=" + fullName + ", initial=" + initial + ", lastName=" + lastName + ", title=" + title + ", gender=" + gender + ", citizenship=" + citizenship + ", nationality=" + nationality + ", nicNo=" + nicNo + ", birthDay=" + birthDay + ", address=" + address + ", country=" + country + ", telephoneNumFix=" + telephoneNumFix + ", telephoneNumMob=" + telephoneNumMob + ", email=" + email + ", fitResult=" + fitResult + ", alSubject01=" + alSubject01 + ", Subject01Result=" + Subject01Result + ", alSubject02=" + alSubject02 + ", Subject02Result=" + Subject02Result + ", alSubject03=" + alSubject03 + ", Subject03Result=" + Subject03Result + ", olMathsResult=" + olMathsResult + ", olEnglishResult=" + olEnglishResult + ", isEmploy=" + isEmploy + ", designation=" + designation + ", isComputerField=" + isComputerField + ", monthlySalary=" + monthlySalary + '}';
+        return "Applicant{" + "applicationNum=" + applicationNum + ", fullName=" + fullName + ", initial=" + initial + ", lastName=" + lastName + ", title=" + title + ", gender=" + gender + ", citizenship=" + citizenship + ", nationality=" + nationality + ", nicNo=" + nicNo + ", birthDay=" + birthDay + ", address=" + address + ", country=" + country + ", telephoneNumFix=" + telephoneNumFix + ", telephoneNumMob=" + telephoneNumMob + ", email=" + email + ", fitResult=" + fitResult + ", alSubject01=" + alSubject01 + ", Subject01Result=" + Subject01Result + ", alSubject02=" + alSubject02 + ", Subject02Result=" + Subject02Result + ", alSubject03=" + alSubject03 + ", Subject03Result=" + Subject03Result + ", olMathsResult=" + olMathsResult + ", olEnglishResult=" + olEnglishResult + ", isEmploy=" + isEmploy + ", designation=" + designation + ", isComputerField=" + isComputerField + ", monthlySalary=" + monthlySalary + ", interviewID=" + interviewID + '}';
     }
 
    
