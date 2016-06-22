@@ -25,7 +25,7 @@
                 </div>
                 <ul class="nav navbar-nav">
                     <li class="active"><a href="index.jsp">Home</a></li> 
-                    <li><a href="user_create_edit.jsp">Users</a></li> 
+                    <li><a href="interview_create_edit.jsp">Interview</a></li> 
                 </ul>
                 <ul class="nav navbar-nav navbar-right"  data-toggle="modal" data-target="#login-box">
                     <li><a href="../../logout"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
