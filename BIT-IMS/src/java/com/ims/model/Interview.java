@@ -28,16 +28,19 @@ public class Interview {
     private int capacity;
     private int timeForOne;
     private Timestamp timeStamp;
+    private String author;
   
     public Interview(){
     }
 
-    public Interview(Date date, Time startTime, int capacity, int timeForOne, Timestamp timeStamp) {
+    public Interview(String interviewID, Date date, Time startTime, int capacity, int timeForOne, Timestamp timeStamp, String author) {
+        this.interviewID = interviewID;
         this.date = date;
         this.startTime = startTime;
         this.capacity = capacity;
         this.timeForOne = timeForOne;
         this.timeStamp = timeStamp;
+        this.author = author;
     }
 
     public String getInterviewID() {
@@ -88,6 +91,20 @@ public class Interview {
         this.timeStamp = timeStamp;
     }
 
+    public String getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(String author) {
+        this.author = author;
+    }
+
+    @Override
+    public String toString() {
+        return "Interview{" + "interviewID=" + interviewID + ", date=" + date + ", startTime=" + startTime + ", capacity=" + capacity + ", timeForOne=" + timeForOne + ", timeStamp=" + timeStamp + ", author=" + author + '}';
+    }
+
+    
     
     public static void main(String[] args) {
         Interview in = new Interview();
