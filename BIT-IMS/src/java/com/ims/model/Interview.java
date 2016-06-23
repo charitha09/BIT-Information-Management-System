@@ -26,19 +26,19 @@ public class Interview {
     private Date date;
     private Time startTime;
     private int capacity;
-    private int timeForOne;
+    private int applicantPerHour;
     private Timestamp timeStamp;
     private String author;
   
     public Interview(){
     }
 
-    public Interview(String interviewID, Date date, Time startTime, int capacity, int timeForOne, Timestamp timeStamp, String author) {
+    public Interview(String interviewID, Date date, Time startTime, int capacity, int applicantPerHour, Timestamp timeStamp, String author) {
         this.interviewID = interviewID;
         this.date = date;
         this.startTime = startTime;
         this.capacity = capacity;
-        this.timeForOne = timeForOne;
+        this.applicantPerHour = applicantPerHour;
         this.timeStamp = timeStamp;
         this.author = author;
     }
@@ -75,12 +75,12 @@ public class Interview {
         this.capacity = capacity;
     }
 
-    public int getTimeForOne() {
-        return timeForOne;
+    public int geAapplicantPerHour() {
+        return applicantPerHour;
     }
 
-    public void setTimeForOne(int timeForOne) {
-        this.timeForOne = timeForOne;
+    public void setApplicantPerHour(int applicantPerHour) {
+        this.applicantPerHour = applicantPerHour;
     }
 
     public Timestamp getTimeStamp() {
@@ -101,7 +101,7 @@ public class Interview {
 
     @Override
     public String toString() {
-        return "Interview{" + "interviewID=" + interviewID + ", date=" + date + ", startTime=" + startTime + ", capacity=" + capacity + ", timeForOne=" + timeForOne + ", timeStamp=" + timeStamp + ", author=" + author + '}';
+        return "Interview{" + "interviewID=" + interviewID + ", date=" + date + ", startTime=" + startTime + ", capacity=" + capacity + ", applicantPerHour=" + applicantPerHour + ", timeStamp=" + timeStamp + ", author=" + author + '}';
     }
 
     

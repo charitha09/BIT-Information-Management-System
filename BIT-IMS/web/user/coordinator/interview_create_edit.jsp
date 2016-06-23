@@ -41,7 +41,7 @@
         </header>
         <h1>Interview</h1>
 
-        <button name="Add Interview" class="btn-success">Add Interview</button>
+        <button type='button' class="btn btn-success" data-toggle='modal' data-target='#addNewInterview'>Add Interview</button>
 
         <br><br>
 
@@ -121,12 +121,12 @@
                 <div class="modal-content" >
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        <h4 class="modal-title" id="viewinterviewID">Modal Header</h4>
+                        <h2 class="modal-title" id="viewinterviewID">Update Interview Details</h2>
                     </div>
                     <div class="modal-body ">
-                        <h2>Update Interview Details</h2>
+
                         <div id="updateInterviewDetailsBody"style="height: auto">
-                            <form id="updateInterview" action="../../UpdateInterviewDetails">
+                            <form id="updateInterview" action="../../UpdateInterviewDetails" method="POST">
 
                                 <div class="form-group col-sm-4">
                                     <label>Date</label>
@@ -146,6 +146,68 @@
 
                                 <div class="modal-footer">
                                     <button type="submit" class="btn btn-default" >Update</button>
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                </div>
+
+                            </form>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- Modal Add New Interview -->
+        <div id="addNewInterview" class="modal fade" role="dialog" >
+            <div class="modal-dialog">
+
+                <!-- Modal content-->
+                <div class="modal-content" >
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h2 class="modal-title" id="viewinterviewID">New Interview</h2>
+                    </div>
+                    <div class="modal-body ">
+
+                        <div id="updateInterviewDetailsBody"style="height: auto">
+                            <form id="updateInterview" action="../../AddInterview" method="POST">
+
+                                <div class="form-group col-sm-4">
+                                    <label>Date</label>
+                                </div>
+                                <div class="form-group col-sm-8">
+                                    <input type="date" id="interviewDate" name="interviewDate" placeholder="Interview Date" required class="form-control" data-error="Can't be empty"/>
+                                    <div class="help-block with-errors"></div>
+                                </div>
+
+                                <div class="form-group col-sm-4">
+                                    <label>Start Time</label>
+                                </div>
+                                <div class="form-group col-sm-8">
+                                    <input type="time" id="interStartTime" name="interStartTime"placeholder="Interview Start Time" required class="form-control" data-error="Can't be empty"/>
+                                    <div class="help-block with-errors"></div>
+                                </div>
+
+                                <div class="form-group col-sm-4">
+                                    <label>Number of Applicant</label>
+                                </div>
+                                <div class="form-group col-sm-8">
+                                    <input type="number" id="numberOfApplicant" name="numberOfApplicant" placeholder="Number of Applicant" required class="form-control" data-error="Can't be empty"/>
+                                    <div class="help-block with-errors"></div>
+                                </div>
+
+                                <div class="form-group col-sm-4">
+                                    <label>Applicants Pre Hour</label>
+                                </div>
+                                <div class="form-group col-sm-8">
+                                    <input type="number" id="applicantsPreHour" name="applicantsPreHour" placeholder="Applicants Pre Hour" required class="form-control" data-error="Can't be empty"/>
+                                    <div class="help-block with-errors"></div>
+                                </div>
+
+                                <div class="modal-footer">
+                                    <button type="submit" class="btn btn-default" >Add</button>
                                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                                 </div>
 
