@@ -22,7 +22,7 @@ import org.hibernate.cfg.Configuration;
 
 /**
  *
- * @author Hp
+ * @author Amila Sankha
  */
 @WebServlet(name = "LoadInterviewDetails", urlPatterns = {"/LoadInterviewDetails"})
 public class LoadInterviewDetails extends HttpServlet {
