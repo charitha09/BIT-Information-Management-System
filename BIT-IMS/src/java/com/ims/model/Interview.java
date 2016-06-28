@@ -24,7 +24,9 @@ public class Interview {
     @GeneratedValue(generator = "sequence_interview_num")
     private String interviewID;
     private Date date;
-    private Time startTime;
+    private String startTime;
+    private String address;
+    private String district;
     private int capacity;
     private int applicantPerHour;
     private Timestamp timeStamp;
@@ -33,10 +35,12 @@ public class Interview {
     public Interview(){
     }
 
-    public Interview(String interviewID, Date date, Time startTime, int capacity, int applicantPerHour, Timestamp timeStamp, String author) {
+    public Interview(String interviewID, Date date, String startTime, String address, String district, int capacity, int applicantPerHour, Timestamp timeStamp, String author) {
         this.interviewID = interviewID;
         this.date = date;
         this.startTime = startTime;
+        this.address = address;
+        this.district = district;
         this.capacity = capacity;
         this.applicantPerHour = applicantPerHour;
         this.timeStamp = timeStamp;
@@ -59,12 +63,28 @@ public class Interview {
         this.date = date;
     }
 
-    public Time getStartTime() {
+    public String getStartTime() {
         return startTime;
     }
 
-    public void setStartTime(Time startTime) {
+    public void setStartTime(String startTime) {
         this.startTime = startTime;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getDistrict() {
+        return district;
+    }
+
+    public void setDistrict(String district) {
+        this.district = district;
     }
 
     public int getCapacity() {
@@ -75,7 +95,7 @@ public class Interview {
         this.capacity = capacity;
     }
 
-    public int geAapplicantPerHour() {
+    public int getApplicantPerHour() {
         return applicantPerHour;
     }
 
@@ -101,7 +121,7 @@ public class Interview {
 
     @Override
     public String toString() {
-        return "Interview{" + "interviewID=" + interviewID + ", date=" + date + ", startTime=" + startTime + ", capacity=" + capacity + ", applicantPerHour=" + applicantPerHour + ", timeStamp=" + timeStamp + ", author=" + author + '}';
+        return "Interview{" + "interviewID=" + interviewID + ", date=" + date + ", startTime=" + startTime + ", address=" + address + ", district=" + district + ", capacity=" + capacity + ", applicantPerHour=" + applicantPerHour + ", timeStamp=" + timeStamp + ", author=" + author + '}';
     }
 
     

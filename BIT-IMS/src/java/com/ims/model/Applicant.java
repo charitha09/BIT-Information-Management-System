@@ -55,42 +55,49 @@ public class Applicant {
     private int isComputerField;
     private int monthlySalary;
     private String interviewID;
+    private String interviewStartTime;
+    private int doPayment = 0;
+            
 
     public Applicant() {
     }
-/**
- * 
- * @param applicationNum
- * @param fullName
- * @param initial
- * @param lastName
- * @param title
- * @param gender
- * @param citizenship
- * @param nationality
- * @param nicNo
- * @param birthDay
- * @param address
- * @param country
- * @param telephoneNumFix
- * @param telephoneNumMob
- * @param email
- * @param fitResult
- * @param alSubject01
- * @param Subject01Result
- * @param alSubject02
- * @param Subject02Result
- * @param alSubject03
- * @param Subject03Result
- * @param olMathsResult
- * @param olEnglishResult
- * @param isEmploy
- * @param designation
- * @param isComputerField
- * @param monthlySalary
- * @param interviewID 
- */
-    public Applicant(String applicationNum, String fullName, String initial, String lastName, String title, String gender, String citizenship, String nationality, String nicNo, Date birthDay, String address, String country, String telephoneNumFix, String telephoneNumMob, String email, String fitResult, String alSubject01, String Subject01Result, String alSubject02, String Subject02Result, String alSubject03, String Subject03Result, String olMathsResult, String olEnglishResult, int isEmploy, String designation, int isComputerField, int monthlySalary, String interviewID) {
+    
+    /**
+     * 
+     * @param applicationNum
+     * @param fullName
+     * @param initial
+     * @param lastName
+     * @param title
+     * @param gender
+     * @param citizenship
+     * @param nationality
+     * @param nicNo
+     * @param birthDay
+     * @param address
+     * @param country
+     * @param telephoneNumFix
+     * @param telephoneNumMob
+     * @param email
+     * @param fitResult
+     * @param alSubject01
+     * @param Subject01Result
+     * @param alSubject02
+     * @param Subject02Result
+     * @param alSubject03
+     * @param Subject03Result
+     * @param olMathsResult
+     * @param olEnglishResult
+     * @param isEmploy
+     * @param designation
+     * @param isComputerField
+     * @param monthlySalary
+     * @param interviewID
+     * @param interviewStartTime
+     * @param doPayment 
+     */
+
+    public Applicant(String applicationNum, String fullName, String initial, String lastName, String title, String gender, String citizenship, String nationality, String nicNo, Date birthDay, String address, String country, String telephoneNumFix, String telephoneNumMob, String email, String fitResult, String alSubject01, String Subject01Result, String alSubject02, String Subject02Result, String alSubject03, String Subject03Result, String olMathsResult, String olEnglishResult, int isEmploy, String designation, int isComputerField, int monthlySalary, String interviewID, String interviewStartTime, int doPayment) {
         this.applicationNum = applicationNum;
         this.fullName = fullName;
         this.initial = initial;
@@ -120,6 +127,8 @@ public class Applicant {
         this.isComputerField = isComputerField;
         this.monthlySalary = monthlySalary;
         this.interviewID = interviewID;
+        this.interviewStartTime = interviewStartTime;
+        this.doPayment = doPayment;
     }
 
     public String getApplicationNum() {
@@ -354,12 +363,24 @@ public class Applicant {
         this.interviewID = interviewID;
     }
 
-    @Override
-    public String toString() {
-        return "Applicant{" + "applicationNum=" + applicationNum + ", fullName=" + fullName + ", initial=" + initial + ", lastName=" + lastName + ", title=" + title + ", gender=" + gender + ", citizenship=" + citizenship + ", nationality=" + nationality + ", nicNo=" + nicNo + ", birthDay=" + birthDay + ", address=" + address + ", country=" + country + ", telephoneNumFix=" + telephoneNumFix + ", telephoneNumMob=" + telephoneNumMob + ", email=" + email + ", fitResult=" + fitResult + ", alSubject01=" + alSubject01 + ", Subject01Result=" + Subject01Result + ", alSubject02=" + alSubject02 + ", Subject02Result=" + Subject02Result + ", alSubject03=" + alSubject03 + ", Subject03Result=" + Subject03Result + ", olMathsResult=" + olMathsResult + ", olEnglishResult=" + olEnglishResult + ", isEmploy=" + isEmploy + ", designation=" + designation + ", isComputerField=" + isComputerField + ", monthlySalary=" + monthlySalary + ", interviewID=" + interviewID + '}';
+    public String getInterviewStartTime() {
+        return interviewStartTime;
     }
 
-   
+    public void setInterviewStartTime(String interviewStartTime) {
+        this.interviewStartTime = interviewStartTime;
+    }
+
+    public int getDoPayment() {
+        return doPayment;
+    }
+
+    public void setDoPayment(int doPayment) {
+        this.doPayment = doPayment;
+    }
+
+    
+
 
     ///////////////////////////////////////////////////////////////////////////////////////////////////
     public static void main(String[] args) {

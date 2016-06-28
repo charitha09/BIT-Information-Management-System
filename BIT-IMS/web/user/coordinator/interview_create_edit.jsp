@@ -32,6 +32,7 @@
                     <ul class="nav navbar-nav">
                         <li class="active"><a href="index.jsp">Home</a></li> 
                         <li><a href="interview_create_edit.jsp">Interview</a></li> 
+                        <li><a href="viewApplicant.jsp">Applicant</a></li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right"  data-toggle="modal" data-target="#login-box">
                         <li><a href="../../logout"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
@@ -189,6 +190,32 @@
                                     <input type="time" id="interStartTime" name="interStartTime"placeholder="Interview Start Time" required class="form-control" data-error="Can't be empty"/>
                                     <div class="help-block with-errors"></div>
                                 </div>
+
+
+                                <div class="form-group col-sm-4">
+                                    <label>Address</label>
+                                </div>
+                                <div class="form-group col-sm-8">
+                                    <input type="text" id="interAddress" name="interAddress"placeholder="Interview Address" required class="form-control" data-error="Can't be empty"/>
+                                    <div class="help-block with-errors"></div>
+                                </div>
+                                <!--            
+                                <% String[] centers = {"Colombo", "Galle", "Kandy"}; %>
+                                <div class="form-group col-sm-4">
+                                    <label for="reg-center">District</label>
+                                </div> 
+                                <div class="form-group col-sm-8">                    
+                                    <select class="form-control" id="interDistrict" name="interDistrict" required data-error="Must Select">
+                                        <option value="" disabled selected hidden>- - Choose Registration District - -</option>
+                                       <%/*
+                                            for (int i = 0; i < centers.length; i++) {
+                                                out.write("<option value=' " + centers[i]  + "'>" + centers[i] + "</option>");
+                                            }*/
+                                        %>
+                                    </select>
+                                    <div class="help-block with-errors"></div>
+                                </div>
+                                -->
 
                                 <div class="form-group col-sm-4">
                                     <label>Number of Applicant</label>
