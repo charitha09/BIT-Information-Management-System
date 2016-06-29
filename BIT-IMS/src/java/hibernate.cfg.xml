@@ -21,5 +21,6 @@
     <mapping class="com.ims.model.Notice"/>
     <mapping class="com.ims.model.Student"/>
     <mapping class="com.ims.model.Subject"/>
+    <mapping class="com.ims.model.Payment"/>
   </session-factory>
 </hibernate-configuration>
