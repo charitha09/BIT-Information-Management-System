@@ -27,3 +27,15 @@
     margin-bottom: 15px;
     border-bottom: 1px solid #888888;
 }
+
+#UserView div:last-child{
+    margin-bottom: 15px;
+}
+
+#UserView p{
+    display: inline-block;
+}
+
+#UserView button{
+    margin-left: 5px;
+}

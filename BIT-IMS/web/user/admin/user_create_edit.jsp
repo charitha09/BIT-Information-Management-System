@@ -100,7 +100,7 @@
             %>
             <h2>Current Users</h2>
             <div class="col-sm-12 line-seperater"></div>            
-            <div class="col-sm-12 shadow-box">
+            <div id="UserView" class="col-sm-12 shadow-box">
                 <h3>Administrators</h3>
                 <div class="col-sm-12 line-seperater"></div>   
                 <div class="col-sm-12">
@@ -111,10 +111,10 @@
                         for (int i = 0; i < adminUser.size(); i++) {
                             User u = new User();
                             u = (User) adminUser.get(i);
-                            out.write("<br>" + u.getName() + "<br>");
-                            out.write("<input type='button' value='update' onclick=viewUserDetails('" + u.getUserId() + "')>");
-                            out.write("<input type='button' value='Reset Password' onclick=resetPassword('" + u.getUserId() + "')>");
-                            out.write("<input type='button' value='delete' onclick=suspendUser('" + u.getUserId() + "')>");
+                            out.write("<br><p class='col-sm-10'>" + u.getName() + "</p></br>");
+                            out.write("<button type='button' value='update' class='class='btn btn-default btn-sm' onclick=viewUserDetails('" + u.getUserId() + "')><span class='glyphicon glyphicon-pencil'></span></button>");
+                            out.write("<button type='button' value='Reset Password' class='btn btn-warning btn-sm' onclick=resetPassword('" + u.getUserId() + "')><span class='glyphicon glyphicon-refresh'></span></button>");
+                            out.write("<button type='button' value='delete' class='btn btn-danger btn-sm' onclick=suspendUser('" + u.getUserId() + "')><span class='glyphicon glyphicon-remove'></button>");
                         }
                     %>
 
@@ -129,10 +129,10 @@
                         for (int i = 0; i < depHeadUserIDS.size(); i++) {
                             User u = new User();
                             u = (User) depHeadUserIDS.get(i);
-                            out.write("<br>" + u.getName() + "<br>");
-                            out.write("<input type='button' value='update' onclick=viewUserDetails('" + u.getUserId() + "')>");
-                            out.write("<input type='button' value='Reset Password' onclick=resetPassword('" + u.getUserId() + "')>");
-                            out.write("<input type='button' value='delete' onclick=suspendUser('" + u.getUserId() + "')>");
+                            out.write("<br><p class='col-sm-10'>" + u.getName() + "</p></br>");
+                            out.write("<button type='button' value='update' class='btn btn-default btn-sm' onclick=viewUserDetails('" + u.getUserId() + "')><span class='glyphicon glyphicon-pencil'></span></button>");
+                            out.write("<button type='button' value='Reset Password' class='btn btn-warning btn-sm' onclick=resetPassword('" + u.getUserId() + "')><span class='glyphicon glyphicon-refresh'></span></button>");
+                            out.write("<button type='button' value='delete' class='btn btn-danger btn-sm' onclick=suspendUser('" + u.getUserId() + "')><span class='glyphicon glyphicon-remove'></button>");
                         
                         }
                     %>
@@ -148,10 +148,10 @@
                         for (int i = 0; i < coorUserIDS.size(); i++) {
                             User u = new User();
                             u = (User) coorUserIDS.get(i);
-                            out.write("<br>" + u.getName() + "<br>");
-                            out.write("<input type='button' value='update' onclick=viewUserDetails('" + u.getUserId() + "')>");
-                            out.write("<input type='button' value='Reset Password' onclick=resetPassword('" + u.getUserId() + "')>");
-                            out.write("<input type='button' value='delete' onclick=suspendUser('" + u.getUserId() + "')>");
+                            out.write("<br><p class='col-sm-10'>" + u.getName() + "</p></br>");
+                            out.write("<button type='button' value='update' class='btn btn-default btn-sm' onclick=viewUserDetails('" + u.getUserId() + "')><span class='glyphicon glyphicon-pencil'></span></button>");
+                            out.write("<button type='button' value='Reset Password' class='btn btn-warning btn-sm' onclick=resetPassword('" + u.getUserId() + "')><span class='glyphicon glyphicon-refresh'></span></button>");
+                            out.write("<button type='button' value='delete' class='btn btn-danger btn-sm' onclick=suspendUser('" + u.getUserId() + "')><span class='glyphicon glyphicon-remove'></span></button></button>");
                         
                         }
                     %>
@@ -168,10 +168,10 @@
                         for (int i = 0; i < opeStaffUserIDS.size(); i++) {
                             User u = new User();
                             u = (User) opeStaffUserIDS.get(i);
-                            out.write("<br>" + u.getName() + "<br>");
-                            out.write("<input type='button' value='update' onclick=viewUserDetails('" + u.getUserId() + "')>");
-                            out.write("<input type='button' value='Reset Password' onclick=resetPassword('" + u.getUserId() + "')>");
-                            out.write("<input type='button' value='delete' onclick=suspendUser('" + u.getUserId() + "')>");
+                            out.write("<br><p class='col-sm-10'>" + u.getName() + "</p><br>");
+                            out.write("<button type='button' value='update' class='btn btn-default btn-sm' onclick=viewUserDetails('" + u.getUserId() + "')><span class='glyphicon glyphicon-pencil'></span></button>");
+                            out.write("<button type='button' value='Reset Password' class='btn btn-warning btn-sm' onclick=resetPassword('" + u.getUserId() + "')><span class='glyphicon glyphicon-refresh'></span></button>");
+                            out.write("<button type='button' value='delete' class='btn btn-danger btn-sm' onclick=suspendUser('" + u.getUserId() + "')><span class='glyphicon glyphicon-remove'></span></button>");
                         
                         }
                     %>
