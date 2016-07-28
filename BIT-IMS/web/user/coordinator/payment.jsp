@@ -36,12 +36,14 @@
         </header>
         <h1>Payment Details</h1>
         
-        <button type='button' class="btn btn-success" data-toggle='modal' data-target='#addRegistrationPayment'>Add Registration Payment</button>
-
+        <button type='button' class="btn btn-success" data-toggle='modal' data-target='#addPayment'>Add Payment</button>
+        
+        <button type='button' class="btn btn-success" data-toggle='modal' data-target='#viewPayment'>View Payment</button>
 
 
         <!-- ======================================================== -->
-        <div id="addRegistrationPayment" class="modal fade" role="dialog" >
+        <!-- Add Payment -->
+        <div id="addPayment" class="modal fade" role="dialog" >
             <div class="modal-dialog">
 
                 <!-- Modal content-->
@@ -52,14 +54,79 @@
                     </div>
                     <div class="modal-body ">
 
+                        <button type='button' class="btn btn-success" data-toggle='modal' data-target='#addApplicationPayment'>Add Application Payment</button> <br/><br/>
+                        <button type='button' class="btn btn-success" data-toggle='modal' data-target='#addRegistrationPayment'>Add Registration Payment</button> <br/><br/>
+                        <button type='button' class="btn btn-success" data-toggle='modal' data-target='#addExamPayment'>Add Examination Payment</button> <br/><br/>
+                        <button type='button' class="btn btn-success" data-toggle='modal' data-target='#addOtherPayment'>Add Other Payment</button> <br/><br/>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        
+         <!-- ======================================================== -->
+         <!-- View Payment -->
+        <div id="viewPayment" class="modal fade" role="dialog" >
+            <div class="modal-dialog">
+
+                <!-- Modal content-->
+                <div class="modal-content" >
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h2 class="modal-title" >View Payment</h2>
+                    </div>
+                    <div class="modal-body ">
+
+                        <!-- <button type='button' class="btn btn-success" data-toggle='modal' data-target='#addApplicationPayment'>Add Application Payment</button>
+                        -->
+                        
+                        View Payment
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+
+        <!-- ======================================================== -->
+        <!-- Add Application Payment -->
+        
+        <div id="addApplicationPayment" class="modal fade" role="dialog" >
+            <div class="modal-dialog">
+
+                <!-- Modal content-->
+                <div class="modal-content" >
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h2 class="modal-title" >Add Application Payment</h2>
+                    </div>
+                    <div class="modal-body ">
+
                         <form method="POST" action="../../AddPayment">
                             <div class="form-group col-sm-4">
                                 <label for="reg-pammount">Application Number</label>
                             </div>
+                            
                             <div class="form-group col-sm-8">
-                                <input type="text" id="paymentApplicationNum" name="paymentApplicationNum" placeholder="Amount You Paid" class="form-control" required data-error="Can't be empty"/>
+                                <input type="text" id="paymentApplicationNum" name="paymentApplicationNumOrStudentID" placeholder="Application Number" class="form-control" required data-error="Can't be empty"/>
                                 <div class="help-block with-errors"></div>
                             </div>
+                            
+                            <input type="hidden" value="Application_Payment" id="paymentType" name="paymentType"/>
+                            
                             <div class="form-group col-sm-4">
                                 <label for="reg-pammount">Amount Paid (RS)</label>
                             </div>
@@ -92,6 +159,200 @@
                 </div>
             </div>
         </div>
+        
+        <!-- ======================================================== -->
+        <!-- Add Registration Payment -->
+        
+        <div id="addRegistrationPayment" class="modal fade" role="dialog" >
+            <div class="modal-dialog">
+
+                <!-- Modal content-->
+                <div class="modal-content" >
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h2 class="modal-title" >Add Registration Payment</h2>
+                    </div>
+                    <div class="modal-body ">
+
+                        <form method="POST" action="../../AddPayment">
+                            <div class="form-group col-sm-4">
+                                <label for="reg-pammount">Student ID</label>
+                            </div>
+                            
+                            <div class="form-group col-sm-8">
+                                <input type="text" id="paymentApplicationNum" name="paymentApplicationNumOrStudentID" placeholder="Student ID" class="form-control" required data-error="Can't be empty"/>
+                                <div class="help-block with-errors"></div>
+                            </div>
+                            
+                            <input type="hidden" value="Registration_Payment" id="paymentType" name="paymentType"/>
+                            
+                            <div class="form-group col-sm-4">
+                                <label for="reg-pammount">Amount Paid (RS)</label>
+                            </div>
+                            <div class="form-group col-sm-8">
+                                <input type="text" id="paymentAmount" name="paymentAmount" placeholder="Amount You Paid" class="form-control" required data-error="Can't be empty"/>
+                                <div class="help-block with-errors"></div>
+                            </div>
+                            <div class="form-group col-sm-4">
+                                <label for="reg-bank">Name of Payee Bank</label>
+                            </div> 
+                            <div class="form-group col-sm-8">                    
+                                <input type="text" id="paymentBank" name="paymentBank" placeholder="Bank You Paid" required data-error="Can't be empty" class="form-control"/>
+                                <div class="help-block with-errors"></div>
+                            </div>
+                            <div class="form-group col-sm-4">
+                                <label for="reg-pdate">Date Paid</label>
+                            </div> 
+                            <div class="form-group col-sm-8">                    
+                                <input type="date" id="paymentDate" name="paymentDate" placeholder="Date You Paid" required class="form-control" data-error="Empty or invalied Date try YYYY-MM-DD format" pattern="(?:19|20)[0-9]{2}-(?:(?:0[1-9]|1[0-2])-(?:0[1-9]|1[0-9]|2[0-9])|(?:(?!02)(?:0[1-9]|1[0-2])-(?:30))|(?:(?:0[13578]|1[02])-31))"/>
+                                <div class="help-block with-errors"></div>
+                            </div>
+
+                            <button type="submit" class="btn btn-default" >Submit</button>
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+
+                        </form>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        
+         <!-- ======================================================== -->
+        <!-- Add Examination Payment -->
+        
+        <div id="addExamPayment" class="modal fade" role="dialog" >
+            <div class="modal-dialog">
+
+                <!-- Modal content-->
+                <div class="modal-content" >
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h2 class="modal-title" >Add Examination Payment</h2>
+                    </div>
+                    <div class="modal-body ">
+
+                        <form method="POST" action="../../AddPayment">
+                            <div class="form-group col-sm-4">
+                                <label for="reg-pammount">Student ID</label>
+                            </div>
+                            
+                            <div class="form-group col-sm-8">
+                                <input type="text" id="paymentApplicationNum" name="paymentApplicationNumOrStudentID" placeholder="Student ID" class="form-control" required data-error="Can't be empty"/>
+                                <div class="help-block with-errors"></div>
+                            </div>
+                            
+                            <div class="form-group col-sm-4">
+                                <label for="reg-pammount">Examination ID</label>
+                            </div>
+                            
+                            <div class="form-group col-sm-8">
+                                <input type="text" id="examID" name="examID" placeholder="Examination ID" class="form-control" required data-error="Can't be empty"/>
+                                <div class="help-block with-errors"></div>
+                            </div>
+                            
+                            <input type="hidden" value="Examination_Payment" id="paymentType" name="paymentType"/>
+                            
+                            <div class="form-group col-sm-4">
+                                <label for="reg-pammount">Amount Paid (RS)</label>
+                            </div>
+                            <div class="form-group col-sm-8">
+                                <input type="text" id="paymentAmount" name="paymentAmount" placeholder="Amount You Paid" class="form-control" required data-error="Can't be empty"/>
+                                <div class="help-block with-errors"></div>
+                            </div>
+                            <div class="form-group col-sm-4">
+                                <label for="reg-bank">Name of Payee Bank</label>
+                            </div> 
+                            <div class="form-group col-sm-8">                    
+                                <input type="text" id="paymentBank" name="paymentBank" placeholder="Bank You Paid" required data-error="Can't be empty" class="form-control"/>
+                                <div class="help-block with-errors"></div>
+                            </div>
+                            <div class="form-group col-sm-4">
+                                <label for="reg-pdate">Date Paid</label>
+                            </div> 
+                            <div class="form-group col-sm-8">                    
+                                <input type="date" id="paymentDate" name="paymentDate" placeholder="Date You Paid" required class="form-control" data-error="Empty or invalied Date try YYYY-MM-DD format" pattern="(?:19|20)[0-9]{2}-(?:(?:0[1-9]|1[0-2])-(?:0[1-9]|1[0-9]|2[0-9])|(?:(?!02)(?:0[1-9]|1[0-2])-(?:30))|(?:(?:0[13578]|1[02])-31))"/>
+                                <div class="help-block with-errors"></div>
+                            </div>
+
+                            <button type="submit" class="btn btn-default" >Submit</button>
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+
+                        </form>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        
+        <!-- ======================================================== -->
+        <!-- Add Other Payment -->
+        
+        <div id="addOtherPayment" class="modal fade" role="dialog" >
+            <div class="modal-dialog">
+
+                <!-- Modal content-->
+                <div class="modal-content" >
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h2 class="modal-title" >Add Other Payment</h2>
+                    </div>
+                    <div class="modal-body ">
+
+                        <form method="POST" action="../../AddPayment">
+                            <div class="form-group col-sm-4">
+                                <label for="reg-pammount">Student ID</label>
+                            </div>
+                            <div class="form-group col-sm-8">
+                                <input type="text" id="paymentApplicationNum" name="paymentApplicationNumOrStudentID" placeholder="Student ID" class="form-control" required data-error="Can't be empty"/>
+                                <div class="help-block with-errors"></div>
+                            </div>
+                            
+                            <div class="form-group col-sm-4">
+                                <label for="reg-pammount">Payment Type</label>
+                            </div>
+                            <div class="form-group col-sm-8">
+                                <input type="text" id="paymentType" name="paymentType" placeholder="Payment Type" class="form-control" required data-error="Can't be empty"/>
+                                <div class="help-block with-errors"></div>
+                            </div>
+ 
+                            <div class="form-group col-sm-4">
+                                <label for="reg-pammount">Amount Paid (RS)</label>
+                            </div>
+                            <div class="form-group col-sm-8">
+                                <input type="text" id="paymentAmount" name="paymentAmount" placeholder="Amount You Paid" class="form-control" required data-error="Can't be empty"/>
+                                <div class="help-block with-errors"></div>
+                            </div>
+                            <div class="form-group col-sm-4">
+                                <label for="reg-bank">Name of Payee Bank</label>
+                            </div> 
+                            <div class="form-group col-sm-8">                    
+                                <input type="text" id="paymentBank" name="paymentBank" placeholder="Bank You Paid" required data-error="Can't be empty" class="form-control"/>
+                                <div class="help-block with-errors"></div>
+                            </div>
+                            <div class="form-group col-sm-4">
+                                <label for="reg-pdate">Date Paid</label>
+                            </div> 
+                            <div class="form-group col-sm-8">                    
+                                <input type="date" id="paymentDate" name="paymentDate" placeholder="Date You Paid" required class="form-control" data-error="Empty or invalied Date try YYYY-MM-DD format" pattern="(?:19|20)[0-9]{2}-(?:(?:0[1-9]|1[0-2])-(?:0[1-9]|1[0-9]|2[0-9])|(?:(?!02)(?:0[1-9]|1[0-2])-(?:30))|(?:(?:0[13578]|1[02])-31))"/>
+                                <div class="help-block with-errors"></div>
+                            </div>
+
+                            <button type="submit" class="btn btn-default" >Submit</button>
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+
+                        </form>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
 
 
 

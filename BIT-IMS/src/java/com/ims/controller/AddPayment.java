@@ -5,6 +5,7 @@
  */
 package com.ims.controller;
 
+import com.ims.model.Applicant;
 import com.ims.model.Payment;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -15,6 +16,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -45,7 +47,7 @@ public class AddPayment extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet AddPayment</title>");            
+            out.println("<title>Servlet AddPayment</title>");
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Servlet AddPayment at " + request.getContextPath() + "</h1>");
@@ -80,40 +82,56 @@ public class AddPayment extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
-        String applicationNum = request.getParameter("paymentApplicationNum");
+        String err = " ";
+
+        String applicationNumOrStudentID = request.getParameter("paymentApplicationNumOrStudentID");
         String paymentAmmount = request.getParameter("paymentAmount");
+        String paymentType = request.getParameter("paymentType");
         String paymentBank = request.getParameter("paymentBank");
+        String examID = request.getParameter("examID");
         Date paymentDate = Date.valueOf(request.getParameter("paymentDate"));
-        
+
+        HttpSession httpSession = request.getSession(true);
+        String auther = (String) httpSession.getAttribute("id");
+
         Payment payment = new Payment();
-        payment.setApplicationNum(applicationNum);
+        payment.setApplicationNumOrStudentID(applicationNumOrStudentID);
         payment.setPaymentAmmount(paymentAmmount);
+        payment.setPaymentType(paymentType);
         payment.setPaymentBank(paymentBank);
+        payment.setExamID(examID);
         payment.setPaymentDate(paymentDate);
-        
+        payment.setAuthor(auther);
+
         SessionFactory sessionFactry = new Configuration().configure().buildSessionFactory();
         Session session = sessionFactry.openSession();
         Transaction tx = null;
-        
-          try {
+
+        try {
             tx = session.beginTransaction();
             session.save(payment);
+            if (paymentType.equalsIgnoreCase("Application_Payment")) {
+                Applicant applicant = new Applicant();
+                    applicant = (Applicant) session.get(Applicant.class, applicationNumOrStudentID);
+                    applicant.setDoPayment(1);
+                    session.update(applicant);
+                
+
+            }
             session.getTransaction().commit();
             response.sendRedirect("user/coordinator/payment.jsp");
-          }catch(HibernateException hex) {
-                    System.out.println("--->" + hex);
-                    tx.rollback();
-                    response.sendRedirect("user/coordinator/payment.jsp?msg=error");
-                } catch (Exception e) {
-                    System.out.println("--->" + e);
-                    tx.rollback();
-                    response.sendRedirect("user/coordinator/payment.jsp?msg=error");
-                } finally {
-                    session.close();
-                }
-        
-        
+        } catch (HibernateException hex) {
+            System.out.println("--->" + hex);
+            tx.rollback();
+            response.sendRedirect("user/coordinator/payment.jsp?msg=error");
+        } catch (Exception e) {
+            System.out.println("--->" + e);
+            tx.rollback();
+            response.sendRedirect("user/coordinator/payment.jsp?msg=error");
+        } finally {
+            session.close();
+        }
+
     }
 
     /**

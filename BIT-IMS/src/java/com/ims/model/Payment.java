@@ -10,6 +10,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import org.hibernate.annotations.GenericGenerator;
 
 /**
  *
@@ -18,25 +19,35 @@ import javax.persistence.Id;
 @Entity
 public class Payment {
     @Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
-    private int paymentID;
+    @GenericGenerator(name = "sequence_payment_id", strategy = "com.ims.ids.PaymentId")
+    @GeneratedValue(generator = "sequence_payment_id")
+    private String paymentID;
     private String paymentType;
-    private String applicationNum;
+    private String applicationNumOrStudentID;
     private String paymentAmmount;
     private String paymentBank;
     private Date paymentDate;
+    private String ExamID; // Exam payment have value, others null
     private String author;
 
     public Payment() {
     }
 
-    public Payment(String paymentType, String applicationNum, String paymentAmmount, String paymentBank, Date paymentDate, String author) {
+    public Payment(String paymentType, String applicationNumOrStudentID, String paymentAmmount, String paymentBank, Date paymentDate, String author) {
         this.paymentType = paymentType;
-        this.applicationNum = applicationNum;
+        this.applicationNumOrStudentID = applicationNumOrStudentID;
         this.paymentAmmount = paymentAmmount;
         this.paymentBank = paymentBank;
         this.paymentDate = paymentDate;
         this.author = author;
+    }
+
+    public String getExamID() {
+        return ExamID;
+    }
+
+    public void setExamID(String ExamID) {
+        this.ExamID = ExamID;
     }
 
     public String getPaymentType() {
@@ -47,12 +58,12 @@ public class Payment {
         this.paymentType = paymentType;
     }
 
-    public String getApplicationNum() {
-        return applicationNum;
+    public String getApplicationNumOrStudentID() {
+        return applicationNumOrStudentID;
     }
 
-    public void setApplicationNum(String applicationNum) {
-        this.applicationNum = applicationNum;
+    public void setApplicationNumOrStudentID(String applicationNumOrStudentID) {
+        this.applicationNumOrStudentID = applicationNumOrStudentID;
     }
 
     public String getPaymentAmmount() {
@@ -87,11 +98,11 @@ public class Payment {
         this.author = author;
     }
 
-    public int getPaymentID() {
+    public String getPaymentID() {
         return paymentID;
     }
 
-    public void setPaymentID(int paymentID) {
+    public void setPaymentID(String paymentID) {
         this.paymentID = paymentID;
     }
     
