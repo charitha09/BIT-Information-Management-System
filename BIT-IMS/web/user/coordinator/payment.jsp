@@ -4,6 +4,14 @@
     Author     : Hp
 --%>
 
+<%@page import="com.ims.model.Student"%>
+<%@page import="com.ims.model.Applicant"%>
+<%@page import="com.ims.model.Payment"%>
+<%@page import="java.util.List"%>
+<%@page import="org.hibernate.Query"%>
+<%@page import="org.hibernate.Session"%>
+<%@page import="org.hibernate.cfg.Configuration"%>
+<%@page import="org.hibernate.SessionFactory"%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -35,9 +43,9 @@
             </nav>
         </header>
         <h1>Payment Details</h1>
-        
+
         <button type='button' class="btn btn-success" data-toggle='modal' data-target='#addPayment'>Add Payment</button>
-        
+
         <button type='button' class="btn btn-success" data-toggle='modal' data-target='#viewPayment'>View Payment</button>
 
 
@@ -62,10 +70,10 @@
                 </div>
             </div>
         </div>
-        
-        
-         <!-- ======================================================== -->
-         <!-- View Payment -->
+
+
+        <!-- ======================================================== -->
+        <!-- View Payment -->
         <div id="viewPayment" class="modal fade" role="dialog" >
             <div class="modal-dialog">
 
@@ -77,33 +85,40 @@
                     </div>
                     <div class="modal-body ">
 
+                        <button type='button' class="btn btn-success" data-toggle='modal' data-target='#viewAllPayment'>View All Payment</button> <br/><br/>
+                        <button type='button' class="btn btn-success" data-toggle='modal' data-target='#searchPayment'>Search Payment</button> <br/><br/>
+                        <button type='button' class="btn btn-success" data-toggle='modal' data-target='#viewApplicationPayment'>View Application Payment</button> <br/><br/>
+                        <button type='button' class="btn btn-success" data-toggle='modal' data-target='#viewRegistrationPayment'>View Registration Payment</button> <br/><br/>
+                        <button type='button' class="btn btn-success" data-toggle='modal' data-target='#viewExamPayment'>View Examination Payment</button> <br/><br/>
+                        <button type='button' class="btn btn-success" data-toggle='modal' data-target='#viewOtherPayment'>View Other Payment</button> <br/><br/>
+
                         <!-- <button type='button' class="btn btn-success" data-toggle='modal' data-target='#addApplicationPayment'>Add Application Payment</button>
                         -->
-                        
+
                         View Payment
 
                     </div>
                 </div>
             </div>
         </div>
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
         <!-- ======================================================== -->
         <!-- Add Application Payment -->
-        
+
         <div id="addApplicationPayment" class="modal fade" role="dialog" >
             <div class="modal-dialog">
 
@@ -119,14 +134,14 @@
                             <div class="form-group col-sm-4">
                                 <label for="reg-pammount">Application Number</label>
                             </div>
-                            
+
                             <div class="form-group col-sm-8">
                                 <input type="text" id="paymentApplicationNum" name="paymentApplicationNumOrStudentID" placeholder="Application Number" class="form-control" required data-error="Can't be empty"/>
                                 <div class="help-block with-errors"></div>
                             </div>
-                            
+
                             <input type="hidden" value="Application_Payment" id="paymentType" name="paymentType"/>
-                            
+
                             <div class="form-group col-sm-4">
                                 <label for="reg-pammount">Amount Paid (RS)</label>
                             </div>
@@ -159,10 +174,10 @@
                 </div>
             </div>
         </div>
-        
+
         <!-- ======================================================== -->
         <!-- Add Registration Payment -->
-        
+
         <div id="addRegistrationPayment" class="modal fade" role="dialog" >
             <div class="modal-dialog">
 
@@ -178,14 +193,14 @@
                             <div class="form-group col-sm-4">
                                 <label for="reg-pammount">Student ID</label>
                             </div>
-                            
+
                             <div class="form-group col-sm-8">
                                 <input type="text" id="paymentApplicationNum" name="paymentApplicationNumOrStudentID" placeholder="Student ID" class="form-control" required data-error="Can't be empty"/>
                                 <div class="help-block with-errors"></div>
                             </div>
-                            
+
                             <input type="hidden" value="Registration_Payment" id="paymentType" name="paymentType"/>
-                            
+
                             <div class="form-group col-sm-4">
                                 <label for="reg-pammount">Amount Paid (RS)</label>
                             </div>
@@ -218,11 +233,11 @@
                 </div>
             </div>
         </div>
-        
-        
-         <!-- ======================================================== -->
+
+
+        <!-- ======================================================== -->
         <!-- Add Examination Payment -->
-        
+
         <div id="addExamPayment" class="modal fade" role="dialog" >
             <div class="modal-dialog">
 
@@ -238,23 +253,23 @@
                             <div class="form-group col-sm-4">
                                 <label for="reg-pammount">Student ID</label>
                             </div>
-                            
+
                             <div class="form-group col-sm-8">
                                 <input type="text" id="paymentApplicationNum" name="paymentApplicationNumOrStudentID" placeholder="Student ID" class="form-control" required data-error="Can't be empty"/>
                                 <div class="help-block with-errors"></div>
                             </div>
-                            
+
                             <div class="form-group col-sm-4">
                                 <label for="reg-pammount">Examination ID</label>
                             </div>
-                            
+
                             <div class="form-group col-sm-8">
                                 <input type="text" id="examID" name="examID" placeholder="Examination ID" class="form-control" required data-error="Can't be empty"/>
                                 <div class="help-block with-errors"></div>
                             </div>
-                            
+
                             <input type="hidden" value="Examination_Payment" id="paymentType" name="paymentType"/>
-                            
+
                             <div class="form-group col-sm-4">
                                 <label for="reg-pammount">Amount Paid (RS)</label>
                             </div>
@@ -287,11 +302,11 @@
                 </div>
             </div>
         </div>
-        
-        
+
+
         <!-- ======================================================== -->
         <!-- Add Other Payment -->
-        
+
         <div id="addOtherPayment" class="modal fade" role="dialog" >
             <div class="modal-dialog">
 
@@ -311,7 +326,7 @@
                                 <input type="text" id="paymentApplicationNum" name="paymentApplicationNumOrStudentID" placeholder="Student ID" class="form-control" required data-error="Can't be empty"/>
                                 <div class="help-block with-errors"></div>
                             </div>
-                            
+
                             <div class="form-group col-sm-4">
                                 <label for="reg-pammount">Payment Type</label>
                             </div>
@@ -319,7 +334,7 @@
                                 <input type="text" id="paymentType" name="paymentType" placeholder="Payment Type" class="form-control" required data-error="Can't be empty"/>
                                 <div class="help-block with-errors"></div>
                             </div>
- 
+
                             <div class="form-group col-sm-4">
                                 <label for="reg-pammount">Amount Paid (RS)</label>
                             </div>
@@ -354,9 +369,110 @@
         </div>
 
 
+        <!-- ======================================================== -->
+        <!-- View All Payment -->
+        <div id="viewAllPayment" class="modal" role="dialog" >
+            <div class="modal-dialog">
+
+                <!-- Modal content-->
+                <div class="modal-content" >
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h2 class="modal-title" >View All Payment</h2>
+                    </div>
+                    <div class="modal-body ">
+
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Payment</th>
+                                    <th>ID</th>
+                                    <th>Name</th>
+                                    <th>Payment Type</th>
+                                    <th>Amount</th>
+                                    <th>Date</th>
+                                    <th>Bank</th>
+                                    <th>Other</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                                <%
+                                    SessionFactory sessionFactry = new Configuration().configure().buildSessionFactory();
+                                    Session s = sessionFactry.openSession();
+                                    s.beginTransaction();
+                                    Query queryAllPayment = s.createQuery("from Payment order by EnteredTimeStamp desc");
+                                    List allPaymentList = queryAllPayment.list();
+
+                                    for (int i = 0; i < allPaymentList.size(); i++) {
+                                        Payment payment = new Payment();
+                                        Applicant applicant = new Applicant();
+                                        Student student = new Student();
+
+                                        payment = (Payment) allPaymentList.get(i);
+                                        if (payment.getApplicationNumOrStudentID().contains("_A_")) {
+                                            applicant = (Applicant) s.get(Applicant.class, payment.getApplicationNumOrStudentID());
+                                            out.write("<tr>");
+                                            out.write("<td>" + payment.getPaymentID() + "</td>");
+                                            out.write("<td>" + payment.getApplicationNumOrStudentID() + "</td>");
+                                            out.write("<td>" + applicant.getFullName() + "<td>");
+                                            out.write("<td>"+ payment.getPaymentType() +" </td>");
+                                            out.write("<td>"+ payment.getPaymentAmmount() +" </td>");
+                                            out.write("<td>"+ payment.getPaymentDate() +" </td>");
+                                            out.write("<td>"+ payment.getExamID()+" </td>");
+                                            out.write("<td>"+ payment.getPaymentBank()+" </td>");
+                                            
+                                            out.write("</tr>");
+                                        }else if (payment.getApplicationNumOrStudentID().contains("_S_")) {
+                                            student= (Student) s.get(Student.class, payment.getApplicationNumOrStudentID());
+                                            out.write("<tr>");
+                                            out.write("<td>" + payment.getPaymentID() + "</td>");
+                                            out.write("<td>" + payment.getApplicationNumOrStudentID() + "</td>");
+                                            out.write("<td>" + student.getFullName() + "<td>");
+                                            out.write("<td>"+ payment.getPaymentType() +" </td>");
+                                            out.write("<td>"+ payment.getPaymentAmmount() +" </td>");
+                                            out.write("<td>"+ payment.getPaymentDate() +" </td>");
+                                            out.write("<td>"+ payment.getExamID()+" </td>");
+                                            out.write("<td>"+ payment.getPaymentBank()+" </td>");
+                                            
+                                            out.write("</tr>");
+                                        }else{
+                                            out.write("<tr>");
+                                            out.write("<td>" + payment.getPaymentID() + "</td>");
+                                            out.write("<td>" + payment.getApplicationNumOrStudentID() + "</td>");
+                                            out.write("<td>" + "<td>");
+                                            out.write("<td>"+ payment.getPaymentType() +" </td>");
+                                            out.write("<td>"+ payment.getPaymentAmmount() +" </td>");
+                                            out.write("<td>"+ payment.getPaymentDate() +" </td>");
+                                            out.write("<td>"+ payment.getExamID()+" </td>");
+                                            out.write("<td>"+ payment.getPaymentBank()+" </td>");
+                                            out.write("</tr>");
+                                            
+                                        }
+
+                                       
+                                    }
+                                %>
+
+
+                            </tbody>
+                        </table>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
 
 
 
 
     </body>
 </html>
+
+
+
+
+

@@ -24,7 +24,7 @@
 }
 
 .navbar-inverse .navbar-nav > li > a {
-  color: #fff;
+    color: #fff;
 }
 
 nav .navbar-nav li:hover{
@@ -84,3 +84,10 @@ footer{
     font-size: 2.5em;
 }
 /*End Theame Colour Setup*/
+
+
+// model 
+#viewAllPayment.modal {
+    max-height: 800px;
+}
+

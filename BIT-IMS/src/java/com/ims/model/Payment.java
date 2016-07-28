@@ -5,12 +5,21 @@
  */
 package com.ims.model;
 
+import com.sun.xml.rpc.processor.modeler.j2ee.xml.javaIdentifierType;
 import java.sql.Date;
+import java.sql.Time;
+import java.sql.Timestamp;
+import java.time.Clock;
+import java.time.LocalDateTime;
+import java.util.Calendar;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import jdk.nashorn.internal.objects.NativeDate;
+import net.sf.ehcache.util.counter.sampled.TimeStampedCounterValue;
 import org.hibernate.annotations.GenericGenerator;
+import org.omg.PortableInterceptor.SYSTEM_EXCEPTION;
 
 /**
  *
@@ -29,6 +38,8 @@ public class Payment {
     private Date paymentDate;
     private String ExamID; // Exam payment have value, others null
     private String author;
+    
+    private Timestamp EnteredTimeStamp = new Timestamp(System.currentTimeMillis());
 
     public Payment() {
     }
