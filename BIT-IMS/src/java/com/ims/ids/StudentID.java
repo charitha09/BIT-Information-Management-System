@@ -11,19 +11,19 @@ import org.hibernate.HibernateException;
 import org.hibernate.engine.spi.SessionImplementor;
 import org.hibernate.id.IdentifierGenerator;
 
-public class ApplicationNum implements IdentifierGenerator {
+public class StudentID implements IdentifierGenerator {
 
     @Override
     public Serializable generate(SessionImplementor session, Object object)
             throws HibernateException {
 
-        String prefix = "2016_A_";
+        String prefix = "2016_R_";
         Connection connection = session.connection();
 
         try {
             Statement statement = connection.createStatement();
 
-            ResultSet rs = statement.executeQuery("select count(applicationNum) as applicationNum from applicant");
+            ResultSet rs = statement.executeQuery("select count(studentId) as studentId from Student");
 
             if (rs.next()) {
                 int id = rs.getInt(1) + 1;

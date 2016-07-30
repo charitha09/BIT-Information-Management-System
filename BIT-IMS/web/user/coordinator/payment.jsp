@@ -23,7 +23,7 @@
     <body>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
-        <script src="../../js/coordinator-interview.js"></script>   
+        <script src="../../js/payment.js"></script>   
         <header>
             <nav class="navbar navbar-inverse">
                 <div class="container-fluid">
@@ -90,12 +90,10 @@
                         <button type='button' class="btn btn-success" data-toggle='modal' data-target='#viewApplicationPayment'>View Application Payment</button> <br/><br/>
                         <button type='button' class="btn btn-success" data-toggle='modal' data-target='#viewRegistrationPayment'>View Registration Payment</button> <br/><br/>
                         <button type='button' class="btn btn-success" data-toggle='modal' data-target='#viewExamPayment'>View Examination Payment</button> <br/><br/>
-                        <button type='button' class="btn btn-success" data-toggle='modal' data-target='#viewOtherPayment'>View Other Payment</button> <br/><br/>
 
                         <!-- <button type='button' class="btn btn-success" data-toggle='modal' data-target='#addApplicationPayment'>Add Application Payment</button>
                         -->
 
-                        View Payment
 
                     </div>
                 </div>
@@ -416,42 +414,43 @@
                                             out.write("<td>" + payment.getPaymentID() + "</td>");
                                             out.write("<td>" + payment.getApplicationNumOrStudentID() + "</td>");
                                             out.write("<td>" + applicant.getFullName() + "<td>");
-                                            out.write("<td>"+ payment.getPaymentType() +" </td>");
-                                            out.write("<td>"+ payment.getPaymentAmmount() +" </td>");
-                                            out.write("<td>"+ payment.getPaymentDate() +" </td>");
-                                            out.write("<td>"+ payment.getExamID()+" </td>");
-                                            out.write("<td>"+ payment.getPaymentBank()+" </td>");
-                                            
+                                            out.write("<td>" + payment.getPaymentType() + " </td>");
+                                            out.write("<td>" + payment.getPaymentAmmount() + " </td>");
+                                            out.write("<td>" + payment.getPaymentDate() + " </td>");
+                                            out.write("<td>" + payment.getExamID() + " </td>");
+                                            out.write("<td>" + payment.getPaymentBank() + " </td>");
+
                                             out.write("</tr>");
-                                        }else if (payment.getApplicationNumOrStudentID().contains("_S_")) {
-                                            student= (Student) s.get(Student.class, payment.getApplicationNumOrStudentID());
+                                        } else if (payment.getApplicationNumOrStudentID().contains("_S_")) {
+                                            student = (Student) s.get(Student.class, payment.getApplicationNumOrStudentID());
                                             out.write("<tr>");
                                             out.write("<td>" + payment.getPaymentID() + "</td>");
                                             out.write("<td>" + payment.getApplicationNumOrStudentID() + "</td>");
                                             out.write("<td>" + student.getFullName() + "<td>");
-                                            out.write("<td>"+ payment.getPaymentType() +" </td>");
-                                            out.write("<td>"+ payment.getPaymentAmmount() +" </td>");
-                                            out.write("<td>"+ payment.getPaymentDate() +" </td>");
-                                            out.write("<td>"+ payment.getExamID()+" </td>");
-                                            out.write("<td>"+ payment.getPaymentBank()+" </td>");
-                                            
+                                            out.write("<td>" + payment.getPaymentType() + " </td>");
+                                            out.write("<td>" + payment.getPaymentAmmount() + " </td>");
+                                            out.write("<td>" + payment.getPaymentDate() + " </td>");
+                                            out.write("<td>" + payment.getExamID() + " </td>");
+                                            out.write("<td>" + payment.getPaymentBank() + " </td>");
+
                                             out.write("</tr>");
-                                        }else{
+                                        } else {
                                             out.write("<tr>");
                                             out.write("<td>" + payment.getPaymentID() + "</td>");
                                             out.write("<td>" + payment.getApplicationNumOrStudentID() + "</td>");
                                             out.write("<td>" + "<td>");
-                                            out.write("<td>"+ payment.getPaymentType() +" </td>");
-                                            out.write("<td>"+ payment.getPaymentAmmount() +" </td>");
-                                            out.write("<td>"+ payment.getPaymentDate() +" </td>");
-                                            out.write("<td>"+ payment.getExamID()+" </td>");
-                                            out.write("<td>"+ payment.getPaymentBank()+" </td>");
+                                            out.write("<td>" + payment.getPaymentType() + " </td>");
+                                            out.write("<td>" + payment.getPaymentAmmount() + " </td>");
+                                            out.write("<td>" + payment.getPaymentDate() + " </td>");
+                                            out.write("<td>" + payment.getExamID() + " </td>");
+                                            out.write("<td>" + payment.getPaymentBank() + " </td>");
                                             out.write("</tr>");
-                                            
+
                                         }
 
-                                       
                                     }
+                                    s.getTransaction().commit();
+                                    s.close();
                                 %>
 
 
@@ -463,7 +462,252 @@
             </div>
         </div>
 
+        <!-- ======================================================== -->
+        <!-- View Application Payment -->
+        <div id="viewApplicationPayment" class="modal" role="dialog" >
+            <div class="modal-dialog">
 
+                <!-- Modal content-->
+                <div class="modal-content" >
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h2 class="modal-title" >View Application Payment</h2>
+                    </div>
+                    <div class="modal-body ">
+
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Payment</th>
+                                    <th>Application Number</th>
+                                    <th>Name</th>
+                                    <th>Amount</th>
+                                    <th>Date</th>
+                                    <th>Bank</th>
+
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                                <%
+                                    Session s1 = sessionFactry.openSession();
+                                    s1.beginTransaction();
+                                    Query queryApplicationPayment = s1.createQuery("from Payment WHERE paymentType='Application_Payment' order by EnteredTimeStamp desc");
+                                    List applicationPaymentList = queryApplicationPayment.list();
+
+                                    for (int j = 0; j < applicationPaymentList.size(); j++) {
+                                        Payment payment = new Payment();
+                                        Applicant applicant = new Applicant();
+
+                                        payment = (Payment) applicationPaymentList.get(j);
+
+                                        applicant = (Applicant) s1.get(Applicant.class, payment.getApplicationNumOrStudentID());
+                                        out.write("<tr>");
+                                        out.write("<td>" + payment.getPaymentID() + "</td>");
+                                        out.write("<td>" + payment.getApplicationNumOrStudentID() + "</td>");
+                                        out.write("<td>" + applicant.getFullName() + "<td>");
+                                        out.write("<td>" + payment.getPaymentAmmount() + "</td>");
+                                        out.write("<td>" + payment.getPaymentDate() + "</td>");
+                                        out.write("<td>" + payment.getPaymentBank() + "</td>");
+
+                                        out.write("</tr>");
+
+                                    }
+                                    s1.getTransaction().commit();
+                                    s1.close();
+                                %>
+
+
+                            </tbody>
+                        </table>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ======================================================== -->
+        <!-- View Registration Payment -->
+        <div id="viewRegistrationPayment" class="modal" role="dialog" >
+            <div class="modal-dialog">
+
+                <!-- Modal content-->
+                <div class="modal-content" >
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h2 class="modal-title" >View Registration Payment</h2>
+                    </div>
+                    <div class="modal-body ">
+
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Payment</th>
+                                    <th>Student ID</th>
+                                    <th>Name</th>
+                                    <th>Amount</th>
+                                    <th>Date</th>
+                                    <th>Bank</th>
+
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                                <%
+                                    Session s2 = sessionFactry.openSession();
+                                    s2.beginTransaction();
+                                    Query queryRegistrationPayment = s2.createQuery("from Payment WHERE paymentType='Registration_Payment' order by EnteredTimeStamp desc");
+                                    List registrationPaymentList = queryRegistrationPayment.list();
+                                    for (int j = 0; j < registrationPaymentList.size(); j++) {
+                                        Payment payment = new Payment();
+                                        Student student = new Student();
+
+                                        payment = (Payment) registrationPaymentList.get(j);
+
+                                        student = (Student) s2.get(Student.class, payment.getApplicationNumOrStudentID());
+                                        out.write("<tr>");
+                                        out.write("<td>" + payment.getPaymentID() + "</td>");
+                                        out.write("<td>" + payment.getApplicationNumOrStudentID() + "</td>");
+                                        out.write("<td>" + student.getFullName() + "<td>");
+                                        out.write("<td>" + payment.getPaymentAmmount() + "</td>");
+                                        out.write("<td>" + payment.getPaymentDate() + "</td>");
+                                        out.write("<td>" + payment.getPaymentBank() + "</td>");
+
+                                        out.write("</tr>");
+
+                                    }
+                                    s2.getTransaction().commit();
+                                    s2.close();
+                                %>
+
+
+                            </tbody>
+                        </table>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ======================================================== -->
+        <!-- View Exam Payment -->
+        <div id="viewExamPayment" class="modal" role="dialog" >
+            <div class="modal-dialog">
+
+                <!-- Modal content-->
+                <div class="modal-content" >
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h2 class="modal-title" >View Examination Payment</h2>
+                    </div>
+                    <div class="modal-body ">
+
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Payment</th>
+                                    <th>Student ID</th>
+                                    <th>Name</th>
+                                    <th>Amount</th>
+                                    <th>Exam ID</th>
+                                    <th>Date</th>
+                                    <th>Bank</th>
+
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                                <%
+                                    Session s3 = sessionFactry.openSession();
+                                    s3.beginTransaction();
+                                    Query queryExamPayment = s3.createQuery("from Payment WHERE paymentType='Examination_Payment' order by EnteredTimeStamp desc");
+                                    List examPaymentList = queryExamPayment.list();
+                                    for (int j = 0; j < examPaymentList.size(); j++) {
+                                        Payment payment = new Payment();
+                                        Student student = new Student();
+
+                                        payment = (Payment) examPaymentList.get(j);
+
+                                        student = (Student) s3.get(Student.class, payment.getApplicationNumOrStudentID());
+                                        out.write("<tr>");
+                                        out.write("<td>" + payment.getPaymentID() + "</td>");
+                                        out.write("<td>" + payment.getApplicationNumOrStudentID() + "</td>");
+                                        out.write("<td>" + student.getFullName() + "<td>");
+                                        out.write("<td>" + payment.getPaymentAmmount() + "</td>");
+                                        out.write("<td>" + payment.getExamID() + "</td>");
+                                        out.write("<td>" + payment.getPaymentDate() + "</td>");
+                                        out.write("<td>" + payment.getPaymentBank() + "</td>");
+
+                                        out.write("</tr>");
+
+                                    }
+                                    s3.getTransaction().commit();
+                                    s3.close();
+                                %>
+
+
+                            </tbody>
+                        </table>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ======================================================== -->
+        <!-- Search Payment -->
+        <div id="searchPayment" class="modal fade" role="dialog" >
+            <div class="modal-dialog">
+
+                <!-- Modal content-->
+                <div class="modal-content" >
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h2 class="modal-title" >Search Payment</h2>
+                    </div>
+                    <div class="modal-body ">
+
+                        <button type='button' class="btn btn-success" data-toggle='modal' data-target='#searchByPaymentID'> By Payment ID</button> <br/><br/>
+                        <button type='button' class="btn btn-success" data-toggle='modal' data-target='#searchByStudentID'>By Student ID</button> <br/><br/>
+                        <button type='button' class="btn btn-success" data-toggle='modal' data-target='#searchByApplicationNumber'>By Application Number</button> <br/><br/>
+                        <button type='button' class="btn btn-success" data-toggle='modal' data-target='#searchByExamID'>By Exam ID</button> <br/><br/>
+                        <button type='button' class="btn btn-success" data-toggle='modal' data-target='#searchBypaymentType'>By payment Type</button> <br/><br/>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ======================================================== -->
+        <!-- Search By Payment ID -->
+        <div id="searchByPaymentID" class="modal fade" role="dialog" >
+            <div class="modal-dialog">
+
+                <!-- Modal content-->
+                <div class="modal-content" >
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h2 class="modal-title" >Search By Payment ID</h2>
+                    </div>
+                    <div class="modal-body ">
+
+                        <div class="form-group col-sm-4">
+                            <label for="reg-pammount">Payment ID</label>
+                        </div>
+
+                        <div class="form-group col-sm-8">
+                            <input type="text" id="searchPaymentID" name="searchPaymentID" placeholder="Payment ID" class="form-control" />
+                            <div id="searchPaymentIDErr" class="help-block with-errors"></div>
+                        </div>
+
+                        <button type='button' class="btn btn-success" onclick="searchByPaymentID()"> By Payment ID</button> <br/><br/>
+                        
+                        <div id="searchPaymentIDOutput"></div>
+                        
+
+                    </div>
+                </div>
+            </div>
+        </div>
 
 
 

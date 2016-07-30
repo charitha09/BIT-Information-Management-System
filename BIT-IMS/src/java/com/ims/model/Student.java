@@ -6,18 +6,26 @@
 package com.ims.model;
 
 import java.sql.Date;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.cfg.Configuration;
 
 /**
  *
  * @author amila
  */
-
+@Entity
 public class Student {
 
-    private int studentId;
+    @Id
+    @GenericGenerator(name = "sequence_student_id", strategy = "com.ims.ids.StudentID")
+    @GeneratedValue(generator = "sequence_student_id")
+    private String studentId;
     private String registrationNum;
     private String indexNum;
     private String fullName;
@@ -49,39 +57,40 @@ public class Student {
 
     public Student() {
     }
-/**
- * 
- * @param studentId
- * @param registrationNum
- * @param indexNum
- * @param fullName
- * @param initial
- * @param lastName
- * @param title
- * @param gender
- * @param citizenship
- * @param nationality
- * @param nicNo
- * @param birthDay
- * @param address
- * @param country
- * @param telephoneNum
- * @param email
- * @param alSubject01
- * @param Subject01Result
- * @param alSubject02
- * @param Subject02Result
- * @param alSubject03
- * @param Subject03Result
- * @param olMathsResult
- * @param olEnglishResult
- * @param isEmploy
- * @param designation
- * @param isComputerField
- * @param monthlySalary
- * @param password 
- */
-    public Student(int studentId, String registrationNum, String indexNum, String fullName, String initial, String lastName, String title, String gender, String citizenship, String nationality, String nicNo, Date birthDay, String address, String country, String telephoneNum, String email, String alSubject01, String Subject01Result, String alSubject02, String Subject02Result, String alSubject03, String Subject03Result, String olMathsResult, String olEnglishResult, int isEmploy, String designation, int isComputerField, int monthlySalary, String password) {
+
+    /**
+     *
+     * @param studentId
+     * @param registrationNum
+     * @param indexNum
+     * @param fullName
+     * @param initial
+     * @param lastName
+     * @param title
+     * @param gender
+     * @param citizenship
+     * @param nationality
+     * @param nicNo
+     * @param birthDay
+     * @param address
+     * @param country
+     * @param telephoneNum
+     * @param email
+     * @param alSubject01
+     * @param Subject01Result
+     * @param alSubject02
+     * @param Subject02Result
+     * @param alSubject03
+     * @param Subject03Result
+     * @param olMathsResult
+     * @param olEnglishResult
+     * @param isEmploy
+     * @param designation
+     * @param isComputerField
+     * @param monthlySalary
+     * @param password
+     */
+    public Student(String studentId, String registrationNum, String indexNum, String fullName, String initial, String lastName, String title, String gender, String citizenship, String nationality, String nicNo, Date birthDay, String address, String country, String telephoneNum, String email, String alSubject01, String Subject01Result, String alSubject02, String Subject02Result, String alSubject03, String Subject03Result, String olMathsResult, String olEnglishResult, int isEmploy, String designation, int isComputerField, int monthlySalary, String password) {
         this.studentId = studentId;
         this.registrationNum = registrationNum;
         this.indexNum = indexNum;
@@ -113,13 +122,11 @@ public class Student {
         this.password = password;
     }
 
-    
-
-    public int getStudentId() {
+    public String getStudentId() {
         return studentId;
     }
 
-    public void setStudentId(int studentId) {
+    public void setStudentId(String studentId) {
         this.studentId = studentId;
     }
 
@@ -346,28 +353,24 @@ public class Student {
     public void setPassword(String password) {
         this.password = password;
     }
-    
-    
 
     @Override
     public String toString() {
         return "Student{" + "studentId=" + studentId + ", registrationNum=" + registrationNum + ", indexNum=" + indexNum + ", fullName=" + fullName + ", initial=" + initial + ", lastName=" + lastName + ", title=" + title + ", gender=" + gender + ", citizenship=" + citizenship + ", nationality=" + nationality + ", nicNo=" + nicNo + ", birthDay=" + birthDay + ", address=" + address + ", country=" + country + ", telephoneNum=" + telephoneNum + ", email=" + email + ", alSubject01=" + alSubject01 + ", Subject01Result=" + Subject01Result + ", alSubject02=" + alSubject02 + ", Subject02Result=" + Subject02Result + ", alSubject03=" + alSubject03 + ", Subject03Result=" + Subject03Result + ", olMathsResult=" + olMathsResult + ", olEnglishResult=" + olEnglishResult + ", isEmploy=" + isEmploy + ", designation=" + designation + ", isComputerField=" + isComputerField + ", monthlySalary=" + monthlySalary + ", password=" + password + '}';
     }
 
-
-    
     public static void main(String[] args) {
         Student st = new Student();
         st.setFullName("asdfghjkl");
-        
+
         SessionFactory sf = new Configuration().configure().buildSessionFactory();
         Session s = sf.openSession();
         s.beginTransaction();
-        
+
         s.save(st);
-        
+
         s.getTransaction().commit();
-        
+
     }
 
 }
