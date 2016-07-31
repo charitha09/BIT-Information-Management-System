@@ -17,7 +17,7 @@ import org.hibernate.cfg.Configuration;
 
 /**
  *
- * @author amila
+ * @author Amila Sankha
  */
 @Entity
 public class Student {
