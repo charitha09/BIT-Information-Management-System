@@ -134,8 +134,8 @@
                             </div>
 
                             <div class="form-group col-sm-8">
-                                <input type="text" id="paymentApplicationNum" name="paymentApplicationNumOrStudentID" placeholder="Application Number" class="form-control" required data-error="Can't be empty"/>
-                                <div class="help-block with-errors"></div>
+                                <input type="text" id="paymentApplicationNum" name="paymentApplicationNumOrStudentID" placeholder="Application Number" class="form-control" required data-error="Can't be empty" onblur="checkApplicantInDB(this.value)"/>
+                                <div id="applicationNunErr" class="help-block with-errors"></div>
                             </div>
 
                             <input type="hidden" value="Application_Payment" id="paymentType" name="paymentType"/>
@@ -193,8 +193,8 @@
                             </div>
 
                             <div class="form-group col-sm-8">
-                                <input type="text" id="paymentApplicationNum" name="paymentApplicationNumOrStudentID" placeholder="Student ID" class="form-control" required data-error="Can't be empty"/>
-                                <div class="help-block with-errors"></div>
+                                <input type="text" id="RegistrationpaymentApplicationNumOrStudentID" name="paymentApplicationNumOrStudentID" placeholder="Student ID" class="form-control" required data-error="Can't be empty" onblur="checkStudentInDB(this.value)"/>
+                                <div  id="RegistrationstudentIDErr" class="help-block with-errors"></div>
                             </div>
 
                             <input type="hidden" value="Registration_Payment" id="paymentType" name="paymentType"/>
@@ -253,8 +253,8 @@
                             </div>
 
                             <div class="form-group col-sm-8">
-                                <input type="text" id="paymentApplicationNum" name="paymentApplicationNumOrStudentID" placeholder="Student ID" class="form-control" required data-error="Can't be empty"/>
-                                <div class="help-block with-errors"></div>
+                                <input type="text" id="ExampaymentApplicationNumOrStudentID" name="paymentApplicationNumOrStudentID" placeholder="Student ID" class="form-control" required data-error="Can't be empty"onblur="checkStudentInDB(this.value)"/>
+                                <div  id="ExamstudentIDErr" class="help-block with-errors"></div>
                             </div>
 
                             <div class="form-group col-sm-4">
@@ -321,8 +321,8 @@
                                 <label for="reg-pammount">Student ID</label>
                             </div>
                             <div class="form-group col-sm-8">
-                                <input type="text" id="paymentApplicationNum" name="paymentApplicationNumOrStudentID" placeholder="Student ID" class="form-control" required data-error="Can't be empty"/>
-                                <div class="help-block with-errors"></div>
+                                <input type="text" id="OtherpaymentApplicationNumOrStudentID" name="paymentApplicationNumOrStudentID" placeholder="Student ID" class="form-control" required data-error="Can't be empty" onblur="checkStudentInDB(this.value)"/>
+                                <div id="OtherstudentIDErr" class="help-block with-errors"></div>
                             </div>
 
                             <div class="form-group col-sm-4">
@@ -667,11 +667,12 @@
                     </div>
                     <div class="modal-body ">
 
-                        <button type='button' class="btn btn-success" data-toggle='modal' data-target='#searchByPaymentID'> By Payment ID</button> <br/><br/>
-                        <button type='button' class="btn btn-success" data-toggle='modal' data-target='#searchByStudentID'>By Student ID</button> <br/><br/>
-                        <button type='button' class="btn btn-success" data-toggle='modal' data-target='#searchByApplicationNumber'>By Application Number</button> <br/><br/>
-                        <button type='button' class="btn btn-success" data-toggle='modal' data-target='#searchByExamID'>By Exam ID</button> <br/><br/>
-                        <button type='button' class="btn btn-success" data-toggle='modal' data-target='#searchBypaymentType'>By payment Type</button> <br/><br/>
+                        <button type='button' class="btn btn-info" data-toggle='modal' data-target='#searchByPaymentID'><span class="glyphicon glyphicon-search"></span> By Payment ID</button> <br/><br/>
+                        <button type='button' class="btn btn-info" data-toggle='modal' data-target='#searchByStudentID'><span class="glyphicon glyphicon-search"></span>By Student ID</button> <br/><br/>
+                        <button type='button' class="btn btn-info" data-toggle='modal' data-target='#searchByApplicationNumber'><span class="glyphicon glyphicon-search"></span>By Application Number</button> <br/><br/>
+                        <button type='button' class="btn btn-info" data-toggle='modal' data-target='#searchByExamID'><span class="glyphicon glyphicon-search"></span>By Exam ID</button> <br/><br/>
+                        <button type='button' class="btn btn-info" data-toggle='modal' data-target='#searchBypaymentType'><span class="glyphicon glyphicon-search"></span>By payment Type</button> <br/><br/>
+                        
                     </div>
                 </div>
             </div>
@@ -699,10 +700,142 @@
                             <div id="searchPaymentIDErr" class="help-block with-errors"></div>
                         </div>
 
-                        <button type='button' class="btn btn-success" onclick="searchByPaymentID()"> By Payment ID</button> <br/><br/>
-                        
+                        <button type='button' class="btn btn-info btn-lg" onclick="searchByPaymentID()"><span class="glyphicon glyphicon-search"></span> Search</button> <br/><br/>
+
                         <div id="searchPaymentIDOutput"></div>
-                        
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+<!-- ======================================================== -->
+        <!-- Search By Student ID -->
+        <div id="searchByStudentID" class="modal fade" role="dialog" >
+            <div class="modal-dialog">
+
+                <!-- Modal content-->
+                <div class="modal-content" >
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h2 class="modal-title" >Search By Student ID</h2>
+                    </div>
+                    <div class="modal-body ">
+
+                        <div class="form-group col-sm-4">
+                            <label for="reg-pammount">Student ID</label>
+                        </div>
+
+                        <div class="form-group col-sm-8">
+                            <input type="text" id="searchStudentID" name="searchStudentID" placeholder="Student ID" class="form-control" />
+                            <div id="searchStudentIDErr" class="help-block with-errors"></div>
+                        </div>
+
+                        <button type='button' class="btn btn-info btn-lg" onclick="searchByStudentID()"><span class="glyphicon glyphicon-search"></span> Search</button> <br/><br/>
+
+                        <div id="searchStudentIDOutput"></div>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+        
+        <!-- ======================================================== -->
+        <!-- Search By Application Number -->
+        <div id="searchByApplicationNumber" class="modal fade" role="dialog" >
+            <div class="modal-dialog">
+
+                <!-- Modal content-->
+                <div class="modal-content" >
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h2 class="modal-title" >Search By Application Number</h2>
+                    </div>
+                    <div class="modal-body ">
+
+                        <div class="form-group col-sm-4">
+                            <label for="reg-pammount">Application Number</label>
+                        </div>
+
+                        <div class="form-group col-sm-8">
+                            <input type="text" id="searchApplicationNumber" name="searchApplicationNumber" placeholder="Application Number" class="form-control" />
+                            <div id="searchApplicationNumberErr" class="help-block with-errors"></div>
+                        </div>
+
+                        <button type='button' class="btn btn-info btn-lg" onclick="searchByApplicationNumber()"><span class="glyphicon glyphicon-search"></span> Search</button> <br/><br/>
+
+                        <div id="searchApplicationNumberOutput"></div>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        
+        <!-- ======================================================== -->
+        <!-- Search By Exam ID -->
+        <div id="searchByExamID" class="modal fade" role="dialog" >
+            <div class="modal-dialog">
+
+                <!-- Modal content-->
+                <div class="modal-content" >
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h2 class="modal-title" >Search By Exam ID</h2>
+                    </div>
+                    <div class="modal-body ">
+
+                        <div class="form-group col-sm-4">
+                            <label for="reg-pammount">Exam ID</label>
+                        </div>
+
+                        <div class="form-group col-sm-8">
+                            <input type="text" id="searchExamID" name="searchExamID" placeholder="Exam ID" class="form-control" />
+                            <div id="searchExamIDErr" class="help-block with-errors"></div>
+                        </div>
+
+                        <button type='button' class="btn btn-info btn-lg" onclick="searchByExamID()"><span class="glyphicon glyphicon-search"></span> Search</button> <br/><br/>
+
+                        <div id="searchExamIDOutput"></div>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+<!-- ======================================================== -->
+        <!-- Search By Payment Type -->
+        <div id="searchBypaymentType" class="modal fade" role="dialog" >
+            <div class="modal-dialog">
+
+                <!-- Modal content-->
+                <div class="modal-content" >
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h2 class="modal-title" >Search By Payment Type</h2>
+                    </div>
+                    <div class="modal-body ">
+
+                        <div class="form-group col-sm-4">
+                            <label for="reg-pammount">Payment Type</label>
+                        </div>
+
+                        <div class="form-group col-sm-8">
+                            <input type="text" id="searchpaymentType" name="searchpaymentType" placeholder="Payment Type" class="form-control" />
+                            <div id="searchpaymentTypeErr" class="help-block with-errors"></div>
+                        </div>
+
+                        <button type='button' class="btn btn-info btn-lg" onclick="searchByPaymentType()"><span class="glyphicon glyphicon-search"></span> Search</button> <br/><br/>
+
+                        <div id="searchpaymentTypeOutput"></div>
+
 
                     </div>
                 </div>

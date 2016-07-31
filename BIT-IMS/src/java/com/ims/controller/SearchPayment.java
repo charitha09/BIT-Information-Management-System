@@ -67,7 +67,7 @@ public class SearchPayment extends HttpServlet {
         String input = request.getParameter("input");
         SessionFactory sessionFactry = new Configuration().configure().buildSessionFactory();
 
-        if (method.equalsIgnoreCase("byID")) {
+        if (method.equalsIgnoreCase("byID")) {  //search payment details using payment ID
             ///////////////////////////////////////////////////////////////////////////
             try (PrintWriter out = response.getWriter()) {
 
@@ -80,20 +80,20 @@ public class SearchPayment extends HttpServlet {
                     out.write("Id is not in DB");
 
                 } else {
-                    out.write("<table class=\"table\">\n" +
-"                            <thead>\n" +
-"                                <tr>\n" +
-"                                    <th>Payment</th>\n" +
-"                                    <th>ID</th>\n" +
-"                                    <th>Name</th>\n" +
-"                                    <th>Payment Type</th>\n" +
-"                                    <th>Amount</th>\n" +
-"                                    <th>Date</th>\n" +
-"                                    <th>Bank</th>\n" +
-"                                    <th>Other</th>\n" +
-"                                </tr>\n" +
-"                            </thead>\n" +
-"                            <tbody>");
+                    out.write("<table class=\"table\">\n"
+                            + "                            <thead>\n"
+                            + "                                <tr>\n"
+                            + "                                    <th>Payment</th>\n"
+                            + "                                    <th>ID</th>\n"
+                            + "                                    <th>Name</th>\n"
+                            + "                                    <th>Payment Type</th>\n"
+                            + "                                    <th>Amount</th>\n"
+                            + "                                    <th>Date</th>\n"
+                            + "                                    <th>Bank</th>\n"
+                            + "                                    <th>Other</th>\n"
+                            + "                                </tr>\n"
+                            + "                            </thead>\n"
+                            + "                            <tbody>");
                     for (int i = 0; i < searchByIDPaymentList.size(); i++) {
                         Payment payment = new Payment();
                         Applicant applicant = new Applicant();
@@ -114,7 +114,7 @@ public class SearchPayment extends HttpServlet {
                             out.write("<td>" + payment.getPaymentBank() + " </td>");
 
                             out.write("</tr>");
-                        } else if (payment.getApplicationNumOrStudentID().contains("_S_")) {
+                        } else if (payment.getApplicationNumOrStudentID().contains("_R_")) {
                             student = (Student) session1.get(Student.class, payment.getApplicationNumOrStudentID());
                             out.write("<tr>");
                             out.write("<td>" + payment.getPaymentID() + "</td>");
@@ -142,21 +142,275 @@ public class SearchPayment extends HttpServlet {
                         }
 
                     }
-                    out.write(" </tbody>\n" +
-"                        </table>");
+                    out.write(" </tbody>\n"
+                            + "                        </table>");
                 }
 
                 session1.getTransaction().commit();
                 session1.close();
                 //////////////////////////////////////////////////////////////////////////////
             }
-        }
+        } else if (method.equalsIgnoreCase("byStudentID")) {   //search payment details using Student ID
+            /////////////////////////////////////////////////////////////////////////////
+            try (PrintWriter out = response.getWriter()) {
 
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
+                Session session1 = sessionFactry.openSession();
+                session1.beginTransaction();
+                Query querySearchByStudentID = session1.createQuery("from Payment WHERE applicationNumOrStudentID='" + input + "' order by EnteredTimeStamp desc");
+                List searchByStudentIDPaymentList = querySearchByStudentID.list();
 
-            out.println("<h1>" + method + "..." + input + "</h1><br><br>");
-        }
+                if (searchByStudentIDPaymentList.size() == 0) {
+                    out.write("Id is not in DB");
+
+                } else {
+                    out.write("<table class=\"table\">\n"
+                            + "                            <thead>\n"
+                            + "                                <tr>\n"
+                            + "                                    <th>Payment</th>\n"
+                            + "                                    <th>ID</th>\n"
+                            + "                                    <th>Name</th>\n"
+                            + "                                    <th>Payment Type</th>\n"
+                            + "                                    <th>Amount</th>\n"
+                            + "                                    <th>Date</th>\n"
+                            + "                                    <th>Bank</th>\n"
+                            + "                                    <th>Other</th>\n"
+                            + "                                </tr>\n"
+                            + "                            </thead>\n"
+                            + "                            <tbody>");
+                    for (int i = 0; i < searchByStudentIDPaymentList.size(); i++) {
+                        Payment payment1 = new Payment();
+                        Student student1 = new Student();
+
+                        payment1 = (Payment) searchByStudentIDPaymentList.get(i);
+
+                        if (payment1.getApplicationNumOrStudentID().contains("_R_")) {
+                            student1 = (Student) session1.get(Student.class, payment1.getApplicationNumOrStudentID());
+                            out.write("<tr>");
+                            out.write("<td>" + payment1.getPaymentID() + "</td>");
+                            out.write("<td>" + payment1.getApplicationNumOrStudentID() + "</td>");
+                            out.write("<td>" + student1.getFullName() + "<td>");
+                            out.write("<td>" + payment1.getPaymentType() + " </td>");
+                            out.write("<td>" + payment1.getPaymentAmmount() + " </td>");
+                            out.write("<td>" + payment1.getPaymentDate() + " </td>");
+                            out.write("<td>" + payment1.getExamID() + " </td>");
+                            out.write("<td>" + payment1.getPaymentBank() + " </td>");
+
+                            out.write("</tr>");
+                        }
+
+                    }
+                    out.write(" </tbody>\n"
+                            + "                        </table>");
+                }
+
+                session1.getTransaction().commit();
+                session1.close();
+            }
+            /////////////////////////////////////////////////////////////////////////////
+
+        }else if(method.equalsIgnoreCase("byApplicationNumber")){//search payment details using Application Number
+            /////////////////////////////////////////////////////////////////////////////
+            try (PrintWriter out = response.getWriter()) {
+
+                Session session1 = sessionFactry.openSession();
+                session1.beginTransaction();
+                Query querySearchByApplicationNumber = session1.createQuery("from Payment WHERE applicationNumOrStudentID='" + input + "' order by EnteredTimeStamp desc");
+                List searchByApplicationNumberPaymentList = querySearchByApplicationNumber.list();
+
+                if (searchByApplicationNumberPaymentList.size() == 0) {
+                    out.write("Id is not in DB");
+
+                } else {
+                    out.write("<table class=\"table\">\n"
+                            + "                            <thead>\n"
+                            + "                                <tr>\n"
+                            + "                                    <th>Payment</th>\n"
+                            + "                                    <th>ID</th>\n"
+                            + "                                    <th>Name</th>\n"
+                            + "                                    <th>Payment Type</th>\n"
+                            + "                                    <th>Amount</th>\n"
+                            + "                                    <th>Date</th>\n"
+                            + "                                    <th>Bank</th>\n"
+                            + "                                    <th>Other</th>\n"
+                            + "                                </tr>\n"
+                            + "                            </thead>\n"
+                            + "                            <tbody>");
+                    for (int i = 0; i < searchByApplicationNumberPaymentList.size(); i++) {
+                        Payment payment2 = new Payment();
+                        Applicant applicant2 = new Applicant();
+
+                        payment2 = (Payment) searchByApplicationNumberPaymentList.get(i);
+
+                        if (payment2.getApplicationNumOrStudentID().contains("_A_")) {
+                            applicant2 = (Applicant) session1.get(Applicant.class, payment2.getApplicationNumOrStudentID());
+                            out.write("<tr>");
+                            out.write("<td>" + payment2.getPaymentID() + "</td>");
+                            out.write("<td>" + payment2.getApplicationNumOrStudentID() + "</td>");
+                            out.write("<td>" + applicant2.getFullName() + "<td>");
+                            out.write("<td>" + payment2.getPaymentType() + " </td>");
+                            out.write("<td>" + payment2.getPaymentAmmount() + " </td>");
+                            out.write("<td>" + payment2.getPaymentDate() + " </td>");
+                            out.write("<td>" + payment2.getExamID() + " </td>");
+                            out.write("<td>" + payment2.getPaymentBank() + " </td>");
+
+                            out.write("</tr>");
+                        }
+
+                    }
+                    out.write(" </tbody>\n"
+                            + "                        </table>");
+                }
+
+                session1.getTransaction().commit();
+                session1.close();
+            }
+            /////////////////////////////////////////////////////////////////////////////
+
+            
+        }else if (method.equalsIgnoreCase("byExamID")) {   //search payment details using Exam ID
+            /////////////////////////////////////////////////////////////////////////////
+            try (PrintWriter out = response.getWriter()) {
+
+                Session session1 = sessionFactry.openSession();
+                session1.beginTransaction();
+                Query querySearchByExamID = session1.createQuery("from Payment WHERE ExamID='" + input + "' order by EnteredTimeStamp desc");
+                List searchByExamIDPaymentList = querySearchByExamID.list();
+
+                if (searchByExamIDPaymentList.size() == 0) {
+                    out.write("Id is not in DB");
+
+                } else {
+                    out.write("<table class=\"table\">\n"
+                            + "                            <thead>\n"
+                            + "                                <tr>\n"
+                            + "                                    <th>Payment</th>\n"
+                            + "                                    <th>ID</th>\n"
+                            + "                                    <th>Name</th>\n"
+                            + "                                    <th>Payment Type</th>\n"
+                            + "                                    <th>Amount</th>\n"
+                            + "                                    <th>Date</th>\n"
+                            + "                                    <th>Bank</th>\n"
+                            + "                                    <th>Other</th>\n"
+                            + "                                </tr>\n"
+                            + "                            </thead>\n"
+                            + "                            <tbody>");
+                    for (int i = 0; i < searchByExamIDPaymentList.size(); i++) {
+                        Payment payment3 = new Payment();
+                        Student student3 = new Student();
+
+                        payment3 = (Payment) searchByExamIDPaymentList.get(i);
+
+                        if (payment3.getApplicationNumOrStudentID().contains("_R_")) {
+                            student3 = (Student) session1.get(Student.class, payment3.getApplicationNumOrStudentID());
+                            out.write("<tr>");
+                            out.write("<td>" + payment3.getPaymentID() + "</td>");
+                            out.write("<td>" + payment3.getApplicationNumOrStudentID() + "</td>");
+                            out.write("<td>" + student3.getFullName() + "<td>");
+                            out.write("<td>" + payment3.getPaymentType() + " </td>");
+                            out.write("<td>" + payment3.getPaymentAmmount() + " </td>");
+                            out.write("<td>" + payment3.getPaymentDate() + " </td>");
+                            out.write("<td>" + payment3.getExamID() + " </td>");
+                            out.write("<td>" + payment3.getPaymentBank() + " </td>");
+
+                            out.write("</tr>");
+                        }
+
+                    }
+                    out.write(" </tbody>\n"
+                            + "                        </table>");
+                }
+
+                session1.getTransaction().commit();
+                session1.close();
+            }
+            /////////////////////////////////////////////////////////////////////////////
+
+        }else if (method.equalsIgnoreCase("bypaymentType")) {  //search payment details using payment Type
+            ///////////////////////////////////////////////////////////////////////////
+            try (PrintWriter out = response.getWriter()) {
+
+                Session session1 = sessionFactry.openSession();
+                session1.beginTransaction();
+                Query querySearchBypaymentType = session1.createQuery("from Payment WHERE paymentType='" + input + "' order by EnteredTimeStamp desc");
+                List searchBypaymentTypePaymentList = querySearchBypaymentType.list();
+
+                if (searchBypaymentTypePaymentList.size() == 0) {
+                    out.write("Id is not in DB");
+
+                } else {
+                    out.write("<table class=\"table\">\n"
+                            + "                            <thead>\n"
+                            + "                                <tr>\n"
+                            + "                                    <th>Payment</th>\n"
+                            + "                                    <th>ID</th>\n"
+                            + "                                    <th>Name</th>\n"
+                            + "                                    <th>Payment Type</th>\n"
+                            + "                                    <th>Amount</th>\n"
+                            + "                                    <th>Date</th>\n"
+                            + "                                    <th>Bank</th>\n"
+                            + "                                    <th>Other</th>\n"
+                            + "                                </tr>\n"
+                            + "                            </thead>\n"
+                            + "                            <tbody>");
+                    for (int i = 0; i < searchBypaymentTypePaymentList.size(); i++) {
+                        Payment payment4 = new Payment();
+                        Applicant applicant4 = new Applicant();
+                        Student student4 = new Student();
+
+                        payment4 = (Payment) searchBypaymentTypePaymentList.get(i);
+
+                        if (payment4.getApplicationNumOrStudentID().contains("_A_")) {
+                            applicant4 = (Applicant) session1.get(Applicant.class, payment4.getApplicationNumOrStudentID());
+                            out.write("<tr>");
+                            out.write("<td>" + payment4.getPaymentID() + "</td>");
+                            out.write("<td>" + payment4.getApplicationNumOrStudentID() + "</td>");
+                            out.write("<td>" + applicant4.getFullName() + "<td>");
+                            out.write("<td>" + payment4.getPaymentType() + " </td>");
+                            out.write("<td>" + payment4.getPaymentAmmount() + " </td>");
+                            out.write("<td>" + payment4.getPaymentDate() + " </td>");
+                            out.write("<td>" + payment4.getExamID() + " </td>");
+                            out.write("<td>" + payment4.getPaymentBank() + " </td>");
+
+                            out.write("</tr>");
+                        } else if (payment4.getApplicationNumOrStudentID().contains("_R_")) {
+                            student4 = (Student) session1.get(Student.class, payment4.getApplicationNumOrStudentID());
+                            out.write("<tr>");
+                            out.write("<td>" + payment4.getPaymentID() + "</td>");
+                            out.write("<td>" + payment4.getApplicationNumOrStudentID() + "</td>");
+                            out.write("<td>" + student4.getFullName() + "<td>");
+                            out.write("<td>" + payment4.getPaymentType() + " </td>");
+                            out.write("<td>" + payment4.getPaymentAmmount() + " </td>");
+                            out.write("<td>" + payment4.getPaymentDate() + " </td>");
+                            out.write("<td>" + payment4.getExamID() + " </td>");
+                            out.write("<td>" + payment4.getPaymentBank() + " </td>");
+
+                            out.write("</tr>");
+                        } else {
+                            out.write("<tr>");
+                            out.write("<td>" + payment4.getPaymentID() + "</td>");
+                            out.write("<td>" + payment4.getApplicationNumOrStudentID() + "</td>");
+                            out.write("<td>" + "<td>");
+                            out.write("<td>" + payment4.getPaymentType() + " </td>");
+                            out.write("<td>" + payment4.getPaymentAmmount() + " </td>");
+                            out.write("<td>" + payment4.getPaymentDate() + " </td>");
+                            out.write("<td>" + payment4.getExamID() + " </td>");
+                            out.write("<td>" + payment4.getPaymentBank() + " </td>");
+                            out.write("</tr>");
+
+                        }
+
+                    }
+                    out.write(" </tbody>\n"
+                            + "                        </table>");
+                }
+
+                session1.getTransaction().commit();
+                session1.close();
+            }
+                //////////////////////////////////////////////////////////////////////////////
+            }
+
+
     }
 
     @Override
