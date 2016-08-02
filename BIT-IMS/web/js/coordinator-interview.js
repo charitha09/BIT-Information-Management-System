@@ -4,23 +4,22 @@
 
 function updateInterviewDetails(interviewID) {
     alert(interviewID);
-    var httpxml;
+    document.getElementById("interviewID").value = interviewID;
+    document.getElementById("viewInterviewID").innerHTML = interviewID;
+}
+
+function viewAllUnallocatedApplicant() {
+     var httpxml;
     httpxml = new XMLHttpRequest();
     function stateChanged() {
         if (httpxml.readyState == 4) {
-            alert(interviewID);
-            //document.getElementById("updateInterviewDetailsBody").innerHTML = httpxml.responseText;
+            document.getElementById("unallocatedApplicantTableBody").innerHTML = httpxml.responseText;
         }
     }
-    var url = "../../LoadInterviewDetails";
-    url = url + "?interviewID=" + interviewID;
+    var url = "../../ViewInterviewUnallocatedApplicant";
     httpxml.onreadystatechange = stateChanged;
     httpxml.open("POST", url, true);
     httpxml.send(null);
-}
-
-function updateInterview(interviewID) {
-    alert(interviewID);
 
 }
 

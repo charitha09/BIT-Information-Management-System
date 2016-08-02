@@ -5,14 +5,23 @@
  */
 package com.ims.controller;
 
+import com.ims.model.Applicant;
+import com.ims.model.Interview;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Date;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import org.hibernate.HibernateException;
+import org.hibernate.Query;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
+import org.hibernate.cfg.Configuration;
 
 /**
  *
@@ -38,7 +47,7 @@ public class UpdateInterviewDetails extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet UpdateInterviewDetails</title>");            
+            out.println("<title>Servlet UpdateInterviewDetails</title>");
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Servlet UpdateInterviewDetails at " + request.getContextPath() + "</h1>");
@@ -50,17 +59,75 @@ public class UpdateInterviewDetails extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+       
         processRequest(request, response);
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+
         
-        Date date = Date.valueOf(request.getParameter("interviewDate"));
-        String startTime = request.getParameter("interStartTime");
+
+        String interviewID = request.getParameter("interviewID");
+        Date date = Date.valueOf(request.getParameter("updateInterviewDate"));
+        String startTime = request.getParameter("updateInterviewStartTime");
+
+        SessionFactory sessionFactry = new Configuration().configure().buildSessionFactory();
+        Session session = sessionFactry.openSession();
+        Transaction tx = null;
         
-        
+        try {
+            Interview interview = new Interview();
+            tx = session.beginTransaction();
+            interview = (Interview) session.get(Interview.class,interviewID);
+            interview.setDate(date);
+            interview.setStartTime(startTime);
+            
+            Query query = session.createQuery("FROM Applicant WHERE interviewID = '"+interviewID+"'");//
+            List applicantList = query.list();
+            
+            int startTimeCounter = 0;
+            Applicant applicant = new Applicant();
+            for (int i = 1; i <= applicantList.size(); i++) {
+                //Session session02 = sessionFactry.openSession();
+                
+                try {
+                    
+                    System.out.println("\n\n---------->03\n\n");
+                    applicant = (Applicant) applicantList.get(i-1);
+                    applicant.setInterviewID(interview.getInterviewID());
+                    String t = interview.getStartTime().substring(0, 2);
+                    int applicantStartHour = Integer.parseInt(t) + startTimeCounter;
+                    String applicantStartTime = applicantStartHour + ":" + interview.getStartTime().substring(3);
+
+                    applicant.setInterviewStartTime(applicantStartTime);
+
+                    session.update(applicant);
+                    
+
+                    System.out.println("---------->" + applicant.toString());
+
+                    if (i % interview.getApplicantPerHour() == 0) {
+                        startTimeCounter++;
+                    }
+
+                } catch (Exception ex) {
+                    System.out.println("--->" + ex);
+                    tx.rollback();
+                }
+            }
+            session.getTransaction().commit();
+            response.sendRedirect("user/coordinator/interview_create_edit.jsp");
+        }catch (HibernateException e) {
+            System.out.println("Exception " + e);
+            tx.rollback();
+            response.sendRedirect("user/coordinator/interview_create_edit.jsp?msg=error");
+        } finally {
+
+            session.close();
+        }
+
     }
 
     @Override

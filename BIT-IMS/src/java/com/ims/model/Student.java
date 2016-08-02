@@ -25,7 +25,6 @@ public class Student {
     @Id
     @GenericGenerator(name = "sequence_student_id", strategy = "com.ims.ids.StudentID")
     @GeneratedValue(generator = "sequence_student_id")
-    private String studentId;
     private String registrationNum;
     private String indexNum;
     private String fullName;
@@ -54,6 +53,8 @@ public class Student {
     private int isComputerField;
     private int monthlySalary;
     private String password;
+    private String currentYear;
+    
 
     public Student() {
     }
@@ -90,8 +91,8 @@ public class Student {
      * @param monthlySalary
      * @param password
      */
-    public Student(String studentId, String registrationNum, String indexNum, String fullName, String initial, String lastName, String title, String gender, String citizenship, String nationality, String nicNo, Date birthDay, String address, String country, String telephoneNum, String email, String alSubject01, String Subject01Result, String alSubject02, String Subject02Result, String alSubject03, String Subject03Result, String olMathsResult, String olEnglishResult, int isEmploy, String designation, int isComputerField, int monthlySalary, String password) {
-        this.studentId = studentId;
+    public Student(String registrationNum, String indexNum, String fullName, String initial, String lastName, String title, String gender, String citizenship, String nationality, String nicNo, Date birthDay, String address, String country, String telephoneNum, String email, String alSubject01, String Subject01Result, String alSubject02, String Subject02Result, String alSubject03, String Subject03Result, String olMathsResult, String olEnglishResult, int isEmploy, String designation, int isComputerField, int monthlySalary, String password) {
+      
         this.registrationNum = registrationNum;
         this.indexNum = indexNum;
         this.fullName = fullName;
@@ -122,13 +123,6 @@ public class Student {
         this.password = password;
     }
 
-    public String getStudentId() {
-        return studentId;
-    }
-
-    public void setStudentId(String studentId) {
-        this.studentId = studentId;
-    }
 
     public String getRegistrationNum() {
         return registrationNum;
@@ -354,9 +348,17 @@ public class Student {
         this.password = password;
     }
 
+    public String getCurrentYear() {
+        return currentYear;
+    }
+
+    public void setCurrentYear(String currentYear) {
+        this.currentYear = currentYear;
+    }
+
     @Override
     public String toString() {
-        return "Student{" + "studentId=" + studentId + ", registrationNum=" + registrationNum + ", indexNum=" + indexNum + ", fullName=" + fullName + ", initial=" + initial + ", lastName=" + lastName + ", title=" + title + ", gender=" + gender + ", citizenship=" + citizenship + ", nationality=" + nationality + ", nicNo=" + nicNo + ", birthDay=" + birthDay + ", address=" + address + ", country=" + country + ", telephoneNum=" + telephoneNum + ", email=" + email + ", alSubject01=" + alSubject01 + ", Subject01Result=" + Subject01Result + ", alSubject02=" + alSubject02 + ", Subject02Result=" + Subject02Result + ", alSubject03=" + alSubject03 + ", Subject03Result=" + Subject03Result + ", olMathsResult=" + olMathsResult + ", olEnglishResult=" + olEnglishResult + ", isEmploy=" + isEmploy + ", designation=" + designation + ", isComputerField=" + isComputerField + ", monthlySalary=" + monthlySalary + ", password=" + password + '}';
+        return "Student{" + ", registrationNum=" + registrationNum + ", indexNum=" + indexNum + ", fullName=" + fullName + ", initial=" + initial + ", lastName=" + lastName + ", title=" + title + ", gender=" + gender + ", citizenship=" + citizenship + ", nationality=" + nationality + ", nicNo=" + nicNo + ", birthDay=" + birthDay + ", address=" + address + ", country=" + country + ", telephoneNum=" + telephoneNum + ", email=" + email + ", alSubject01=" + alSubject01 + ", Subject01Result=" + Subject01Result + ", alSubject02=" + alSubject02 + ", Subject02Result=" + Subject02Result + ", alSubject03=" + alSubject03 + ", Subject03Result=" + Subject03Result + ", olMathsResult=" + olMathsResult + ", olEnglishResult=" + olEnglishResult + ", isEmploy=" + isEmploy + ", designation=" + designation + ", isComputerField=" + isComputerField + ", monthlySalary=" + monthlySalary + ", password=" + password + '}';
     }
 
     public static void main(String[] args) {

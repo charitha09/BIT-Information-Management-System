@@ -1,7 +1,7 @@
 <%-- 
     Document   : interview_create_edit
     Created on : Jun 22, 2016, 11:57:28 AM
-    Author     : Hp
+    Author     : Amila Sankha
 --%>
 
 <%@page import="com.ims.model.Interview"%>
@@ -43,7 +43,8 @@
         </header>
         <h1>Interview</h1>
 
-        <button type='button' class="btn btn-success" data-toggle='modal' data-target='#addNewInterview'>Add Interview</button>
+        <button type='button' class="btn btn-success" data-toggle='modal' data-target='#addNewInterview'>Add Interview</button> <br/><br/>
+        <button type='button' class="btn btn-success" data-toggle='modal' data-target='#viewAllUnallocatedApplicant' onclick="viewAllUnallocatedApplicant()">View All Unallocated Applicant </button>
 
         <br><br>
 
@@ -90,6 +91,28 @@
             </table>
 
         </div>
+                    
+                     <!-- Modal View All unallocated Applicant -->
+        <div id="viewAllUnallocatedApplicant" class="modal fade" role="dialog" >
+            <div class="modal-dialog">
+
+                <!-- Modal content-->
+                <div class="modal-content" >
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">All Unallocated Applicant</h4>
+                    </div>
+                    <div class="modal-body ">
+                        <h2></h2>
+                        <div id="unallocatedApplicantTableBody"style="height: auto">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
 
 
 
@@ -129,12 +152,22 @@
 
                         <div id="updateInterviewDetailsBody"style="height: auto">
                             <form id="updateInterview" action="../../UpdateInterviewDetails" method="POST">
-
+                                 <div class="form-group col-sm-4">
+                                    <label>Interview ID</label>
+                                </div>
+                                <div class="form-group col-sm-8">
+                                    <label id="viewInterviewID" ></label>
+                                </div>
+                                <div>
+                                    <input type="text" id="interviewID" name="interviewID" style="visibility: hidden"/>
+                                    
+                                </div>                                
+                                
                                 <div class="form-group col-sm-4">
                                     <label>Date</label>
                                 </div>
                                 <div class="form-group col-sm-8">
-                                    <input type="date" id="interviewDate" name="interviewDate" value="2015-10-20" placeholder="Interview Date" required class="form-control" data-error="Can't be empty"/>
+                                    <input type="date" id="updateInterviewDate" name="updateInterviewDate" placeholder="Interview Date" required class="form-control" data-error="Can't be empty"/>
                                     <div class="help-block with-errors"></div>
                                 </div>
 
@@ -142,7 +175,7 @@
                                     <label>Start Time</label>
                                 </div>
                                 <div class="form-group col-sm-8">
-                                    <input type="time" id="interStartTime" name="interStartTime" value="12:00 AM" placeholder="Interview Start Time" required class="form-control" data-error="Can't be empty"/>
+                                    <input type="time" id="updateInterviewStartTime" name="updateInterviewStartTime" placeholder="Interview Start Time" required class="form-control" data-error="Can't be empty"/>
                                     <div class="help-block with-errors"></div>
                                 </div>
 
@@ -247,6 +280,8 @@
                 </div>
             </div>
         </div>
+                                    
+                                    
 
 
     </body>

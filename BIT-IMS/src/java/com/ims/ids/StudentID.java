@@ -23,7 +23,7 @@ public class StudentID implements IdentifierGenerator {
         try {
             Statement statement = connection.createStatement();
 
-            ResultSet rs = statement.executeQuery("select count(studentId) as studentId from Student");
+            ResultSet rs = statement.executeQuery("select count(registrationNum) as studentId from Student");
 
             if (rs.next()) {
                 int id = rs.getInt(1) + 1;
