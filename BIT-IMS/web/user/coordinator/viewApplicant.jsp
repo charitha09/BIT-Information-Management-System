@@ -34,6 +34,8 @@
                         <li><a href="interview_create_edit.jsp">Interview</a></li> 
                         <li><a href="viewApplicant.jsp">Applicant</a></li> 
                         <li><a href="payment.jsp">Payment</a></li> 
+                        <li><a href="student.jsp">Student</a></li> 
+
                     </ul>
                     <ul class="nav navbar-nav navbar-right"  data-toggle="modal" data-target="#login-box">
                         <li><a href="../../logout"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
@@ -68,14 +70,14 @@
 
                         for (int i = 0; i < applicantList.size(); i++) {
                             Applicant applicant = new Applicant();
-                            applicant = (Applicant)applicantList.get(i);
+                            applicant = (Applicant) applicantList.get(i);
                             out.write("<tr>");
                             out.write("<td>" + applicant.getApplicationNum() + "</td>");
-                            out.write("<td>" + applicant.getFullName()+ "</td>");
+                            out.write("<td>" + applicant.getFullName() + "</td>");
                             out.write("<td>" + applicant.getNicNo() + "<td>");
                             out.write("<br>" + applicant.getTelephoneNumMob() + "<br>");
-                            out.write("<td>"+applicant.getEmail()+"</td>");
-                            out.write("<td>"+applicant.getAddress()+"</td>");
+                            out.write("<td>" + applicant.getEmail() + "</td>");
+                            out.write("<td>" + applicant.getAddress() + "</td>");
                             out.write("</tr>");
                         }
                     %>

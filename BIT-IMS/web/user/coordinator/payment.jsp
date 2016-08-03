@@ -1,7 +1,7 @@
 <%-- 
     Document   : addPaymentDetails
     Created on : Jun 29, 2016, 8:33:09 AM
-    Author     : Hp
+    Author     : Amila Sankha
 --%>
 
 <%@page import="com.ims.model.Student"%>
@@ -35,6 +35,8 @@
                         <li><a href="interview_create_edit.jsp">Interview</a></li> 
                         <li><a href="viewApplicant.jsp">Applicant</a></li> 
                         <li><a href="payment.jsp">Payment</a></li> 
+                        <li><a href="student.jsp">Student</a></li> 
+
                     </ul>
                     <ul class="nav navbar-nav navbar-right"  data-toggle="modal" data-target="#login-box">
                         <li><a href="../../logout"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
@@ -672,7 +674,7 @@
                         <button type='button' class="btn btn-info" data-toggle='modal' data-target='#searchByApplicationNumber'><span class="glyphicon glyphicon-search"></span>By Application Number</button> <br/><br/>
                         <button type='button' class="btn btn-info" data-toggle='modal' data-target='#searchByExamID'><span class="glyphicon glyphicon-search"></span>By Exam ID</button> <br/><br/>
                         <button type='button' class="btn btn-info" data-toggle='modal' data-target='#searchBypaymentType'><span class="glyphicon glyphicon-search"></span>By payment Type</button> <br/><br/>
-                        
+
                     </div>
                 </div>
             </div>
@@ -710,7 +712,7 @@
             </div>
         </div>
 
-<!-- ======================================================== -->
+        <!-- ======================================================== -->
         <!-- Search By Student ID -->
         <div id="searchByStudentID" class="modal fade" role="dialog" >
             <div class="modal-dialog">
@@ -741,10 +743,10 @@
                 </div>
             </div>
         </div>
-        
-        
-        
-        
+
+
+
+
         <!-- ======================================================== -->
         <!-- Search By Application Number -->
         <div id="searchByApplicationNumber" class="modal fade" role="dialog" >
@@ -776,8 +778,8 @@
                 </div>
             </div>
         </div>
-        
-        
+
+
         <!-- ======================================================== -->
         <!-- Search By Exam ID -->
         <div id="searchByExamID" class="modal fade" role="dialog" >
@@ -810,7 +812,7 @@
             </div>
         </div>
 
-<!-- ======================================================== -->
+        <!-- ======================================================== -->
         <!-- Search By Payment Type -->
         <div id="searchBypaymentType" class="modal fade" role="dialog" >
             <div class="modal-dialog">

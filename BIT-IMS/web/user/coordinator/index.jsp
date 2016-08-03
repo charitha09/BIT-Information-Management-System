@@ -19,29 +19,31 @@
         <script src="js/coordinator.js"></script>   
         <header>
             <nav class="navbar navbar-inverse">
-            <div class="container-fluid">
-                <div class="navbar-header">
-                    <a class="navbar-brand" href="index.jsp"><img src="../../images/logo.png" alt="UCSC"></a>
+                <div class="container-fluid">
+                    <div class="navbar-header">
+                        <a class="navbar-brand" href="index.jsp"><img src="../../images/logo.png" alt="UCSC"></a>
+                    </div>
+                    <ul class="nav navbar-nav">
+                        <li class="active"><a href="index.jsp">Home</a></li> 
+                        <li><a href="interview_create_edit.jsp">Interview</a></li> 
+                        <li><a href="viewApplicant.jsp">Applicant</a></li>
+                        <li><a href="payment.jsp">Payment</a></li>
+                        <li><a href="student.jsp">Student</a></li> 
+
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right"  data-toggle="modal" data-target="#login-box">
+                        <li><a href="../../logout"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
+                    </ul>
                 </div>
-                <ul class="nav navbar-nav">
-                    <li class="active"><a href="index.jsp">Home</a></li> 
-                    <li><a href="interview_create_edit.jsp">Interview</a></li> 
-                    <li><a href="viewApplicant.jsp">Applicant</a></li>
-                    <li><a href="payment.jsp">Payment</a></li> 
-                </ul>
-                <ul class="nav navbar-nav navbar-right"  data-toggle="modal" data-target="#login-box">
-                    <li><a href="../../logout"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
-                </ul>
-            </div>
             </nav>
         </header>
         <div class="container">
             Not Developed Yet
-            
-            <% 
+
+            <%
                 String fName = session.getAttribute("email").toString();
                 String userLevel = session.getAttribute("userLevel").toString();
-                out.write("<br>"+fName+"<br>"+userLevel);
+                out.write("<br>" + fName + "<br>" + userLevel);
             %>
         </div>
     </body>

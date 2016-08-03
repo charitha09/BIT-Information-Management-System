@@ -54,6 +54,7 @@ public class Student {
     private int monthlySalary;
     private String password;
     private String currentYear;
+    private String currentAcademicYear;
     
 
     public Student() {

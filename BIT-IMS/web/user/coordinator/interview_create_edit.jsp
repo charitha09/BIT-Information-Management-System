@@ -34,6 +34,8 @@
                         <li><a href="interview_create_edit.jsp">Interview</a></li> 
                         <li><a href="viewApplicant.jsp">Applicant</a></li>
                         <li><a href="payment.jsp">Payment</a></li> 
+                        <li><a href="student.jsp">Student</a></li> 
+
                     </ul>
                     <ul class="nav navbar-nav navbar-right"  data-toggle="modal" data-target="#login-box">
                         <li><a href="../../logout"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
@@ -91,8 +93,8 @@
             </table>
 
         </div>
-                    
-                     <!-- Modal View All unallocated Applicant -->
+
+        <!-- Modal View All unallocated Applicant -->
         <div id="viewAllUnallocatedApplicant" class="modal fade" role="dialog" >
             <div class="modal-dialog">
 
@@ -152,7 +154,7 @@
 
                         <div id="updateInterviewDetailsBody"style="height: auto">
                             <form id="updateInterview" action="../../UpdateInterviewDetails" method="POST">
-                                 <div class="form-group col-sm-4">
+                                <div class="form-group col-sm-4">
                                     <label>Interview ID</label>
                                 </div>
                                 <div class="form-group col-sm-8">
@@ -160,9 +162,9 @@
                                 </div>
                                 <div>
                                     <input type="text" id="interviewID" name="interviewID" style="visibility: hidden"/>
-                                    
+
                                 </div>                                
-                                
+
                                 <div class="form-group col-sm-4">
                                     <label>Date</label>
                                 </div>
@@ -241,14 +243,14 @@
                                 <div class="form-group col-sm-8">                    
                                     <select class="form-control" id="interDistrict" name="interDistrict" required data-error="Must Select">
                                         <option value="" disabled selected hidden>- - Choose Registration District - -</option>
-                                       <%/*
-                                            for (int i = 0; i < centers.length; i++) {
-                                                out.write("<option value=' " + centers[i]  + "'>" + centers[i] + "</option>");
-                                            }*/
-                                        %>
-                                    </select>
-                                    <div class="help-block with-errors"></div>
-                                </div>
+                                <%/*
+                                     for (int i = 0; i < centers.length; i++) {
+                                     out.write("<option value=' " + centers[i]  + "'>" + centers[i] + "</option>");
+                                     }*/
+                                %>
+                            </select>
+                            <div class="help-block with-errors"></div>
+                        </div>
                                 -->
 
                                 <div class="form-group col-sm-4">
@@ -280,8 +282,8 @@
                 </div>
             </div>
         </div>
-                                    
-                                    
+
+
 
 
     </body>
