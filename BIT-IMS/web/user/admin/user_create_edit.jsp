@@ -5,6 +5,18 @@
 <%@page import="org.hibernate.cfg.Configuration"%>
 <%@page import="org.hibernate.SessionFactory"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+
+<%
+    try {
+        String fName = session.getAttribute("email").toString();
+        String userLevel = session.getAttribute("userLevel").toString();
+
+    } catch (Exception e) {
+        response.sendRedirect("../../");
+
+    }
+
+%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -93,8 +105,7 @@
                     </div>                            
                 </form>                    
             </div> 
-            <%
-                SessionFactory sessionFactry = new Configuration().configure().buildSessionFactory();
+            <%                SessionFactory sessionFactry = new Configuration().configure().buildSessionFactory();
                 Session s = sessionFactry.openSession();
                 //s.beginTransaction();
             %>
@@ -133,7 +144,7 @@
                             out.write("<button type='button' value='update' class='btn btn-default btn-sm' onclick=viewUserDetails('" + u.getUserId() + "')><span class='glyphicon glyphicon-pencil'></span></button>");
                             out.write("<button type='button' value='Reset Password' class='btn btn-warning btn-sm' onclick=resetPassword('" + u.getUserId() + "')><span class='glyphicon glyphicon-refresh'></span></button>");
                             out.write("<button type='button' value='delete' class='btn btn-danger btn-sm' onclick=suspendUser('" + u.getUserId() + "')><span class='glyphicon glyphicon-remove'></button>");
-                        
+
                         }
                     %>
 
@@ -152,7 +163,7 @@
                             out.write("<button type='button' value='update' class='btn btn-default btn-sm' onclick=viewUserDetails('" + u.getUserId() + "')><span class='glyphicon glyphicon-pencil'></span></button>");
                             out.write("<button type='button' value='Reset Password' class='btn btn-warning btn-sm' onclick=resetPassword('" + u.getUserId() + "')><span class='glyphicon glyphicon-refresh'></span></button>");
                             out.write("<button type='button' value='delete' class='btn btn-danger btn-sm' onclick=suspendUser('" + u.getUserId() + "')><span class='glyphicon glyphicon-remove'></span></button></button>");
-                        
+
                         }
                     %>
 
@@ -172,7 +183,7 @@
                             out.write("<button type='button' value='update' class='btn btn-default btn-sm' onclick=viewUserDetails('" + u.getUserId() + "')><span class='glyphicon glyphicon-pencil'></span></button>");
                             out.write("<button type='button' value='Reset Password' class='btn btn-warning btn-sm' onclick=resetPassword('" + u.getUserId() + "')><span class='glyphicon glyphicon-refresh'></span></button>");
                             out.write("<button type='button' value='delete' class='btn btn-danger btn-sm' onclick=suspendUser('" + u.getUserId() + "')><span class='glyphicon glyphicon-remove'></span></button>");
-                        
+
                         }
                     %>
 

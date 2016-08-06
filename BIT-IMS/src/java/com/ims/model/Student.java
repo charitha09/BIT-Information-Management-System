@@ -56,6 +56,7 @@ public class Student {
     private String password;
     private String currentYear;
     private String currentAcademicYear;
+    private int state = 1;
     
 
     public Student() {
@@ -131,6 +132,14 @@ public class Student {
 
     public void setApplicationNum(String applicationNum) {
         this.applicationNum = applicationNum;
+    }
+
+    public int getState() {
+        return state;
+    }
+
+    public void setState(int state) {
+        this.state = state;
     }
 
 

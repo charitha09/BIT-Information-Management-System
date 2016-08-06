@@ -31,10 +31,17 @@
         <div class="container">
             Not Developed Yet
             
-            <% 
-                String fName = session.getAttribute("email").toString();
-                String userLevel = session.getAttribute("userLevel").toString();
-                out.write("<br>"+fName+"<br>"+userLevel);
+           
+            <%
+                try {
+                    String fName = session.getAttribute("email").toString();
+                    String userLevel = session.getAttribute("userLevel").toString();
+                    out.write("<br>" + fName + "<br>" + userLevel);
+                } catch (Exception e) {
+                    response.sendRedirect("../../");
+
+                }
+
             %>
         </div>
     </body>

@@ -11,6 +11,17 @@
 <%@page import="org.hibernate.cfg.Configuration"%>
 <%@page import="org.hibernate.SessionFactory"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%
+    try {
+        String fName = session.getAttribute("email").toString();
+        String userLevel = session.getAttribute("userLevel").toString();
+
+    } catch (Exception e) {
+        response.sendRedirect("../../");
+
+    }
+
+%>
 <!DOCTYPE html>
 <html>
     <head>

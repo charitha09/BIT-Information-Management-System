@@ -91,7 +91,7 @@ public class LoginController extends HttpServlet {
                     } else {
                         error += "invalid email or password!";
                     }
-                } else if (id.startsWith("R")) {
+                } else if (id.contains("R")) {
                     Student student = new Student();
                     student = (Student) session.get(Student.class, id);
                     session.getTransaction().commit();
@@ -160,7 +160,7 @@ public class LoginController extends HttpServlet {
 
             if (userIDS.size() == 0) {
                 //check student table
-                Query query2 = session.createQuery("SELECT studentId FROM Student WHERE registrationNum= '" + username + "' AND password='" + password + "'AND state=1");
+                Query query2 = session.createQuery("SELECT registrationNum FROM Student WHERE registrationNum= '" + username + "' AND password='" + password + "'AND state=1");
                 List studentIDS = query2.list();
                 if (studentIDS.size() == 1) {
                     userId = studentIDS.get(0).toString();
