@@ -45,7 +45,8 @@
                         <li><a href="interview_create_edit.jsp">Interview</a></li> 
                         <li><a href="viewApplicant.jsp">Applicant</a></li>
                         <li><a href="payment.jsp">Payment</a></li> 
-                        <li><a href="student.jsp">Student</a></li> 
+                        <li><a href="student.jsp">Student</a></li>
+                        <li><a href="settings.jsp">Setting</a></li>
 
                     </ul>
                     <ul class="nav navbar-nav navbar-right"  data-toggle="modal" data-target="#login-box">
