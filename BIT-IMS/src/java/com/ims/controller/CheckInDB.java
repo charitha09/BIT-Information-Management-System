@@ -5,6 +5,7 @@
  */
 package com.ims.controller;
 
+import com.ims.model.Applicant;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
@@ -42,7 +43,7 @@ public class CheckInDB extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet CheckInDB</title>");            
+            out.println("<title>Servlet CheckInDB</title>");
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Servlet CheckInDB at " + request.getContextPath() + "</h1>");
@@ -80,7 +81,7 @@ public class CheckInDB extends HttpServlet {
         String table = request.getParameter("table");
         String value = request.getParameter("value");
         SessionFactory sessionFactry = new Configuration().configure().buildSessionFactory();
-        
+
         if (table.equalsIgnoreCase("Applicant")) {
             try (PrintWriter out = response.getWriter()) {
 
@@ -103,7 +104,7 @@ public class CheckInDB extends HttpServlet {
                 }
 
             }
-        }else  if (table.equalsIgnoreCase("Student")) {
+        } else if (table.equalsIgnoreCase("Student")) {
             try (PrintWriter out = response.getWriter()) {
 
                 Session session = sessionFactry.openSession();
@@ -125,12 +126,38 @@ public class CheckInDB extends HttpServlet {
                 }
 
             }
+        } else if (table.equalsIgnoreCase("ApplicantIsRegistered")) {
+            try (PrintWriter out = response.getWriter()) {
+
+                Session session = sessionFactry.openSession();
+                session.beginTransaction();
+                try {
+                    Query query = session.createQuery("FROM Applicant WHERE applicationNum= '" + value + "'");
+                    List userIDS = query.list();
+                    session.getTransaction().commit();
+
+                    if (userIDS.size() == 0) {
+                        out.write(value + " --> Not in DB");
+                    } else {
+                        Applicant applicant = new Applicant();
+                        applicant = (Applicant) userIDS.get(0);
+                        if(applicant.getIsRegisteredAsStudent()==1){
+                            out.write(value + " --> Already registerd");
+                        }else{
+                            out.write("Ok");
+                        }
+                        
+                    }
+                } catch (Exception e) {
+                    System.out.println("exeption in checkEmailInDb()");
+                } finally {
+                    session.close();
+                }
+
+            }
         }
-        
-        
+
     }
-    
-    
 
     /**
      * Returns a short description of the servlet.

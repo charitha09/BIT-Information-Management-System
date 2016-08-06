@@ -22,7 +22,7 @@
     <body>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
-        <script src="../../js/payment.js"></script>   
+        <script src="../../js/student.js"></script>   
         <header>
             <nav class="navbar navbar-inverse">
                 <div class="container-fluid">
@@ -179,6 +179,7 @@
                             <option value="4thYear">4th Year</option>
                         </select>
                         <div class="help-block with-errors"></div>
+                        <div id="searchYearErr" class="help-block with-errors"></div>
                     </div>
 
                         <button type='button' class="btn btn-info btn-lg" onclick="searchByCurrentYear()"><span class="glyphicon glyphicon-search"></span> Search</button> <br/><br/>

@@ -57,6 +57,7 @@ public class Applicant {
     private String interviewID;
     private String interviewStartTime;
     private int doPayment = 0;
+    private int isRegisteredAsStudent = 0;
             
 
     public Applicant() {
@@ -133,6 +134,14 @@ public class Applicant {
 
     public String getApplicationNum() {
         return applicationNum;
+    }
+
+    public int getIsRegisteredAsStudent() {
+        return isRegisteredAsStudent;
+    }
+
+    public void setIsRegisteredAsStudent(int isRegisteredAsStudent) {
+        this.isRegisteredAsStudent = isRegisteredAsStudent;
     }
 
     public void setApplicationNum(String applicationNum) {

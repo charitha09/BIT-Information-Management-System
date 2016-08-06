@@ -27,6 +27,7 @@ public class Student {
     @GeneratedValue(generator = "sequence_student_id")
     private String registrationNum;
     private String indexNum;
+    private String applicationNum;
     private String fullName;
     private String initial;
     private String lastName;
@@ -122,6 +123,14 @@ public class Student {
         this.isComputerField = isComputerField;
         this.monthlySalary = monthlySalary;
         this.password = password;
+    }
+
+    public String getApplicationNum() {
+        return applicationNum;
+    }
+
+    public void setApplicationNum(String applicationNum) {
+        this.applicationNum = applicationNum;
     }
 
 
@@ -355,6 +364,14 @@ public class Student {
 
     public void setCurrentYear(String currentYear) {
         this.currentYear = currentYear;
+    }
+
+    public String getCurrentAcademicYear() {
+        return currentAcademicYear;
+    }
+
+    public void setCurrentAcademicYear(String currentAcademicYear) {
+        this.currentAcademicYear = currentAcademicYear;
     }
 
     @Override
