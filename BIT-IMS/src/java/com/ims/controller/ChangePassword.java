@@ -6,6 +6,7 @@
 package com.ims.controller;
 
 import com.ims.model.Applicant;
+import com.ims.model.Student;
 import com.ims.model.User;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -105,6 +106,39 @@ public class ChangePassword extends HttpServlet {
                     if (user.getPassword().equals(currentPassword)) {
                         user.setPassword(newPassword);
                         session.update(user);
+                        tx.commit();
+                        out.write("ok");
+                    } else {
+                        out.write("Current password mismatch");
+                    }
+
+                } catch (HibernateException hex) {
+                    System.out.println("--->" + hex);
+                    tx.rollback();
+                    out.write("Error");
+                } catch (Exception e) {
+                    System.out.println("--->" + e);
+                    tx.rollback();
+                    out.write("Error");
+                } finally {
+                    session.close();
+                }
+
+            }else if (userType.equalsIgnoreCase("Student")) {
+
+                Student student = new Student();
+
+                Session session = sessionFactry.openSession();
+                Transaction tx = null;
+
+                try {
+                    tx = session.beginTransaction();
+
+                    student = (Student) session.get(Student.class, userID);
+
+                    if (student.getPassword().equals(currentPassword)) {
+                        student.setPassword(newPassword);
+                        session.update(student);
                         tx.commit();
                         out.write("ok");
                     } else {
