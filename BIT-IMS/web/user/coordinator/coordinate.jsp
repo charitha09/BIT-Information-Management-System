@@ -47,10 +47,10 @@
         </header>
         <div class="container">
             <div class="col-sm-2 no-padding">
-                <a href="#Interview-window" class="list-group-item">
+                <a id="Interview-window-navi" href="#Interview-window" class="list-group-item">
                     <i class="fa fa-comment-o"></i> Interview
                 </a>  
-                <a href="#" class="list-group-item">
+                <a id="Applicant-window-navi" href="#Interview-Applicant" class="list-group-item">
                     <i class="fa fa-comment-o"></i> Applicant
                 </a> 
             </div>

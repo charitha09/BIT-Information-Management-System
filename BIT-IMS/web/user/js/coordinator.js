@@ -1,3 +1,18 @@
+$( document ).ready(function() {
+    $( "#Interview-window-navi" ).click(function() {
+        $("#Interview-window").css("display", "block");
+        $("#Applicant-window").css("display", "none");
+    });
+    
+    $( "#Applicant-window-navi" ).click(function() {
+        $("#Interview-window").css("display", "none");
+        $("#Applicant-window").css("display", "block");
+    });
+});
+
+
+
+
 function updateInterviewDetails(interviewID) {
     alert(interviewID);
     document.getElementById("interviewID").value = interviewID;
