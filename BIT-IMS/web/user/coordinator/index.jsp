@@ -1,9 +1,3 @@
-<%-- 
-    Document   : index
-    Created on : Jun 22, 2016, 11:15:51 AM
-    Author     : Amila Sankha
---%>
-
 <%@page import="javax.validation.constraints.Null"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -26,10 +20,10 @@
                     </div>
                     <ul class="nav navbar-nav">
                         <li class="active"><a href="index.jsp">Home</a></li> 
-                        <li><a href="interview_create_edit.jsp">Interview</a></li> 
                         <li><a href="viewApplicant.jsp">Applicant</a></li>
                         <li><a href="payment.jsp">Payment</a></li>
                         <li><a href="student.jsp">Student</a></li> 
+                        <li><a href="coordinate.jsp">Coordinate</a></li> 
                         <li><a href="settings.jsp">Setting</a></li> 
                         
 

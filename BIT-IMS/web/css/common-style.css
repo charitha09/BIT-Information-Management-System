@@ -8,7 +8,8 @@
 }
 
 .navbar {
-    border-radius: 0px;;
+    border-radius: 0px;
+    margin-bottom: 0px;
 }
 /*Theame Colour Setup*/
 /*Nav Bar*/
@@ -30,6 +31,10 @@
 nav .navbar-nav li:hover{
     background-color: #178ACB;
     color: #fff;    
+}
+
+body .cycle-slideshow {
+  bottom: 0px;
 }
 /*Footer*/
 footer{
