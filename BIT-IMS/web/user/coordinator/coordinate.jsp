@@ -135,12 +135,9 @@
                             <div class="col-sm-2 no-padding"><h5>Address</h5></div>
                         </div>
                         <%
-                            /*
-                            SessionFactory sessionFactry = new Configuration().configure().buildSessionFactory();
-                            Session s = sessionFactry.openSession();
                             //s.beginTransaction();
-                            Query queryinterview = s.createQuery("FROM Applicant");
-                            List applicantList = queryinterview.list();
+                            Query queryApplicant = s.createQuery("FROM Applicant");
+                            List applicantList = queryApplicant.list();
                             
                             for (int i = 0; i < applicantList.size(); i++) {
                                 Applicant applicant = new Applicant();
@@ -154,7 +151,7 @@
                                 out.write("<div class='col-sm-2 no-padding'><h5>"+ applicant.getAddress() + "</h5></div>");
                                 out.write("</div>");                                
                             }
-                            */
+                           
                         %>
                     </div>
                 </div>  
