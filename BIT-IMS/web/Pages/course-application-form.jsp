@@ -74,7 +74,7 @@
                         <button id="EducationDetails" type="button" class="btn btn-primary" onclick="clickEducation()">Carrier Details</button>
                     </div>
                     <div class="btn-group">
-                        <button id="PaymentDetails" type="button" class="btn btn-primary" onclick="clickPayment()">Payment Details</button>
+                        <button id="PaymentDetails" type="button" class="btn btn-primary" onclick="viewFullForm()">Finish</button>
                     </div>
                 </div>
                 <!--Personal Details Tab-->
@@ -146,6 +146,23 @@
                         <input type="date" id="perdtl-dob" name="perdtl-dob" required class="form-control" data-error="Empty or invalied Date try YYYY-MM-DD format" pattern="(?:19|20)[0-9]{2}-(?:(?:0[1-9]|1[0-2])-(?:0[1-9]|1[0-9]|2[0-9])|(?:(?!02)(?:0[1-9]|1[0-2])-(?:30))|(?:(?:0[13578]|1[02])-31))"/>
                         <div class="help-block with-errors"></div>
                     </div>
+                    <div class="form-group col-sm-12 bottem-border">
+                    </div>
+                    <% String[] centers = {"Colombo", "Galle", "Kandy"}; %>                    
+                    <div class="form-group col-sm-4">
+                        <label for="reg-center">Registration Center</label>
+                    </div> 
+                    <div class="form-group col-sm-8">                    
+                        <select class="form-control" id="reg-center" required data-error="Must Select">
+                            <option value="" disabled selected hidden>- - Choose Registration Near To You - -</option>
+                            <%                                     
+                                for (int i = 0; i < centers.length; i++){
+                                    out.write("<option value=' " + i + "'>" + centers[i] + "</option>");
+                                }
+                            %>
+                        </select>
+                        <div class="help-block with-errors"></div>
+                    </div>                    
                     <div class="form-group col-sm-12 bottem-border">
                     </div>
                     <div class="btn-box">
@@ -372,53 +389,8 @@
                 </div> 
                 <!--Payment Details Tab-->
                 <div id="app-details-4" class="col-sm-12">
-                    <% String[] centers = {"Colombo", "Galle", "Kandy"}; %>
-                    <div class="form-group col-sm-8">
-                        <label for="reg-slip">If you not paid yet please pay for the bank before filling the application form</label>                        
-                    </div>
-                    <div class="col-sm-4">
-                        <a href="#">Download The Deposit Slip</a>
-                    </div>
-                    <div class="form-group col-sm-12">
-                        <!--Pseudo div-->
-                    </div>
-                    <div class="form-group col-sm-4">
-                        <label for="reg-center">Registration Center</label>
-                    </div> 
-                    <div class="form-group col-sm-8">                    
-                        <select class="form-control" id="reg-center" required data-error="Must Select">
-                            <option value="" disabled selected hidden>- - Choose Registration Near To You - -</option>
-                            <%                                     
-                                for (int i = 0; i < centers.length; i++){
-                                    out.write("<option value=' " + i + "'>" + centers[i] + "</option>");
-                                }
-                            %>
-                        </select>
-                        <div class="help-block with-errors"></div>
-                    </div>
-                    <div class="form-group col-sm-4">
-                        <label for="reg-pammount">Amount Paid (RS)</label>
-                    </div>
-                    <div class="form-group col-sm-8">
-                        <input type="text" id="reg-pammount" placeholder="Amount You Paid" class="form-control" required data-error="Can't be empty"/>
-                        <div class="help-block with-errors"></div>
-                    </div>
-                    <div class="form-group col-sm-4">
-                        <label for="reg-bank">Name of Payee Bank</label>
-                    </div> 
-                    <div class="form-group col-sm-8">                    
-                        <input type="text" id="reg-bank" placeholder="Bank You Paid" required data-error="Can't be empty" class="form-control"/>
-                        <div class="help-block with-errors"></div>
-                    </div>
-                    <div class="form-group col-sm-4">
-                        <label for="reg-pdate">Date Paid</label>
-                    </div> 
-                    <div class="form-group col-sm-8">                    
-                        <input type="text" id="reg-pdate" placeholder="Date You Paid" required class="form-control" data-error="Empty or invalied Date try YYYY-MM-DD format" pattern="(?:19|20)[0-9]{2}-(?:(?:0[1-9]|1[0-2])-(?:0[1-9]|1[0-9]|2[0-9])|(?:(?!02)(?:0[1-9]|1[0-2])-(?:30))|(?:(?:0[13578]|1[02])-31))"/>
-                        <div class="help-block with-errors"></div>
-                    </div>
-                    <div class="form-group col-sm-12 bottem-border">
-                    </div>
+                    
+                        
                     <div class="col-sm-12 warning-apply-anc">
                         <div class="col-sm-2">
                             <h5 class="warning-apply">Warning : </h5>

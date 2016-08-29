@@ -1,3 +1,4 @@
+<%@page import="com.ims.model.Applicant"%>
 <%@page import="com.ims.model.Interview"%>
 <%@page import="java.util.List"%>
 <%@page import="org.hibernate.Query"%>
@@ -107,7 +108,55 @@
                     
                 </div>  
                 <div id="Applicant-window">
-                    Applicant
+                    <div class="col-sm-12 devbottom-line">
+                        <div class="col-sm-10">
+                            <h3>Applicant</h3>
+                        </div>
+                        <div class="col-sm-2 droup-down-box">
+                            <div class="dropdown">
+                                <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">Tasks
+                                <span class="caret"></span></button>
+                                <ul class="dropdown-menu">
+                                    <li><a href="#searchApplicant" data-toggle='modal' data-target='#searchApplicant'>Search Applicant</a></li> 
+                                </ul>
+                            </div>                            
+                        </div>                        
+                    </div>                    
+                    <div class="col-sm-12" id="ViewInterview">
+                        <div class="col-sm-12 devbottom-line">
+                            <h4>Applicant list</h4>
+                        </div>
+                        <div class="col-sm-12 devbottom-line">
+                            <div class="col-sm-2 no-padding"><h5>Applicant ID</h5></div>
+                            <div class="col-sm-2 no-padding"><h5>Name</h5></div>
+                            <div class="col-sm-2 no-padding"><h5>NIC Number</h5></div>
+                            <div class="col-sm-2 no-padding"><h5>Phone Number</h5></div>
+                            <div class="col-sm-2 no-padding"><h5>Email</h5></div>
+                            <div class="col-sm-2 no-padding"><h5>Address</h5></div>
+                        </div>
+                        <%
+                            /*
+                            SessionFactory sessionFactry = new Configuration().configure().buildSessionFactory();
+                            Session s = sessionFactry.openSession();
+                            //s.beginTransaction();
+                            Query queryinterview = s.createQuery("FROM Applicant");
+                            List applicantList = queryinterview.list();
+                            
+                            for (int i = 0; i < applicantList.size(); i++) {
+                                Applicant applicant = new Applicant();
+                                applicant = (Applicant) applicantList.get(i);
+                                out.write("<div class='col-sm-12 devbottom-line'>");
+                                out.write("<div class='col-sm-2 no-padding'><h5>"+ applicant.getApplicationNum() + "</h5></div>");
+                                out.write("<div class='col-sm-2 no-padding'><h5>"+ applicant.getFullName() + "</h5></div>");
+                                out.write("<div class='col-sm-2 no-padding'><h5>"+ applicant.getNicNo() + "</h5></div>");
+                                out.write("<div class='col-sm-2 no-padding'><h5>"+ applicant.getTelephoneNumMob() + "</h5></div>");
+                                out.write("<div class='col-sm-2 no-padding'><h5>"+ applicant.getEmail() + "</h5></div>");
+                                out.write("<div class='col-sm-2 no-padding'><h5>"+ applicant.getAddress() + "</h5></div>");
+                                out.write("</div>");                                
+                            }
+                            */
+                        %>
+                    </div>
                 </div>  
             </div>            
         </div>
