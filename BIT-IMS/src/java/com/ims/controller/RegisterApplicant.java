@@ -7,9 +7,23 @@
 package com.ims.controller;
 
 import com.ims.model.Applicant;
+import com.itextpdf.text.BaseColor;
+import com.itextpdf.text.Document;
+import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.Element;
+import com.itextpdf.text.Font;
+import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.Phrase;
+import com.itextpdf.text.pdf.PdfPCell;
+import com.itextpdf.text.pdf.PdfPTable;
+import com.itextpdf.text.pdf.PdfWriter;
 import java.io.IOException;
+import java.io.OutputStream;
 import java.io.PrintWriter;
 import java.sql.Date;
+import java.util.Calendar;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -27,6 +41,14 @@ import org.hibernate.cfg.Configuration;
  */
 @WebServlet(name = "RegisterApplicant", urlPatterns = {"/RegisterApplicant"})
 public class RegisterApplicant extends HttpServlet {
+    
+    
+    private static final Font catFont = new Font(Font.FontFamily.TIMES_ROMAN, 14,Font.NORMAL);
+    private static final Font redFont = new Font(Font.FontFamily.TIMES_ROMAN, 12,Font.NORMAL, BaseColor.RED);
+    private static final Font subFont = new Font(Font.FontFamily.TIMES_ROMAN, 16,Font.BOLD);
+    private static final Font smallBold = new Font(Font.FontFamily.TIMES_ROMAN, 12,Font.BOLD);
+    private static final Font smallFont = new Font(Font.FontFamily.TIMES_ROMAN, 10,Font.NORMAL);
+
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -115,6 +137,105 @@ public class RegisterApplicant extends HttpServlet {
         Transaction tx = null;
 
         try {
+            ///////////////////////////////////////////////////////////////////////////////////////
+            //Date date = null; // your date
+            Calendar cal = Calendar.getInstance();
+            //cal.setTime(date);
+            int year = cal.get(Calendar.YEAR);
+            int month = cal.get(Calendar.MONTH);
+            int day = cal.get(Calendar.DAY_OF_MONTH);
+            
+            
+            
+            OutputStream out=response.getOutputStream();
+            Document document = new Document();
+            /* Basic PDF Creation inside servlet */
+            PdfWriter.getInstance(document, out);
+                   
+            document.open();
+            
+                addMetaData(document);
+                addTitlePage(document);
+                
+                Paragraph preface = new Paragraph();
+                
+                preface.add(new Paragraph("YEAR: " + year, catFont));
+                preface.add(new Paragraph("---------------------------------------------------------------------------------------------------------------------"));
+                
+                //***********************************************************************************************************
+                //add an empty line
+                addEmptyLine(preface, 1);
+                //preface.add(new Paragraph("Application For : "+w1,smallBold));
+                preface.add(new Paragraph("Full Name : "+fullName,smallBold));
+                preface.add(new Paragraph("Initials : "+initial,smallBold));
+                preface.add(new Paragraph("Last Name : "+lastName,smallBold));
+                preface.add(new Paragraph("Title : "+title,smallBold));
+                preface.add(new Paragraph("Gender : "+gender,smallBold));
+                preface.add(new Paragraph("Citizenship : "+citizenship,smallBold));
+                preface.add(new Paragraph("Nationality : "+nationality,smallBold));
+                preface.add(new Paragraph("National ID : "+nicNo,smallBold));
+                preface.add(new Paragraph("Date of Birth : "+birthDay,smallBold));
+                //preface.add(new Paragraph("Registration Center : "+,smallBold));                
+                preface.add(new Paragraph("Permanent Address : "+address,smallBold));
+                preface.add(new Paragraph("Country : "+country,smallBold));
+                preface.add(new Paragraph("Telephone Number(Fix) : "+telephoneNumFix,smallBold));
+                preface.add(new Paragraph("Telephone Number(Mobile) : "+telephoneNumMob,smallBold));
+                preface.add(new Paragraph("E-mail : "+email,smallBold));
+                preface.add(new Paragraph("Foundation in Information Technology Result : "+fitResult,smallBold));
+                preface.add(new Paragraph("A/L Result : ",smallBold));
+                
+
+
+                //creating a table => Course Slection Table
+                PdfPTable table = new PdfPTable(2);
+                //setting widths for each cell
+                table.setWidths(new int[]{50,50});
+                                
+                PdfPCell c1;
+                
+                c1 = new PdfPCell(new Phrase("Subject",smallFont));
+                c1.setHorizontalAlignment(Element.ALIGN_CENTER);
+                table.addCell(c1);
+                
+                c1 = new PdfPCell(new Phrase("Result",smallFont));
+                c1.setHorizontalAlignment(Element.ALIGN_CENTER);
+                table.addCell(c1);
+                
+                                
+                table.setHeaderRows(1);
+                             
+                
+                table.addCell(new Phrase(alSubject01,smallFont));
+                table.addCell(new Phrase(Subject01Result,smallFont));
+                
+                table.addCell(new Phrase(alSubject02,smallFont));
+                table.addCell(new Phrase(Subject02Result,smallFont));
+                
+                table.addCell(new Phrase(alSubject03,smallFont));
+                table.addCell(new Phrase(Subject03Result,smallFont));
+                
+                preface.add(table);
+                
+                
+                preface.add(new Paragraph("O/L Result : Mathematics - "+olMathsResult,smallBold));
+                preface.add(new Paragraph("           : English     - "+olEnglishResult,smallBold));
+                
+             
+                
+                preface.add(new Paragraph("Employment Details : Are you currently employed ?        - "+isEmploy,smallBold));
+                preface.add(new Paragraph("                   : If employed : Designation           - "+designation,smallBold));
+                preface.add(new Paragraph("                   : Are you working on computer field ? - "+isComputerField,smallBold));
+                preface.add(new Paragraph("                   : Monthly Salary                      - "+monthlySalary,smallBold));
+                
+                
+                addEmptyLine(preface, 1);
+                System.getProperty("user.timezone","UTC");
+                preface.add(new Paragraph(""+new java.util.Date(),smallBold));
+                
+                document.add(preface);
+            
+            document.close();
+            //////////////////////////////////////////////////////////////////////////////////////
             tx = session.beginTransaction();
             session.save(applicant);
             session.getTransaction().commit();
@@ -123,6 +244,8 @@ public class RegisterApplicant extends HttpServlet {
         } catch (HibernateException e) {
             System.out.println("Exception "+e);
             tx.rollback();
+        } catch (DocumentException ex) {
+            Logger.getLogger(RegisterApplicant.class.getName()).log(Level.SEVERE, null, ex);
         }finally{
             session.close();
         }
@@ -133,5 +256,43 @@ public class RegisterApplicant extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
+    
+    
+     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    
+    // iText allows to add metadata to the PDF which can be viewed in your Adobe
+    // Reader
+    // under File -> Properties
+    private static void addMetaData(Document document) {
+        document.addTitle("Application Form");
+        document.addSubject("Using iText");
+        document.addKeywords("Java, PDF, iText");
+        document.addAuthor("Lars Vogel");
+        document.addCreator("Lars Vogel");
+    }
+
+    private static void addTitlePage(Document document) throws DocumentException {
+        Paragraph preface = new Paragraph();
+        // We add one empty line
+        addEmptyLine(preface, 1);
+        // Lets write a big header
+        preface.add(new Paragraph("UNIVERSITY OF COLOMBO SCHOOL OF COMPUTING", catFont));
+        preface.add(new Paragraph("STUDENT APPLICATION FORM", catFont));
+                
+        document.add(preface);
+        
+        // Start a new page
+        //document.newPage();
+    }
+
+
+    private static void addEmptyLine(Paragraph paragraph, int number) {
+        for (int i = 0; i < number; i++) {
+            paragraph.add(new Paragraph(" "));
+        }
+    }
+    
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    
 
 }
