@@ -39,11 +39,23 @@
             </nav>
         </header>
         <div class="container">
+            <div class="col-sm-12 bottem-border">
+                <h3>User Settings</h3>
+            </div>
+            <div class="col-sm-12">
+                <div class="col-sm-6">
+                    <h5>Change Password</h5>
+                </div>
+                <div class="col-sm-6">
+                    <button type='button' class="btn btn-success col-sm-12" data-toggle='modal' data-target='#changePassword'>Change Password</button>                    
+                </div>
+            </div>
+            
                         
         </div>
 
 
-        <button type='button' class="btn btn-success" data-toggle='modal' data-target='#changePassword'>Change Password</button> <br/><br/>
+        
 
         <!-- change Password -->
         <div id="changePassword" class="modal fade" role="dialog" >
