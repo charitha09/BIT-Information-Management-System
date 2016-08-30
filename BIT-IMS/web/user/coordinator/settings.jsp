@@ -91,9 +91,7 @@
                         </div>
 
                         <div id="outputErr" class="help-block with-errors"></div>
-                        <div class="col-sm-4"></div>
-                        <div class="col-sm-8"></div>
-                        <button type='button' class="btn btn-info " onclick="changePassword()"> Submit</button>
+                        <button type='button' class="btn btn-info" onclick="changePassword()"> Submit</button>
                         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                     </div>
                 </div>
