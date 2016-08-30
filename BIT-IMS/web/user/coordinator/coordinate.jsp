@@ -345,7 +345,89 @@
                 </div>
             </div>
         </div>  
+                            
+        <!--Applicant Page-->
+        <!-- Search Applicant -->
+        <div id="searchApplicant" class="modal fade" role="dialog" >
+            <div class="modal-dialog">
 
+                <!-- Modal content-->
+                <div class="modal-content" >
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h2 class="modal-title" >Search Student</h2>
+                    </div>
+                    <div class="modal-body ">
+
+                        <button type='button' class="btn btn-info" data-toggle='modal' data-target='#searchByApplicationNumber'><span class="glyphicon glyphicon-search"></span> By Application Number</button> <br/><br/>
+                        <button type='button' class="btn btn-info" data-toggle='modal' data-target='#searchByNicNumber'><span class="glyphicon glyphicon-search"></span>By NIC Number</button> <br/><br/>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Search By Application Number -->
+        <div id="searchByApplicationNumber" class="modal fade" role="dialog" >
+            <div class="modal-dialog">
+
+                <!-- Modal content-->
+                <div class="modal-content" >
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h2 class="modal-title" >Search Applicant By Application Number</h2>
+                    </div>
+                    <div class="modal-body ">
+
+                        <div class="form-group col-sm-4">
+                            <label for="reg-pammount">Application Number</label>
+                        </div>
+
+                        <div class="form-group col-sm-8">
+                            <input type="text" id="searchApplicationNum" name="searchApplicationNum" placeholder="Application Number" class="form-control" />
+                            <div id="searchApplicationNumErr" class="help-block with-errors"></div>
+                        </div>
+
+                        <button type='button' class="btn btn-info btn-lg" onclick="searchByApplicationNum()"><span class="glyphicon glyphicon-search"></span> Search</button> <br/><br/>
+
+                        <div id="searchApplicationNumOutput"></div>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Search By NIC Number -->
+        <div id="searchByNicNumber" class="modal fade" role="dialog" >
+            <div class="modal-dialog">
+
+                <!-- Modal content-->
+                <div class="modal-content" >
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h2 class="modal-title" >Search Applicant By NIC Number</h2>
+                    </div>
+                    <div class="modal-body ">
+
+                        <div class="form-group col-sm-4">
+                            <label for="reg-pammount">NIC Number</label>
+                        </div>
+
+                        <div class="form-group col-sm-8">
+                            <input type="text" id="searchNICNum" name="searchNICNum" placeholder="NIC Number" class="form-control" />
+                            <div id="searchNICNumErr" class="help-block with-errors"></div>
+                        </div>
+
+                        <button type='button' class="btn btn-info btn-lg" onclick="searchByNICNum()"><span class="glyphicon glyphicon-search"></span> Search</button> <br/><br/>
+
+                        <div id="searchNICNumOutput"></div>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
 
     </body>
 </html>
