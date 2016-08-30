@@ -100,8 +100,8 @@
                     <div class="form-group col-sm-8">
                         <select class="form-control" id="perdtl-title" name="perdtl-title" required data-error="Must select">
                             <option value="" disabled selected hidden>- - Select Title - -</option>
-                            <option value="0">Mr</option>
-                            <option value="1">Miss</option>
+                            <option value="Mr">Mr</option>
+                            <option value="Miss">Miss</option>
                         </select>
                         <div class="help-block with-errors"></div>
                     </div>
@@ -109,8 +109,8 @@
                         <label for="perdtl-gender">Gender</label>
                     </div>
                     <div class="radio col-sm-8">
-                        <label><input type="radio"  id="perdtl-gender" name="perdtl-gender" value="M" name="gender">Male</label>                    
-                        <label><input type="radio" id="perdtl-gender" name="perdtl-gender" value="F" name="gender">Female</label>
+                        <label><input type="radio"  id="perdtl-gender" name="perdtl-gender" value="Male" name="gender">Male</label>                    
+                        <label><input type="radio" id="perdtl-gender" name="perdtl-gender" value="Female" name="gender">Female</label>
                     </div>
                     <div class="form-group col-sm-4">
                         <label for="perdtl-citizen">Citizenship</label>
@@ -151,7 +151,7 @@
                             <option value="" disabled selected hidden>- - Choose Registration Near To You - -</option>
                             <%                                     
                                 for (int i = 0; i < centers.length; i++){
-                                    out.write("<option value=' " + i + "'>" + centers[i] + "</option>");
+                                    out.write("<option value=' " + centers[i] + "'>" + centers[i] + "</option>");
                                 }
                             %>
                         </select>
@@ -226,7 +226,7 @@
                             <option value="" disabled selected hidden>- - Select Result for FIT - -</option>
                             <%                                     
                                 for (int i = 0; i < grades.length; i++){
-                                    out.write("<option value=' " + i + "'>" + grades[i] + "</option>");
+                                    out.write("<option value=' " + grades[i] + "'>" + grades[i] + "</option>");
                                 }
                             %>
                         </select>
@@ -247,7 +247,7 @@
                                 <option value="" disabled selected hidden>- - Select Result - -</option>
                                 <%                                     
                                     for (int i = 0; i < grades.length; i++){
-                                        out.write("<option value=' " + i + "'>" + grades[i] + "</option>");
+                                        out.write("<option value=' " + grades[i] + "'>" + grades[i] + "</option>");
                                     }
                                 %>
                             </select>
@@ -267,7 +267,7 @@
                                 <option value="" disabled selected hidden>- - Select Result - -</option>
                                 <%                                     
                                     for (int i = 0; i < grades.length; i++){
-                                        out.write("<option value=' " + i + "'>" + grades[i] + "</option>");
+                                        out.write("<option value=' " + grades[i] + "'>" + grades[i] + "</option>");
                                     }
                                 %>
                             </select>
@@ -287,7 +287,7 @@
                                 <option value="" disabled selected hidden>- - Select Result - -</option>
                                 <%                                     
                                     for (int i = 0; i < grades.length; i++){
-                                        out.write("<option value=' " + i + "'>" + grades[i] + "</option>");
+                                        out.write("<option value=' " + grades[i] + "'>" + grades[i] + "</option>");
                                     }
                                 %>
                             </select>
@@ -308,7 +308,7 @@
                                 <option value="" disabled selected hidden>- - Select Result - -</option>
                                 <%                                     
                                     for (int i = 0; i < grades.length; i++){
-                                        out.write("<option value=' " + i + "'>" + grades[i] + "</option>");
+                                        out.write("<option value=' " + grades[i] + "'>" + grades[i] + "</option>");
                                     }
                                 %>
                             </select>
@@ -327,7 +327,7 @@
                                 <option value="" disabled selected hidden>- - Select Result - -</option>
                                 <%                                     
                                     for (int i = 0; i < grades.length; i++){
-                                        out.write("<option value=' " + i + "'>" + grades[i] + "</option>");
+                                        out.write("<option value=' " + grades[i] + "'>" + grades[i] + "</option>");
                                     }
                                 %>
                             </select>
