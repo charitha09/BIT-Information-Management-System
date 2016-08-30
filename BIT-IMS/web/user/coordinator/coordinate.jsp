@@ -167,6 +167,52 @@
                         <div class="col-sm-10">
                             <h3>Student Details</h3>
                         </div>
+                        <div class="col-sm-10">
+                               <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Student ID</th>
+                                    <th>Name</th>
+                                    <th>NIC</th>
+                                    <th>Phone Number</th>
+                                    <th>Email</th>
+                                    <th>Current Year</th>
+                                    
+
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                                <%
+                                    Session ss3 = sessionFactry.openSession();
+                                    ss3.beginTransaction();
+                                    Query queryStudentDetails = ss3.createQuery("from Student");
+                                    List studentDetailList = queryStudentDetails.list();
+                                    for (int j = 0; j < studentDetailList.size(); j++) {
+                  
+                                        Student student = new Student();
+
+                                        student =  (Student)studentDetailList.get(j);
+
+                                        out.write("<tr>");
+                                        out.write("<td>" + student.getRegistrationNum() + "</td>");
+                                        out.write("<td>" + student.getFullName() + "</td>");
+                                        out.write("<td>" + student.getNicNo() + "</td>");
+                                        out.write("<td>" + student.getTelephoneNum() + "</td>");
+                                        out.write("<td>" + student.getEmail() + "</td>");
+                                        out.write("<td>" + student.getCurrentYear() + "</td>");
+
+                                        out.write("</tr>");
+
+                                    }
+                                    ss3.getTransaction().commit();
+                                    ss3.close();
+                                %>
+
+
+                            </tbody>
+                        </table>
+                        </div>
                         <div class="col-sm-2 droup-down-box">
                             <div class="dropdown">
                                 <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">Tasks
@@ -185,6 +231,88 @@
                         <div class="col-sm-10">
                             <h3>Payment Details</h3>
                         </div>
+                        
+                        <div class="col-sm-10">
+
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Payment</th>
+                                    <th>ID</th>
+                                    <th>Name</th>
+                                    <th>Payment Type</th>
+                                    <th>Amount</th>
+                                    <th>Date</th>
+                                    <th>Bank</th>
+                                    <th>Other</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <% 
+                                    Session ss1 = sessionFactry.openSession();
+                                    ss1.beginTransaction();
+                                    Query queryAllPayment = ss1.createQuery("from Payment order by EnteredTimeStamp desc");
+                                    List allPaymentList = queryAllPayment.list();
+
+                                    for (int i = 0; i < allPaymentList.size(); i++) {
+                                        Payment payment = new Payment();
+                                        Applicant applicant = new Applicant();
+                                        Student student = new Student();
+
+                                        payment = (Payment) allPaymentList.get(i);
+                                        if (payment.getApplicationNumOrStudentID().contains("_A_")) {
+                                            applicant = (Applicant) ss1.get(Applicant.class, payment.getApplicationNumOrStudentID());
+                                            out.write("<tr>");
+                                            out.write("<td>" + payment.getPaymentID() + "</td>");
+                                            out.write("<td>" + payment.getApplicationNumOrStudentID() + "</td>");
+                                            out.write("<td>" + applicant.getFullName() + "<td>");
+                                            out.write("<td>" + payment.getPaymentType() + " </td>");
+                                            out.write("<td>" + payment.getPaymentAmmount() + " </td>");
+                                            out.write("<td>" + payment.getPaymentDate() + " </td>");
+                                            out.write("<td>" + payment.getExamID() + " </td>");
+                                            out.write("<td>" + payment.getPaymentBank() + " </td>");
+
+                                            out.write("</tr>");
+                                        } else if (payment.getApplicationNumOrStudentID().contains("_S_")) {
+                                            student = (Student) s.get(Student.class, payment.getApplicationNumOrStudentID());
+                                            out.write("<tr>");
+                                            out.write("<td>" + payment.getPaymentID() + "</td>");
+                                            out.write("<td>" + payment.getApplicationNumOrStudentID() + "</td>");
+                                            out.write("<td>" + student.getFullName() + "<td>");
+                                            out.write("<td>" + payment.getPaymentType() + " </td>");
+                                            out.write("<td>" + payment.getPaymentAmmount() + " </td>");
+                                            out.write("<td>" + payment.getPaymentDate() + " </td>");
+                                            out.write("<td>" + payment.getExamID() + " </td>");
+                                            out.write("<td>" + payment.getPaymentBank() + " </td>");
+
+                                            out.write("</tr>");
+                                        } else {
+                                            out.write("<tr>");
+                                            out.write("<td>" + payment.getPaymentID() + "</td>");
+                                            out.write("<td>" + payment.getApplicationNumOrStudentID() + "</td>");
+                                            out.write("<td>" + "<td>");
+                                            out.write("<td>" + payment.getPaymentType() + " </td>");
+                                            out.write("<td>" + payment.getPaymentAmmount() + " </td>");
+                                            out.write("<td>" + payment.getPaymentDate() + " </td>");
+                                            out.write("<td>" + payment.getExamID() + " </td>");
+                                            out.write("<td>" + payment.getPaymentBank() + " </td>");
+                                            out.write("</tr>");
+
+                                        }
+
+                                    }
+                                    ss1.getTransaction().commit();
+                                    ss1.close();
+                               %>
+
+                            </tbody>
+                        </table>
+
+                    </div>
+                        
+                        
+                        
+                        
                         <div class="col-sm-2 droup-down-box">
                             <div class="dropdown">
                                 <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">Tasks
@@ -648,7 +776,7 @@
                     </div>
                     <div class="modal-body ">
 
-                        <button type='button' class="btn btn-success" data-toggle='modal' data-target='#viewAllPayment'>View All Payment</button> <br/><br/>
+                        <!-- <button type='button' class="btn btn-success" data-toggle='modal' data-target='#viewAllPayment'>View All Payment</button> <br/><br/>-->
                         <button type='button' class="btn btn-success" data-toggle='modal' data-target='#searchPayment'>Search Payment</button> <br/><br/>
                         <button type='button' class="btn btn-success" data-toggle='modal' data-target='#viewApplicationPayment'>View Application Payment</button> <br/><br/>
                         <button type='button' class="btn btn-success" data-toggle='modal' data-target='#viewRegistrationPayment'>View Registration Payment</button> <br/><br/>
@@ -914,83 +1042,7 @@
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
                         <h2 class="modal-title" >View All Payment</h2>
                     </div>
-                    <div class="modal-body ">
-
-                        <table class="table">
-                            <thead>
-                                <tr>
-                                    <th>Payment</th>
-                                    <th>ID</th>
-                                    <th>Name</th>
-                                    <th>Payment Type</th>
-                                    <th>Amount</th>
-                                    <th>Date</th>
-                                    <th>Bank</th>
-                                    <th>Other</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <% 
-                                    Session ss1 = sessionFactry.openSession();
-                                    ss1.beginTransaction();
-                                    Query queryAllPayment = ss1.createQuery("from Payment order by EnteredTimeStamp desc");
-                                    List allPaymentList = queryAllPayment.list();
-
-                                    for (int i = 0; i < allPaymentList.size(); i++) {
-                                        Payment payment = new Payment();
-                                        Applicant applicant = new Applicant();
-                                        Student student = new Student();
-
-                                        payment = (Payment) allPaymentList.get(i);
-                                        if (payment.getApplicationNumOrStudentID().contains("_A_")) {
-                                            applicant = (Applicant) ss1.get(Applicant.class, payment.getApplicationNumOrStudentID());
-                                            out.write("<tr>");
-                                            out.write("<td>" + payment.getPaymentID() + "</td>");
-                                            out.write("<td>" + payment.getApplicationNumOrStudentID() + "</td>");
-                                            out.write("<td>" + applicant.getFullName() + "<td>");
-                                            out.write("<td>" + payment.getPaymentType() + " </td>");
-                                            out.write("<td>" + payment.getPaymentAmmount() + " </td>");
-                                            out.write("<td>" + payment.getPaymentDate() + " </td>");
-                                            out.write("<td>" + payment.getExamID() + " </td>");
-                                            out.write("<td>" + payment.getPaymentBank() + " </td>");
-
-                                            out.write("</tr>");
-                                        } else if (payment.getApplicationNumOrStudentID().contains("_S_")) {
-                                            student = (Student) s.get(Student.class, payment.getApplicationNumOrStudentID());
-                                            out.write("<tr>");
-                                            out.write("<td>" + payment.getPaymentID() + "</td>");
-                                            out.write("<td>" + payment.getApplicationNumOrStudentID() + "</td>");
-                                            out.write("<td>" + student.getFullName() + "<td>");
-                                            out.write("<td>" + payment.getPaymentType() + " </td>");
-                                            out.write("<td>" + payment.getPaymentAmmount() + " </td>");
-                                            out.write("<td>" + payment.getPaymentDate() + " </td>");
-                                            out.write("<td>" + payment.getExamID() + " </td>");
-                                            out.write("<td>" + payment.getPaymentBank() + " </td>");
-
-                                            out.write("</tr>");
-                                        } else {
-                                            out.write("<tr>");
-                                            out.write("<td>" + payment.getPaymentID() + "</td>");
-                                            out.write("<td>" + payment.getApplicationNumOrStudentID() + "</td>");
-                                            out.write("<td>" + "<td>");
-                                            out.write("<td>" + payment.getPaymentType() + " </td>");
-                                            out.write("<td>" + payment.getPaymentAmmount() + " </td>");
-                                            out.write("<td>" + payment.getPaymentDate() + " </td>");
-                                            out.write("<td>" + payment.getExamID() + " </td>");
-                                            out.write("<td>" + payment.getPaymentBank() + " </td>");
-                                            out.write("</tr>");
-
-                                        }
-
-                                    }
-                                    ss1.getTransaction().commit();
-                                    ss1.close();
-                               %>
-
-                            </tbody>
-                        </table>
-
-                    </div>
+                    
                 </div>
             </div>
         </div>
