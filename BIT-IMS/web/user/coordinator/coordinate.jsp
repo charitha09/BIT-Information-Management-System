@@ -71,7 +71,7 @@
                         <div class="col-sm-2 droup-down-box">
                             <div class="dropdown">
                                 <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">Tasks
-                                <span class="caret"></span></button>
+                                    <span class="caret"></span></button>
                                 <ul class="dropdown-menu">
                                     <li><a href="#addNewInterview" data-toggle='modal' data-target='#addNewInterview'>Add Interview</a></li>
                                     <li><a href="#viewAllUnallocatedApplicant" data-toggle='modal' data-target='#viewAllUnallocatedApplicant' onclick="viewAllUnallocatedApplicant()">Unallocated Students</a></li>  
@@ -92,27 +92,27 @@
                             <div class="col-sm-2 no-padding"><h5>View applicant</h5></div>
                         </div>
                         <%
-                                SessionFactory sessionFactry = new Configuration().configure().buildSessionFactory();
-                                Session s = sessionFactry.openSession();
-                                //s.beginTransaction();
-                                Query queryinterview = s.createQuery("FROM Interview");
-                                List interviewList = queryinterview.list();
+                            SessionFactory sessionFactry = new Configuration().configure().buildSessionFactory();
+                            Session s = sessionFactry.openSession();
+                            //s.beginTransaction();
+                            Query queryinterview = s.createQuery("FROM Interview");
+                            List interviewList = queryinterview.list();
 
-                                for (int i = 0; i < interviewList.size(); i++) {
-                                    Interview iv = new Interview();
-                                    iv = (Interview) interviewList.get(i);
-                                    out.write("<div class='col-sm-12 devbottom-line'>");
-                                    out.write("<div class='col-sm-2 no-padding'><h5>"+ iv.getInterviewID() + "</h5></div>");
-                                    out.write("<div class='col-sm-2 no-padding'><h5>"+ iv.getDate() +"</h5></div>");
-                                    out.write("<div class='col-sm-2 no-padding'><h5>"+ iv.getStartTime() + "</h5></div>");
-                                    out.write("<div class='col-sm-2 no-padding'><h5>"+ iv.getAuthor() + "</h5></div>");
-                                    out.write("<div class='col-sm-2 no-padding'><button type='button' class='btn btn-default btn-sm' data-toggle='modal' data-target='#updateInterviewDetails' onclick=updateInterviewDetails('" + iv.getInterviewID() + "')><span class='glyphicon glyphicon-pencil'></span></button></div>");
-                                    out.write("<div class='col-sm-2 no-padding'><button type='button' class='btn btn-default btn-sm' data-toggle='modal' data-target='#viewAllocatedApplicant' onclick=viewAllocatedApplicant('" + iv.getInterviewID() + "')><span class='glyphicon glyphicon-new-window'></span></button></div>");
-                                    out.write("</div>");
-                                }
-                            %> 
+                            for (int i = 0; i < interviewList.size(); i++) {
+                                Interview iv = new Interview();
+                                iv = (Interview) interviewList.get(i);
+                                out.write("<div class='col-sm-12 devbottom-line'>");
+                                out.write("<div class='col-sm-2 no-padding'><h5>" + iv.getInterviewID() + "</h5></div>");
+                                out.write("<div class='col-sm-2 no-padding'><h5>" + iv.getDate() + "</h5></div>");
+                                out.write("<div class='col-sm-2 no-padding'><h5>" + iv.getStartTime() + "</h5></div>");
+                                out.write("<div class='col-sm-2 no-padding'><h5>" + iv.getAuthor() + "</h5></div>");
+                                out.write("<div class='col-sm-2 no-padding'><button type='button' class='btn btn-default btn-sm' data-toggle='modal' data-target='#updateInterviewDetails' onclick=updateInterviewDetails('" + iv.getInterviewID() + "')><span class='glyphicon glyphicon-pencil'></span></button></div>");
+                                out.write("<div class='col-sm-2 no-padding'><button type='button' class='btn btn-default btn-sm' data-toggle='modal' data-target='#viewAllocatedApplicant' onclick=viewAllocatedApplicant('" + iv.getInterviewID() + "')><span class='glyphicon glyphicon-new-window'></span></button></div>");
+                                out.write("</div>");
+                            }
+                        %> 
                     </div>
-                    
+
                 </div>  
                 <div id="Applicant-window">
                     <div class="col-sm-12 devbottom-line">
@@ -122,7 +122,7 @@
                         <div class="col-sm-2 droup-down-box">
                             <div class="dropdown">
                                 <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">Tasks
-                                <span class="caret"></span></button>
+                                    <span class="caret"></span></button>
                                 <ul class="dropdown-menu">
                                     <li><a href="#searchApplicant" data-toggle='modal' data-target='#searchApplicant'>Search Applicant</a></li> 
                                 </ul>
@@ -145,20 +145,20 @@
                             //s.beginTransaction();
                             Query queryApplicant = s.createQuery("FROM Applicant");
                             List applicantList = queryApplicant.list();
-                            
+
                             for (int i = 0; i < applicantList.size(); i++) {
                                 Applicant applicant = new Applicant();
                                 applicant = (Applicant) applicantList.get(i);
                                 out.write("<div class='col-sm-12 devbottom-line'>");
-                                out.write("<div class='col-sm-2 no-padding'><h5>"+ applicant.getApplicationNum() + "</h5></div>");
-                                out.write("<div class='col-sm-2 no-padding'><h5>"+ applicant.getFullName() + "</h5></div>");
-                                out.write("<div class='col-sm-2 no-padding'><h5>"+ applicant.getNicNo() + "</h5></div>");
-                                out.write("<div class='col-sm-2 no-padding'><h5>"+ applicant.getTelephoneNumMob() + "</h5></div>");
-                                out.write("<div class='col-sm-2 no-padding'><h5>"+ applicant.getEmail() + "</h5></div>");
-                                out.write("<div class='col-sm-2 no-padding'><h5>"+ applicant.getAddress() + "</h5></div>");
-                                out.write("</div>");                                
+                                out.write("<div class='col-sm-2 no-padding'><h5>" + applicant.getApplicationNum() + "</h5></div>");
+                                out.write("<div class='col-sm-2 no-padding'><h5>" + applicant.getFullName() + "</h5></div>");
+                                out.write("<div class='col-sm-2 no-padding'><h5>" + applicant.getNicNo() + "</h5></div>");
+                                out.write("<div class='col-sm-2 no-padding'><h5>" + applicant.getTelephoneNumMob() + "</h5></div>");
+                                out.write("<div class='col-sm-2 no-padding'><h5>" + applicant.getEmail() + "</h5></div>");
+                                out.write("<div class='col-sm-2 no-padding'><h5>" + applicant.getAddress() + "</h5></div>");
+                                out.write("</div>");
                             }
-                           
+
                         %>
                     </div>
                 </div>
@@ -170,7 +170,7 @@
                         <div class="col-sm-2 droup-down-box">
                             <div class="dropdown">
                                 <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">Tasks
-                                <span class="caret"></span></button>
+                                    <span class="caret"></span></button>
                                 <ul class="dropdown-menu">
                                     <li><a href="#addStudent" data-toggle='modal' data-target='#addStudent'>Add Student</a></li>
                                     <li><a href="#searchStudent" data-toggle='modal' data-target='#searchStudent'>Search Student</a></li>  
@@ -179,7 +179,7 @@
                         </div>                        
                     </div>  
                 </div>
-                
+
                 <div id="Payment-window">
                     <div class="col-sm-12 devbottom-line">
                         <div class="col-sm-10">
@@ -188,7 +188,7 @@
                         <div class="col-sm-2 droup-down-box">
                             <div class="dropdown">
                                 <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">Tasks
-                                <span class="caret"></span></button>
+                                    <span class="caret"></span></button>
                                 <ul class="dropdown-menu">
                                     <li><a href="#addPayment" data-toggle='modal' data-target='#addPayment'>Add Payment</a></li>
                                     <li><a href="#viewPayment" data-toggle='modal' data-target='#viewPayment'>View Payment</a></li>  
@@ -197,11 +197,11 @@
                         </div>                        
                     </div>
                 </div>
-                    
-                    
-                    
-                    
-                    
+
+
+
+
+
             </div>            
         </div>
         <!--Pop Ups-->
@@ -227,7 +227,7 @@
                 </div>
             </div>
         </div>
-        
+
         <!-- Modal View Allocated Applicant -->
         <div id="viewAllocatedApplicant" class="modal fade" role="dialog" >
             <div class="modal-dialog">
@@ -392,7 +392,7 @@
                 </div>
             </div>
         </div>  
-                            
+
         <!--Applicant Page-->
         <!-- Search Applicant -->
         <div id="searchApplicant" class="modal fade" role="dialog" >
@@ -475,7 +475,7 @@
                 </div>
             </div>
         </div>
-        
+
         <!--Student Page-->
         <!-- Add Student -->
         <div id="addStudent" class="modal fade" role="dialog" >
@@ -503,18 +503,18 @@
                             <div class="form-group col-sm-4">
                                 <label for="reg-pammount">Year</label>
                             </div>
-                           
+
                             <div class="form-group col-sm-8">
-                        <select class="form-control" id="addStudentAcademicYear" name="addStudentAcademicYear" required data-error="Must Select">
-                            <option value="" disabled selected hidden>- - Select Year - -</option>
-                            <option value="1stYear">1st Year</option>
-                            <option value="2ndYear">2nd Year</option>
-                            <option value="3rdYear">3rd Year</option>
-                            <option value="4thYear">4th Year</option>
-                        </select>
-                        <div class="help-block with-errors"></div>
-                    </div>
-                            
+                                <select class="form-control" id="addStudentAcademicYear" name="addStudentAcademicYear" required data-error="Must Select">
+                                    <option value="" disabled selected hidden>- - Select Year - -</option>
+                                    <option value="1stYear">1st Year</option>
+                                    <option value="2ndYear">2nd Year</option>
+                                    <option value="3rdYear">3rd Year</option>
+                                    <option value="4thYear">4th Year</option>
+                                </select>
+                                <div class="help-block with-errors"></div>
+                            </div>
+
                             <button type="submit" class="btn btn-default" >Submit</button>
                             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 
@@ -540,7 +540,7 @@
 
                         <button type='button' class="btn btn-info" data-toggle='modal' data-target='#searchByRegistrationNumber'><span class="glyphicon glyphicon-search"></span> By Registration Number</button> <br/><br/>
                         <button type='button' class="btn btn-info" data-toggle='modal' data-target='#searchByCurrentYear'><span class="glyphicon glyphicon-search"></span>By Current Year</button> <br/><br/>
-                        
+
                     </div>
                 </div>
             </div>
@@ -592,18 +592,18 @@
                         <div class="form-group col-sm-4">
                             <label for="reg-pammount">Current Year</label>
                         </div>
-                        
+
                         <div class="form-group col-sm-8">
-                        <select class="form-control" id="searchCurrentYear" name="searchCurrentYear" required data-error="Must Select">
-                            <option value="" disabled selected hidden>- - Select Year - -</option>
-                            <option value="1stYear">1st Year</option>
-                            <option value="2ndYear">2nd Year</option>
-                            <option value="3rdYear">3rd Year</option>
-                            <option value="4thYear">4th Year</option>
-                        </select>
-                        <div class="help-block with-errors"></div>
-                        <div id="searchYearErr" class="help-block with-errors"></div>
-                    </div>
+                            <select class="form-control" id="searchCurrentYear" name="searchCurrentYear" required data-error="Must Select">
+                                <option value="" disabled selected hidden>- - Select Year - -</option>
+                                <option value="1stYear">1st Year</option>
+                                <option value="2ndYear">2nd Year</option>
+                                <option value="3rdYear">3rd Year</option>
+                                <option value="4thYear">4th Year</option>
+                            </select>
+                            <div class="help-block with-errors"></div>
+                            <div id="searchYearErr" class="help-block with-errors"></div>
+                        </div>
 
                         <button type='button' class="btn btn-info btn-lg" onclick="searchByCurrentYear()"><span class="glyphicon glyphicon-search"></span> Search</button> <br/><br/>
 
@@ -613,7 +613,7 @@
                 </div>
             </div>
         </div>
-        
+
         <!--Payment Page-->
         <!-- Add Payment -->
         <div id="addPayment" class="modal fade" role="dialog" >
@@ -930,11 +930,10 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <% /*
-                                    SessionFactory sessionFactry = new Configuration().configure().buildSessionFactory();
-                                    Session s = sessionFactry.openSession();
-                                    s.beginTransaction();
-                                    Query queryAllPayment = s.createQuery("from Payment order by EnteredTimeStamp desc");
+                                <% 
+                                    Session ss1 = sessionFactry.openSession();
+                                    ss1.beginTransaction();
+                                    Query queryAllPayment = ss1.createQuery("from Payment order by EnteredTimeStamp desc");
                                     List allPaymentList = queryAllPayment.list();
 
                                     for (int i = 0; i < allPaymentList.size(); i++) {
@@ -944,7 +943,7 @@
 
                                         payment = (Payment) allPaymentList.get(i);
                                         if (payment.getApplicationNumOrStudentID().contains("_A_")) {
-                                            applicant = (Applicant) s.get(Applicant.class, payment.getApplicationNumOrStudentID());
+                                            applicant = (Applicant) ss1.get(Applicant.class, payment.getApplicationNumOrStudentID());
                                             out.write("<tr>");
                                             out.write("<td>" + payment.getPaymentID() + "</td>");
                                             out.write("<td>" + payment.getApplicationNumOrStudentID() + "</td>");
@@ -984,9 +983,9 @@
                                         }
 
                                     }
-                                    s.getTransaction().commit();
-                                    s.close();
-                               */ %>
+                                    ss1.getTransaction().commit();
+                                    ss1.close();
+                               %>
 
                             </tbody>
                         </table>

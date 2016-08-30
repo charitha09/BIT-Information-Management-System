@@ -1,7 +1,7 @@
 <%-- 
     Document   : News
     Created on : Aug 29, 2016, 11:10:17 PM
-    Author     : Amila Sankha
+    Author     : Amila Sankhax
 --%>
 
 
