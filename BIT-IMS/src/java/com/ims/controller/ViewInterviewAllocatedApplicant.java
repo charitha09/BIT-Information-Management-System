@@ -50,7 +50,8 @@ try (PrintWriter out = response.getWriter()) {
 "                                        <tr>\n" +
 "                                            <th>Applicant ID</th>\n" +
 "                                            <th>Full name</th>\n" +
-"                                            <th>Email</th>\n" +
+"                                            <th>Email</th>"
+                                             + "<th>Start Time</th>\n" +
 "                                            \n" +
 "                                        </tr>\n" +
 "                                    </thead>");
@@ -65,6 +66,7 @@ try (PrintWriter out = response.getWriter()) {
                         + "<td>"+applicant.getApplicationNum()+"</td>\n"
                         + "<td>"+applicant.getFullName()+"</td>\n"
                         + "<td>"+applicant.getEmail()+"</td>\n"
+                        + "<td>"+applicant.getInterviewStartTime()+"</td>\n"
                         + "</tr>");
 
                 }
