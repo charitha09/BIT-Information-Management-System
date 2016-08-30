@@ -24,7 +24,7 @@ public class databaseConnection {
     public Connection setConnection(){
         try{
             Class.forName("com.mysql.jdbc.Driver");
-            conn=DriverManager.getConnection("jdbc:mysql://localhost/BIT_SMS","root","admin");    
+            conn=DriverManager.getConnection("jdbc:mysql://localhost/BIT_SMS","root","");    
         }
         catch(Exception e){
             e.printStackTrace();
