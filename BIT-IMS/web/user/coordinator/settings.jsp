@@ -38,13 +38,13 @@
                 </div>
             </nav>
         </header>
+        <div class="container">
+                        
+        </div>
 
 
         <button type='button' class="btn btn-success" data-toggle='modal' data-target='#changePassword'>Change Password</button> <br/><br/>
 
-
-
-        <!-- ======================================================== -->
         <!-- change Password -->
         <div id="changePassword" class="modal fade" role="dialog" >
             <div class="modal-dialog">
