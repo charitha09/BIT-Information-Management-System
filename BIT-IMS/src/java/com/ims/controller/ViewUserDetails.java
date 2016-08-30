@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.ims.controller;
 
 import com.ims.model.User;
@@ -19,10 +14,6 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
-/**
- *
- * @author Amila Sankha
- */
 @WebServlet(name = "ViewUserDetails", urlPatterns = {"/ViewUserDetails"})
 public class ViewUserDetails extends HttpServlet {
 
