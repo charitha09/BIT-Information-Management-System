@@ -1,24 +1,35 @@
 $( document ).ready(function() {
     $("#Interview-window").css("display", "block");
     $("#Applicant-window").css("display", "none");
-    $("#Student-window").css("display", "none")
+    $("#Student-window").css("display", "none");
+    $("#Payment-window").css("display", "none");
     
     $( "#Interview-window-navi" ).click(function() {
         $("#Interview-window").css("display", "block");
         $("#Applicant-window").css("display", "none");
         $("#Student-window").css("display", "none");
+        $("#Payment-window").css("display", "none");
     });
     
     $( "#Applicant-window-navi" ).click(function() {
         $("#Interview-window").css("display", "none");
         $("#Applicant-window").css("display", "block");
         $("#Student-window").css("display", "none");
+        $("#Payment-window").css("display", "none");
     });
     
     $( "#Student-window-navi" ).click(function() {
         $("#Interview-window").css("display", "none");
         $("#Applicant-window").css("display", "none");
         $("#Student-window").css("display", "block");
+        $("#Payment-window").css("display", "none");
+    });
+    
+    $( "#Payment-window-navi" ).click(function() {
+        $("#Interview-window").css("display", "none");
+        $("#Applicant-window").css("display", "none");
+        $("#Student-window").css("display", "none");
+        $("#Payment-window").css("display", "block");
     });
 });
 

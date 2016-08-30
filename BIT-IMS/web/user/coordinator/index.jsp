@@ -20,7 +20,7 @@
                     </div>
                     <ul class="nav navbar-nav">
                         <li class="active"><a href="index.jsp">Home</a></li> 
-                        <li><a href="payment.jsp">Payment</a></li>
+                        
                         <li><a href="coordinate.jsp">Coordinate</a></li> 
                         <li><a href="settings.jsp">Setting</a></li> 
                         
