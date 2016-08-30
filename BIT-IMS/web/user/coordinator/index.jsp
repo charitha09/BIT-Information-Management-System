@@ -18,15 +18,9 @@
                     <div class="navbar-header">
                         <a class="navbar-brand" href="index.jsp"><img src="../../images/logo.png" alt="UCSC"></a>
                     </div>
-                    <ul class="nav navbar-nav">
-                        <li class="active"><a href="index.jsp">Home</a></li> 
-                        <li><a href="viewApplicant.jsp">Applicant</a></li>
-                        <li><a href="payment.jsp">Payment</a></li>
-                        <li><a href="student.jsp">Student</a></li> 
+                    <ul class="nav navbar-nav">                      
                         <li><a href="coordinate.jsp">Coordinate</a></li> 
-                        <li><a href="settings.jsp">Setting</a></li> 
-                        
-
+                        <li><a href="settings.jsp">Setting</a></li>    
                     </ul>
                     <ul class="nav navbar-nav navbar-right"  data-toggle="modal" data-target="#login-box">
                         <li><a href="../../logout"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
@@ -35,8 +29,6 @@
             </nav>
         </header>
         <div class="container">
-            Not Developed Yet
-
             <%
                 try {
                     String fName = session.getAttribute("email").toString();
@@ -47,9 +39,7 @@
 
                 }
 
-            %>
+            %>            
         </div>
-
-
     </body>
 </html>

@@ -8,7 +8,16 @@
         <link rel="stylesheet" href="../../css/common-style.css">
         <link rel="stylesheet" href="../css/admin-index.css">
     </head>
-    <body>       
+    <body>   
+        <%
+            try {
+                String fName = session.getAttribute("email").toString();
+                String userLevel = session.getAttribute("userLevel").toString();
+            } catch (Exception e) {
+                response.sendRedirect("../../");
+
+            }
+        %>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
         <script src="js/admin-index.js"></script>   
@@ -28,21 +37,24 @@
             </div>
             </nav>
         </header>
-        <div class="container">
-            Not Developed Yet
-            
-           
-            <%
-                try {
-                    String fName = session.getAttribute("email").toString();
-                    String userLevel = session.getAttribute("userLevel").toString();
-                    out.write("<br>" + fName + "<br>" + userLevel);
-                } catch (Exception e) {
-                    response.sendRedirect("../../");
-
-                }
-
-            %>
+        <div class="container">             
+            <div class="col-sm-12 logins-raw">
+                <div class="col-sm-12 no-padding">
+                    <h3>Last Logins</h3>
+                </div>
+                <div class="col-sm-3 no-padding">
+                    <h5>User ID</h5>
+                </div>
+                <div class="col-sm-3 no-padding">
+                    <h5>e-mail</h5>
+                </div>
+                <div class="col-sm-3 no-padding">
+                    <h5>User Role</h5>
+                </div>
+                <div class="col-sm-3 no-padding">
+                    <h5>Last Login Time</h5>
+                </div>
+            </div>
         </div>
     </body>
 </html>

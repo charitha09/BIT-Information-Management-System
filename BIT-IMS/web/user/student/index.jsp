@@ -64,7 +64,7 @@
                         <h3>Current GPA</h3>
                     </div>
                     <div class="col-sm-12">
-                        <h3>3.0000</h3>
+                        <h3>3.2110</h3>
                     </div>
                 </div>
                 GPA/Student Statistics

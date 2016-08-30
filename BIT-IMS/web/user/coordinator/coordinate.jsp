@@ -1,3 +1,5 @@
+<%@page import="com.ims.model.Student"%>
+<%@page import="com.ims.model.Payment"%>
 <%@page import="com.ims.model.Applicant"%>
 <%@page import="com.ims.model.Interview"%>
 <%@page import="java.util.List"%>
@@ -36,7 +38,6 @@
                         <a class="navbar-brand" href="index.jsp"><img src="../../images/logo.png" alt="UCSC"></a>
                     </div>
                     <ul class="nav navbar-nav">
-                        <li><a href="index.jsp">Home</a></li> 
                         <li class="active"><a href="coordinate.jsp">Coordinate</a></li> 
                         <li><a href="settings.jsp">Setting</a></li>
                     </ul>
@@ -54,6 +55,12 @@
                 <a id="Applicant-window-navi" href="#Interview-Applicant" class="list-group-item">
                     <i class="fa fa-comment-o"></i> Applicant
                 </a> 
+                <a id="Student-window-navi" href="#Student" class="list-group-item">
+                    <i class="fa fa-comment-o"></i> Students
+                </a>
+                <a id="Payment-window-navi" href="#Payment" class="list-group-item">
+                    <i class="fa fa-comment-o"></i> Payments
+                </a>
             </div>
             <div class="col-sm-10 no-padding" id="coordinator-pages">
                 <div id="Interview-window">
@@ -154,7 +161,47 @@
                            
                         %>
                     </div>
-                </div>  
+                </div>
+                <div id="Student-window">
+                    <div class="col-sm-12 devbottom-line">
+                        <div class="col-sm-10">
+                            <h3>Student Details</h3>
+                        </div>
+                        <div class="col-sm-2 droup-down-box">
+                            <div class="dropdown">
+                                <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">Tasks
+                                <span class="caret"></span></button>
+                                <ul class="dropdown-menu">
+                                    <li><a href="#addStudent" data-toggle='modal' data-target='#addStudent'>Add Student</a></li>
+                                    <li><a href="#searchStudent" data-toggle='modal' data-target='#searchStudent'>Search Student</a></li>  
+                                </ul>
+                            </div>                            
+                        </div>                        
+                    </div>  
+                </div>
+                
+                <div id="Payment-window">
+                    <div class="col-sm-12 devbottom-line">
+                        <div class="col-sm-10">
+                            <h3>Payment Details</h3>
+                        </div>
+                        <div class="col-sm-2 droup-down-box">
+                            <div class="dropdown">
+                                <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">Tasks
+                                <span class="caret"></span></button>
+                                <ul class="dropdown-menu">
+                                    <li><a href="#addPayment" data-toggle='modal' data-target='#addPayment'>Add Payment</a></li>
+                                    <li><a href="#viewPayment" data-toggle='modal' data-target='#viewPayment'>View Payment</a></li>  
+                                </ul>
+                            </div>                            
+                        </div>                        
+                    </div>
+                </div>
+                    
+                    
+                    
+                    
+                    
             </div>            
         </div>
         <!--Pop Ups-->
@@ -345,7 +392,989 @@
                 </div>
             </div>
         </div>  
+                            
+        <!--Applicant Page-->
+        <!-- Search Applicant -->
+        <div id="searchApplicant" class="modal fade" role="dialog" >
+            <div class="modal-dialog">
 
+                <!-- Modal content-->
+                <div class="modal-content" >
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h2 class="modal-title" >Search Student</h2>
+                    </div>
+                    <div class="modal-body ">
+
+                        <button type='button' class="btn btn-info" data-toggle='modal' data-target='#searchByApplicationNumber'><span class="glyphicon glyphicon-search"></span> By Application Number</button> <br/><br/>
+                        <button type='button' class="btn btn-info" data-toggle='modal' data-target='#searchByNicNumber'><span class="glyphicon glyphicon-search"></span>By NIC Number</button> <br/><br/>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Search By Application Number -->
+        <div id="searchByApplicationNumber" class="modal fade" role="dialog" >
+            <div class="modal-dialog">
+
+                <!-- Modal content-->
+                <div class="modal-content" >
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h2 class="modal-title" >Search Applicant By Application Number</h2>
+                    </div>
+                    <div class="modal-body ">
+
+                        <div class="form-group col-sm-4">
+                            <label for="reg-pammount">Application Number</label>
+                        </div>
+
+                        <div class="form-group col-sm-8">
+                            <input type="text" id="searchApplicationNum" name="searchApplicationNum" placeholder="Application Number" class="form-control" />
+                            <div id="searchApplicationNumErr" class="help-block with-errors"></div>
+                        </div>
+
+                        <button type='button' class="btn btn-info btn-lg" onclick="searchByApplicationNum()"><span class="glyphicon glyphicon-search"></span> Search</button> <br/><br/>
+
+                        <div id="searchApplicationNumOutput"></div>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Search By NIC Number -->
+        <div id="searchByNicNumber" class="modal fade" role="dialog" >
+            <div class="modal-dialog">
+
+                <!-- Modal content-->
+                <div class="modal-content" >
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h2 class="modal-title" >Search Applicant By NIC Number</h2>
+                    </div>
+                    <div class="modal-body ">
+
+                        <div class="form-group col-sm-4">
+                            <label for="reg-pammount">NIC Number</label>
+                        </div>
+
+                        <div class="form-group col-sm-8">
+                            <input type="text" id="searchNICNum" name="searchNICNum" placeholder="NIC Number" class="form-control" />
+                            <div id="searchNICNumErr" class="help-block with-errors"></div>
+                        </div>
+
+                        <button type='button' class="btn btn-info btn-lg" onclick="searchByNICNum()"><span class="glyphicon glyphicon-search"></span> Search</button> <br/><br/>
+
+                        <div id="searchNICNumOutput"></div>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!--Student Page-->
+        <!-- Add Student -->
+        <div id="addStudent" class="modal fade" role="dialog" >
+            <div class="modal-dialog">
+
+                <!-- Modal content-->
+                <div class="modal-content" >
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h2 class="modal-title" >Add Student</h2>
+                    </div>
+                    <div class="modal-body ">
+
+                        <form method="POST" action="../../AddStudent">
+                            <div class="form-group col-sm-4">
+                                <label for="reg-pammount">Application Number</label>
+                            </div>
+
+                            <div class="form-group col-sm-8">
+                                <input type="text" id="addStudentApplicationNum" name="addStudentApplicationNum" placeholder="Application Number" class="form-control" required data-error="Can't be empty" onblur="checkApplicantInDB(this.value)"/>
+                                <div id="addStudentApplicationNunErr" class="help-block with-errors"></div>
+                            </div>
+
+
+                            <div class="form-group col-sm-4">
+                                <label for="reg-pammount">Year</label>
+                            </div>
+                           
+                            <div class="form-group col-sm-8">
+                        <select class="form-control" id="addStudentAcademicYear" name="addStudentAcademicYear" required data-error="Must Select">
+                            <option value="" disabled selected hidden>- - Select Year - -</option>
+                            <option value="1stYear">1st Year</option>
+                            <option value="2ndYear">2nd Year</option>
+                            <option value="3rdYear">3rd Year</option>
+                            <option value="4thYear">4th Year</option>
+                        </select>
+                        <div class="help-block with-errors"></div>
+                    </div>
+                            
+                            <button type="submit" class="btn btn-default" >Submit</button>
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+
+                        </form>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Search Student -->
+        <div id="searchStudent" class="modal fade" role="dialog" >
+            <div class="modal-dialog">
+
+                <!-- Modal content-->
+                <div class="modal-content" >
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h2 class="modal-title" >Search Student</h2>
+                    </div>
+                    <div class="modal-body ">
+
+                        <button type='button' class="btn btn-info" data-toggle='modal' data-target='#searchByRegistrationNumber'><span class="glyphicon glyphicon-search"></span> By Registration Number</button> <br/><br/>
+                        <button type='button' class="btn btn-info" data-toggle='modal' data-target='#searchByCurrentYear'><span class="glyphicon glyphicon-search"></span>By Current Year</button> <br/><br/>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Search By Registration Number -->
+        <div id="searchByRegistrationNumber" class="modal fade" role="dialog" >
+            <div class="modal-dialog">
+
+                <!-- Modal content-->
+                <div class="modal-content" >
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h2 class="modal-title" >Search Student Registration Number</h2>
+                    </div>
+                    <div class="modal-body ">
+
+                        <div class="form-group col-sm-4">
+                            <label for="reg-pammount">Registration Number</label>
+                        </div>
+
+                        <div class="form-group col-sm-8">
+                            <input type="text" id="searchRegistrationNum" name="searchRegistrationNum" placeholder="Registration Number" class="form-control" />
+                            <div id="searchRegistrationNumErr" class="help-block with-errors"></div>
+                        </div>
+
+                        <button type='button' class="btn btn-info btn-lg" onclick="searchByRegistrationNum()"><span class="glyphicon glyphicon-search"></span> Search</button> <br/><br/>
+
+                        <div id="searchRegistrationNumOutput"></div>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Search By Current Year -->
+        <div id="searchByCurrentYear" class="modal fade" role="dialog" >
+            <div class="modal-dialog">
+
+                <!-- Modal content-->
+                <div class="modal-content" >
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h2 class="modal-title" >Search By Current Year</h2>
+                    </div>
+                    <div class="modal-body ">
+
+                        <div class="form-group col-sm-4">
+                            <label for="reg-pammount">Current Year</label>
+                        </div>
+                        
+                        <div class="form-group col-sm-8">
+                        <select class="form-control" id="searchCurrentYear" name="searchCurrentYear" required data-error="Must Select">
+                            <option value="" disabled selected hidden>- - Select Year - -</option>
+                            <option value="1stYear">1st Year</option>
+                            <option value="2ndYear">2nd Year</option>
+                            <option value="3rdYear">3rd Year</option>
+                            <option value="4thYear">4th Year</option>
+                        </select>
+                        <div class="help-block with-errors"></div>
+                        <div id="searchYearErr" class="help-block with-errors"></div>
+                    </div>
+
+                        <button type='button' class="btn btn-info btn-lg" onclick="searchByCurrentYear()"><span class="glyphicon glyphicon-search"></span> Search</button> <br/><br/>
+
+                        <div id="searchCurrentYearOutput"></div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!--Payment Page-->
+        <!-- Add Payment -->
+        <div id="addPayment" class="modal fade" role="dialog" >
+            <div class="modal-dialog">
+
+                <!-- Modal content-->
+                <div class="modal-content" >
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h2 class="modal-title" >Add Payment</h2>
+                    </div>
+                    <div class="modal-body ">
+
+                        <button type='button' class="btn btn-success" data-toggle='modal' data-target='#addApplicationPayment'>Add Application Payment</button> <br/><br/>
+                        <button type='button' class="btn btn-success" data-toggle='modal' data-target='#addRegistrationPayment'>Add Registration Payment</button> <br/><br/>
+                        <button type='button' class="btn btn-success" data-toggle='modal' data-target='#addExamPayment'>Add Examination Payment</button> <br/><br/>
+                        <button type='button' class="btn btn-success" data-toggle='modal' data-target='#addOtherPayment'>Add Other Payment</button> <br/><br/>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- View Payment -->
+        <div id="viewPayment" class="modal fade" role="dialog" >
+            <div class="modal-dialog">
+
+                <!-- Modal content-->
+                <div class="modal-content" >
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h2 class="modal-title" >View Payment</h2>
+                    </div>
+                    <div class="modal-body ">
+
+                        <button type='button' class="btn btn-success" data-toggle='modal' data-target='#viewAllPayment'>View All Payment</button> <br/><br/>
+                        <button type='button' class="btn btn-success" data-toggle='modal' data-target='#searchPayment'>Search Payment</button> <br/><br/>
+                        <button type='button' class="btn btn-success" data-toggle='modal' data-target='#viewApplicationPayment'>View Application Payment</button> <br/><br/>
+                        <button type='button' class="btn btn-success" data-toggle='modal' data-target='#viewRegistrationPayment'>View Registration Payment</button> <br/><br/>
+                        <button type='button' class="btn btn-success" data-toggle='modal' data-target='#viewExamPayment'>View Examination Payment</button> <br/><br/>
+
+                        <!-- <button type='button' class="btn btn-success" data-toggle='modal' data-target='#addApplicationPayment'>Add Application Payment</button>
+                        -->
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Add Application Payment -->
+
+        <div id="addApplicationPayment" class="modal fade" role="dialog" >
+            <div class="modal-dialog">
+
+                <!-- Modal content-->
+                <div class="modal-content" >
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h2 class="modal-title" >Add Application Payment</h2>
+                    </div>
+                    <div class="modal-body ">
+
+                        <form method="POST" action="../../AddPayment">
+                            <div class="form-group col-sm-4">
+                                <label for="reg-pammount">Application Number</label>
+                            </div>
+
+                            <div class="form-group col-sm-8">
+                                <input type="text" id="paymentApplicationNum" name="paymentApplicationNumOrStudentID" placeholder="Application Number" class="form-control" required data-error="Can't be empty" onblur="checkApplicantInDB(this.value)"/>
+                                <div id="applicationNunErr" class="help-block with-errors"></div>
+                            </div>
+
+                            <input type="hidden" value="Application_Payment" id="paymentType" name="paymentType"/>
+
+                            <div class="form-group col-sm-4">
+                                <label for="reg-pammount">Amount Paid (RS)</label>
+                            </div>
+                            <div class="form-group col-sm-8">
+                                <input type="text" id="paymentAmount" name="paymentAmount" placeholder="Amount You Paid" class="form-control" required data-error="Can't be empty"/>
+                                <div class="help-block with-errors"></div>
+                            </div>
+                            <div class="form-group col-sm-4">
+                                <label for="reg-bank">Name of Payee Bank</label>
+                            </div> 
+                            <div class="form-group col-sm-8">                    
+                                <input type="text" id="paymentBank" name="paymentBank" placeholder="Bank You Paid" required data-error="Can't be empty" class="form-control"/>
+                                <div class="help-block with-errors"></div>
+                            </div>
+                            <div class="form-group col-sm-4">
+                                <label for="reg-pdate">Date Paid</label>
+                            </div> 
+                            <div class="form-group col-sm-8">                    
+                                <input type="date" id="paymentDate" name="paymentDate" placeholder="Date You Paid" required class="form-control" data-error="Empty or invalied Date try YYYY-MM-DD format" pattern="(?:19|20)[0-9]{2}-(?:(?:0[1-9]|1[0-2])-(?:0[1-9]|1[0-9]|2[0-9])|(?:(?!02)(?:0[1-9]|1[0-2])-(?:30))|(?:(?:0[13578]|1[02])-31))"/>
+                                <div class="help-block with-errors"></div>
+                            </div>
+
+                            <button type="submit" class="btn btn-default" >Submit</button>
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+
+                        </form>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Add Registration Payment -->
+
+        <div id="addRegistrationPayment" class="modal fade" role="dialog" >
+            <div class="modal-dialog">
+
+                <!-- Modal content-->
+                <div class="modal-content" >
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h2 class="modal-title" >Add Registration Payment</h2>
+                    </div>
+                    <div class="modal-body ">
+
+                        <form method="POST" action="../../AddPayment">
+                            <div class="form-group col-sm-4">
+                                <label for="reg-pammount">Student ID</label>
+                            </div>
+
+                            <div class="form-group col-sm-8">
+                                <input type="text" id="RegistrationpaymentApplicationNumOrStudentID" name="paymentApplicationNumOrStudentID" placeholder="Student ID" class="form-control" required data-error="Can't be empty" onblur="checkStudentInDB(this.value)"/>
+                                <div  id="RegistrationstudentIDErr" class="help-block with-errors"></div>
+                            </div>
+
+                            <input type="hidden" value="Registration_Payment" id="paymentType" name="paymentType"/>
+
+                            <div class="form-group col-sm-4">
+                                <label for="reg-pammount">Amount Paid (RS)</label>
+                            </div>
+                            <div class="form-group col-sm-8">
+                                <input type="text" id="paymentAmount" name="paymentAmount" placeholder="Amount You Paid" class="form-control" required data-error="Can't be empty"/>
+                                <div class="help-block with-errors"></div>
+                            </div>
+                            <div class="form-group col-sm-4">
+                                <label for="reg-bank">Name of Payee Bank</label>
+                            </div> 
+                            <div class="form-group col-sm-8">                    
+                                <input type="text" id="paymentBank" name="paymentBank" placeholder="Bank You Paid" required data-error="Can't be empty" class="form-control"/>
+                                <div class="help-block with-errors"></div>
+                            </div>
+                            <div class="form-group col-sm-4">
+                                <label for="reg-pdate">Date Paid</label>
+                            </div> 
+                            <div class="form-group col-sm-8">                    
+                                <input type="date" id="paymentDate" name="paymentDate" placeholder="Date You Paid" required class="form-control" data-error="Empty or invalied Date try YYYY-MM-DD format" pattern="(?:19|20)[0-9]{2}-(?:(?:0[1-9]|1[0-2])-(?:0[1-9]|1[0-9]|2[0-9])|(?:(?!02)(?:0[1-9]|1[0-2])-(?:30))|(?:(?:0[13578]|1[02])-31))"/>
+                                <div class="help-block with-errors"></div>
+                            </div>
+
+                            <button type="submit" class="btn btn-default" >Submit</button>
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+
+                        </form>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Add Examination Payment -->
+        <div id="addExamPayment" class="modal fade" role="dialog" >
+            <div class="modal-dialog">
+
+                <!-- Modal content-->
+                <div class="modal-content" >
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h2 class="modal-title" >Add Examination Payment</h2>
+                    </div>
+                    <div class="modal-body ">
+
+                        <form method="POST" action="../../AddPayment">
+                            <div class="form-group col-sm-4">
+                                <label for="reg-pammount">Student ID</label>
+                            </div>
+
+                            <div class="form-group col-sm-8">
+                                <input type="text" id="ExampaymentApplicationNumOrStudentID" name="paymentApplicationNumOrStudentID" placeholder="Student ID" class="form-control" required data-error="Can't be empty"onblur="checkStudentInDB(this.value)"/>
+                                <div  id="ExamstudentIDErr" class="help-block with-errors"></div>
+                            </div>
+
+                            <div class="form-group col-sm-4">
+                                <label for="reg-pammount">Examination ID</label>
+                            </div>
+
+                            <div class="form-group col-sm-8">
+                                <input type="text" id="examID" name="examID" placeholder="Examination ID" class="form-control" required data-error="Can't be empty"/>
+                                <div class="help-block with-errors"></div>
+                            </div>
+
+                            <input type="hidden" value="Examination_Payment" id="paymentType" name="paymentType"/>
+
+                            <div class="form-group col-sm-4">
+                                <label for="reg-pammount">Amount Paid (RS)</label>
+                            </div>
+                            <div class="form-group col-sm-8">
+                                <input type="text" id="paymentAmount" name="paymentAmount" placeholder="Amount You Paid" class="form-control" required data-error="Can't be empty"/>
+                                <div class="help-block with-errors"></div>
+                            </div>
+                            <div class="form-group col-sm-4">
+                                <label for="reg-bank">Name of Payee Bank</label>
+                            </div> 
+                            <div class="form-group col-sm-8">                    
+                                <input type="text" id="paymentBank" name="paymentBank" placeholder="Bank You Paid" required data-error="Can't be empty" class="form-control"/>
+                                <div class="help-block with-errors"></div>
+                            </div>
+                            <div class="form-group col-sm-4">
+                                <label for="reg-pdate">Date Paid</label>
+                            </div> 
+                            <div class="form-group col-sm-8">                    
+                                <input type="date" id="paymentDate" name="paymentDate" placeholder="Date You Paid" required class="form-control" data-error="Empty or invalied Date try YYYY-MM-DD format" pattern="(?:19|20)[0-9]{2}-(?:(?:0[1-9]|1[0-2])-(?:0[1-9]|1[0-9]|2[0-9])|(?:(?!02)(?:0[1-9]|1[0-2])-(?:30))|(?:(?:0[13578]|1[02])-31))"/>
+                                <div class="help-block with-errors"></div>
+                            </div>
+
+                            <button type="submit" class="btn btn-default" >Submit</button>
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+
+                        </form>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Add Other Payment -->
+        <div id="addOtherPayment" class="modal fade" role="dialog" >
+            <div class="modal-dialog">
+
+                <!-- Modal content-->
+                <div class="modal-content" >
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h2 class="modal-title" >Add Other Payment</h2>
+                    </div>
+                    <div class="modal-body ">
+
+                        <form method="POST" action="../../AddPayment">
+                            <div class="form-group col-sm-4">
+                                <label for="reg-pammount">Student ID</label>
+                            </div>
+                            <div class="form-group col-sm-8">
+                                <input type="text" id="OtherpaymentApplicationNumOrStudentID" name="paymentApplicationNumOrStudentID" placeholder="Student ID" class="form-control" required data-error="Can't be empty" onblur="checkStudentInDB(this.value)"/>
+                                <div id="OtherstudentIDErr" class="help-block with-errors"></div>
+                            </div>
+
+                            <div class="form-group col-sm-4">
+                                <label for="reg-pammount">Payment Type</label>
+                            </div>
+                            <div class="form-group col-sm-8">
+                                <input type="text" id="paymentType" name="paymentType" placeholder="Payment Type" class="form-control" required data-error="Can't be empty"/>
+                                <div class="help-block with-errors"></div>
+                            </div>
+
+                            <div class="form-group col-sm-4">
+                                <label for="reg-pammount">Amount Paid (RS)</label>
+                            </div>
+                            <div class="form-group col-sm-8">
+                                <input type="text" id="paymentAmount" name="paymentAmount" placeholder="Amount You Paid" class="form-control" required data-error="Can't be empty"/>
+                                <div class="help-block with-errors"></div>
+                            </div>
+                            <div class="form-group col-sm-4">
+                                <label for="reg-bank">Name of Payee Bank</label>
+                            </div> 
+                            <div class="form-group col-sm-8">                    
+                                <input type="text" id="paymentBank" name="paymentBank" placeholder="Bank You Paid" required data-error="Can't be empty" class="form-control"/>
+                                <div class="help-block with-errors"></div>
+                            </div>
+                            <div class="form-group col-sm-4">
+                                <label for="reg-pdate">Date Paid</label>
+                            </div> 
+                            <div class="form-group col-sm-8">                    
+                                <input type="date" id="paymentDate" name="paymentDate" placeholder="Date You Paid" required class="form-control" data-error="Empty or invalied Date try YYYY-MM-DD format" pattern="(?:19|20)[0-9]{2}-(?:(?:0[1-9]|1[0-2])-(?:0[1-9]|1[0-9]|2[0-9])|(?:(?!02)(?:0[1-9]|1[0-2])-(?:30))|(?:(?:0[13578]|1[02])-31))"/>
+                                <div class="help-block with-errors"></div>
+                            </div>
+
+                            <button type="submit" class="btn btn-default" >Submit</button>
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- View All Payment -->
+        <div id="viewAllPayment" class="modal" role="dialog" >
+            <div class="modal-dialog">
+
+                <!-- Modal content-->
+                <div class="modal-content" >
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h2 class="modal-title" >View All Payment</h2>
+                    </div>
+                    <div class="modal-body ">
+
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Payment</th>
+                                    <th>ID</th>
+                                    <th>Name</th>
+                                    <th>Payment Type</th>
+                                    <th>Amount</th>
+                                    <th>Date</th>
+                                    <th>Bank</th>
+                                    <th>Other</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <% /*
+                                    SessionFactory sessionFactry = new Configuration().configure().buildSessionFactory();
+                                    Session s = sessionFactry.openSession();
+                                    s.beginTransaction();
+                                    Query queryAllPayment = s.createQuery("from Payment order by EnteredTimeStamp desc");
+                                    List allPaymentList = queryAllPayment.list();
+
+                                    for (int i = 0; i < allPaymentList.size(); i++) {
+                                        Payment payment = new Payment();
+                                        Applicant applicant = new Applicant();
+                                        Student student = new Student();
+
+                                        payment = (Payment) allPaymentList.get(i);
+                                        if (payment.getApplicationNumOrStudentID().contains("_A_")) {
+                                            applicant = (Applicant) s.get(Applicant.class, payment.getApplicationNumOrStudentID());
+                                            out.write("<tr>");
+                                            out.write("<td>" + payment.getPaymentID() + "</td>");
+                                            out.write("<td>" + payment.getApplicationNumOrStudentID() + "</td>");
+                                            out.write("<td>" + applicant.getFullName() + "<td>");
+                                            out.write("<td>" + payment.getPaymentType() + " </td>");
+                                            out.write("<td>" + payment.getPaymentAmmount() + " </td>");
+                                            out.write("<td>" + payment.getPaymentDate() + " </td>");
+                                            out.write("<td>" + payment.getExamID() + " </td>");
+                                            out.write("<td>" + payment.getPaymentBank() + " </td>");
+
+                                            out.write("</tr>");
+                                        } else if (payment.getApplicationNumOrStudentID().contains("_S_")) {
+                                            student = (Student) s.get(Student.class, payment.getApplicationNumOrStudentID());
+                                            out.write("<tr>");
+                                            out.write("<td>" + payment.getPaymentID() + "</td>");
+                                            out.write("<td>" + payment.getApplicationNumOrStudentID() + "</td>");
+                                            out.write("<td>" + student.getFullName() + "<td>");
+                                            out.write("<td>" + payment.getPaymentType() + " </td>");
+                                            out.write("<td>" + payment.getPaymentAmmount() + " </td>");
+                                            out.write("<td>" + payment.getPaymentDate() + " </td>");
+                                            out.write("<td>" + payment.getExamID() + " </td>");
+                                            out.write("<td>" + payment.getPaymentBank() + " </td>");
+
+                                            out.write("</tr>");
+                                        } else {
+                                            out.write("<tr>");
+                                            out.write("<td>" + payment.getPaymentID() + "</td>");
+                                            out.write("<td>" + payment.getApplicationNumOrStudentID() + "</td>");
+                                            out.write("<td>" + "<td>");
+                                            out.write("<td>" + payment.getPaymentType() + " </td>");
+                                            out.write("<td>" + payment.getPaymentAmmount() + " </td>");
+                                            out.write("<td>" + payment.getPaymentDate() + " </td>");
+                                            out.write("<td>" + payment.getExamID() + " </td>");
+                                            out.write("<td>" + payment.getPaymentBank() + " </td>");
+                                            out.write("</tr>");
+
+                                        }
+
+                                    }
+                                    s.getTransaction().commit();
+                                    s.close();
+                               */ %>
+
+                            </tbody>
+                        </table>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ======================================================== -->
+        <!-- View Application Payment -->
+        <div id="viewApplicationPayment" class="modal" role="dialog" >
+            <div class="modal-dialog">
+
+                <!-- Modal content-->
+                <div class="modal-content" >
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h2 class="modal-title" >View Application Payment</h2>
+                    </div>
+                    <div class="modal-body ">
+
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Payment</th>
+                                    <th>Application Number</th>
+                                    <th>Name</th>
+                                    <th>Amount</th>
+                                    <th>Date</th>
+                                    <th>Bank</th>
+
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                                <%
+                                    Session s1 = sessionFactry.openSession();
+                                    s1.beginTransaction();
+                                    Query queryApplicationPayment = s1.createQuery("from Payment WHERE paymentType='Application_Payment' order by EnteredTimeStamp desc");
+                                    List applicationPaymentList = queryApplicationPayment.list();
+
+                                    for (int j = 0; j < applicationPaymentList.size(); j++) {
+                                        Payment payment = new Payment();
+                                        Applicant applicant = new Applicant();
+
+                                        payment = (Payment) applicationPaymentList.get(j);
+
+                                        applicant = (Applicant) s1.get(Applicant.class, payment.getApplicationNumOrStudentID());
+                                        out.write("<tr>");
+                                        out.write("<td>" + payment.getPaymentID() + "</td>");
+                                        out.write("<td>" + payment.getApplicationNumOrStudentID() + "</td>");
+                                        out.write("<td>" + applicant.getFullName() + "<td>");
+                                        out.write("<td>" + payment.getPaymentAmmount() + "</td>");
+                                        out.write("<td>" + payment.getPaymentDate() + "</td>");
+                                        out.write("<td>" + payment.getPaymentBank() + "</td>");
+
+                                        out.write("</tr>");
+
+                                    }
+                                    s1.getTransaction().commit();
+                                    s1.close();
+                                %>
+
+
+                            </tbody>
+                        </table>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ======================================================== -->
+        <!-- View Registration Payment -->
+        <div id="viewRegistrationPayment" class="modal" role="dialog" >
+            <div class="modal-dialog">
+
+                <!-- Modal content-->
+                <div class="modal-content" >
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h2 class="modal-title" >View Registration Payment</h2>
+                    </div>
+                    <div class="modal-body ">
+
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Payment</th>
+                                    <th>Student ID</th>
+                                    <th>Name</th>
+                                    <th>Amount</th>
+                                    <th>Date</th>
+                                    <th>Bank</th>
+
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                                <%
+                                    Session s2 = sessionFactry.openSession();
+                                    s2.beginTransaction();
+                                    Query queryRegistrationPayment = s2.createQuery("from Payment WHERE paymentType='Registration_Payment' order by EnteredTimeStamp desc");
+                                    List registrationPaymentList = queryRegistrationPayment.list();
+                                    for (int j = 0; j < registrationPaymentList.size(); j++) {
+                                        Payment payment = new Payment();
+                                        Student student = new Student();
+
+                                        payment = (Payment) registrationPaymentList.get(j);
+
+                                        student = (Student) s2.get(Student.class, payment.getApplicationNumOrStudentID());
+                                        out.write("<tr>");
+                                        out.write("<td>" + payment.getPaymentID() + "</td>");
+                                        out.write("<td>" + payment.getApplicationNumOrStudentID() + "</td>");
+                                        out.write("<td>" + student.getFullName() + "<td>");
+                                        out.write("<td>" + payment.getPaymentAmmount() + "</td>");
+                                        out.write("<td>" + payment.getPaymentDate() + "</td>");
+                                        out.write("<td>" + payment.getPaymentBank() + "</td>");
+
+                                        out.write("</tr>");
+
+                                    }
+                                    s2.getTransaction().commit();
+                                    s2.close();
+                                %>
+
+
+                            </tbody>
+                        </table>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ======================================================== -->
+        <!-- View Exam Payment -->
+        <div id="viewExamPayment" class="modal" role="dialog" >
+            <div class="modal-dialog">
+
+                <!-- Modal content-->
+                <div class="modal-content" >
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h2 class="modal-title" >View Examination Payment</h2>
+                    </div>
+                    <div class="modal-body ">
+
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Payment</th>
+                                    <th>Student ID</th>
+                                    <th>Name</th>
+                                    <th>Amount</th>
+                                    <th>Exam ID</th>
+                                    <th>Date</th>
+                                    <th>Bank</th>
+
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                                <%
+                                    Session s3 = sessionFactry.openSession();
+                                    s3.beginTransaction();
+                                    Query queryExamPayment = s3.createQuery("from Payment WHERE paymentType='Examination_Payment' order by EnteredTimeStamp desc");
+                                    List examPaymentList = queryExamPayment.list();
+                                    for (int j = 0; j < examPaymentList.size(); j++) {
+                                        Payment payment = new Payment();
+                                        Student student = new Student();
+
+                                        payment = (Payment) examPaymentList.get(j);
+
+                                        student = (Student) s3.get(Student.class, payment.getApplicationNumOrStudentID());
+                                        out.write("<tr>");
+                                        out.write("<td>" + payment.getPaymentID() + "</td>");
+                                        out.write("<td>" + payment.getApplicationNumOrStudentID() + "</td>");
+                                        out.write("<td>" + student.getFullName() + "<td>");
+                                        out.write("<td>" + payment.getPaymentAmmount() + "</td>");
+                                        out.write("<td>" + payment.getExamID() + "</td>");
+                                        out.write("<td>" + payment.getPaymentDate() + "</td>");
+                                        out.write("<td>" + payment.getPaymentBank() + "</td>");
+
+                                        out.write("</tr>");
+
+                                    }
+                                    s3.getTransaction().commit();
+                                    s3.close();
+                                %>
+
+
+                            </tbody>
+                        </table>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ======================================================== -->
+        <!-- Search Payment -->
+        <div id="searchPayment" class="modal fade" role="dialog" >
+            <div class="modal-dialog">
+
+                <!-- Modal content-->
+                <div class="modal-content" >
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h2 class="modal-title" >Search Payment</h2>
+                    </div>
+                    <div class="modal-body ">
+
+                        <button type='button' class="btn btn-info" data-toggle='modal' data-target='#searchByPaymentID'><span class="glyphicon glyphicon-search"></span> By Payment ID</button> <br/><br/>
+                        <button type='button' class="btn btn-info" data-toggle='modal' data-target='#searchByStudentID'><span class="glyphicon glyphicon-search"></span>By Student ID</button> <br/><br/>
+                        <button type='button' class="btn btn-info" data-toggle='modal' data-target='#searchByApplicationNumber'><span class="glyphicon glyphicon-search"></span>By Application Number</button> <br/><br/>
+                        <button type='button' class="btn btn-info" data-toggle='modal' data-target='#searchByExamID'><span class="glyphicon glyphicon-search"></span>By Exam ID</button> <br/><br/>
+                        <button type='button' class="btn btn-info" data-toggle='modal' data-target='#searchBypaymentType'><span class="glyphicon glyphicon-search"></span>By payment Type</button> <br/><br/>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ======================================================== -->
+        <!-- Search By Payment ID -->
+        <div id="searchByPaymentID" class="modal fade" role="dialog" >
+            <div class="modal-dialog">
+
+                <!-- Modal content-->
+                <div class="modal-content" >
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h2 class="modal-title" >Search By Payment ID</h2>
+                    </div>
+                    <div class="modal-body ">
+
+                        <div class="form-group col-sm-4">
+                            <label for="reg-pammount">Payment ID</label>
+                        </div>
+
+                        <div class="form-group col-sm-8">
+                            <input type="text" id="searchPaymentID" name="searchPaymentID" placeholder="Payment ID" class="form-control" />
+                            <div id="searchPaymentIDErr" class="help-block with-errors"></div>
+                        </div>
+
+                        <button type='button' class="btn btn-info btn-lg" onclick="searchByPaymentID()"><span class="glyphicon glyphicon-search"></span> Search</button> <br/><br/>
+
+                        <div id="searchPaymentIDOutput"></div>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ======================================================== -->
+        <!-- Search By Student ID -->
+        <div id="searchByStudentID" class="modal fade" role="dialog" >
+            <div class="modal-dialog">
+
+                <!-- Modal content-->
+                <div class="modal-content" >
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h2 class="modal-title" >Search By Student ID</h2>
+                    </div>
+                    <div class="modal-body ">
+
+                        <div class="form-group col-sm-4">
+                            <label for="reg-pammount">Student ID</label>
+                        </div>
+
+                        <div class="form-group col-sm-8">
+                            <input type="text" id="searchStudentID" name="searchStudentID" placeholder="Student ID" class="form-control" />
+                            <div id="searchStudentIDErr" class="help-block with-errors"></div>
+                        </div>
+
+                        <button type='button' class="btn btn-info btn-lg" onclick="searchByStudentID()"><span class="glyphicon glyphicon-search"></span> Search</button> <br/><br/>
+
+                        <div id="searchStudentIDOutput"></div>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+        <!-- ======================================================== -->
+        <!-- Search By Application Number -->
+        <div id="searchByApplicationNumber" class="modal fade" role="dialog" >
+            <div class="modal-dialog">
+
+                <!-- Modal content-->
+                <div class="modal-content" >
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h2 class="modal-title" >Search By Application Number</h2>
+                    </div>
+                    <div class="modal-body ">
+
+                        <div class="form-group col-sm-4">
+                            <label for="reg-pammount">Application Number</label>
+                        </div>
+
+                        <div class="form-group col-sm-8">
+                            <input type="text" id="searchApplicationNumber" name="searchApplicationNumber" placeholder="Application Number" class="form-control" />
+                            <div id="searchApplicationNumberErr" class="help-block with-errors"></div>
+                        </div>
+
+                        <button type='button' class="btn btn-info btn-lg" onclick="searchByApplicationNumber()"><span class="glyphicon glyphicon-search"></span> Search</button> <br/><br/>
+
+                        <div id="searchApplicationNumberOutput"></div>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- ======================================================== -->
+        <!-- Search By Exam ID -->
+        <div id="searchByExamID" class="modal fade" role="dialog" >
+            <div class="modal-dialog">
+
+                <!-- Modal content-->
+                <div class="modal-content" >
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h2 class="modal-title" >Search By Exam ID</h2>
+                    </div>
+                    <div class="modal-body ">
+
+                        <div class="form-group col-sm-4">
+                            <label for="reg-pammount">Exam ID</label>
+                        </div>
+
+                        <div class="form-group col-sm-8">
+                            <input type="text" id="searchExamID" name="searchExamID" placeholder="Exam ID" class="form-control" />
+                            <div id="searchExamIDErr" class="help-block with-errors"></div>
+                        </div>
+
+                        <button type='button' class="btn btn-info btn-lg" onclick="searchByExamID()"><span class="glyphicon glyphicon-search"></span> Search</button> <br/><br/>
+
+                        <div id="searchExamIDOutput"></div>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ======================================================== -->
+        <!-- Search By Payment Type -->
+        <div id="searchBypaymentType" class="modal fade" role="dialog" >
+            <div class="modal-dialog">
+
+                <!-- Modal content-->
+                <div class="modal-content" >
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h2 class="modal-title" >Search By Payment Type</h2>
+                    </div>
+                    <div class="modal-body ">
+
+                        <div class="form-group col-sm-4">
+                            <label for="reg-pammount">Payment Type</label>
+                        </div>
+
+                        <div class="form-group col-sm-8">
+                            <input type="text" id="searchpaymentType" name="searchpaymentType" placeholder="Payment Type" class="form-control" />
+                            <div id="searchpaymentTypeErr" class="help-block with-errors"></div>
+                        </div>
+
+                        <button type='button' class="btn btn-info btn-lg" onclick="searchByPaymentType()"><span class="glyphicon glyphicon-search"></span> Search</button> <br/><br/>
+
+                        <div id="searchpaymentTypeOutput"></div>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
 
     </body>
 </html>

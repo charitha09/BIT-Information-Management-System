@@ -23,8 +23,8 @@
                 </div>
                 <ul class="nav navbar-nav">
                     <li><a href="../index.jsp">Home</a></li>
-                    <li><a href="course-application-form.jsp">Apply Course</a></li> 
-                    <li class="active"><a href="contact-us.jsp">Contact Us</a></li> 
+                    <li><a href="course-application-form.jsp">Apply Courses</a></li>
+                    <li class="active"><a href="contact-us.jsp">Contact Us</a></li>  
                 </ul>
                 <ul class="nav navbar-nav navbar-right"  data-toggle="modal" data-target="#login-box">
                     <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>

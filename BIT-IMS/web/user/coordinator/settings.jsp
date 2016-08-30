@@ -1,10 +1,3 @@
-<%-- 
-    Document   : settings
-    Created on : Aug 6, 2016, 10:25:01 PM
-    Author     : Amila Sankha
---%>
-
-
 <%@page import="javax.validation.constraints.Null"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%
@@ -35,15 +28,9 @@
                     <div class="navbar-header">
                         <a class="navbar-brand" href="index.jsp"><img src="../../images/logo.png" alt="UCSC"></a>
                     </div>
-                    <ul class="nav navbar-nav">
-                        <li class="active"><a href="index.jsp">Home</a></li> 
-                        <li><a href="interview_create_edit.jsp">Interview</a></li> 
-                        <li><a href="viewApplicant.jsp">Applicant</a></li>
-                        <li><a href="payment.jsp">Payment</a></li>
-                        <li><a href="student.jsp">Student</a></li>
-                        <li><a href="settings.jsp">Setting</a></li>
-
-
+                    <ul class="nav navbar-nav">                       
+                        <li><a href="coordinate.jsp">Coordinate</a></li> 
+                        <li class="active"><a href="settings.jsp">Setting</a></li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right"  data-toggle="modal" data-target="#login-box">
                         <li><a href="../../logout"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
@@ -97,10 +84,6 @@
                         <div id="outputErr" class="help-block with-errors"></div><br/><br/>
                         <button type='button' class="btn btn-info " onclick="changePassword()"> Submit</button>
                         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button> <br/><br/>
-
-
-
-
                     </div>
                 </div>
             </div>
