@@ -38,7 +38,6 @@
                         <a class="navbar-brand" href="index.jsp"><img src="../../images/logo.png" alt="UCSC"></a>
                     </div>
                     <ul class="nav navbar-nav">
-                        <li><a href="index.jsp">Home</a></li> 
                         <li class="active"><a href="coordinate.jsp">Coordinate</a></li> 
                         <li><a href="settings.jsp">Setting</a></li>
                     </ul>
