@@ -2,6 +2,10 @@ package com.ims.model;
 
 import java.sql.Date;
 import java.sql.Time;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
@@ -10,22 +14,32 @@ import org.hibernate.cfg.Configuration;
  *
  * @author Indusaranie Tharusha
  */
+@Entity
 public class Message {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int messageID;
+    private String senderID;
+    private String receiverID;
     private String title;
     private String body;
-    private Date date;
-    private Time time;
+    private String date;
+    private String time;
+    private int view=0;
     
     public Message(){
     } 
     
-    public Message(int messageID, String title, String body, Date date, Time time){
+    public Message(int messageID, String title, String body, String date, String time,int view,String senderId, String rceiverID ){
         this.messageID = messageID;
         this.title = title;
         this.body = body;
         this.date = date;
         this.time =time;
+        this.view = view;
+        this.senderID = senderID;
+        this.receiverID = receiverID;
+        
     }
     
     public int getMessageId() {
@@ -52,40 +66,65 @@ public class Message {
         this.body = MessageBody;
     }
     
-    public Date getMessageDate(){
+    public String getMessageDate(String MessageDate){
         return date;
     }
     
-    public void setMessageDate(Date MessageDate){
+    public void setMessageDate(String MessageDate){
         this.date = MessageDate;
     }
     
-    public Time getMessageTime(){
+    public String getMessageTime(String MessageTime){
         return time;
     }
     
-    public void setMessageTitle(Time MessageTime){
+    public void setMessageTime(String MessageTime){
         this.time = MessageTime;
+    }
+    
+     public int getMessageView(){
+        return view;
+    }
+    
+    public void setMessageView(int MessageView){
+        this.view = MessageView;
+    }
+    
+    public String getSenderID(){
+        return senderID;
+    }
+    
+    public void setSenderID(String SenderID){
+        this.senderID = SenderID ;
+    }
+    
+    public String getreceiverID(){
+        return receiverID;
+    }
+    
+    public void setReceiverID(String ReceiverID){
+        this.receiverID = ReceiverID;
     }
     
     @Override
     public String toString(){
         return "Message{" + "messageID=" + messageID + ", title=" + title + ", body=" + body 
-                + ", time=" + time + ", date=" + date + '}';
+                + ", time=" + time + ", date=" + date + ", view= " + view + ", senderID=" + senderID 
+                + ", receiverID=" + receiverID + '}';
                 
     }
     
     public static void main(String[] args) {
-        Message msg = new Message();
-        msg.setMessageTitle("asderty");
+        Message message = new Message();
+        message.setMessageTitle("asderty");
         
-        SessionFactory sf = new Configuration().configure().buildSessionFactory();
-        Session s = sf.openSession();
-        s.beginTransaction();
+        SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
+        Session session = sessionFactory.openSession();
+        session.beginTransaction();
         
-        s.save(msg);
+        session.save(message);
         
-        s.getTransaction().commit();
+        session.getTransaction().commit();
         
     }
 }

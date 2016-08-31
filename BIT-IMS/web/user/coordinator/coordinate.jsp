@@ -42,6 +42,15 @@
                     <ul class="nav navbar-nav">
                         <li class="active"><a href="coordinate.jsp">Coordinate</a></li> 
                         <li><a href="settings.jsp">Setting</a></li>
+                        <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="messageBegin.jsp">Messaging
+                        <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="messageForm.jsp">New Message</a></li>
+                            <li><a href="msgReceive.jsp">Inbox</a></li> 
+                            <li><a href="sendMsg.jsp">Outbox</a></li> 
+                        </ul>
+                    </li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right"  data-toggle="modal" data-target="#login-box">
                         <li><a href="../../logout"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
@@ -104,10 +113,10 @@
                                 Interview iv = new Interview();
                                 iv = (Interview) interviewList.get(i);
                                 out.write("<div class='col-sm-12 devbottom-line'>");
-                                out.write("<div class='col-sm-2 no-padding'><h5>" + iv.getInterviewID() + "</h5></div>");
-                                out.write("<div class='col-sm-2 no-padding'><h5>" + iv.getDate() + "</h5></div>");
-                                out.write("<div class='col-sm-2 no-padding'><h5>" + iv.getStartTime() + "</h5></div>");
-                                out.write("<div class='col-sm-2 no-padding'><h5>" + iv.getAuthor() + "</h5></div>");
+                                out.write("<div class='col-sm-2 no-padding'><h6>" + iv.getInterviewID() + "</h6></div>");
+                                out.write("<div class='col-sm-2 no-padding'><h6>" + iv.getDate() + "</h6></div>");
+                                out.write("<div class='col-sm-2 no-padding'><h6>" + iv.getStartTime() + "</h6></div>");
+                                out.write("<div class='col-sm-2 no-padding'><h6>" + iv.getAuthor() + "</h6></div>");
                                 out.write("<div class='col-sm-2 no-padding'><button type='button' class='btn btn-default btn-sm' data-toggle='modal' data-target='#updateInterviewDetails' onclick=updateInterviewDetails('" + iv.getInterviewID() + "')><span class='glyphicon glyphicon-pencil'></span></button></div>");
                                 out.write("<div class='col-sm-2 no-padding'><button type='button' class='btn btn-default btn-sm' data-toggle='modal' data-target='#viewAllocatedApplicant' onclick=viewAllocatedApplicant('" + iv.getInterviewID() + "')><span class='glyphicon glyphicon-new-window'></span></button></div>");
                                 out.write("</div>");
@@ -152,12 +161,12 @@
                                 Applicant applicant = new Applicant();
                                 applicant = (Applicant) applicantList.get(i);
                                 out.write("<div class='col-sm-12 devbottom-line'>");
-                                out.write("<div class='col-sm-2 no-padding'><h5>" + applicant.getApplicationNum() + "</h5></div>");
-                                out.write("<div class='col-sm-2 no-padding'><h5>" + applicant.getFullName() + "</h5></div>");
-                                out.write("<div class='col-sm-2 no-padding'><h5>" + applicant.getNicNo() + "</h5></div>");
-                                out.write("<div class='col-sm-2 no-padding'><h5>" + applicant.getTelephoneNumMob() + "</h5></div>");
-                                out.write("<div class='col-sm-2 no-padding'><h5>" + applicant.getEmail() + "</h5></div>");
-                                out.write("<div class='col-sm-2 no-padding'><h5>" + applicant.getAddress() + "</h5></div>");
+                                out.write("<div class='col-sm-2 no-padding'><h6>" + applicant.getApplicationNum() + "</h6></div>");
+                                out.write("<div class='col-sm-2 no-padding'><h6>" + applicant.getFullName() + "</h6></div>");
+                                out.write("<div class='col-sm-2 no-padding'><h6>" + applicant.getNicNo() + "</h6></div>");
+                                out.write("<div class='col-sm-2 no-padding'><h6>" + applicant.getTelephoneNumMob() + "</h6></div>");
+                                out.write("<div class='col-sm-2 no-padding'><h6>" + applicant.getEmail() + "</h6></div>");
+                                out.write("<div class='col-sm-2 no-padding'><h6>" + applicant.getAddress() + "</h6></div>");
                                 out.write("</div>");
                             }
 
@@ -168,53 +177,7 @@
                     <div class="col-sm-12 devbottom-line">
                         <div class="col-sm-10">
                             <h3>Student Details</h3>
-                        </div>
-                        <div class="col-sm-10">
-                               <table class="table">
-                            <thead>
-                                <tr>
-                                    <th>Student ID</th>
-                                    <th>Name</th>
-                                    <th>NIC</th>
-                                    <th>Phone Number</th>
-                                    <th>Email</th>
-                                    <th>Current Year</th>
-                                    
-
-                                </tr>
-                            </thead>
-                            <tbody>
-
-                                <%
-                                    Session ss3 = sessionFactry.openSession();
-                                    ss3.beginTransaction();
-                                    Query queryStudentDetails = ss3.createQuery("from Student");
-                                    List studentDetailList = queryStudentDetails.list();
-                                    for (int j = 0; j < studentDetailList.size(); j++) {
-                  
-                                        Student student = new Student();
-
-                                        student =  (Student)studentDetailList.get(j);
-
-                                        out.write("<tr>");
-                                        out.write("<td>" + student.getRegistrationNum() + "</td>");
-                                        out.write("<td>" + student.getFullName() + "</td>");
-                                        out.write("<td>" + student.getNicNo() + "</td>");
-                                        out.write("<td>" + student.getTelephoneNum() + "</td>");
-                                        out.write("<td>" + student.getEmail() + "</td>");
-                                        out.write("<td>" + student.getCurrentYear() + "</td>");
-
-                                        out.write("</tr>");
-
-                                    }
-                                    ss3.getTransaction().commit();
-                                    ss3.close();
-                                %>
-
-
-                            </tbody>
-                        </table>
-                        </div>
+                        </div>                        
                         <div class="col-sm-2 droup-down-box">
                             <div class="dropdown">
                                 <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">Tasks
@@ -224,97 +187,48 @@
                                     <li><a href="#searchStudent" data-toggle='modal' data-target='#searchStudent'>Search Student</a></li>  
                                 </ul>
                             </div>                            
-                        </div>                        
-                    </div>  
+                        </div>
+                    </div>
+                    <div class="col-sm-12">
+                        <div class="col-sm-12 devbottom-line">
+                            <div class="col-sm-2 no-padding"><h5>Student ID</h5></div>
+                            <div class="col-sm-2 no-padding"><h5>Name</h5></div>
+                            <div class="col-sm-2 no-padding"><h5>NIC Number</h5></div>
+                            <div class="col-sm-2 no-padding"><h5>Phone Number</h5></div>
+                            <div class="col-sm-2 no-padding"><h5>Email</h5></div>
+                            <div class="col-sm-2 no-padding"><h5>Current Year</h5></div>
+                        </div>
+                        <%
+                            Session ss3 = sessionFactry.openSession();
+                            ss3.beginTransaction();
+                            Query queryStudentDetails = ss3.createQuery("from Student");
+                            List studentDetailList = queryStudentDetails.list();
+                            for (int j = 0; j < studentDetailList.size(); j++) {
+
+                                Student student = new Student();
+
+                                student =  (Student)studentDetailList.get(j);
+
+                                out.write("<div class='col-sm-12 devbottom-line'>");
+                                out.write("<div class='col-sm-2 no-padding'><h6>" + student.getRegistrationNum() + "</h6></div>");
+                                out.write("<div class='col-sm-2 no-padding'><h6>" + student.getFullName() + "</h6></div>");
+                                out.write("<div class='col-sm-2 no-padding'><h6>" + student.getNicNo() + "</h6></div>");
+                                out.write("<div class='col-sm-2 no-padding'><h6>" + student.getTelephoneNum() + "</h6></div>");
+                                out.write("<div class='col-sm-2 no-padding'><h6>" + student.getEmail() + "</h6></div>");
+                                out.write("<div class='col-sm-2 no-padding'><h6>" + student.getCurrentYear() + "</h6></div>");
+                                out.write("</div>");
+                            }
+                            ss3.getTransaction().commit();
+                            ss3.close();
+                        %>
+                    </div>
                 </div>
 
                 <div id="Payment-window">
                     <div class="col-sm-12 devbottom-line">
                         <div class="col-sm-10">
                             <h3>Payment Details</h3>
-                        </div>
-                        
-                        <div class="col-sm-10">
-
-                        <table class="table">
-                            <thead>
-                                <tr>
-                                    <th>Payment</th>
-                                    <th>ID</th>
-                                    <th>Name</th>
-                                    <th>Payment Type</th>
-                                    <th>Amount</th>
-                                    <th>Date</th>
-                                    <th>Bank</th>
-                                    <th>Other</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <% 
-                                    Session ss1 = sessionFactry.openSession();
-                                    ss1.beginTransaction();
-                                    Query queryAllPayment = ss1.createQuery("from Payment order by EnteredTimeStamp desc");
-                                    List allPaymentList = queryAllPayment.list();
-
-                                    for (int i = 0; i < allPaymentList.size(); i++) {
-                                        Payment payment = new Payment();
-                                        Applicant applicant = new Applicant();
-                                        Student student = new Student();
-
-                                        payment = (Payment) allPaymentList.get(i);
-                                        if (payment.getApplicationNumOrStudentID().contains("_A_")) {
-                                            applicant = (Applicant) ss1.get(Applicant.class, payment.getApplicationNumOrStudentID());
-                                            out.write("<tr>");
-                                            out.write("<td>" + payment.getPaymentID() + "</td>");
-                                            out.write("<td>" + payment.getApplicationNumOrStudentID() + "</td>");
-                                            out.write("<td>" + applicant.getFullName() + "<td>");
-                                            out.write("<td>" + payment.getPaymentType() + " </td>");
-                                            out.write("<td>" + payment.getPaymentAmmount() + " </td>");
-                                            out.write("<td>" + payment.getPaymentDate() + " </td>");
-                                            out.write("<td>" + payment.getExamID() + " </td>");
-                                            out.write("<td>" + payment.getPaymentBank() + " </td>");
-
-                                            out.write("</tr>");
-                                        } else if (payment.getApplicationNumOrStudentID().contains("_S_")) {
-                                            student = (Student) s.get(Student.class, payment.getApplicationNumOrStudentID());
-                                            out.write("<tr>");
-                                            out.write("<td>" + payment.getPaymentID() + "</td>");
-                                            out.write("<td>" + payment.getApplicationNumOrStudentID() + "</td>");
-                                            out.write("<td>" + student.getFullName() + "<td>");
-                                            out.write("<td>" + payment.getPaymentType() + " </td>");
-                                            out.write("<td>" + payment.getPaymentAmmount() + " </td>");
-                                            out.write("<td>" + payment.getPaymentDate() + " </td>");
-                                            out.write("<td>" + payment.getExamID() + " </td>");
-                                            out.write("<td>" + payment.getPaymentBank() + " </td>");
-
-                                            out.write("</tr>");
-                                        } else {
-                                            out.write("<tr>");
-                                            out.write("<td>" + payment.getPaymentID() + "</td>");
-                                            out.write("<td>" + payment.getApplicationNumOrStudentID() + "</td>");
-                                            out.write("<td>" + "<td>");
-                                            out.write("<td>" + payment.getPaymentType() + " </td>");
-                                            out.write("<td>" + payment.getPaymentAmmount() + " </td>");
-                                            out.write("<td>" + payment.getPaymentDate() + " </td>");
-                                            out.write("<td>" + payment.getExamID() + " </td>");
-                                            out.write("<td>" + payment.getPaymentBank() + " </td>");
-                                            out.write("</tr>");
-
-                                        }
-
-                                    }
-                                    ss1.getTransaction().commit();
-                                    ss1.close();
-                               %>
-
-                            </tbody>
-                        </table>
-
-                    </div>
-                        
-                        
-                        
-                        
+                        </div>               
                         <div class="col-sm-2 droup-down-box">
                             <div class="dropdown">
                                 <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">Tasks
@@ -326,12 +240,74 @@
                             </div>                            
                         </div>                        
                     </div>
+                    <div class="col-sm-12">
+                        <div class="col-sm-12 devbottom-line">
+                            <div class="col-sm-1 no-padding"><h5>Payment</h5></div>
+                            <div class="col-sm-1 no-padding"><h5>ID</h5></div>
+                            <div class="col-sm-2 no-padding"><h5>Name</h5></div>
+                            <div class="col-sm-2 no-padding"><h5>Payment Type</h5></div>
+                            <div class="col-sm-1 no-padding"><h5>Amount</h5></div>
+                            <div class="col-sm-1 no-padding"><h5>Date</h5></div>
+                            <div class="col-sm-2 no-padding"><h5>Bank</h5></div>
+                            <div class="col-sm-2 no-padding"><h5>Other</h5></div>
+                        </div>
+                        <% 
+                            Session ss1 = sessionFactry.openSession();
+                            ss1.beginTransaction();
+                            Query queryAllPayment = ss1.createQuery("from Payment order by EnteredTimeStamp desc");
+                            List allPaymentList = queryAllPayment.list();
+
+                            for (int i = 0; i < allPaymentList.size(); i++) {
+                                Payment payment = new Payment();
+                                Applicant applicant = new Applicant();
+                                Student student = new Student();
+
+                                payment = (Payment) allPaymentList.get(i);
+                                if (payment.getApplicationNumOrStudentID().contains("_A_")) {
+                                    applicant = (Applicant) ss1.get(Applicant.class, payment.getApplicationNumOrStudentID());
+                                    out.write("<div class='col-sm-12 devbottom-line'>");
+                                    out.write("<div class='col-sm-1 no-padding'><h6>" + payment.getPaymentID() + "</h6></div>");
+                                    out.write("<div class='col-sm-1 no-padding'><h6>" + payment.getApplicationNumOrStudentID() + "</h6></div>");
+                                    out.write("<div class='col-sm-2 no-padding'><h6>" + applicant.getFullName() + "</h6></div>");
+                                    out.write("<div class='col-sm-2 no-padding'><h6>" + payment.getPaymentType() + "</h6></div>");
+                                    out.write("<div class='col-sm-1 no-padding'><h6>" + payment.getPaymentAmmount() + "</h6></div>");
+                                    out.write("<div class='col-sm-1 no-padding'><h6>" + payment.getPaymentDate() + "</h6></div>");
+                                    out.write("<div class='col-sm-2 no-padding'><h6>" + payment.getExamID() + "</h6></div>");
+                                    out.write("<div class='col-sm-2 no-padding'><h6>" + payment.getPaymentBank() + "</h6></div>");
+                                    out.write("</div>");
+                                } else if (payment.getApplicationNumOrStudentID().contains("_S_")) {
+                                    student = (Student) s.get(Student.class, payment.getApplicationNumOrStudentID());
+                                    out.write("<div class='col-sm-12 devbottom-line'>");
+                                    out.write("<div class='col-sm-1 no-padding'><h6>" + payment.getPaymentID() + "</h6></div>");
+                                    out.write("<div class='col-sm-1 no-padding'><h6>" + payment.getApplicationNumOrStudentID() + "</h6></div>");
+                                    out.write("<div class='col-sm-2 no-padding'><h6>" + student.getFullName() + "</h6></div>");
+                                    out.write("<div class='col-sm-2 no-padding'><h6>" + payment.getPaymentType() + "</h6></div>");
+                                    out.write("<div class='col-sm-1 no-padding'><h6>" + payment.getPaymentAmmount() + "</h6></div>");
+                                    out.write("<div class='col-sm-1 no-padding'><h6>" + payment.getPaymentDate() + "</h6></div>");
+                                    out.write("<div class='col-sm-2 no-padding'><h6>" + payment.getExamID() + "</h6></div>");
+                                    out.write("<div class='col-sm-2 no-padding'><h6>" + payment.getPaymentBank() + "</h6></div>");
+
+                                    out.write("</div>");
+                                } else {
+                                    out.write("<div class='col-sm-12 devbottom-line'>");
+                                    out.write("<div class='col-sm-1 no-padding'><h6>" + payment.getPaymentID() + "</h6></div>");
+                                    out.write("<div class='col-sm-1 no-padding'><h6>" + payment.getApplicationNumOrStudentID() + "</h6></div>");
+                                    out.write("<div class='col-sm-2 no-padding'><h6>" + "</h6></div>");
+                                    out.write("<div class='col-sm-2 no-padding'><h6>" + payment.getPaymentType() + "</h6></div>");
+                                    out.write("<div class='col-sm-1 no-padding'><h6>" + payment.getPaymentAmmount() + "</h6></div>");
+                                    out.write("<div class='col-sm-1 no-padding'><h6>" + payment.getPaymentDate() + "</h6></div>");
+                                    out.write("<div class='col-sm-2 no-padding'><h6>" + payment.getExamID() + "</h6></div>");
+                                    out.write("<div class='col-sm-2 no-padding'><h6>" + payment.getPaymentBank() + "</h6></div>");
+                                    out.write("</div>");
+
+                                }
+
+                            }
+                            ss1.getTransaction().commit();
+                            ss1.close();
+                       %>
+                    </div>
                 </div>
-
-
-
-
-
             </div>            
         </div>
         <!--Pop Ups-->
@@ -339,7 +315,6 @@
         <!-- Modal View All unallocated Applicant -->
         <div id="viewAllUnallocatedApplicant" class="modal fade" role="dialog" >
             <div class="modal-dialog">
-
                 <!-- Modal content-->
                 <div class="modal-content" >
                     <div class="modal-header">
@@ -536,8 +511,8 @@
                     </div>
                     <div class="modal-body ">
 
-                        <button type='button' class="btn btn-info" data-toggle='modal' data-target='#searchByApplicationNumber'><span class="glyphicon glyphicon-search"></span> By Application Number</button> <br/><br/>
-                        <button type='button' class="btn btn-info" data-toggle='modal' data-target='#searchByNicNumber'><span class="glyphicon glyphicon-search"></span>By NIC Number</button> <br/><br/>
+                        <button type='button' class="btn btn-info col-sm-12" data-toggle='modal' data-target='#searchByApplicationNumber'><span class="glyphicon glyphicon-search"></span> By Application Number</button> <br/><br/>
+                        <button type='button' class="btn btn-info col-sm-12" data-toggle='modal' data-target='#searchByNicNumber'><span class="glyphicon glyphicon-search"></span>By NIC Number</button> <br/><br/>
 
                     </div>
                 </div>
@@ -565,7 +540,7 @@
                             <div id="searchApplicationNumErr" class="help-block with-errors"></div>
                         </div>
 
-                        <button type='button' class="btn btn-info btn-lg" onclick="searchByApplicationNum()"><span class="glyphicon glyphicon-search"></span> Search</button> <br/><br/>
+                        <button type='button' class="btn btn-info btn-lg" onclick="searchByApplicationNum()"><span class="glyphicon glyphicon-search"></span> Search</button>
 
                         <div id="searchApplicationNumOutput"></div>
 
@@ -582,7 +557,7 @@
                 <!-- Modal content-->
                 <div class="modal-content" >
                     <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <button type="button" class="close col-sm-12" data-dismiss="modal">&times;</button>
                         <h2 class="modal-title" >Search Applicant By NIC Number</h2>
                     </div>
                     <div class="modal-body ">
@@ -596,7 +571,7 @@
                             <div id="searchNICNumErr" class="help-block with-errors"></div>
                         </div>
 
-                        <button type='button' class="btn btn-info btn-lg" onclick="searchByNICNum()"><span class="glyphicon glyphicon-search"></span> Search</button> <br/><br/>
+                        <button type='button' class="btn btn-info btn-lg" onclick="searchByNICNum()"><span class="glyphicon glyphicon-search"></span> Search</button>
 
                         <div id="searchNICNumOutput"></div>
 

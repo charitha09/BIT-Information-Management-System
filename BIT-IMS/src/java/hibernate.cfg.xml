@@ -5,6 +5,7 @@
     <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
     <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/bit_ims</property>
     <property name="hibernate.connection.username">root</property>
+    <property name="hibernate.hbm2ddl.auto">create</property>
     <property name="hibernate.hbm2ddl.auto">update</property>
     <property name="hibernate.show_sql">true</property>
     <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
@@ -22,5 +23,7 @@
     <mapping class="com.ims.model.Student"/>
     <mapping class="com.ims.model.Subject"/>
     <mapping class="com.ims.model.Payment"/>
+    <mapping class="com.ims.controller.MessageController"/>
+    <mapping class="com.ims.controller.MessageReceive"/>
   </session-factory>
 </hibernate-configuration>
