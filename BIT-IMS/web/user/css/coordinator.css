@@ -29,4 +29,8 @@
     margin-left: 5%;
     width: 90%;
 }
+
+.col-sm-2.no-padding{
+    overflow: auto;
+}
     

@@ -102,10 +102,10 @@
                                 Interview iv = new Interview();
                                 iv = (Interview) interviewList.get(i);
                                 out.write("<div class='col-sm-12 devbottom-line'>");
-                                out.write("<div class='col-sm-2 no-padding'><h5>" + iv.getInterviewID() + "</h5></div>");
-                                out.write("<div class='col-sm-2 no-padding'><h5>" + iv.getDate() + "</h5></div>");
-                                out.write("<div class='col-sm-2 no-padding'><h5>" + iv.getStartTime() + "</h5></div>");
-                                out.write("<div class='col-sm-2 no-padding'><h5>" + iv.getAuthor() + "</h5></div>");
+                                out.write("<div class='col-sm-2 no-padding'><h6>" + iv.getInterviewID() + "</h6></div>");
+                                out.write("<div class='col-sm-2 no-padding'><h6>" + iv.getDate() + "</h6></div>");
+                                out.write("<div class='col-sm-2 no-padding'><h6>" + iv.getStartTime() + "</h6></div>");
+                                out.write("<div class='col-sm-2 no-padding'><h6>" + iv.getAuthor() + "</h6></div>");
                                 out.write("<div class='col-sm-2 no-padding'><button type='button' class='btn btn-default btn-sm' data-toggle='modal' data-target='#updateInterviewDetails' onclick=updateInterviewDetails('" + iv.getInterviewID() + "')><span class='glyphicon glyphicon-pencil'></span></button></div>");
                                 out.write("<div class='col-sm-2 no-padding'><button type='button' class='btn btn-default btn-sm' data-toggle='modal' data-target='#viewAllocatedApplicant' onclick=viewAllocatedApplicant('" + iv.getInterviewID() + "')><span class='glyphicon glyphicon-new-window'></span></button></div>");
                                 out.write("</div>");
@@ -150,12 +150,12 @@
                                 Applicant applicant = new Applicant();
                                 applicant = (Applicant) applicantList.get(i);
                                 out.write("<div class='col-sm-12 devbottom-line'>");
-                                out.write("<div class='col-sm-2 no-padding'><h5>" + applicant.getApplicationNum() + "</h5></div>");
-                                out.write("<div class='col-sm-2 no-padding'><h5>" + applicant.getFullName() + "</h5></div>");
-                                out.write("<div class='col-sm-2 no-padding'><h5>" + applicant.getNicNo() + "</h5></div>");
-                                out.write("<div class='col-sm-2 no-padding'><h5>" + applicant.getTelephoneNumMob() + "</h5></div>");
-                                out.write("<div class='col-sm-2 no-padding'><h5>" + applicant.getEmail() + "</h5></div>");
-                                out.write("<div class='col-sm-2 no-padding'><h5>" + applicant.getAddress() + "</h5></div>");
+                                out.write("<div class='col-sm-2 no-padding'><h6>" + applicant.getApplicationNum() + "</h6></div>");
+                                out.write("<div class='col-sm-2 no-padding'><h6>" + applicant.getFullName() + "</h6></div>");
+                                out.write("<div class='col-sm-2 no-padding'><h6>" + applicant.getNicNo() + "</h6></div>");
+                                out.write("<div class='col-sm-2 no-padding'><h6>" + applicant.getTelephoneNumMob() + "</h6></div>");
+                                out.write("<div class='col-sm-2 no-padding'><h6>" + applicant.getEmail() + "</h6></div>");
+                                out.write("<div class='col-sm-2 no-padding'><h6>" + applicant.getAddress() + "</h6></div>");
                                 out.write("</div>");
                             }
 
