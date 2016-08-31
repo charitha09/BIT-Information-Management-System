@@ -6,6 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import com.ims.model.Message;
 
 /**
  * DataBase Connection class
@@ -21,6 +22,7 @@ public class DBConnection {
     private String pass = "";
     private String driver = "com.mysql.jdbc.Driver";
     private Connection connection;
+    private PreparedStatement pst = null;
 
     /**
      * This method loads the mySQL driver and establish the connection
@@ -47,6 +49,38 @@ public class DBConnection {
         System.err.println("ERROR: " + e.getMessage());
 
     }
+    
+    /*public boolean sendMessage(Message msg){
+        try{
+            connection = (Connection) DriverManager.getConnection(url,this.user,this.pass);
+            String query = "INSERT INTO user VALUES(?,?,?,?,?,?,?,?)";
+            pst = (com.mysql.jdbc.PreparedStatement)connection.prepareStatement(query);
+            pst.setInt(1,msg.getMessageId());
+            pst.setString(2,msg.getSenderID());
+            pst.setString(3,msg.getreceiverID());
+            pst.setString(4,msg.getMessageTitle());
+            pst.setString(5,msg.getMessageBody());
+            pst.setString(6,msg.getMessageDate());
+            pst.setString(7,msg.getMessageTime());
+            pst.setInt(8,msg.getMessageView());
+            pst.executeUpdate();
+            return true;
+        }catch(Exception e){
+            return false;
+        }finally{
+            try{
+                if(pst != null){
+                    pst.close();
+                    
+                }
+                if(connection != null){
+                    connection.close();
+                }
+            }catch(Exception ex){
+                
+            }
+        }
+    }*/
 /*
     public static void main(String[] args) {
 
