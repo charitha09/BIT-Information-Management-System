@@ -40,18 +40,18 @@
                         <a class="navbar-brand" href="index.jsp"><img src="../../images/logo.png" alt="UCSC"></a>
                     </div>
                     <ul class="nav navbar-nav">
-                        <li class="active"><a href="coordinate.jsp">Coordinate</a></li> 
-                        <li><a href="settings.jsp">Setting</a></li>
+                        <li class="active"><a href="coordinate.jsp">Coordinate</a></li>                         
                         <li class="dropdown">
                         <a class="dropdown-toggle" data-toggle="dropdown" href="messageBegin.jsp">Messaging
                         <span class="caret"></span></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="messageForm.jsp">New Message</a></li>
-                            <li><a href="msgReceive.jsp">Inbox</a></li> 
-                            <li><a href="sendMsg.jsp">Outbox</a></li> 
-                        </ul>
-                    </li>
-                    </ul>
+                            <ul class="dropdown-menu">
+                                <li><a href="messageForm.jsp">New Message</a></li>
+                                <li><a href="msgReceive.jsp">Inbox</a></li> 
+                                <li><a href="sendMsg.jsp">Outbox</a></li> 
+                            </ul>
+                        </li>
+                        <li><a href="settings.jsp">Setting</a></li>
+                    </ul>                    
                     <ul class="nav navbar-nav navbar-right"  data-toggle="modal" data-target="#login-box">
                         <li><a href="../../logout"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
                     </ul>

@@ -85,8 +85,8 @@ function backToNaviForm() {
     document.getElementById("app-nav").style.display = "block";
     document.getElementById("app-details-1").style.display = "none";
     document.getElementById("app-details-2").style.display = "none";
-    document.getElementById("app-details-3").style.display = "none";
-    document.getElementById("app-details-4").style.display = "block";
+    document.getElementById("app-details-3").style.display = "block";
+    document.getElementById("app-details-4").style.display = "none";
     /*Showing Buttons*/
     var btndivs = document.getElementsByClassName("btn-box");
     for (i = 0; i < btndivs.length; i++) {
