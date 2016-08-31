@@ -39,8 +39,8 @@
                         <a class="dropdown-toggle" data-toggle="dropdown" href="#">Registrations
                         <span class="caret"></span></a>
                         <ul class="dropdown-menu">
-                            <li><a href="#">Exam Registration</a></li>
-                            <li><a href="#">Course Registration</a></li> 
+                            <li><a href="../../selectExamCenter.jsp">Exam Registration</a></li>
+                           <!-- <li><a href="#">Course Registration</a></li> -->
                         </ul>
                     </li>
                     <li><a href="#">Messages</a></li> 

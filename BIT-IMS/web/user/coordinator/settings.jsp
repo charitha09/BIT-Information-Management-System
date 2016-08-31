@@ -48,11 +48,20 @@
             </nav>
         </header>
         <div class="container">
+            <div class="col-sm-12 bottem-border">
+                <h3>User Settings</h3>
+            </div>
+            <div class="col-sm-12">
+                <div class="col-sm-6">
+                    <h5>Change Password</h5>
+                </div>
+                <div class="col-sm-6">
+                    <button type='button' class="btn btn-success col-sm-12" data-toggle='modal' data-target='#changePassword'>Change Password</button>                    
+                </div>
+            </div>
+            
                         
-        </div>
-
-
-        <button type='button' class="btn btn-success" data-toggle='modal' data-target='#changePassword'>Change Password</button> <br/><br/>
+        </div>       
 
         <!-- change Password -->
         <div id="changePassword" class="modal fade" role="dialog" >
@@ -90,9 +99,9 @@
                             <div id="confirmNewPasswordErr" class="help-block with-errors"></div>
                         </div>
 
-                        <div id="outputErr" class="help-block with-errors"></div><br/><br/>
-                        <button type='button' class="btn btn-info " onclick="changePassword()"> Submit</button>
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button> <br/><br/>
+                        <div id="outputErr" class="help-block with-errors"></div>
+                        <button type='button' class="btn btn-info" onclick="changePassword()"> Submit</button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                     </div>
                 </div>
             </div>

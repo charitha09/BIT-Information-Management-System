@@ -191,7 +191,7 @@
             </div>
         </div>
         <div id="updateUserDetails">
-
+            
         </div>
     </body>
 </html>

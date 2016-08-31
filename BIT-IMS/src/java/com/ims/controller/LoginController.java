@@ -28,7 +28,6 @@ import org.hibernate.cfg.Configuration;
 @WebServlet(name = "LoginController", urlPatterns = {"/LoginController"})
 public class LoginController extends HttpServlet {
 
-
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
@@ -103,6 +102,8 @@ public class LoginController extends HttpServlet {
                         httpSession.setAttribute("fullName", student.getFullName());
                         httpSession.setAttribute("userLevel", "Student");
                         httpSession.setAttribute("id", student.getRegistrationNum());
+                        httpSession.setAttribute("setUsername", student.getFullName());
+                        httpSession.setAttribute("setPassword", password);
                     } else {
                         error += "invalid email or password!";
                     }
@@ -117,17 +118,17 @@ public class LoginController extends HttpServlet {
         }
         if (error.isEmpty()) {
 
-                // a valid user found no error in log in details
+            // a valid user found no error in log in details
             // gets the user type
             String userLevel = (String) request.getSession().getAttribute("userLevel");
             // user is redirected to the appropriate home page
             if (userLevel.equalsIgnoreCase("admin")) {
                 response.sendRedirect("user/admin");
-            }else if(userLevel.equalsIgnoreCase("Student")){
+            } else if (userLevel.equalsIgnoreCase("Student")) {
                 response.sendRedirect("user/student");
-            }else if (userLevel.equalsIgnoreCase("coordinator")) {
-             response.sendRedirect("user/coordinator");
-             } 
+            } else if (userLevel.equalsIgnoreCase("coordinator")) {
+                response.sendRedirect("user/coordinator");
+            }
             /*else if (userLevel.equalsIgnoreCase("academic")) {
              response.sendRedirect("academic/academic-home.jsp");
              } else if (userLevel.equalsIgnoreCase("auditor")) {
