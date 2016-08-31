@@ -31,6 +31,8 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
         <script src="../js/coordinator.js"></script>   
+        <script src="../../js/student.js"></script>  
+        <script src="../../js/payment.js"></script>
         <header>
             <nav class="navbar navbar-inverse">
                 <div class="container-fluid">

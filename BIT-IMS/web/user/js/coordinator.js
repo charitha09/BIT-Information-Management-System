@@ -66,7 +66,7 @@ function viewAllocatedApplicant(interviewID) {
     httpxml = new XMLHttpRequest();
     function stateChanged() {
         if (httpxml.readyState == 4) {
-            alert(interviewID);
+            
             document.getElementById("allocatedApplicantTableBody").innerHTML = httpxml.responseText;
         }
     }
