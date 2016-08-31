@@ -10,13 +10,12 @@
 function searchByPaymentID() {
 
     var paymentID = document.getElementById("searchPaymentID").value;
-    alert(paymentID);
+    
     paymentID = paymentID.trim();
 
     if (paymentID == "") {
         document.getElementById("searchPaymentIDErr").innerHTML = "Empty";
     } else {
-        alert(paymentID);
         var httpxml;
         httpxml = new XMLHttpRequest();
         function stateChanged() {
@@ -40,13 +39,12 @@ function searchByPaymentID() {
 function searchByStudentID() {
 
     var StudentID = document.getElementById("searchStudentID").value;
-    alert(StudentID);
+    
     StudentID = StudentID.trim();
 
     if (StudentID == "") {
         document.getElementById("searchStudentIDErr").innerHTML = "Empty";
     } else {
-        alert(StudentID);
         var httpxml;
         httpxml = new XMLHttpRequest();
         function stateChanged() {
@@ -69,13 +67,12 @@ function searchByStudentID() {
 function searchByApplicationNumber() {
 
     var ApplicationNumber = document.getElementById("searchApplicationNumber").value;
-    alert(ApplicationNumber);
+    
     ApplicationNumber = ApplicationNumber.trim();
 
     if (ApplicationNumber == "") {
         document.getElementById("searchApplicationNumberErr").innerHTML = "Empty";
     } else {
-        alert(ApplicationNumber);
         var httpxml;
         httpxml = new XMLHttpRequest();
         function stateChanged() {
@@ -99,13 +96,12 @@ function searchByApplicationNumber() {
 function searchByExamID() {
 
     var ExamID = document.getElementById("searchExamID").value;
-    alert(ExamID);
+    
     ExamID = ExamID.trim();
 
     if (ExamID == "") {
         document.getElementById("searchExamIDErr").innerHTML = "Empty";
     } else {
-        alert(ExamID);
         var httpxml;
         httpxml = new XMLHttpRequest();
         function stateChanged() {
@@ -128,13 +124,12 @@ function searchByExamID() {
 function searchByPaymentType() {
 
     var paymentType = document.getElementById("searchpaymentType").value;
-    alert(paymentType);
+    
     paymentType = paymentType.trim();
 
     if (paymentType == "") {
         document.getElementById("searchpaymentTypeErr").innerHTML = "Empty";
     } else {
-        alert(paymentType);
         var httpxml;
         httpxml = new XMLHttpRequest();
         function stateChanged() {
