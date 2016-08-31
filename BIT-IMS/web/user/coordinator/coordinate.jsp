@@ -529,7 +529,7 @@
                             <div id="searchApplicationNumErr" class="help-block with-errors"></div>
                         </div>
 
-                        <button type='button' class="btn btn-info btn-lg" onclick="searchByApplicationNum()"><span class="glyphicon glyphicon-search"></span> Search</button> <br/><br/>
+                        <button type='button' class="btn btn-info btn-lg" onclick="searchByApplicationNum()"><span class="glyphicon glyphicon-search"></span> Search</button>
 
                         <div id="searchApplicationNumOutput"></div>
 
@@ -546,7 +546,7 @@
                 <!-- Modal content-->
                 <div class="modal-content" >
                     <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <button type="button" class="close col-sm-12" data-dismiss="modal">&times;</button>
                         <h2 class="modal-title" >Search Applicant By NIC Number</h2>
                     </div>
                     <div class="modal-body ">
@@ -560,7 +560,7 @@
                             <div id="searchNICNumErr" class="help-block with-errors"></div>
                         </div>
 
-                        <button type='button' class="btn btn-info btn-lg" onclick="searchByNICNum()"><span class="glyphicon glyphicon-search"></span> Search</button> <br/><br/>
+                        <button type='button' class="btn btn-info btn-lg" onclick="searchByNICNum()"><span class="glyphicon glyphicon-search"></span> Search</button>
 
                         <div id="searchNICNumOutput"></div>
 
