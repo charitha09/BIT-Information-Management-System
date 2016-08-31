@@ -33,6 +33,7 @@
         <script src="../js/coordinator.js"></script>   
         <script src="../../js/student.js"></script>  
         <script src="../../js/payment.js"></script>
+        <script src="../../js/applicant.js"></script> 
         <header>
             <nav class="navbar navbar-inverse">
                 <div class="container-fluid">
@@ -275,8 +276,9 @@
                                     out.write("<div class='col-sm-2 no-padding'><h6>" + payment.getPaymentType() + "</h6></div>");
                                     out.write("<div class='col-sm-1 no-padding'><h6>" + payment.getPaymentAmmount() + "</h6></div>");
                                     out.write("<div class='col-sm-1 no-padding'><h6>" + payment.getPaymentDate() + "</h6></div>");
-                                    out.write("<div class='col-sm-2 no-padding'><h6>" + payment.getExamID() + "</h6></div>");
+                                    
                                     out.write("<div class='col-sm-2 no-padding'><h6>" + payment.getPaymentBank() + "</h6></div>");
+                                    out.write("<div class='col-sm-2 no-padding'><h6>" + payment.getExamID() + "</h6></div>");
                                     out.write("</div>");
                                 } else if (payment.getApplicationNumOrStudentID().contains("_S_")) {
                                     student = (Student) s.get(Student.class, payment.getApplicationNumOrStudentID());
@@ -287,8 +289,9 @@
                                     out.write("<div class='col-sm-2 no-padding'><h6>" + payment.getPaymentType() + "</h6></div>");
                                     out.write("<div class='col-sm-1 no-padding'><h6>" + payment.getPaymentAmmount() + "</h6></div>");
                                     out.write("<div class='col-sm-1 no-padding'><h6>" + payment.getPaymentDate() + "</h6></div>");
-                                    out.write("<div class='col-sm-2 no-padding'><h6>" + payment.getExamID() + "</h6></div>");
+                                    
                                     out.write("<div class='col-sm-2 no-padding'><h6>" + payment.getPaymentBank() + "</h6></div>");
+                                    out.write("<div class='col-sm-2 no-padding'><h6>" + payment.getExamID() + "</h6></div>");
 
                                     out.write("</div>");
                                 } else {
@@ -299,8 +302,9 @@
                                     out.write("<div class='col-sm-2 no-padding'><h6>" + payment.getPaymentType() + "</h6></div>");
                                     out.write("<div class='col-sm-1 no-padding'><h6>" + payment.getPaymentAmmount() + "</h6></div>");
                                     out.write("<div class='col-sm-1 no-padding'><h6>" + payment.getPaymentDate() + "</h6></div>");
-                                    out.write("<div class='col-sm-2 no-padding'><h6>" + payment.getExamID() + "</h6></div>");
+                                    
                                     out.write("<div class='col-sm-2 no-padding'><h6>" + payment.getPaymentBank() + "</h6></div>");
+                                    out.write("<div class='col-sm-2 no-padding'><h6>" + payment.getExamID() + "</h6></div>");
                                     out.write("</div>");
 
                                 }
