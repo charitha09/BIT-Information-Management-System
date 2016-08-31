@@ -10,12 +10,37 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-social/5.0.0/bootstrap-social.min.css">
-        <link rel="stylesheet" href="../css/common-style.css">
-        <link rel="stylesheet" href="../css/exam.css">
+        <link rel="stylesheet" href="../../css/common-style.css">
+        <link rel="stylesheet" href="../css/coordinator.css">
+        
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Hall Allocation</title>
     </head>
     <body>
+        <script src="../js/coordinator.js"></script>   
+        <script src="../../js/student.js"></script>  
+        <script src="../../js/payment.js"></script>
+        <script src="../../js/applicant.js"></script>
+        <link rel="stylesheet" href="../css/common-style.css">
+        <link rel="stylesheet" href="../css/exam.css">
+        <header>
+            <nav class="navbar navbar-inverse">
+                <div class="container-fluid">
+                    <div class="navbar-header">
+                        <a class="navbar-brand" href="coordinate.jsp"><img src="../../images/logo.png" alt="UCSC"></a>
+                    </div>
+                    <ul class="nav navbar-nav">
+                        <li><a href="coordinate.jsp">Coordinate</a></li>                         
+                        
+                        <li><a href="settings.jsp">Setting</a></li>
+                        <li class="active"><a href="examallocation.jsp">Hall Allocation</a></li> 
+                    </ul>                    
+                    <ul class="nav navbar-nav navbar-right"  data-toggle="modal" data-target="#login-box">
+                        <li><a href="../../logout"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
+                    </ul>
+                </div>
+            </nav>
+        </header>
         <div class="container"
              <div class="col-sm-8">         
                 <h1>Hall allocation for examination </h><br>

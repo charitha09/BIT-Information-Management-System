@@ -42,15 +42,7 @@
                     </div>
                     <ul class="nav navbar-nav">
                         <li class="active"><a href="coordinate.jsp">Coordinate</a></li>                         
-                        <li class="dropdown">
-                        <a class="dropdown-toggle" data-toggle="dropdown" href="messageBegin.jsp">Messaging
-                        <span class="caret"></span></a>
-                            <ul class="dropdown-menu">
-                                <li><a href="messageForm.jsp">New Message</a></li>
-                                <li><a href="msgReceive.jsp">Inbox</a></li> 
-                                <li><a href="sendMsg.jsp">Outbox</a></li> 
-                            </ul>
-                        </li>
+                    
                         <li><a href="settings.jsp">Setting</a></li>
                     </ul>                    
                     <ul class="nav navbar-nav navbar-right"  data-toggle="modal" data-target="#login-box">

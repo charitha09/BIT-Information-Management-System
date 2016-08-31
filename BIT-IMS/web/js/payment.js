@@ -182,7 +182,7 @@ function checkApplicantInDB(value){
 /*
  * Check this value in Database Student Table 
  */
-function checkStudentInDB(value){
+function checkStudentInDB(value){/*
     
     value = value.trim();
 
@@ -215,5 +215,5 @@ function checkStudentInDB(value){
         httpxml.onreadystatechange = stateChanged;
         httpxml.open("POST", url, true);
         httpxml.send(null);
-    }
+    }*/
 }

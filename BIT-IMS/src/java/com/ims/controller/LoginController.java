@@ -123,7 +123,7 @@ public class LoginController extends HttpServlet {
             String userLevel = (String) request.getSession().getAttribute("userLevel");
             // user is redirected to the appropriate home page
             if (userLevel.equalsIgnoreCase("admin")) {
-                response.sendRedirect("user/admin");
+                response.sendRedirect("user/admin/user_create_edit.jsp");
             } else if (userLevel.equalsIgnoreCase("Student")) {
                 response.sendRedirect("user/student");
             } else if (userLevel.equalsIgnoreCase("coordinator")) {

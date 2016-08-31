@@ -45,6 +45,8 @@ function clickEducation() {
 }
 
 function clickPayment() {
+    viewFullForm();
+    /*
     document.getElementById("PaymentDetails").className += " app-nav-active";
     document.getElementById("PersonalDetails").className =
             document.getElementById("PersonalDetails").className.replace(/(?:^|\s)app-nav-active(?!\S)/g, '');
@@ -57,6 +59,7 @@ function clickPayment() {
     document.getElementById("app-details-2").style.display = "none";
     document.getElementById("app-details-3").style.display = "none";
     document.getElementById("app-details-4").style.display = "block";
+    */
 }
 
 function viewFullForm() {
