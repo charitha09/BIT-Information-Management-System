@@ -116,12 +116,12 @@ public class AddInterview extends HttpServlet {
                     session02.close();
                 }
             }
-            response.sendRedirect("user/coordinator/interview_create_edit.jsp");
+            response.sendRedirect("user/coordinator/coordinate.jsp");
 
         } catch (HibernateException e) {
             System.out.println("Exception " + e);
             tx.rollback();
-            response.sendRedirect("user/coordinator/interview_create_edit.jsp?msg=error");
+            response.sendRedirect("user/coordinator/coordinate.jsp?msg=error");
         } finally {
 
             session.close();

@@ -84,7 +84,7 @@ public class AddStudent extends HttpServlet {
         String year = request.getParameter("addStudentAcademicYear");
 
         if (applicationNum.equals("") || year.equals("")) {
-            response.sendRedirect("user/coordinator/student.jsp?msg=error");
+            response.sendRedirect("user/coordinator/coordinate.jsp?msg=error");
         } else {
             Applicant applicant = new Applicant();
             Student student = new Student();
@@ -130,12 +130,12 @@ public class AddStudent extends HttpServlet {
                 session.update(applicant);
                 
                 tx1.commit();
-                response.sendRedirect("user/coordinator/student.jsp?");
+                response.sendRedirect("user/coordinator/coordinate.jsp?");
 
             } catch (Exception e) {
                 tx1.rollback();
                 System.out.println("exception --->" +e);
-                response.sendRedirect("user/coordinator/student.jsp?msg=error");
+                response.sendRedirect("user/coordinator/coordinate.jsp?msg=error");
             }finally{
                 session.close();
             }

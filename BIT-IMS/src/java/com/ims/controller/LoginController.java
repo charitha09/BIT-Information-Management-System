@@ -127,7 +127,7 @@ public class LoginController extends HttpServlet {
             } else if (userLevel.equalsIgnoreCase("Student")) {
                 response.sendRedirect("user/student");
             } else if (userLevel.equalsIgnoreCase("coordinator")) {
-                response.sendRedirect("user/coordinator");
+                response.sendRedirect("user/coordinator/coordinate.jsp");
             }
             /*else if (userLevel.equalsIgnoreCase("academic")) {
              response.sendRedirect("academic/academic-home.jsp");

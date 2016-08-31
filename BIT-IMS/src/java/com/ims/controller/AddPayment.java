@@ -119,15 +119,15 @@ public class AddPayment extends HttpServlet {
 
             }
             session.getTransaction().commit();
-            response.sendRedirect("user/coordinator/payment.jsp");
+            response.sendRedirect("user/coordinator/coordinate.jsp");
         } catch (HibernateException hex) {
             System.out.println("--->" + hex);
             tx.rollback();
-            response.sendRedirect("user/coordinator/payment.jsp?msg=error");
+            response.sendRedirect("user/coordinator/coordinate.jsp?msg=error");
         } catch (Exception e) {
             System.out.println("--->" + e);
             tx.rollback();
-            response.sendRedirect("user/coordinator/payment.jsp?msg=error");
+            response.sendRedirect("user/coordinator/coordinate.jsp?msg=error");
         } finally {
             session.close();
         }
