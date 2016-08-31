@@ -37,7 +37,7 @@
             <nav class="navbar navbar-inverse">
                 <div class="container-fluid">
                     <div class="navbar-header">
-                        <a class="navbar-brand" href="index.jsp"><img src="../../images/logo.png" alt="UCSC"></a>
+                        <a class="navbar-brand" href="coordinate.jsp"><img src="../../images/logo.png" alt="UCSC"></a>
                     </div>
                     <ul class="nav navbar-nav">
                         <li class="active"><a href="coordinate.jsp">Coordinate</a></li>                         
@@ -71,6 +71,9 @@
                 </a>
                 <a id="Payment-window-navi" href="#Payment" class="list-group-item">
                     <i class="fa fa-comment-o"></i> Payments
+                </a>
+                <a id="Payment-window-navi" href="examallocation.jsp" class="list-group-item">
+                    <i class="fa fa-comment-o"></i> Hall Allocation
                 </a>
             </div>
             <div class="col-sm-10 no-padding" id="coordinator-pages">

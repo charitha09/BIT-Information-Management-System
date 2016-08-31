@@ -1,0 +1,45 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Aug 29, 2016, 7:18:13 AM
+    Author     : Charith
+*/
+.col-sm-8{
+    margin-left: 15px;
+}
+.index-box{
+    border: 1px solid #ccc;
+    margin-bottom: 25px;
+    box-shadow: 10px 10px 5px #888888;
+}
+.box-4{
+    height: 300px;
+    overflow-y: auto;
+}
+.tbl{
+    margin-top: 10px;
+    margin-right: 0;
+    
+}
+.slctcenter{
+    margin-left: 30px;
+}
+
+.btn-default{
+    padding-left: 30px;
+    padding-right: 30px;
+    margin-left: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-size: 18px;
+}
+.btn-success{
+    padding-left: 30px;
+    padding-right: 30px;
+    margin-top: 10px;
+    margin-left: 10px;
+    font-size: 18px
+}

@@ -22,7 +22,7 @@
             <nav class="navbar navbar-inverse">
             <div class="container-fluid">
                 <div class="navbar-header">
-                    <a class="navbar-brand" href="index.jsp"><img src="../../images/logo.png" alt="UCSC"></a>
+                    <a class="navbar-brand" href="coordinate.jsp"><img src="../../images/logo.png" alt="UCSC"></a>
                 </div>
                 <ul class="nav navbar-nav"></ul>
                 </header>
