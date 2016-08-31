@@ -304,7 +304,6 @@
         <!-- Modal View All unallocated Applicant -->
         <div id="viewAllUnallocatedApplicant" class="modal fade" role="dialog" >
             <div class="modal-dialog">
-
                 <!-- Modal content-->
                 <div class="modal-content" >
                     <div class="modal-header">
@@ -501,8 +500,8 @@
                     </div>
                     <div class="modal-body ">
 
-                        <button type='button' class="btn btn-info" data-toggle='modal' data-target='#searchByApplicationNumber'><span class="glyphicon glyphicon-search"></span> By Application Number</button> <br/><br/>
-                        <button type='button' class="btn btn-info" data-toggle='modal' data-target='#searchByNicNumber'><span class="glyphicon glyphicon-search"></span>By NIC Number</button> <br/><br/>
+                        <button type='button' class="btn btn-info col-sm-12" data-toggle='modal' data-target='#searchByApplicationNumber'><span class="glyphicon glyphicon-search"></span> By Application Number</button> <br/><br/>
+                        <button type='button' class="btn btn-info col-sm-12" data-toggle='modal' data-target='#searchByNicNumber'><span class="glyphicon glyphicon-search"></span>By NIC Number</button> <br/><br/>
 
                     </div>
                 </div>
